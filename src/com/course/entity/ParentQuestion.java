@@ -72,7 +72,7 @@ public class ParentQuestion {
 		this.imgUrl = imgUrl;
 	}
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="examId")
 	public Exam getExam() {
 		return exam;

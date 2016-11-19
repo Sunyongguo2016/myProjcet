@@ -63,7 +63,7 @@ public class Question {
 		this.questionScore = questionScore;
 	}
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="parentQuestionId")
 	public ParentQuestion getParentQuestion() {
 		return parentQuestion;

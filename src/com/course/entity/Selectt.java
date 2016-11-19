@@ -1,5 +1,6 @@
 package com.course.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -41,7 +42,7 @@ public class Selectt {
 		this.selecttContent = selecttContent;
 	}
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "questionId")
 	public Question getQuestion() {
 		return question;
