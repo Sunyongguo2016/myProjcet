@@ -33,40 +33,50 @@
 						<input type="text" class="input" name="s_title" value="" />
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>大题名称：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>描述：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<div class="label">
 						<label>标题：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="title"
-							data-validate="required:请输入标题" />
+						<input type="text" class="input" name="s_title" value="" />
 						<div class="tips"></div>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="label">
-						<label>内容：</label>
+						<label>文章内容：</label>
 					</div>
 					<div class="field">
 						<textarea name="content" class="input"
-							style="height: 350px; border: 1px solid #ddd;"></textarea>
+							style="height: 250px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
 				</div>
 
 				<div class="clear"></div>
-				<!--
-      <div class="form-group">
-        <div class="label">
-          <label>选项A：</label>
-        </div>
-        <div class="field">
-          <input type="text" class="input w50" name="views" value="" data-validate="member:只能为数字"  />
-          <div class="tips"></div>
-        </div>
-      </div>
-      -->
 
 				<div class="form-group">
 					<div class="label">
@@ -152,6 +162,349 @@
 
 				</div>
 
+				<hr/>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>每小题分数：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题一答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题一解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题二答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题二解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题三答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题三解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题四答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题四解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题五答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题五解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题六答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题六解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题七答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题七解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题八答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题八解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题九答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题九解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题十答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题十解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题十一答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题十一解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题十二答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题十二解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题十三答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题十三解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题十四答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题十四解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				<div class="form-group">
+					<div class="label">
+						<label>小题十五答案：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="score"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>小题十五解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="content" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				
 				<div class="form-group">
 					<div class="label">
 						<label></label>
