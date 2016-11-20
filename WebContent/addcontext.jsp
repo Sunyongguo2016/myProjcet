@@ -175,6 +175,30 @@
 				</div>
 				
 				<hr/>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>开始题号：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="输入题号(整数)" name="questionfrom"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<hr/>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>结束题号：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="输入题号(整数)" name="questionto"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr/>
+				
 				<div class="form-group">
 					<div class="label">
 						<label>小题一答案：</label>
