@@ -1,6 +1,6 @@
 package com.course.choosefillinblank.controller;
 
-import java.io.UnsupportedEncodingException;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -9,12 +9,14 @@ import java.util.Set;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.course.entity.Exam;
 import com.course.entity.ParentQuestion;
 import com.course.entity.Question;
 import com.course.entity.Selectt;
+import com.course.exam.service.ExamServiceImpl;
 import com.course.parentquestion.service.ParentQuestionServiceImpl;
 import com.course.question.service.QuestionServiceImpl;
 import com.course.selectt.service.SelecttServiceImpl;
@@ -24,6 +26,9 @@ import com.framework.Page;
 @RequestMapping("choosefillinblank")
 public class ChoosefillinblankController {
 
+	@Resource
+	private ExamServiceImpl examServiceImpl;
+	
 	@Resource
 	private ParentQuestionServiceImpl parentQuestionServiceImpl;
 	
@@ -39,6 +44,8 @@ public class ChoosefillinblankController {
 	@RequestMapping("add")
 	public String add(@RequestParam(name = "examname") String examname,
 			@RequestParam(name = "parentquestionname") String parentquestionname,
+			@RequestParam(name = "questionfrom", required = true) Integer questionfrom,
+			@RequestParam(name = "questionto") Integer questionto,
 			@RequestParam(name = "parentquestionarticle") String parentquestionarticle,
 			@RequestParam(name = "parentquestiontitle") String parentquestiontitle,
 			@RequestParam(name = "description") String description,
@@ -128,21 +135,23 @@ public class ChoosefillinblankController {
 		
 
 //		转码已经在web.xml中配置过滤器  utf-8 转码   可以正确保存中文到数据库  如果这里再转码  会出错
+
+//		根据examname查询exam,赋值给parentquestion,实现关联关系;
+//		前提必须有exam  需要判空
+//		Exam exam = new Exam();
+//		exam = this.examServiceImpl.findByExamName(examname);
+//		
+//		if(exam == null){
+//			return "404";
+//		}
 		
 		
 //		将获取到的参数赋值给parentquestion,保存parentquestion
 		ParentQuestion parentquestion = new ParentQuestion();
 		
-//		根据examname查询exam,赋值给parentquestion,实现关联关系;
-//		需要判空
-//		Exam exam = new Exam();
-//		exam.setExamName(examname);
 		
-		
-//		这个对象存在了 就不需要再存一次了
+//		parentquestion与exam关联;
 //		parentquestion.setExam(exam);
-		
-		
 		
 		parentquestion.setParentQuestionName(parentquestionname);
 		parentquestion.setDescription(description);
@@ -153,20 +162,27 @@ public class ChoosefillinblankController {
 //		设置questions集合  将question加入questions  将questions作为属性加入parentquestion
 		Set<Question> questions = new HashSet<Question>(0);
 		
-		for (Integer i = 0; i < 10; i++) {
+		
+//		存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
+		for (Integer i = 0; i < questionto-questionfrom+1; i++) {
 			Question question = new Question();
 			question.setParentQuestion(parentquestion);
-			question.setQuestionContent(((Integer)(i+36)).toString());
+			question.setQuestionContent(((Integer)(i+questionfrom)).toString());
 			question.setQuestionAnswer(questionLists.get(i));
+			
+//			集合questionLists中  前十个是answer  后十个是explain
 			question.setQuestionExplain(questionLists.get(i+10));
 			question.setQuestionScore(Float.parseFloat(questionscore));
 			
 			Set<Selectt> selectts = new HashSet<Selectt>(0);
 			
+//			存储selectt表  将selectts赋值给question 与question联系起来
 			for(Integer j = 0; j<15; j++){
 				Selectt selectt = new Selectt();
 				selectt.setQuestion(question);
 				char c=(char) (j+65);
+				
+//				根据ASCII码转换成字符'A' 'B'..
 				selectt.setSelecttName(c+"");
 				selectt.setSelecttContent(selecttLists.get(j));
 				
@@ -184,10 +200,11 @@ public class ChoosefillinblankController {
 		
 		parentquestion.setQuestions(questions);
 		
+//		存储parentquestion
 		this.parentQuestionServiceImpl.addParentQuestion(parentquestion);
 		return "redirect:list";
 	}
-	//
+	
 	// @RequestMapping(value="delete")
 	// public String delete(@RequestParam("choosefillinblankId") int
 	// choosefillinblankId,
@@ -196,59 +213,25 @@ public class ChoosefillinblankController {
 	// return "redirect:list";
 	// }
 	//
-	// @RequestMapping(value="edit",method=RequestMethod.GET )
-	// public String toEdit(@RequestParam("choosefillinblankId") int
-	// choosefillinblankId,
-	// HttpServletRequest request){
-	//// System.out.println("get");
-	//
-	// Product
-	// p=this.choosefillinblankServiceImpl.getProduct(choosefillinblankId);
-	//// 设置了两个session范围的属性
-	// request.setAttribute("pro", p);
-	// request.setAttribute("action", "edit");
-	// return "choosefillinblank/edit";
-	// }
-	//
-	// @RequestMapping(value="edit",method=RequestMethod.POST)
-	// public String edit(Product p,HttpServletRequest request){
-	//// System.out.println("post");
-	// String name = null;
-	// try {
-	// name = new String(p.getName().getBytes("ISO8859_1"), "UTF-8");
-	// } catch (UnsupportedEncodingException e) {
-	// e.printStackTrace();
-	// }
-	// p.setName(name);
-	// this.choosefillinblankServiceImpl.editProduct(p);
-	// return "redirect:list";
-	// }
 
-	// @RequestMapping("list")
-	// public String list(@RequestParam(name="pageNum", defaultValue="1") int
-	// pageNum,
-	// @RequestParam(name="searchParam",defaultValue="") String
-	// searchParam,HttpServletRequest request,
-	// Model model){
-	// Page<ParentQuestion> page;
-	// if(searchParam==null || "".equals(searchParam)){
-	// page=this.choosefillinblankServiceImpl.listParentQuestion(pageNum, 5,
-	// null);
-	// }else{
-	//// System.out.println("before"+searchParam);
-	// try {
-	// searchParam = new String(searchParam.getBytes("ISO8859_1"), "UTF-8");
-	// } catch (UnsupportedEncodingException e) {
-	// e.printStackTrace();
-	// }
-	//// System.out.println("after"+searchParam);
-	// page=this.choosefillinblankServiceImpl.listParentQuestion(pageNum, 5, new
-	// Object[]{searchParam});
-	// }
-	// request.setAttribute("page", page);
-	// request.setAttribute("searchParam", searchParam);
-	// return "choosefillinblank/list";
-	//
-	// }
-
+//	   查看大题功能
+	 @RequestMapping("list")
+	 public String list(@RequestParam(name="pageNum", defaultValue="1") int pageNum,
+			 @RequestParam(name="searchParam",defaultValue="") String searchParam,
+			 HttpServletRequest request, Model model){
+		 
+		 Page<ParentQuestion> page;
+		 
+		 if(searchParam==null || "".equals(searchParam)){
+			 page=this.parentQuestionServiceImpl.listParentQuestion(pageNum, 5,null);
+		 }else{
+			 page=this.parentQuestionServiceImpl.listParentQuestion(pageNum, 5, new
+			 Object[]{searchParam});
+		 }
+		 
+		 request.setAttribute("page", page);
+		 request.setAttribute("searchParam", searchParam);
+		 
+		 return "choosefillinblank/choosefillinblanklist";
+	 }
 }
