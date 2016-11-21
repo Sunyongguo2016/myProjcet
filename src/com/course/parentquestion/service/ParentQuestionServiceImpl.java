@@ -20,6 +20,12 @@ public class ParentQuestionServiceImpl {
 		this.parentQuestionDaoImpl.saveParentQuestion(p);
 	}
 
+	//按大题名称查找parentQuestion
+	@Transactional(readOnly=true)
+	public Page<ParentQuestion> listParentQuestionByParentQuestionName(int pageNum,int pageSize,Object[] params){
+		return this.parentQuestionDaoImpl.findParentQuestionByParentQuestionName(pageNum, pageSize, params);
+	}
+	
 	@Transactional(readOnly=true)
 	public Page<ParentQuestion> listParentQuestion(int pageNum,int pageSize,Object[] params){
 		return this.parentQuestionDaoImpl.findParentQuestion(pageNum, pageSize, params);
