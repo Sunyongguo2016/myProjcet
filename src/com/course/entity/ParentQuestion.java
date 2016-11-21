@@ -72,7 +72,8 @@ public class ParentQuestion {
 		this.imgUrl = imgUrl;
 	}
 	
-	@ManyToOne(cascade=CascadeType.MERGE)
+	//延迟加载真的好用！在所有manytoone设置延迟加载、 删除parentquestion时，设置lazy就不会受exam影响  否则删除出错
+	@ManyToOne(cascade=CascadeType.MERGE,fetch = FetchType.LAZY)
 	@JoinColumn(name="examId")
 	public Exam getExam() {
 		return exam;
