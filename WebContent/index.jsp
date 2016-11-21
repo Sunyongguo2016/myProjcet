@@ -50,9 +50,9 @@
 					class="icon-caret-right"></span>试卷管理</a></li>
 			<li><a href="${ctx }/compositionlist.jsp" target="right"><span
 					class="icon-caret-right"></span>作文题管理</a></li>
-			<li><a href="${ctx }/listeninglist.jsp" target="right"><span
+			<li><a href="${ctx }/listening/list" target="right"><span
 					class="icon-caret-right"></span>听力管理</a></li>
-			<li><a href="${ctx }/choosefillinblank/list" target="right"><span
+			<li><a href="${ctx }/choosefillinblank/list?parentQuestionName=ChooseFillInBlank" target="right"><span
 					class="icon-caret-right"></span>十五选十管理</a></li>
 			<li><a href="${ctx }/translationlist.jsp" target="right"><span
 					class="icon-caret-right"></span>快速阅读</a></li>
