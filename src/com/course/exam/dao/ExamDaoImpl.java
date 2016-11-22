@@ -20,7 +20,7 @@ public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 	public Page<Exam> findExam(int pageNum, int pageSize, Object[] params) {
 		String hql;
 		if (params != null && params.length > 0) {
-			hql = "from Exam e where e.name like ?";
+			hql = "from Exam e where e.examName like ?";
 			params[0] = "%" + params[0] + "%";
 		} else {
 			hql = "from Exam";
