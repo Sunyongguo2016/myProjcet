@@ -1,6 +1,5 @@
 package com.course.choosefillinblank.controller;
 
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,6 +20,15 @@ import com.course.question.service.QuestionServiceImpl;
 import com.course.selectt.service.SelecttServiceImpl;
 import com.framework.Page;
 
+/**
+ * 
+ * @Description 		大题十五选十控制器  实现增加   删除  查看(list)功能
+ * @author 				孙永国
+ * @createDate  		2016/11/20
+ * @version 			V1.0
+ * 
+ */
+
 @Controller
 @RequestMapping("choosefillinblank")
 public class ChoosefillinblankController {
@@ -37,8 +45,16 @@ public class ChoosefillinblankController {
 	@Resource
 	private SelecttServiceImpl selecttServiceImpl;
 
-	/*
-	 * 添加十五选十大题，获取addcontent.jsp的参数，实现添加parentQuestion对象；
+	
+	
+	/**
+	 * 
+	 * @desc				添加十五选十大题，获取addcontent.jsp的参数，实现添加parentQuestion对象；
+	 * @author				孙永国
+	 * @createDate 			2016/11/21
+	 * @param 				获得添加十五选十大题相关参数
+	 * @return				String
+	 * 
 	 */
 	@RequestMapping("add")
 	public String add(@RequestParam(name = "examname") String examname,
@@ -87,10 +103,10 @@ public class ChoosefillinblankController {
 			HttpServletRequest request) {
 		
 		
-//		用集合！！很好用的方法！
-//		用集合获取参数  再在for循环中使用 方便利用for循环添加question
+		//用集合！！很好用的方法！
+		//用集合获取参数  再在for循环中使用 方便利用for循环添加question
 		
-//		list集合存储所有的question 答案和解析 信息   方便在for循环中存储
+		//list集合存储所有的question 答案和解析 信息   方便在for循环中存储
 		List<String> questionLists = new ArrayList<String>();
 		questionLists.add(questionanswer36);
 		questionLists.add(questionanswer37);
@@ -114,7 +130,7 @@ public class ChoosefillinblankController {
 		questionLists.add(questionexplain45);
 		
 		
-//		用list集合保存单选内容   方便用循环存储数据
+		//用list集合保存单选内容   方便用循环存储数据
 		List<String> selecttLists = new ArrayList<String>();
 		selecttLists.add(aselecttcontent);
 		selecttLists.add(bselecttcontent);
@@ -131,13 +147,11 @@ public class ChoosefillinblankController {
 		selecttLists.add(mselecttcontent);
 		selecttLists.add(nselecttcontent);
 		selecttLists.add(oselecttcontent);
-		
 
-//		转码已经在web.xml中配置过滤器  utf-8 转码   可以正确保存中文到数据库  如果这里再转码  会出错
-
+//		待实现功能,这段注释不要学习
 //		根据examname查询exam,赋值给parentquestion,实现关联关系;
 //		前提必须有exam  需要判空
-//		Exam exam = new Exam();
+//		Exam exam = null;
 //		exam = this.examServiceImpl.findByExamName(examname);
 //		
 //		if(exam == null){
@@ -145,12 +159,12 @@ public class ChoosefillinblankController {
 //		}
 		
 		
-//		将获取到的参数赋值给parentquestion,保存parentquestion
+		//将获取到的参数赋值给parentquestion,保存parentquestion
 		ParentQuestion parentquestion = new ParentQuestion();
 		
-		
-//		parentquestion与exam关联;
-//		parentquestion.setExam(exam);
+		//此处关联没有实现 
+		//parentquestion与exam关联;
+		//parentquestion.setExam(exam);
 		
 		parentquestion.setParentQuestionName(parentquestionname);
 		parentquestion.setDescription(description);
@@ -158,30 +172,30 @@ public class ChoosefillinblankController {
 		parentquestion.setParentQuestionArticle(parentquestionarticle);
 
 		
-//		设置questions集合  将question加入questions  将questions作为属性加入parentquestion
+		//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
 		Set<Question> questions = new HashSet<Question>(0);
 		
 		
-//		存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
+		//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
 		for (Integer i = 0; i < questionto-questionfrom+1; i++) {
 			Question question = new Question();
 			question.setParentQuestion(parentquestion);
 			question.setQuestionContent(((Integer)(i+questionfrom)).toString());
 			question.setQuestionAnswer(questionLists.get(i));
 			
-//			集合questionLists中  前十个是answer  后十个是explain
+			//集合questionLists中  前十个是answer  后十个是explain
 			question.setQuestionExplain(questionLists.get(i+10));
 			question.setQuestionScore(Float.parseFloat(questionscore));
 			
 			Set<Selectt> selectts = new HashSet<Selectt>(0);
 			
-//			存储selectt表  将selectts赋值给question 与question联系起来
+			//存储selectt表  将selectts赋值给question 与question联系起来
 			for(Integer j = 0; j<15; j++){
 				Selectt selectt = new Selectt();
 				selectt.setQuestion(question);
 				char c=(char) (j+65);
 				
-//				根据ASCII码转换成字符'A' 'B'..
+				//根据ASCII码转换成字符'A' 'B'..
 				selectt.setSelecttName(c+"");
 				selectt.setSelecttContent(selecttLists.get(j));
 				
@@ -191,41 +205,66 @@ public class ChoosefillinblankController {
 			
 			question.setSelectts(selectts);
 
-			
 			this.questionServiceImpl.addQuestion(question);
-			
 			questions.add(question);
 		}
 		
 		parentquestion.setQuestions(questions);
 		
-//		存储parentquestion
+		//存储parentquestion
 		this.parentQuestionServiceImpl.addParentQuestion(parentquestion);
 		return "redirect:list";
 	}
 	
-	// @RequestMapping(value="delete")
-	// public String delete(@RequestParam("choosefillinblankId") int
-	// choosefillinblankId,
-	// HttpServletRequest request){
-	// this.choosefillinblankServiceImpl.dropProduct(choosefillinblankId);
-	// return "redirect:list";
-	// }
-	//
-
-//	   查看大题功能
+	
+	
+	
+	/**
+	 * 
+	 * @desc				删除十五选十大题   级联删除下面的question  selectt 表内容
+	 * @author				孙永国
+	 * @createDate 			2016/11/22
+	 * @param 				parentquestionid   大题id  
+	 * @return				String
+	 * 
+	 */
+	 @RequestMapping(value="delete")
+	 public String delete(@RequestParam("parentQuestionId") int parentQuestionId,
+			 HttpServletRequest request){
+		 
+		 this.parentQuestionServiceImpl.dropParentQuestion(parentQuestionId);
+	
+		 return "redirect:list";
+	 }
+	 
+	 
+	 
+	
+	 /**
+	 * 
+	 * @desc				查看十五选十大题，封装到page对象里  返回jsp页面
+	 * @author				孙永国
+	 * @createDate 			2016/11/22
+	 * @param 				搜索参数    大题名称参数 等..
+	 * @return				String
+	 * 
+	 */
 	 @RequestMapping("list")
 	 public String list(@RequestParam(name="pageNum", defaultValue="1") int pageNum,
 			 @RequestParam(name="searchParam",defaultValue="") String searchParam,
+			 //添加参数parentQuestionName  用于按大题名称查找parentquestion表   设置默认值
+			 @RequestParam(name="parentQuestionName",defaultValue="ChooseFillInBlank") String parentQuestionName,
 			 HttpServletRequest request, Model model){
 		 
 		 Page<ParentQuestion> page;
 		 
 		 if(searchParam==null || "".equals(searchParam)){
-			 page=this.parentQuestionServiceImpl.listParentQuestion(pageNum, 5,null);
+			 //在老师的基础上自己创建了方法      用于针对题型模糊查找	 修改大题controller  parentquestionserviceimpl  parentquestiondaoimpl 三个类 
+			 page=this.parentQuestionServiceImpl.listParentQuestionByParentQuestionName(pageNum, 5, new
+					 Object[]{parentQuestionName});
 		 }else{
-			 page=this.parentQuestionServiceImpl.listParentQuestion(pageNum, 5, new
-			 Object[]{searchParam});
+			 page=this.parentQuestionServiceImpl.listParentQuestionByParentQuestionName(pageNum, 5, new
+			 Object[]{parentQuestionName,searchParam});
 		 }
 		 
 		 request.setAttribute("page", page);

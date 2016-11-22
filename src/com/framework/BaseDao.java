@@ -60,6 +60,7 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	// **************HQL***************************
+<<<<<<< HEAD
 		/**
 		 * 
 		 * @desc	通过hql查询单个对象
@@ -69,6 +70,17 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		 * @return	单个对象
 		 * @throws Exception
 		 */
+=======
+	/**
+	 * 
+	 * @desc	通过hql查询单个对象
+	 * @author	wangwei
+	 * @param hql	查询语句
+	 * @param params	查询语句参数
+	 * @return	单个对象
+	 * @throws Exception
+	 */
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	@SuppressWarnings("unchecked")
 	public T findOne(String hql, Object[] params) throws Exception {
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
@@ -82,7 +94,11 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	/**
 	 * 
 	 * @desc	按条件查询数据
+<<<<<<< HEAD
 	 * @author	
+=======
+	 * @author	wangwei
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @param hql	条件查询语句
 	 * @param params	查询参数
 	 * @return	按条件查询的数据
@@ -97,11 +113,15 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		}
 		return query.list();
 	}
-
+	
 	/**
 	 * 
 	 * @desc	按条件查询数据数量
+<<<<<<< HEAD
 	 * @author	
+=======
+	 * @author	wangwei
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @param hql	条件查询语句
 	 * @param params	查询参数
 	 * @return	数据数量
@@ -119,7 +139,11 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	/**
 	 * 
 	 * @desc 按条件分页查询数据
+<<<<<<< HEAD
 	 * @author 
+=======
+	 * @author wangwei
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @param pageNum
 	 * @param pageSize
 	 * @param hql
@@ -141,7 +165,11 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	/**
 	 * 
 	 * @desc 按条件分页查询数据，封装到Page对象中
+<<<<<<< HEAD
 	 * @author 
+=======
+	 * @author wangwei
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @param pageNumber	页码
 	 * @param pageSize	每页数据个数
 	 * @param hql	查询语句
@@ -159,6 +187,7 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	// **************SQL***************************
+<<<<<<< HEAD
 		/**
 		 * @desc	通过原生SQL进行新增，修改，删除
 		 * @author
@@ -167,6 +196,16 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		 * @return	影响记录数
 		 * @throws Exception
 		 */
+=======
+	/**
+	 * @desc	通过原生SQL进行新增，修改，删除
+	 * @author	wangwei
+	 * @param sql	
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	public int excuteSql(String sql, Object[] params) throws Exception {
 		int result;
 		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
@@ -179,11 +218,19 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @desc	通过原生SQL进行查询，返回单个结果集，以Map<String, Object>形式存放
 	 * @author	
 	 * @param sql	原生sql语句
 	 * @param params	sql语句中的参数值
 	 * @return	查询出的数据
+=======
+	 * @desc	通过原生SQL进行查询 返回单个结果集，以Map<String, Object>形式存放
+	 * @author	wangwei
+	 * @param sql
+	 * @param params
+	 * @return
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @throws Exception
 	 */
 	public Map<String, Object> findOneBySql(String sql, Object[] params) throws Exception {
@@ -198,11 +245,19 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @desc	通过原生SQL进行查询，返回多个结果集，以List<Map<String, Object>>形式存放
 	 * @author
 	 * @param sql	原生sql语句
 	 * @param params	sql语句中的参数值
 	 * @return	查询出的记录
+=======
+	 * @desc	通过原生SQL进行查询 返回多个结果集，以List<Map<String, Object>>形式存放
+	 * @author	wangwei
+	 * @param sql
+	 * @param params
+	 * @return
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @throws Exception
 	 */
 	public List<Map<String, Object>> findBySql(String sql, Object[] params) throws Exception {
@@ -219,10 +274,18 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	/**
 	 * 
 	 * @desc 分页原生SQL进行统计数量
+<<<<<<< HEAD
 	 * @author
 	 * @param sql	原生sql语句
 	 * @param params	sql语句中的参数值
 	 * @return	记录数量
+=======
+	 * @author wangwei
+	 * @createDate 2014年10月13日
+	 * @param sql
+	 * @param params
+	 * @return
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @throws Exception
 	 */
 	public Long findCount4PageBySql(String sql, Object[] params) throws Exception {
@@ -236,8 +299,14 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	
 	/**
 	 * 
+<<<<<<< HEAD
 	 * @desc 分页原生SQL进行查询,返回List
 	 * @author 
+=======
+	 * @desc 分页原生SQL进行查询
+	 * @author wangwei
+	 * @createDate 2014年9月5日
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @param sql
 	 * @param params
 	 * @param pageNum
@@ -261,12 +330,21 @@ public abstract class BaseDao<T, PK extends Serializable> {
 
 	/**
 	 * 
+<<<<<<< HEAD
 	 * @desc 分页原生SQL进行查询，返回Page
+=======
+	 * @desc 
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @author 
 	 * @param pageNumber
 	 * @param pageSize
+<<<<<<< HEAD
 	 * @param sql1	统计数量sql
 	 * @param sql2	查询数据sql
+=======
+	 * @param sql1	
+	 * @param sql2 
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @param params
 	 * @return
 	 * @throws Exception
@@ -282,11 +360,21 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @desc	通过原生SQL进行查询，返回多个结果集，以List<Map<String, Object>>形式存放
+=======
+	 * @desc	
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @author	
+<<<<<<< HEAD
 	 * @param sql	原生sql语句
 	 * @param params	sql语句中的参数值
 	 * @return	影响记录数
+=======
+	 * @param sql	
+	 * @param params	
+	 * @return	
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @throws Exception
 	 */
 	public List<Map<String, Object>> findBySql(String sql, Map params) throws Exception {
@@ -307,11 +395,21 @@ public abstract class BaseDao<T, PK extends Serializable> {
 
 	/**
 	 * 
+<<<<<<< HEAD
 	 * @desc 分页原生SQL进行统计数量
+=======
+	 * @desc 
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @author 
+<<<<<<< HEAD
 	 * @param sql	原生sql语句
 	 * @param params	sql语句中的参数值
 	 * @return	影响记录数
+=======
+	 * @param sql	
+	 * @param params	
+	 * @return
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @throws Exception
 	 */
 	public Long findCount4PageBySql(String sql, Map params) throws Exception {
@@ -330,7 +428,11 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	
 	/**
 	 * 
+<<<<<<< HEAD
 	 * @desc 分页原生SQL进行查询，返回List
+=======
+	 * @desc 
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @author 
 	 * @param pageNum
 	 * @param pageSize
@@ -360,8 +462,13 @@ public abstract class BaseDao<T, PK extends Serializable> {
 
 	/**
 	 * 
+<<<<<<< HEAD
 	 * @desc 分页原生SQL进行查询，返回Page
 	 * @author 
+=======
+	 * @desc 
+	 * @author wangwei
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	 * @param pageNumber
 	 * @param pageSize
 	 * @param sql1

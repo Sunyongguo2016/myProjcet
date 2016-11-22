@@ -25,13 +25,37 @@ public class ParentQuestionDaoImpl extends BaseDao<ParentQuestion, Integer> {
 		}
 	}
 	
+	//按大题名称和搜索条件查找parentquestion
+	public Page<ParentQuestion> findParentQuestionByParentQuestionName(int pageNum, int pageSize,Object[] params){
+		String hql;
+		if(params!=null && params.length>1){
+			hql="from ParentQuestion p where p.parentQuestionName like ? and p.parentQuestionArticle like ?";
+			params[0]="%"+params[0]+"%";
+			params[1]="%"+params[1]+"%";
+		}else{
+			hql="from ParentQuestion p where p.parentQuestionName like ?";
+			params[0]="%"+params[0]+"%";
+		}
+		try {
+			Page<ParentQuestion> page=new Page<ParentQuestion>();
+			page.setCurrentPageNum(pageNum);
+			page.setPageSize(pageSize);
+			page=this.findByPage(pageNum, pageSize, hql, params);
+			return page;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
+	
 	
 	public Page<ParentQuestion> findParentQuestion(int pageNum, int pageSize,Object[] params){
 		String hql;
 		if(params!=null && params.length>0){
-			hql="from ParentQuestion p where p.name like ?";
+			hql="from ParentQuestion p where p.parentQuestionArticle like ?";
 			params[0]="%"+params[0]+"%";
-			
 		}else{
 			hql="from ParentQuestion";
 		}
@@ -67,9 +91,9 @@ public class ParentQuestionDaoImpl extends BaseDao<ParentQuestion, Integer> {
 		}
 	}
 	
-	public void deleteParentQuestion(int productId){
+	public void deleteParentQuestion(int parentQuestionId){
 		try {
-			this.delete(productId);
+			this.delete(parentQuestionId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

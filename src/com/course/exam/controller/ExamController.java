@@ -73,7 +73,7 @@ public class ExamController {
 	public String list(@RequestParam(name="pageNum", defaultValue="1") int pageNum,
 			@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
 			Model model){
-		System.out.println("list");
+		
 		Page<Exam> page;
 		if(searchParam == null || "".equals(searchParam)){
 			page = this.examServiceImpl.listExam(pageNum, 5, null);	

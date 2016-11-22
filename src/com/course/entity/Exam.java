@@ -21,7 +21,18 @@ public class Exam {
 	private String examName;
 	private Integer examTime;
 	private String examUrl;
+<<<<<<< HEAD
 //	双向一对多   主控方
+=======
+	
+	public String getExamUrl() {
+		return examUrl;
+	}
+	public void setExamUrl(String examUrl) {
+		this.examUrl = examUrl;
+	}
+	//	双向一对多   主控方
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	private Set<ParentQuestion> parentQuestions = new HashSet<ParentQuestion>(0);
 	
 	@Id
@@ -39,7 +50,6 @@ public class Exam {
 	public void setExamType(String examType) {
 		this.examType = examType;
 	}
-	
 	public String getExamName() {
 		return examName;
 	}
@@ -54,6 +64,7 @@ public class Exam {
 		this.examTime = examTime;
 	}
 	
+<<<<<<< HEAD
 	public String getExamUrl() {
 		return examUrl;
 	}
@@ -61,6 +72,10 @@ public class Exam {
 		this.examUrl = examUrl;
 	}
 	
+=======
+	
+
+>>>>>>> branch 'master' of https://github.com/Sunyongguo2016/myProjcet.git
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="exam")
 	public Set<ParentQuestion> getParentQuestions() {
 		return parentQuestions;
