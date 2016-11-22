@@ -116,7 +116,7 @@ function test1(obj)
         <form action="${ctx }/loginuser/login" method="post" name="form1" id="form1">
             <dl>
                 <div style="height:17px; overflow:hidden"></div>
-                <dd><span class="title">登录帐号：</span><input class="reg_input" name="t_UserName" id="t_UserName" onblur="checkusername(this.value);" type="text" /><span id="t_UserNameTip" class="onshow"></span></dd>
+                <dd><span class="title">登录帐号：</span><input class="reg_input" name="t_UserName" id="t_UserName" onblur="checkExist()"  type="text" /><span id="t_UserNameTip" class="onshow"></span></dd>
                 <dd><span class="title">登录密码：</span><input class="reg_input" onblur="return checkpasswd(this);" id="t_UserPass" name="t_UserPass" type="password"/><span id="t_UserPassTip" class="onshow"></span></dd>
             </dl>
             <div class="f_reg_but"><input id="button" name="button" type="submit" value="登录" onclick="login()" class="l_button"/><span class="clew_txt">还没帐号？<a href="#">立即注册</a></span></div>

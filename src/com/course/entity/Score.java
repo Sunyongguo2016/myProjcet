@@ -60,7 +60,6 @@ public class Score {
 		return parentQuestion;
 	}
 	
-//	这里忘了改了
 	public void setParentQuestion(ParentQuestion parentQuestion) {
 		this.parentQuestion = parentQuestion;
 	}

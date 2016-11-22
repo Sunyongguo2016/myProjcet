@@ -16,7 +16,6 @@ import com.course.entity.Exam;
 import com.course.entity.ParentQuestion;
 import com.course.entity.Question;
 import com.course.entity.Selectt;
-import com.course.exam.service.ExamServiceImpl;
 import com.course.parentquestion.service.ParentQuestionServiceImpl;
 import com.course.question.service.QuestionServiceImpl;
 import com.course.selectt.service.SelecttServiceImpl;
@@ -26,8 +25,8 @@ import com.framework.Page;
 @RequestMapping("choosefillinblank")
 public class ChoosefillinblankController {
 
-	@Resource
-	private ExamServiceImpl examServiceImpl;
+//	@Resource
+//	private ExamServiceImpl examServiceImpl;
 	
 	@Resource
 	private ParentQuestionServiceImpl parentQuestionServiceImpl;

@@ -57,6 +57,7 @@
 					<th>试卷类型</th>
 					<th>试卷日期</th>
 					<th>名称</th>
+					<th>音频</th>
 
 					<th width="310">操作</th>
 				</tr>
@@ -64,57 +65,51 @@
 				
 				<c:forEach items="${page.list }" var="pa">
 					<tr>
-						<td style="text-align: left; padding-left: 20px;"><input
-							type="checkbox" name="id[]" value="" /> ${pa.examId }</td>
+						<td style="text-align: left; padding-left: 20px;">
+						<input type="checkbox" name="id[]" value="" /> ${pa.examId }</td>
 
 						<td>${pa.examType }</td>
 						<td>${pa.examTime}</td>
 						<td>${pa.examName }</td>
+						<td>${pa.examUrl }</td>
 
-
-						<td><div class="button-group">
+						<td>
+							<div class="button-group">
 								<a class="button border-main"
 									href="${ctx }/exam/edit?examId=${pa.examId }"><span
 									class="icon-edit"></span> 修改</a> <a class="button border-red"
 									href="${ctx }/exam/delete?examId=${pa.examId }"
 									onclick="return del(1,1,1)"><span class="icon-trash-o"></span>
 									删除</a>
-							</div></td>
+							</div>
+						</td>
 					</tr>
 				</c:forEach>
-				<tr>
-					<td style="text-align: left; padding: 19px 0; padding-left: 20px;"><input
+					<tr>
+						<td style="text-align: left; padding: 19px 0; padding-left: 20px;"><input
 						type="checkbox" id="checkall" /> 全选</td>
-					<td colspan="7" style="text-align: left; padding-left: 20px;"><a
+						<td colspan="7" style="text-align: left; padding-left: 20px;"><a
 						href="javascript:void(0)" class="button border-red icon-trash-o"
 						style="padding: 5px 15px;" onclick="DelSelect()"> 删除</a>
-				</tr>
-				<tr>
-					<td colspan="8">
+					</tr>
+					<tr>
+						<td colspan="8">
 					<div class="pagelist">
 				 
 						<a href="${ctx }/exam/list?pageNum=1">首页</a>
-						
 						<a href="${ctx }/exam/list?pageNum=${page.prePageNum }">上一页</a>
-						
 						<c:forEach begin="1" end="${page.totalPageNum }" var="pageNum">
 					 	<c:choose>
 				   			<c:when test="${page.currentPageNum == pageNum}">  
 				         		<span class="current">${page.currentPageNum}</span>
-				         		
 				   			</c:when>
 				   			<c:otherwise> 
 				    		<a name="pagen" href="${ctx }/exam/list?pageNum=${pageNum }">${pageNum }</a>
 				   			</c:otherwise>
 						</c:choose>	
-				
 					    </c:forEach>
 					    <a href="${ctx }/exam/list?pageNum=${page.nextPageNum }">下一页</a>
 						<a href="${ctx }/exam/list?pageNum=${page.totalPageNum }">尾页</a>
-							
-							
-						
-									
 					</div>
 					</td>
 						

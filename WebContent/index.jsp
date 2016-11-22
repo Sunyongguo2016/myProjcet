@@ -25,7 +25,7 @@
 			</h1>
 		</div>
 		<div class="head-l">
-			<a class="buttonone" href=""> 欢迎${realName }登录</a> <a class="button bg-yellow"
+			<a class="buttonone" href=""> 欢迎${roleName }登录</a> <a class="button bg-yellow"
 				href="${ctx }/login.html"><span class="icon-power-off"></span>
 				退出登录</a>
 		</div>
@@ -46,7 +46,7 @@
 			<span class="icon-user"></span>基本设置
 		</h2>
 		<ul style="display: block">
-			<li><a href="${ctx }/exampaperlist.jsp" target="right"><span
+			<li><a href="${ctx }/exam/list" target="right"><span
 					class="icon-caret-right"></span>试卷管理</a></li>
 			<li><a href="${ctx }/compositionlist.jsp" target="right"><span
 					class="icon-caret-right"></span>作文题管理</a></li>

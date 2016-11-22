@@ -19,11 +19,11 @@ public class StudentInfo {
 	private Integer studentId;
 	private String loginName;
 	private String password;
-	private String url;//头像url
-	private String hobby;//爱好
-	private String location;//当前位置
-	private String introduce;//个人介绍
-	private String roleName;//角色名
+	private String url;
+	private String hobby;
+	private String location;
+	private String introduce;
+	private String roleName;
 
 	private Set<Score> scores = new HashSet<Score>(0);
 	private Set<Error> errors = new HashSet<Error>(0);

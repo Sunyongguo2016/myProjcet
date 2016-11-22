@@ -44,8 +44,6 @@
 						<div class="tips"></div>
 					</div>
 				</div>
-
-
 				<div class="clear"></div>
 				<div class="form-group">
 					<div class="label">
@@ -55,7 +53,16 @@
 						<input type="text" class="input" name="name" value="" />
 					</div>
 				</div>
-
+				<div class="form-group">
+					<div class="label">
+						<label>音频地址：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="examUrl"
+							data-validate="required:请输入音频地址" />
+						<div class="tips"></div>
+					</div>
+				</div>
 				<div class="form-group">
 					<div class="label">
 						<label>排序：</label>

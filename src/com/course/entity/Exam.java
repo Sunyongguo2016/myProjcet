@@ -20,7 +20,7 @@ public class Exam {
 	private String examType;
 	private String examName;
 	private Integer examTime;
-	private String url;//��Ƶ
+	private String examUrl;
 //	双向一对多   主控方
 	private Set<ParentQuestion> parentQuestions = new HashSet<ParentQuestion>(0);
 	
@@ -54,13 +54,13 @@ public class Exam {
 		this.examTime = examTime;
 	}
 	
-	public String getUrl() {
-		return url;
+	public String getExamUrl() {
+		return examUrl;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setExamUrl(String examUrl) {
+		this.examUrl = examUrl;
 	}
-
+	
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="exam")
 	public Set<ParentQuestion> getParentQuestions() {
 		return parentQuestions;

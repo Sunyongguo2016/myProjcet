@@ -22,6 +22,7 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	@Resource
 	private SessionFactory sessionFactory;
 
+	@SuppressWarnings("unchecked")
 	public BaseDao() {
 		this.entityClass = null;
 		Class c = getClass();
@@ -32,7 +33,7 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		}
 	}
 
-	// **************鍩烘湰澧炲垹鏀规煡*********************
+	// **************基本增删改查*********************
 	public void save(T entity) throws Exception {
 		this.sessionFactory.getCurrentSession().save(entity);
 	}
@@ -59,15 +60,15 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	// **************HQL***************************
-	/**
-	 * 
-	 * @desc	閫氳繃hql鏌ヨ鍗曚釜瀵硅薄
-	 * @author	
-	 * @param hql	鏌ヨ璇彞
-	 * @param params	鏌ヨ璇彞鍙傛暟
-	 * @return	鍗曚釜瀵硅薄
-	 * @throws Exception
-	 */
+		/**
+		 * 
+		 * @desc	通过hql查询单个对象
+		 * @author	
+		 * @param hql	查询语句
+		 * @param params	查询语句参数
+		 * @return	单个对象
+		 * @throws Exception
+		 */
 	@SuppressWarnings("unchecked")
 	public T findOne(String hql, Object[] params) throws Exception {
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
@@ -80,13 +81,14 @@ public abstract class BaseDao<T, PK extends Serializable> {
 
 	/**
 	 * 
-	 * @desc	鎸夋潯浠舵煡璇㈡暟鎹�
+	 * @desc	按条件查询数据
 	 * @author	
-	 * @param hql	鏉′欢鏌ヨ璇彞
-	 * @param params	鏌ヨ鍙傛暟
-	 * @return	鎸夋潯浠舵煡璇㈢殑鏁版嵁
+	 * @param hql	条件查询语句
+	 * @param params	查询参数
+	 * @return	按条件查询的数据
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	public List<T> findByProperty(String hql, Object[] params) throws Exception {
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
 		if (params != null && params.length > 0) {
@@ -98,11 +100,11 @@ public abstract class BaseDao<T, PK extends Serializable> {
 
 	/**
 	 * 
-	 * @desc	鎸夋潯浠舵煡璇㈡暟鎹暟閲�
+	 * @desc	按条件查询数据数量
 	 * @author	
-	 * @param hql	鏉′欢鏌ヨ璇彞
-	 * @param params	鏌ヨ鍙傛暟
-	 * @return	鏁版嵁鏁伴噺
+	 * @param hql	条件查询语句
+	 * @param params	查询参数
+	 * @return	数据数量
 	 * @throws Exception
 	 */
 	public Long findCountByPage(String hql, Object[] params) throws Exception {
@@ -116,7 +118,7 @@ public abstract class BaseDao<T, PK extends Serializable> {
 
 	/**
 	 * 
-	 * @desc 鎸夋潯浠跺垎椤垫煡璇㈡暟鎹�
+	 * @desc 按条件分页查询数据
 	 * @author 
 	 * @param pageNum
 	 * @param pageSize
@@ -138,13 +140,13 @@ public abstract class BaseDao<T, PK extends Serializable> {
 
 	/**
 	 * 
-	 * @desc 鎸夋潯浠跺垎椤垫煡璇㈡暟鎹紝灏佽鍒癙age瀵硅薄涓�
+	 * @desc 按条件分页查询数据，封装到Page对象中
 	 * @author 
-	 * @param pageNumber	椤电爜
-	 * @param pageSize	姣忛〉鏁版嵁涓暟
-	 * @param hql	鏌ヨ璇彞
-	 * @param params	鏌ヨ鍙傛暟
-	 * @return	鍒嗛〉鏁版嵁Page瀵硅薄
+	 * @param pageNumber	页码
+	 * @param pageSize	每页数据个数
+	 * @param hql	查询语句
+	 * @param params	查询参数
+	 * @return	分页数据Page对象
 	 * @throws Exception
 	 */
 	public Page<T> findByPage(int pageNumber, int pageSize, String hql, Object[] params) throws Exception {
@@ -157,14 +159,14 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	// **************SQL***************************
-	/**
-	 * @desc	閫氳繃鍘熺敓SQL杩涜鏂板锛屼慨鏀癸紝鍒犻櫎
-	 * @author	
-	 * @param sql	鍘熺敓sql璇彞
-	 * @param params	sql璇彞涓殑鍙傛暟鍊�
-	 * @return	褰卞搷璁板綍鏁�
-	 * @throws Exception
-	 */
+		/**
+		 * @desc	通过原生SQL进行新增，修改，删除
+		 * @author
+		 * @param sql	原生sql语句
+		 * @param params	sql语句中的参数值
+		 * @return	影响记录数
+		 * @throws Exception
+		 */
 	public int excuteSql(String sql, Object[] params) throws Exception {
 		int result;
 		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
@@ -177,11 +179,11 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	/**
-	 * @desc	閫氳繃鍘熺敓SQL杩涜鏌ヨ锛岃繑鍥炲崟涓粨鏋滈泦锛屼互Map<String, Object>褰㈠紡瀛樻斁
+	 * @desc	通过原生SQL进行查询，返回单个结果集，以Map<String, Object>形式存放
 	 * @author	
-	 * @param sql	鍘熺敓sql璇彞
-	 * @param params	sql璇彞涓殑鍙傛暟鍊�
-	 * @return	鏌ヨ鍑虹殑鏁版嵁
+	 * @param sql	原生sql语句
+	 * @param params	sql语句中的参数值
+	 * @return	查询出的数据
 	 * @throws Exception
 	 */
 	public Map<String, Object> findOneBySql(String sql, Object[] params) throws Exception {
@@ -196,11 +198,11 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	/**
-	 * @desc	閫氳繃鍘熺敓SQL杩涜鏌ヨ锛岃繑鍥炲涓粨鏋滈泦锛屼互List<Map<String, Object>>褰㈠紡瀛樻斁
-	 * @author	
-	 * @param sql	鍘熺敓sql璇彞
-	 * @param params	sql璇彞涓殑鍙傛暟鍊�
-	 * @return	鏌ヨ鍑虹殑璁板綍
+	 * @desc	通过原生SQL进行查询，返回多个结果集，以List<Map<String, Object>>形式存放
+	 * @author
+	 * @param sql	原生sql语句
+	 * @param params	sql语句中的参数值
+	 * @return	查询出的记录
 	 * @throws Exception
 	 */
 	public List<Map<String, Object>> findBySql(String sql, Object[] params) throws Exception {
@@ -216,11 +218,11 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	
 	/**
 	 * 
-	 * @desc 鍒嗛〉鍘熺敓SQL杩涜缁熻鏁伴噺
-	 * @author 
-	 * @param sql	鍘熺敓sql璇彞
-	 * @param params	sql璇彞涓殑鍙傛暟鍊�
-	 * @return	璁板綍鏁伴噺
+	 * @desc 分页原生SQL进行统计数量
+	 * @author
+	 * @param sql	原生sql语句
+	 * @param params	sql语句中的参数值
+	 * @return	记录数量
 	 * @throws Exception
 	 */
 	public Long findCount4PageBySql(String sql, Object[] params) throws Exception {
@@ -234,7 +236,7 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	
 	/**
 	 * 
-	 * @desc 鍒嗛〉鍘熺敓SQL杩涜鏌ヨ,杩斿洖List
+	 * @desc 分页原生SQL进行查询,返回List
 	 * @author 
 	 * @param sql
 	 * @param params
@@ -259,12 +261,12 @@ public abstract class BaseDao<T, PK extends Serializable> {
 
 	/**
 	 * 
-	 * @desc 鍒嗛〉鍘熺敓SQL杩涜鏌ヨ锛岃繑鍥濸age
+	 * @desc 分页原生SQL进行查询，返回Page
 	 * @author 
 	 * @param pageNumber
 	 * @param pageSize
-	 * @param sql1	缁熻鏁伴噺sql
-	 * @param sql2	鏌ヨ鏁版嵁sql
+	 * @param sql1	统计数量sql
+	 * @param sql2	查询数据sql
 	 * @param params
 	 * @return
 	 * @throws Exception
@@ -280,11 +282,11 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	/**
-	 * @desc	閫氳繃鍘熺敓SQL杩涜鏌ヨ锛岃繑鍥炲涓粨鏋滈泦锛屼互List<Map<String, Object>>褰㈠紡瀛樻斁
+	 * @desc	通过原生SQL进行查询，返回多个结果集，以List<Map<String, Object>>形式存放
 	 * @author	
-	 * @param sql	鍘熺敓sql璇彞
-	 * @param params	sql璇彞涓殑鍙傛暟鍊�
-	 * @return	褰卞搷璁板綍鏁�
+	 * @param sql	原生sql语句
+	 * @param params	sql语句中的参数值
+	 * @return	影响记录数
 	 * @throws Exception
 	 */
 	public List<Map<String, Object>> findBySql(String sql, Map params) throws Exception {
@@ -305,11 +307,11 @@ public abstract class BaseDao<T, PK extends Serializable> {
 
 	/**
 	 * 
-	 * @desc 鍒嗛〉鍘熺敓SQL杩涜缁熻鏁伴噺
+	 * @desc 分页原生SQL进行统计数量
 	 * @author 
-	 * @param sql	鍘熺敓sql璇彞
-	 * @param params	sql璇彞涓殑鍙傛暟鍊�
-	 * @return	褰卞搷璁板綍鏁�
+	 * @param sql	原生sql语句
+	 * @param params	sql语句中的参数值
+	 * @return	影响记录数
 	 * @throws Exception
 	 */
 	public Long findCount4PageBySql(String sql, Map params) throws Exception {
@@ -328,7 +330,7 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	
 	/**
 	 * 
-	 * @desc 鍒嗛〉鍘熺敓SQL杩涜鏌ヨ锛岃繑鍥濴ist
+	 * @desc 分页原生SQL进行查询，返回List
 	 * @author 
 	 * @param pageNum
 	 * @param pageSize
@@ -358,8 +360,8 @@ public abstract class BaseDao<T, PK extends Serializable> {
 
 	/**
 	 * 
-	 * @desc 鍒嗛〉鍘熺敓SQL杩涜鏌ヨ锛岃繑鍥濸age
-	 * @author wangwei
+	 * @desc 分页原生SQL进行查询，返回Page
+	 * @author 
 	 * @param pageNumber
 	 * @param pageSize
 	 * @param sql1
