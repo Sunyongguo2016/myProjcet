@@ -65,31 +65,6 @@
 				</div>
 				<div class="form-group">
 					<div class="label">
-						<label>排序：</label>
-					</div>
-					<div class="field">
-						<input type="text" class="input w50" name="sort" value="0"
-							data-validate="number:排序必须为数字" />
-						<div class="tips"></div>
-					</div>
-				</div>
-
-				<if condition="$iscid eq 1">
-
-				<div class="form-group">
-					<div class="label">
-						<label>其他属性：</label>
-					</div>
-					<div class="field" style="padding-top: 8px;">
-						推荐 <input id="isvouch" type="checkbox" /> 置顶 <input id="istop"
-							type="checkbox" />
-
-					</div>
-				</div>
-				</if>
-
-				<div class="form-group">
-					<div class="label">
 						<label></label>
 					</div>
 					<div class="field">
