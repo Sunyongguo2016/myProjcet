@@ -11,7 +11,6 @@ public class LoginDaoImpl extends BaseDao<StudentInfo, Integer>{
 		try {
 			return super.findOne("from StudentInfo lu where lu.loginName=? and lu.password=?", new Object[]{name,pwd});
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}

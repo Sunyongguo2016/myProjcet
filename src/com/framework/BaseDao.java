@@ -60,7 +60,15 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	// **************HQL***************************
-
+	/**
+	 * 
+	 * @desc	通过hql查询单个对象
+	 * @author	
+	 * @param hql	查询语句
+	 * @param params	查询语句参数
+	 * @return	单个对象
+	 * @throws Exception
+	 */
 	
 	@SuppressWarnings("unchecked")
 	public T findOne(String hql, Object[] params) throws Exception {
@@ -71,7 +79,15 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		}
 		return (T) query.uniqueResult();
 	}
-
+	/**
+	 * 
+	 * @desc	按条件查询数据
+	 * @author	
+	 * @param hql	条件查询语句
+	 * @param params	查询参数
+	 * @return	按条件查询的数据
+	 * @throws Exception
+	 */
 	
 	@SuppressWarnings("unchecked")
 	public List<T> findByProperty(String hql, Object[] params) throws Exception {
@@ -82,7 +98,15 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		}
 		return query.list();
 	}
-	
+	/**
+	 * 
+	 * @desc	按条件查询数据数量
+	 * @author	
+	 * @param hql	条件查询语句
+	 * @param params	查询参数
+	 * @return	数据数量
+	 * @throws Exception
+	 */
 	
 	public Long findCountByPage(String hql, Object[] params) throws Exception {
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
@@ -93,7 +117,17 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		return (Long) query.uniqueResult();
 	}
 
-	
+	/**
+	 * 
+	 * @desc 按条件分页查询数据
+	 * @author 
+	 * @param pageNum
+	 * @param pageSize
+	 * @param hql
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
 	public List<T> findListByPage(int pageNum, int pageSize, String hql, Object[] params) throws Exception {
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
 		if (params != null && params.length > 0) {
@@ -105,7 +139,17 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		return query.list();
 	}
 
-	
+	/**
+	 * 
+	 * @desc 按条件分页查询数据，封装到Page对象中
+	 * @author 
+	 * @param pageNumber	页码
+	 * @param pageSize	每页数据个数
+	 * @param hql	查询语句
+	 * @param params	查询参数
+	 * @return	分页数据Page对象
+	 * @throws Exception
+	 */
 	public Page<T> findByPage(int pageNumber, int pageSize, String hql, Object[] params) throws Exception {
 		long total = findCountByPage("select count(*) " + hql, params);
 		List<T> rows = findListByPage(pageNumber, pageSize, hql, params);
@@ -116,7 +160,14 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	// **************SQL***************************
-
+	/**
+	 * @desc	通过原生SQL进行新增，修改，删除
+	 * @author	
+	 * @param sql	
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
 		
 
 	public int excuteSql(String sql, Object[] params) throws Exception {
@@ -130,7 +181,14 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		return result;
 	}
 
-	
+	/**
+	 * @desc	通过原生SQL进行查询 返回单个结果集，以Map<String, Object>形式存放
+	 * @author	
+	 * @param sql
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
 	public Map<String, Object> findOneBySql(String sql, Object[] params) throws Exception {
 		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
 		query.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
@@ -141,8 +199,14 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		Map<String, Object> result = (Map<String, Object>) query.uniqueResult();
 		return result;
 	}
-
-
+	/**
+	 * @desc	通过原生SQL进行查询 返回多个结果集，以List<Map<String, Object>>形式存放
+	 * @author	
+	 * @param sql
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Map<String, Object>> findBySql(String sql, Object[] params) throws Exception {
 		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
 		query.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
@@ -154,7 +218,16 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		return list;
 	}
 	
-	
+	/**
+	 * 
+	 * @desc 分页原生SQL进行统计数量
+	 * @author 
+	 * @createDate 2014年10月13日
+	 * @param sql
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
 	public Long findCount4PageBySql(String sql, Object[] params) throws Exception {
 		SQLQuery query = this.sessionFactory.getCurrentSession().createSQLQuery(sql);
 		if (params != null && params.length > 0) {
@@ -164,7 +237,18 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		return Long.parseLong(query.uniqueResult().toString());
 	}
 	
-	
+	/**
+	 * 
+	 * @desc 分页原生SQL进行查询
+	 * @author 
+	 * @createDate 2014年9月5日
+	 * @param sql
+	 * @param params
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Map<String, Object>> findList4PageBySql(int pageNum, int pageSize, String sql, Object[] params)
 			throws Exception {
 		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
@@ -179,7 +263,18 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		return list;
 	}
 
-	
+	/**
+	 * 
+	 * @desc 
+	 * @author 
+	 * @param pageNumber
+	 * @param pageSize
+	 * @param sql1	
+	 * @param sql2 
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
 	public Page<Map<String, Object>> findPageBySql(int pageNumber, int pageSize, String sql1, String sql2,
 			Object[] params) throws Exception {
 		long total = this.findCount4PageBySql(sql1, params);
@@ -190,7 +285,14 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		return page;
 	}
 
-	
+	/**
+	 * @desc	
+	 * @author	
+	 * @param sql	
+	 * @param params	
+	 * @return	
+	 * @throws Exception
+	 */
 	public List<Map<String, Object>> findBySql(String sql, Map params) throws Exception {
 		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
 		query.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
@@ -206,7 +308,15 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		List<Map<String, Object>> list = query.list();
 		return list;
 	}
-
+	/**
+	 * 
+	 * @desc 
+	 * @author 
+	 * @param sql	
+	 * @param params	
+	 * @return
+	 * @throws Exception
+	 */
 	public Long findCount4PageBySql(String sql, Map params) throws Exception {
 		SQLQuery query = this.sessionFactory.getCurrentSession().createSQLQuery(sql);
 		Iterator<String> keys = params.keySet().iterator();
@@ -221,7 +331,17 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		return Long.parseLong(query.uniqueResult().toString());
 	}
 	
-	
+	/**
+	 * 
+	 * @desc 
+	 * @author 
+	 * @param pageNum
+	 * @param pageSize
+	 * @param sql
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Map<String, Object>> findList4PageBySql(int pageNum, int pageSize, String sql, Map params)
 			throws Exception {
 		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
@@ -241,7 +361,18 @@ public abstract class BaseDao<T, PK extends Serializable> {
 		return list;
 	}
 
-	
+	/**
+	 * 
+	 * @desc 
+	 * @author 
+	 * @param pageNumber
+	 * @param pageSize
+	 * @param sql1
+	 * @param sql2
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
 	public Page<Map<String, Object>> findPageBySql(int pageNumber, int pageSize, String sql1, String sql2,
 			Map params) throws Exception {
 		long total = this.findCount4PageBySql(sql1, params);
