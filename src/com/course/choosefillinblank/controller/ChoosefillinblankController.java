@@ -1,5 +1,6 @@
 package com.course.choosefillinblank.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -264,6 +265,13 @@ public class ChoosefillinblankController {
 			 page=this.parentQuestionServiceImpl.listParentQuestionByParentQuestionName(pageNum, 5, new
 					 Object[]{parentQuestionName});
 		 }else{
+			 //对搜索参数进行转码，解决上次搜索中文出错问题！
+			 try {
+				 searchParam = new String(searchParam.getBytes("ISO8859_1"), "UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
+			 
 			 page=this.parentQuestionServiceImpl.listParentQuestionByParentQuestionName(pageNum, 5, new
 			 Object[]{parentQuestionName,searchParam});
 		 }
