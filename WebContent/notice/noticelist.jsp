@@ -39,7 +39,6 @@
 					<th width="100" style="text-align: left; padding-left: 20px;">ID</th>
 
 					<th>标题</th>
-					<th>内容</th>
 					<th>类型</th>
 					<th width="10%">发布时间</th>
 					<th width="310">操作</th>
@@ -53,7 +52,6 @@
 						<td style="text-align:left; padding-left:20px;"><input type="checkbox" name="id[]" value="" />
 			           ${n.noticeId}</td>
 			          <td>${n.noticeTitle }</td>
-			    	 <td>${n.noticeContent }</td>
 			          <td>${n.noticeType }</td>
 			          <td><font color="#00CC99">${n.noticeTime }</font></td>
 			          <td>
