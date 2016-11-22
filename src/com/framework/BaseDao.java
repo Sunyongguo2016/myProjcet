@@ -38,7 +38,6 @@ public abstract class BaseDao<T, PK extends Serializable> {
 	}
 
 	public void update(T entity) throws Exception {
-		System.out.println("basedao");
 		this.sessionFactory.getCurrentSession().update(entity);
 	}
 
