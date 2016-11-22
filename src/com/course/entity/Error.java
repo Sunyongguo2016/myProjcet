@@ -14,8 +14,8 @@ import javax.persistence.Table;
 public class Error {
 
 	private Integer errorId;
-	private Integer isCollect;//�Ƿ��ղر��
-	private String experience;//�ĵ�
+	private Integer isCollect;
+	private String experience;
 	
 	private StudentInfo studentInfo;
 	private Exam exam;
@@ -63,8 +63,7 @@ public class Error {
 	public ParentQuestion getParentQuestion() {
 		return parentQuestion;
 	}
-//  这里忘改了
-//	public void setQuestionType(ParentQuestion parentQuestion) {
+
 	public void setParentQuestion(ParentQuestion parentQuestion) {
 		this.parentQuestion = parentQuestion;
 	}

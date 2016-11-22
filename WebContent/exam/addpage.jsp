@@ -44,8 +44,6 @@
 						<div class="tips"></div>
 					</div>
 				</div>
-
-
 				<div class="clear"></div>
 				<div class="form-group">
 					<div class="label">
@@ -55,32 +53,16 @@
 						<input type="text" class="input" name="name" value="" />
 					</div>
 				</div>
-
 				<div class="form-group">
 					<div class="label">
-						<label>排序：</label>
+						<label>音频地址：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" name="sort" value="0"
-							data-validate="number:排序必须为数字" />
+						<input type="text" class="input w50" value="" name="examUrl"
+							data-validate="required:请输入音频地址" />
 						<div class="tips"></div>
 					</div>
 				</div>
-
-				<if condition="$iscid eq 1">
-
-				<div class="form-group">
-					<div class="label">
-						<label>其他属性：</label>
-					</div>
-					<div class="field" style="padding-top: 8px;">
-						推荐 <input id="isvouch" type="checkbox" /> 置顶 <input id="istop"
-							type="checkbox" />
-
-					</div>
-				</div>
-				</if>
-
 				<div class="form-group">
 					<div class="label">
 						<label></label>

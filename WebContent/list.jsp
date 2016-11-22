@@ -21,7 +21,7 @@
 		<div class="panel admin-panel">
 			<div class="panel-head">
 				<strong class="icon-reorder"> åå®¹åè¡¨</strong> <a href=""
-					style="float: right; display: none;">æ·»å å­æ®µ</a>
+					style="float: right; display: none;"> æ·»å å­æ®µ</a>
 			</div>
 			<div class="padding border-bottom">
 				<ul class="search" style="padding-left: 10px;">
