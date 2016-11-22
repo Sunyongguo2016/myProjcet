@@ -20,7 +20,13 @@ public class ParentQuestionServiceImpl {
 		this.parentQuestionDaoImpl.saveParentQuestion(p);
 	}
 
-	//按大题名称查找parentQuestion
+	//按大题名称查找parentQuestion  适用于听力
+	@Transactional(readOnly=true)
+	public Page<ParentQuestion> listParentQuestionListeningByParentQuestionName(int pageNum,int pageSize,Object[] params){
+		return this.parentQuestionDaoImpl.findParentQuestionListeningByParentQuestionName(pageNum, pageSize, params);
+	}
+	
+	//按大题名称查找parentQuestion  适用于十五选十等
 	@Transactional(readOnly=true)
 	public Page<ParentQuestion> listParentQuestionByParentQuestionName(int pageNum,int pageSize,Object[] params){
 		return this.parentQuestionDaoImpl.findParentQuestionByParentQuestionName(pageNum, pageSize, params);
