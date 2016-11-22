@@ -39,7 +39,7 @@
 		</h2>
 		<ul style="display: block">
 			<!-- <li><a href="userlist.html" target="right"><span class="icon-caret-right"></span>用户管理</a></li> -->
-			<li><a href="${ctx }/infolist.jsp" target="right"><span
+			<li><a href="${ctx }/notice/list" target="right"><span
 					class="icon-caret-right"></span>公告管理</a></li>
 		</ul>
 		<h2>
@@ -83,7 +83,7 @@
 
 	</ul>
 	<div class="admin">
-		<iframe scrolling="auto" rameborder="0" src="${ctx }/infolist.jsp"
+		<iframe scrolling="auto" rameborder="0" src="${ctx }/notice/list"
 			name="right" width="100%" height="100%"></iframe>
 	</div>
 	<div style="text-align: center;">
