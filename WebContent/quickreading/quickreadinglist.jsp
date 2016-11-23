@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +27,7 @@
 			<div class="padding border-bottom">
 				<ul class="search" style="padding-left: 10px;">
 					<li><a class="button border-main icon-plus-square-o"
-						href="addtranslation.jsp"> 添加翻译</a></li>
+						href="${ctx }/quickreading/addquickreading.jsp"> 添加内容</a></li>
 					<li>搜索：</li>
 
 					<li><input type="text" placeholder="请输入搜索关键字" name="keywords"
@@ -40,27 +41,40 @@
 			<table class="table table-hover text-center">
 				<tr>
 					<th width="100" style="text-align: left; padding-left: 20px;">ID</th>
-
-					<th>编号</th>
+					
 					<th>题库</th>
 					<th>摘要</th>
 					<th width="310">操作</th>
 				</tr>
 				<volist name="list" id="vo">
-				<tr>
-					<td style="text-align: left; padding-left: 20px;"><input
-						type="checkbox" name="id[]" value="" /> 1</td>
-
-					<td>E1234567</td>
-					<td>2015年6月全国卷考试真题一卷</td>
-					<td>在西方人心目中，和中国人...</td>
-
-					<td><div class="button-group">
-							<a class="button border-main" href="addtranslation.jsp"><span
-								class="icon-edit"></span> 修改</a> <a class="button border-red"
-								href="javascript:void(0)" onclick="return del(1,1,1)"><span
-								class="icon-trash-o"></span> 删除</a>
-						</div></td>
+				<c:forEach items="${page.list }" var="quickreading">
+				 <tr>
+						<td style="text-align:left; padding-left:20px;"><input type="checkbox" name="id[]" value="" />
+			           ${quickreading.parentQuestionId}
+			           </td>
+			        	<td> 
+			        		
+						<c:if test="${fn:length(quickreading.exam.examName) < 20}">
+						         ${quickreading.exam.examName}
+						     </c:if>
+			          		<c:if test="${fn:length(quickreading.exam.examName) > 20}">
+						         ${fn:substring(quickreading.exam.examName,0,10) }...
+						     </c:if>
+			        	</td> 
+			          	<td><font color="#00CC99">
+			          		<c:if test="${fn:length(quickreading.parentQuestionArticle) < 40}">
+						         ${quickreading.parentQuestionArticle}
+						     </c:if>
+			          		<c:if test="${fn:length(quickreading.parentQuestionArticle) > 40}">
+						         ${fn:substring(quickreading.parentQuestionArticle,0,10) }...
+						     </c:if>
+			          	<td>
+			          <div class="button-group"> 
+			          <a class="button border-red" href="${ctx }/quickreading/delete?parentQuestionId=${quickreading.parentQuestionId }"><span class="icon-trash-o"></span> 删除</a> 
+			          </div>
+			          </td>
+					</tr>
+					</c:forEach>
 				</tr>
 
 				<td style="text-align: left; padding: 19px 0; padding-left: 20px;"><input
@@ -71,9 +85,25 @@
 				</tr>
 				<tr>
 					<td colspan="8"><div class="pagelist">
-							<a href="">上一页</a> <span class="current">1</span><a href="">2</a><a
-								href="">3</a><a href="">下一页</a><a href="">尾页</a>
-						</div></td>
+					<a href="${ctx }/quickreading/list?pageNum=1">首页</a> 
+			         <a href="${ctx }/quickreading/list?pageNum=${page.prePageNum }">上一页</a>
+
+			        	<c:forEach begin="1" end="${page.totalPageNum }" var="pageNum">
+			        		<c:choose>
+							   <c:when test="${page.currentPageNum == pageNum}">  
+							         <span class="current">${page.currentPageNum}</span>
+							   </c:when>
+							   <c:otherwise> 
+							    <a name="pagen" href="${ctx }/quickreading/list?pageNum=${pageNum }">${pageNum }</a>
+							   </c:otherwise>
+							</c:choose>
+						</c:forEach>
+						
+						<a href="${ctx }/quickreading/list?pageNum=${page.nextPageNum }">下一页</a>
+			        	 <a href="${ctx }/quickreading/list?pageNum=${page.totalPageNum }">尾页</a> 
+						
+						</div>
+						</td>
 				</tr>
 			</table>
 		</div>
@@ -138,106 +168,6 @@
 			}
 		}
 
-		//批量首页显示
-		function changeishome(o) {
-			var Checkbox = false;
-			$("input[name='id[]']").each(function() {
-				if (this.checked == true) {
-					Checkbox = true;
-				}
-			});
-			if (Checkbox) {
-
-				$("#listform").submit();
-			} else {
-				alert("请选择要操作的内容!");
-
-				return false;
-			}
-		}
-
-		//批量推荐
-		function changeisvouch(o) {
-			var Checkbox = false;
-			$("input[name='id[]']").each(function() {
-				if (this.checked == true) {
-					Checkbox = true;
-				}
-			});
-			if (Checkbox) {
-
-				$("#listform").submit();
-			} else {
-				alert("请选择要操作的内容!");
-
-				return false;
-			}
-		}
-
-		//批量置顶
-		function changeistop(o) {
-			var Checkbox = false;
-			$("input[name='id[]']").each(function() {
-				if (this.checked == true) {
-					Checkbox = true;
-				}
-			});
-			if (Checkbox) {
-
-				$("#listform").submit();
-			} else {
-				alert("请选择要操作的内容!");
-
-				return false;
-			}
-		}
-
-		//批量移动
-		function changecate(o) {
-			var Checkbox = false;
-			$("input[name='id[]']").each(function() {
-				if (this.checked == true) {
-					Checkbox = true;
-				}
-			});
-			if (Checkbox) {
-
-				$("#listform").submit();
-			} else {
-				alert("请选择要操作的内容!");
-
-				return false;
-			}
-		}
-
-		//批量复制
-		function changecopy(o) {
-			var Checkbox = false;
-			$("input[name='id[]']").each(function() {
-				if (this.checked == true) {
-					Checkbox = true;
-				}
-			});
-			if (Checkbox) {
-				var i = 0;
-				$("input[name='id[]']").each(function() {
-					if (this.checked == true) {
-						i++;
-					}
-				});
-				if (i > 1) {
-					alert("只能选择一条信息!");
-					$(o).find("option:first").prop("selected", "selected");
-				} else {
-
-					$("#listform").submit();
-				}
-			} else {
-				alert("请选择要复制的内容!");
-				$(o).find("option:first").prop("selected", "selected");
-				return false;
-			}
-		}
 	</script>
 </body>
 </html>

@@ -20,10 +20,10 @@
 <body>
 	<div class="panel admin-panel">
 		<div class="panel-head" id="add">
-			<strong><span class="icon-pencil-square-o"></span>增加内容</strong>
+			<strong><span class="icon-pencil-square-o"></span>添加内容</strong>
 		</div>
 		<div class="body-content">
-			<form method="post" class="form-x" action="">
+			<form method="post" class="form-x" action="${ctx }/quickreading/add">
 
 				<div class="clear"></div>
 				<div class="form-group">
@@ -31,32 +31,362 @@
 						<label>试卷名称：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input" name="s_title" value="" />
+						<input type="text" class="input" name="examname" value="" />
 					</div>
 				</div>
-
+				
 				<if condition="$iscid eq 1">
 
+				<div class="form-group">
+					<div class="label" >
+						<label>大题名称 ：</label>
+					</div>
+					<div class="field">
+						<select name="parentQuestionName"  style="width:200px; height:40px;">
+						<option>quickreading</option>
+						</select>
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<div class="label">
 						<label>描述：</label>
 					</div>
 					<div class="field">
-						<textarea class="input" name="note" style="height: 90px;"></textarea>
+						<textarea name="description" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>标题：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input" name="parentquestiontitle" value="" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>开始题号：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="输入题号(整数)" name="questionfrom"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>结束题号：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="输入题号(整数)" name="questionto"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+
+				
+				
+				<div class="form-group">
+					<div class="label">
+						<label>每题分数 ：</label>
+					</div>
+					<input type="text" class="input w50" name="questionscore" value="" />
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>文章内容：</label>
+					</div>
+					<div class="field">
+						<textarea name="parentquestionarticle" class="input"
+							style="height: 350px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<hr>
+				<div class="form-group">
+					<div class="label">
+						<label>第一题 ：</label>
+					</div>
+					<div class="field">
+						<textarea name="selecttcontent46" class="input"
+							style="height: 70px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="label">
-						<label>内容：</label>
+						<label>答案 ：</label>
+					</div>
+					<input type="text" class="input w50" name="questionanswer46" value="" />
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>解析：</label>
 					</div>
 					<div class="field">
-						<textarea name="content" class="input"
-							style="height: 150px; border: 1px solid #ddd;"></textarea>
+						<textarea name="questionexplain46" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
 				</div>
-
+				<hr>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>第二题：</label>
+					</div>
+					<div class="field">
+						<textarea name="selecttcontent47" class="input"
+							style="height: 70px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>答案 ：</label>
+					</div>
+					<input type="text" class="input w50" name="questionanswer47" value="" />
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="questionexplain47" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<hr>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>第三题：</label>
+					</div>
+					<div class="field">
+						<textarea name="selecttcontent48" class="input"
+							style="height: 70px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>答案 ：</label>
+					</div>
+					<input type="text" class="input w50" name="questionanswer48" value="" />
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="questionexplain48" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<hr>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>第四题：</label>
+					</div>
+					<div class="field">
+						<textarea name="selecttcontent49" class="input"
+							style="height: 70px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>答案 ：</label>
+					</div>
+					<input type="text" class="input w50" name="questionanswer49" value="" />
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="questionexplain49" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<hr>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>第五题：</label>
+					</div>
+					<div class="field">
+						<textarea name="selecttcontent50" class="input"
+							style="height: 70px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>答案 ：</label>
+					</div>
+					<input type="text" class="input w50" name="questionanswer50" value="" />
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="questionexplain50" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<hr>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>第六题：</label>
+					</div>
+					<div class="field">
+						<textarea name="selecttcontent51" class="input"
+							style="height: 70px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>答案 ：</label>
+					</div>
+					<input type="text" class="input w50" name="questionanswer51" value="" />
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="questionexplain51" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<hr>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>第七题：</label>
+					</div>
+					<div class="field">
+						<textarea name="selecttcontent52" class="input"
+							style="height: 70px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>答案 ：</label>
+					</div>
+					<input type="text" class="input w50" name="questionanswer52" value="" />
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="questionexplain52" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<div class="label">
+						<label>第八题：</label>
+					</div>
+					<div class="field">
+						<textarea name="selecttcontent53" class="input"
+							style="height: 70px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>答案 ：</label>
+					</div>
+					<input type="text" class="input w50" name="questionanswer53" value="" />
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="questionexplain53" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<hr>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>第九题：</label>
+					</div>
+					<div class="field">
+						<textarea name="selecttcontent54" class="input"
+							style="height: 70px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>答案 ：</label>
+					</div>
+					<input type="text" class="input w50" name="questionanswer54" value="" />
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="questionexplain54" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<hr>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>第十题：</label>
+					</div>
+					<div class="field">
+						<textarea name="selecttcontent55" class="input"
+							style="height: 70px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>答案 ：</label>
+					</div>
+					<input type="text" class="input w50" name="questionanswer55" value="" />
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>解析：</label>
+					</div>
+					<div class="field">
+						<textarea name="questionexplain55" class="input"
+							style="height: 100px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
 				<div class="clear"></div>
 
 				<div class="form-group">
