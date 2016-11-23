@@ -63,7 +63,7 @@ public class ExamController {
 		e.setExamName(name);
 		e.setExamType(type);
 		e.setExamTime(time);
-		//数据库examUrl长度改成500 
+		//数据库examUrl长度改成800 
 		e.setExamUrl(examUrl);
 		this.examServiceImpl.addExam(e);
 		return "redirect:list";
@@ -137,22 +137,20 @@ public class ExamController {
 	public String list(@RequestParam(name="pageNum", defaultValue="1") int pageNum,
 			@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
 			Model model){
-		
+		System.out.println(searchParam);
 		Page<Exam> page;
-		
-		try {
-			 searchParam = new String(searchParam.getBytes("ISO8859_1"), "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-		
 		if(searchParam == null || "".equals(searchParam)){
 			page = this.examServiceImpl.listExam(pageNum, 5, null);	
 		}else{
+			try {
+				 searchParam = new String(searchParam.getBytes("ISO8859_1"), "UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
 			page = this.examServiceImpl.listExam(pageNum, 5, new Object[]{searchParam});
 		}
 		request.setAttribute("page", page);
 		request.setAttribute("searchParam", searchParam);
-		return "exampaperlist";
+		return "exam/exampaperlist";
 	}
 }

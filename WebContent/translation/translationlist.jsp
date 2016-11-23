@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -29,11 +30,11 @@
 						href="addtranslation.jsp"> 添加翻译</a></li>
 					<li>搜索：</li>
 
-					<li><input type="text" placeholder="请输入搜索关键字" name="keywords"
+					<li><input id="searchParam" type="text" placeholder="请输入搜索关键字" name="" value="${searchParam }"
 						class="input"
 						style="width: 250px; line-height: 17px; display: inline-block" />
-						<a href="javascript:void(0)"
-						class="button border-main icon-search" onclick="changesearch()">
+						<a href="javascript:search()"
+						class="button border-main icon-search" onclick="searchp();return false;">
 							搜索</a></li>
 				</ul>
 			</div>
@@ -41,26 +42,42 @@
 				<tr>
 					<th width="100" style="text-align: left; padding-left: 20px;">ID</th>
 
-					<th>编号</th>
 					<th>题库</th>
 					<th>摘要</th>
 					<th width="310">操作</th>
 				</tr>
 				<volist name="list" id="vo">
 				<tr>
+				<c:forEach items="${page.list }" var="translation">
+				<tr>
 					<td style="text-align: left; padding-left: 20px;"><input
-						type="checkbox" name="id[]" value="" /> 1</td>
+						type="checkbox" name="id[]" value="" /> ${translation.parentQuestionId}</td>
 
-					<td>E1234567</td>
-					<td>2015年6月全国卷考试真题一卷</td>
-					<td>在西方人心目中，和中国人...</td>
+					<td> 
+						<c:if test="${fn:length(translation.exam.examName) < 20}">
+						         ${translation.exam.examName}
+						     </c:if>
+			          		<c:if test="${fn:length(translation.exam.examName) > 20}">
+						         ${fn:substring(translation.exam.examName,0,10) }...
+						     </c:if>
+			        	</td> 
+					<td><font color="#00CC99">
+			          		<c:if test="${fn:length(translation.parentQuestionArticle) < 40}">
+						         ${translation.parentQuestionArticle}
+						     </c:if>
+			          		<c:if test="${fn:length(translation.parentQuestionArticle) > 40}">
+						         ${fn:substring(translation.parentQuestionArticle,0,10) }...
+						     </c:if>
+			          	</font>
+			          	</td>
 
 					<td><div class="button-group">
-							<a class="button border-main" href="addtranslation.jsp"><span
-								class="icon-edit"></span> 修改</a> <a class="button border-red"
-								href="javascript:void(0)" onclick="return del(1,1,1)"><span
+							 <a class="button border-red"
+								href="${ctx }/translation/delete?parentQuestionId=${translation.parentQuestionId}"><span
 								class="icon-trash-o"></span> 删除</a>
 						</div></td>
+				</tr>
+				</c:forEach>
 				</tr>
 
 				<td style="text-align: left; padding: 19px 0; padding-left: 20px;"><input
@@ -71,8 +88,20 @@
 				</tr>
 				<tr>
 					<td colspan="8"><div class="pagelist">
-							<a href="">上一页</a> <span class="current">1</span><a href="">2</a><a
-								href="">3</a><a href="">下一页</a><a href="">尾页</a>
+							<a href="${ctx }/translation/list?pageNum=1">首页</a>
+							<a href="${ctx }/translation/list?pageNum=${page.prePageNum }">上一页</a> 
+							<c:forEach begin="1" end="${page.totalPageNum }" var="pageNum">
+			        		<c:choose> 
+			        		<c:when test="${page.currentPageNum == pageNum}">
+							<span class="current">${page.currentPageNum }</span>
+							</c:when>
+							<c:otherwise>
+							<a name="pagen" href="${ctx }/translation/list?pageNum=${pageNum }">${pageNum }</a>
+							</c:otherwise>
+							</c:choose>
+							</c:forEach>
+							<a href="${ctx }/translation/list?pageNum=${page.nextPageNum }">下一页</a>
+							<a href="${ctx }/translation/list?pageNum=${page.totalPageNum }">尾页</a>
 						</div></td>
 				</tr>
 			</table>
@@ -80,8 +109,9 @@
 	</form>
 	<script type="text/javascript">
 		//搜索
-		function changesearch() {
-
+		function searchp() {
+			var p=$("#searchParam").val();
+			window . location . href = "${ctx }/translation/list?searchParam="+p;
 		}
 
 		//单个删除
@@ -121,7 +151,7 @@
 			}
 		}
 
-		//批量排序
+		/*//批量排序
 		function sorts() {
 			var Checkbox = false;
 			$("input[name='id[]']").each(function() {
@@ -237,7 +267,7 @@
 				$(o).find("option:first").prop("selected", "selected");
 				return false;
 			}
-		}
+		}*/
 	</script>
 </body>
 </html>

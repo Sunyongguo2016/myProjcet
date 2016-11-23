@@ -24,9 +24,15 @@ public class ExamServiceImpl {
 		return this.examDaoImpl.findExam(pageNum, pageSize, params);
 	}
 	
+	
 	@Transactional(readOnly = true)
 	public Exam getExam(int examId){
 		return this.examDaoImpl.getExam(examId);
+	}
+	
+	@Transactional(readOnly=true)
+	public Exam findByName(String examName){
+		return this.examDaoImpl.findByName(examName);
 	}
 	
 	public void editExam(Exam e) throws Exception{

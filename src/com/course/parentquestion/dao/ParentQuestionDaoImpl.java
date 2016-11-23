@@ -48,7 +48,7 @@ public class ParentQuestionDaoImpl extends BaseDao<ParentQuestion, Integer> {
 			}
 		}
 	
-	//按大题名称和搜索条件查找parentquestion  适用于十五选十
+	//按大题名称和搜索条件查找parentquestion  适用于十五选十等
 	public Page<ParentQuestion> findParentQuestionByParentQuestionName(int pageNum, int pageSize,Object[] params){
 		String hql;
 		if(params!=null && params.length>1){

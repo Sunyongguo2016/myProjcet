@@ -23,7 +23,7 @@
 			<strong><span class="icon-pencil-square-o"></span>增加内容</strong>
 		</div>
 		<div class="body-content">
-			<form method="post" class="form-x" action="">
+			<form method="post" class="form-x" action="${ctx }/translation/add">
 
 				<div class="clear"></div>
 				<div class="form-group">
@@ -31,28 +31,57 @@
 						<label>试卷名称：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input" name="s_title" value="" />
+						<input type="text" class="input" name="examName" value="" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>大题名称：</label>
+					</div>
+					<div class="field">
+						<input type="text" name="parentQuestionName" class="input w50" value="Translation" readonly="true">
+						<div class="tips"></div>
 					</div>
 				</div>
 
-				<if condition="$iscid eq 1">
-
 				<div class="form-group">
 					<div class="label">
-						<label>描述：</label>
+						<label>题目描述：</label>
 					</div>
 					<div class="field">
-						<textarea class="input" name="note" style="height: 90px;"></textarea>
+						<textarea class="input" name="description" style="height: 90px;"></textarea>
 						<div class="tips"></div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="label">
-						<label>内容：</label>
+						<label>翻译内容：</label>
 					</div>
 					<div class="field">
-						<textarea name="content" class="input"
+						<textarea name="parentQuestionArticle" class="input"
 							style="height: 150px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>翻译范文：</label>
+					</div>
+					<div class="field">
+						<textarea name="questionExplain" class="input"
+							style="height: 150px; border: 1px solid #ddd;"></textarea>
+						<div class="tips"></div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="label">
+						<label>每小题分数：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" value="" name="questionScore"/>
 						<div class="tips"></div>
 					</div>
 				</div>

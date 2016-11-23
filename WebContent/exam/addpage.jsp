@@ -38,7 +38,7 @@
 				</div>
 				<div class="form-group">
 					<div class="label">
-						<label>试卷时间：</label>
+						<label>试卷年份：</label>
 					</div>
 					<div class="field">
 						<input type="text" class="input w50" value="" name="time"

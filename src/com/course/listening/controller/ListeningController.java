@@ -12,9 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.course.entity.Exam;
 import com.course.entity.ParentQuestion;
 import com.course.entity.Question;
 import com.course.entity.Selectt;
+import com.course.exam.service.ExamServiceImpl;
 import com.course.parentquestion.service.ParentQuestionServiceImpl;
 import com.course.question.service.QuestionServiceImpl;
 import com.course.selectt.service.SelecttServiceImpl;
@@ -33,8 +36,8 @@ import com.framework.Page;
 @RequestMapping("listening")
 public class ListeningController {
 
-//	@Resource
-//	private ExamServiceImpl examServiceImpl;
+	@Resource
+	private ExamServiceImpl examServiceImpl;
 	
 	@Resource
 	private ParentQuestionServiceImpl parentQuestionServiceImpl;
@@ -55,268 +58,268 @@ public class ListeningController {
 	 * 
 	 */
 	@RequestMapping("add")
-	public String add(@RequestParam(name = "examname") String examname,
+	public String add(@RequestParam(name = "examname") String examName,
 			//获取所有选择题为a的选项内容
-			@RequestParam(name = "aselecttcontent1") String aselecttcontent1,
-			@RequestParam(name = "aselecttcontent2") String aselecttcontent2,
-			@RequestParam(name = "aselecttcontent3") String aselecttcontent3,
-			@RequestParam(name = "aselecttcontent4") String aselecttcontent4,
-			@RequestParam(name = "aselecttcontent5") String aselecttcontent5,
-			@RequestParam(name = "aselecttcontent6") String aselecttcontent6,
-			@RequestParam(name = "aselecttcontent7") String aselecttcontent7,
-			@RequestParam(name = "aselecttcontent8") String aselecttcontent8,
-			@RequestParam(name = "aselecttcontent9") String aselecttcontent9,
-			@RequestParam(name = "aselecttcontent10") String aselecttcontent10,
-			@RequestParam(name = "aselecttcontent11") String aselecttcontent11,
-			@RequestParam(name = "aselecttcontent12") String aselecttcontent12,
-			@RequestParam(name = "aselecttcontent13") String aselecttcontent13,
-			@RequestParam(name = "aselecttcontent14") String aselecttcontent14,
-			@RequestParam(name = "aselecttcontent15") String aselecttcontent15,
-			@RequestParam(name = "aselecttcontent16") String aselecttcontent16,
-			@RequestParam(name = "aselecttcontent17") String aselecttcontent17,
-			@RequestParam(name = "aselecttcontent18") String aselecttcontent18,
-			@RequestParam(name = "aselecttcontent19") String aselecttcontent19,
-			@RequestParam(name = "aselecttcontent20") String aselecttcontent20,
-			@RequestParam(name = "aselecttcontent21") String aselecttcontent21,
-			@RequestParam(name = "aselecttcontent22") String aselecttcontent22,
-			@RequestParam(name = "aselecttcontent23") String aselecttcontent23,
-			@RequestParam(name = "aselecttcontent24") String aselecttcontent24,
-			@RequestParam(name = "aselecttcontent25") String aselecttcontent25,
-			@RequestParam(name = "aselecttcontent26") String aselecttcontent26,
-			@RequestParam(name = "aselecttcontent27") String aselecttcontent27,
-			@RequestParam(name = "aselecttcontent28") String aselecttcontent28,
+			@RequestParam(name = "aselecttcontent1") String aSelecttContent1,
+			@RequestParam(name = "aselecttcontent2") String aSelecttContent2,
+			@RequestParam(name = "aselecttcontent3") String aSelecttContent3,
+			@RequestParam(name = "aselecttcontent4") String aSelecttContent4,
+			@RequestParam(name = "aselecttcontent5") String aSelecttContent5,
+			@RequestParam(name = "aselecttcontent6") String aSelecttContent6,
+			@RequestParam(name = "aselecttcontent7") String aSelecttContent7,
+			@RequestParam(name = "aselecttcontent8") String aSelecttContent8,
+			@RequestParam(name = "aselecttcontent9") String aSelecttContent9,
+			@RequestParam(name = "aselecttcontent10") String aSelecttContent10,
+			@RequestParam(name = "aselecttcontent11") String aSelecttContent11,
+			@RequestParam(name = "aselecttcontent12") String aSelecttContent12,
+			@RequestParam(name = "aselecttcontent13") String aSelecttContent13,
+			@RequestParam(name = "aselecttcontent14") String aSelecttContent14,
+			@RequestParam(name = "aselecttcontent15") String aSelecttContent15,
+			@RequestParam(name = "aselecttcontent16") String aSelecttContent16,
+			@RequestParam(name = "aselecttcontent17") String aSelecttContent17,
+			@RequestParam(name = "aselecttcontent18") String aSelecttContent18,
+			@RequestParam(name = "aselecttcontent19") String aSelecttContent19,
+			@RequestParam(name = "aselecttcontent20") String aSelecttContent20,
+			@RequestParam(name = "aselecttcontent21") String aSelecttContent21,
+			@RequestParam(name = "aselecttcontent22") String aSelecttContent22,
+			@RequestParam(name = "aselecttcontent23") String aSelecttContent23,
+			@RequestParam(name = "aselecttcontent24") String aSelecttContent24,
+			@RequestParam(name = "aselecttcontent25") String aSelecttContent25,
+			@RequestParam(name = "aselecttcontent26") String aSelecttContent26,
+			@RequestParam(name = "aselecttcontent27") String aSelecttContent27,
+			@RequestParam(name = "aselecttcontent28") String aSelecttContent28,
 			
 			//获取所有选择题为b的选项内容
-			@RequestParam(name = "bselecttcontent1") String bselecttcontent1,
-			@RequestParam(name = "bselecttcontent2") String bselecttcontent2,
-			@RequestParam(name = "bselecttcontent3") String bselecttcontent3,
-			@RequestParam(name = "bselecttcontent4") String bselecttcontent4,
-			@RequestParam(name = "bselecttcontent5") String bselecttcontent5,
-			@RequestParam(name = "bselecttcontent6") String bselecttcontent6,
-			@RequestParam(name = "bselecttcontent7") String bselecttcontent7,
-			@RequestParam(name = "bselecttcontent8") String bselecttcontent8,
-			@RequestParam(name = "bselecttcontent9") String bselecttcontent9,
-			@RequestParam(name = "bselecttcontent10") String bselecttcontent10,
-			@RequestParam(name = "bselecttcontent11") String bselecttcontent11,
-			@RequestParam(name = "bselecttcontent12") String bselecttcontent12,
-			@RequestParam(name = "bselecttcontent13") String bselecttcontent13,
-			@RequestParam(name = "bselecttcontent14") String bselecttcontent14,
-			@RequestParam(name = "bselecttcontent15") String bselecttcontent15,
-			@RequestParam(name = "bselecttcontent16") String bselecttcontent16,
-			@RequestParam(name = "bselecttcontent17") String bselecttcontent17,
-			@RequestParam(name = "bselecttcontent18") String bselecttcontent18,
-			@RequestParam(name = "bselecttcontent19") String bselecttcontent19,
-			@RequestParam(name = "bselecttcontent20") String bselecttcontent20,
-			@RequestParam(name = "bselecttcontent21") String bselecttcontent21,
-			@RequestParam(name = "bselecttcontent22") String bselecttcontent22,
-			@RequestParam(name = "bselecttcontent23") String bselecttcontent23,
-			@RequestParam(name = "bselecttcontent24") String bselecttcontent24,
-			@RequestParam(name = "bselecttcontent25") String bselecttcontent25,
-			@RequestParam(name = "bselecttcontent26") String bselecttcontent26,
-			@RequestParam(name = "bselecttcontent27") String bselecttcontent27,
-			@RequestParam(name = "bselecttcontent28") String bselecttcontent28,
+			@RequestParam(name = "bselecttcontent1") String bSelecttContent1,
+			@RequestParam(name = "bselecttcontent2") String bSelecttContent2,
+			@RequestParam(name = "bselecttcontent3") String bSelecttContent3,
+			@RequestParam(name = "bselecttcontent4") String bSelecttContent4,
+			@RequestParam(name = "bselecttcontent5") String bSelecttContent5,
+			@RequestParam(name = "bselecttcontent6") String bSelecttContent6,
+			@RequestParam(name = "bselecttcontent7") String bSelecttContent7,
+			@RequestParam(name = "bselecttcontent8") String bSelecttContent8,
+			@RequestParam(name = "bselecttcontent9") String bSelecttContent9,
+			@RequestParam(name = "bselecttcontent10") String bSelecttContent10,
+			@RequestParam(name = "bselecttcontent11") String bSelecttContent11,
+			@RequestParam(name = "bselecttcontent12") String bSelecttContent12,
+			@RequestParam(name = "bselecttcontent13") String bSelecttContent13,
+			@RequestParam(name = "bselecttcontent14") String bSelecttContent14,
+			@RequestParam(name = "bselecttcontent15") String bSelecttContent15,
+			@RequestParam(name = "bselecttcontent16") String bSelecttContent16,
+			@RequestParam(name = "bselecttcontent17") String bSelecttContent17,
+			@RequestParam(name = "bselecttcontent18") String bSelecttContent18,
+			@RequestParam(name = "bselecttcontent19") String bSelecttContent19,
+			@RequestParam(name = "bselecttcontent20") String bSelecttContent20,
+			@RequestParam(name = "bselecttcontent21") String bSelecttContent21,
+			@RequestParam(name = "bselecttcontent22") String bSelecttContent22,
+			@RequestParam(name = "bselecttcontent23") String bSelecttContent23,
+			@RequestParam(name = "bselecttcontent24") String bSelecttContent24,
+			@RequestParam(name = "bselecttcontent25") String bSelecttContent25,
+			@RequestParam(name = "bselecttcontent26") String bSelecttContent26,
+			@RequestParam(name = "bselecttcontent27") String bSelecttContent27,
+			@RequestParam(name = "bselecttcontent28") String bSelecttContent28,
 			
 			//获取所有选择题为c的选项内容
-			@RequestParam(name = "cselecttcontent1") String cselecttcontent1,
-			@RequestParam(name = "cselecttcontent2") String cselecttcontent2,
-			@RequestParam(name = "cselecttcontent3") String cselecttcontent3,
-			@RequestParam(name = "cselecttcontent4") String cselecttcontent4,
-			@RequestParam(name = "cselecttcontent5") String cselecttcontent5,
-			@RequestParam(name = "cselecttcontent6") String cselecttcontent6,
-			@RequestParam(name = "cselecttcontent7") String cselecttcontent7,
-			@RequestParam(name = "cselecttcontent8") String cselecttcontent8,
-			@RequestParam(name = "cselecttcontent9") String cselecttcontent9,
-			@RequestParam(name = "cselecttcontent10") String cselecttcontent10,
-			@RequestParam(name = "cselecttcontent11") String cselecttcontent11,
-			@RequestParam(name = "cselecttcontent12") String cselecttcontent12,
-			@RequestParam(name = "cselecttcontent13") String cselecttcontent13,
-			@RequestParam(name = "cselecttcontent14") String cselecttcontent14,
-			@RequestParam(name = "cselecttcontent15") String cselecttcontent15,
-			@RequestParam(name = "cselecttcontent16") String cselecttcontent16,
-			@RequestParam(name = "cselecttcontent17") String cselecttcontent17,
-			@RequestParam(name = "cselecttcontent18") String cselecttcontent18,
-			@RequestParam(name = "cselecttcontent19") String cselecttcontent19,
-			@RequestParam(name = "cselecttcontent20") String cselecttcontent20,
-			@RequestParam(name = "cselecttcontent21") String cselecttcontent21,
-			@RequestParam(name = "cselecttcontent22") String cselecttcontent22,
-			@RequestParam(name = "cselecttcontent23") String cselecttcontent23,
-			@RequestParam(name = "cselecttcontent24") String cselecttcontent24,
-			@RequestParam(name = "cselecttcontent25") String cselecttcontent25,
-			@RequestParam(name = "cselecttcontent26") String cselecttcontent26,
-			@RequestParam(name = "cselecttcontent27") String cselecttcontent27,
-			@RequestParam(name = "cselecttcontent28") String cselecttcontent28,
+			@RequestParam(name = "cselecttcontent1") String cSelecttContent1,
+			@RequestParam(name = "cselecttcontent2") String cSelecttContent2,
+			@RequestParam(name = "cselecttcontent3") String cSelecttContent3,
+			@RequestParam(name = "cselecttcontent4") String cSelecttContent4,
+			@RequestParam(name = "cselecttcontent5") String cSelecttContent5,
+			@RequestParam(name = "cselecttcontent6") String cSelecttContent6,
+			@RequestParam(name = "cselecttcontent7") String cSelecttContent7,
+			@RequestParam(name = "cselecttcontent8") String cSelecttContent8,
+			@RequestParam(name = "cselecttcontent9") String cSelecttContent9,
+			@RequestParam(name = "cselecttcontent10") String cSelecttContent10,
+			@RequestParam(name = "cselecttcontent11") String cSelecttContent11,
+			@RequestParam(name = "cselecttcontent12") String cSelecttContent12,
+			@RequestParam(name = "cselecttcontent13") String cSelecttContent13,
+			@RequestParam(name = "cselecttcontent14") String cSelecttContent14,
+			@RequestParam(name = "cselecttcontent15") String cSelecttContent15,
+			@RequestParam(name = "cselecttcontent16") String cSelecttContent16,
+			@RequestParam(name = "cselecttcontent17") String cSelecttContent17,
+			@RequestParam(name = "cselecttcontent18") String cSelecttContent18,
+			@RequestParam(name = "cselecttcontent19") String cSelecttContent19,
+			@RequestParam(name = "cselecttcontent20") String cSelecttContent20,
+			@RequestParam(name = "cselecttcontent21") String cSelecttContent21,
+			@RequestParam(name = "cselecttcontent22") String cSelecttContent22,
+			@RequestParam(name = "cselecttcontent23") String cSelecttContent23,
+			@RequestParam(name = "cselecttcontent24") String cSelecttContent24,
+			@RequestParam(name = "cselecttcontent25") String cSelecttContent25,
+			@RequestParam(name = "cselecttcontent26") String cSelecttContent26,
+			@RequestParam(name = "cselecttcontent27") String cSelecttContent27,
+			@RequestParam(name = "cselecttcontent28") String cSelecttContent28,
 			
 			//获取所有选择题为d的选项内容
-			@RequestParam(name = "dselecttcontent1") String dselecttcontent1,
-			@RequestParam(name = "dselecttcontent2") String dselecttcontent2,
-			@RequestParam(name = "dselecttcontent3") String dselecttcontent3,
-			@RequestParam(name = "dselecttcontent4") String dselecttcontent4,
-			@RequestParam(name = "dselecttcontent5") String dselecttcontent5,
-			@RequestParam(name = "dselecttcontent6") String dselecttcontent6,
-			@RequestParam(name = "dselecttcontent7") String dselecttcontent7,
-			@RequestParam(name = "dselecttcontent8") String dselecttcontent8,
-			@RequestParam(name = "dselecttcontent9") String dselecttcontent9,
-			@RequestParam(name = "dselecttcontent10") String dselecttcontent10,
-			@RequestParam(name = "dselecttcontent11") String dselecttcontent11,
-			@RequestParam(name = "dselecttcontent12") String dselecttcontent12,
-			@RequestParam(name = "dselecttcontent13") String dselecttcontent13,
-			@RequestParam(name = "dselecttcontent14") String dselecttcontent14,
-			@RequestParam(name = "dselecttcontent15") String dselecttcontent15,
-			@RequestParam(name = "dselecttcontent16") String dselecttcontent16,
-			@RequestParam(name = "dselecttcontent17") String dselecttcontent17,
-			@RequestParam(name = "dselecttcontent18") String dselecttcontent18,
-			@RequestParam(name = "dselecttcontent19") String dselecttcontent19,
-			@RequestParam(name = "dselecttcontent20") String dselecttcontent20,
-			@RequestParam(name = "dselecttcontent21") String dselecttcontent21,
-			@RequestParam(name = "dselecttcontent22") String dselecttcontent22,
-			@RequestParam(name = "dselecttcontent23") String dselecttcontent23,
-			@RequestParam(name = "dselecttcontent24") String dselecttcontent24,
-			@RequestParam(name = "dselecttcontent25") String dselecttcontent25,
-			@RequestParam(name = "dselecttcontent26") String dselecttcontent26,
-			@RequestParam(name = "dselecttcontent27") String dselecttcontent27,
-			@RequestParam(name = "dselecttcontent28") String dselecttcontent28,
+			@RequestParam(name = "dselecttcontent1") String dSelecttContent1,
+			@RequestParam(name = "dselecttcontent2") String dSelecttContent2,
+			@RequestParam(name = "dselecttcontent3") String dSelecttContent3,
+			@RequestParam(name = "dselecttcontent4") String dSelecttContent4,
+			@RequestParam(name = "dselecttcontent5") String dSelecttContent5,
+			@RequestParam(name = "dselecttcontent6") String dSelecttContent6,
+			@RequestParam(name = "dselecttcontent7") String dSelecttContent7,
+			@RequestParam(name = "dselecttcontent8") String dSelecttContent8,
+			@RequestParam(name = "dselecttcontent9") String dSelecttContent9,
+			@RequestParam(name = "dselecttcontent10") String dSelecttContent10,
+			@RequestParam(name = "dselecttcontent11") String dSelecttContent11,
+			@RequestParam(name = "dselecttcontent12") String dSelecttContent12,
+			@RequestParam(name = "dselecttcontent13") String dSelecttContent13,
+			@RequestParam(name = "dselecttcontent14") String dSelecttContent14,
+			@RequestParam(name = "dselecttcontent15") String dSelecttContent15,
+			@RequestParam(name = "dselecttcontent16") String dSelecttContent16,
+			@RequestParam(name = "dselecttcontent17") String dSelecttContent17,
+			@RequestParam(name = "dselecttcontent18") String dSelecttContent18,
+			@RequestParam(name = "dselecttcontent19") String dSelecttContent19,
+			@RequestParam(name = "dselecttcontent20") String dSelecttContent20,
+			@RequestParam(name = "dselecttcontent21") String dSelecttContent21,
+			@RequestParam(name = "dselecttcontent22") String dSelecttContent22,
+			@RequestParam(name = "dselecttcontent23") String dSelecttContent23,
+			@RequestParam(name = "dselecttcontent24") String dSelecttContent24,
+			@RequestParam(name = "dselecttcontent25") String dSelecttContent25,
+			@RequestParam(name = "dselecttcontent26") String dSelecttContent26,
+			@RequestParam(name = "dselecttcontent27") String dSelecttContent27,
+			@RequestParam(name = "dselecttcontent28") String dSelecttContent28,
 			
 			//获取所有的question答案  所有题
-			@RequestParam(name = "questionanswer1") String questionanswer1,
-			@RequestParam(name = "questionanswer2") String questionanswer2,
-			@RequestParam(name = "questionanswer3") String questionanswer3,
-			@RequestParam(name = "questionanswer4") String questionanswer4,
-			@RequestParam(name = "questionanswer5") String questionanswer5,
-			@RequestParam(name = "questionanswer6") String questionanswer6,
-			@RequestParam(name = "questionanswer7") String questionanswer7,
-			@RequestParam(name = "questionanswer8") String questionanswer8,
-			@RequestParam(name = "questionanswer9") String questionanswer9,
-			@RequestParam(name = "questionanswer10") String questionanswer10,
-			@RequestParam(name = "questionanswer11") String questionanswer11,
-			@RequestParam(name = "questionanswer12") String questionanswer12,
-			@RequestParam(name = "questionanswer13") String questionanswer13,
-			@RequestParam(name = "questionanswer14") String questionanswer14,
-			@RequestParam(name = "questionanswer15") String questionanswer15,
-			@RequestParam(name = "questionanswer16") String questionanswer16,
-			@RequestParam(name = "questionanswer17") String questionanswer17,
-			@RequestParam(name = "questionanswer18") String questionanswer18,
-			@RequestParam(name = "questionanswer19") String questionanswer19,
-			@RequestParam(name = "questionanswer20") String questionanswer20,
-			@RequestParam(name = "questionanswer21") String questionanswer21,
-			@RequestParam(name = "questionanswer22") String questionanswer22,
-			@RequestParam(name = "questionanswer23") String questionanswer23,
-			@RequestParam(name = "questionanswer24") String questionanswer24,
-			@RequestParam(name = "questionanswer25") String questionanswer25,
-			@RequestParam(name = "questionanswer26") String questionanswer26,
-			@RequestParam(name = "questionanswer27") String questionanswer27,
-			@RequestParam(name = "questionanswer28") String questionanswer28,
+			@RequestParam(name = "questionanswer1") String questionAnswer1,
+			@RequestParam(name = "questionanswer2") String questionAnswer2,
+			@RequestParam(name = "questionanswer3") String questionAnswer3,
+			@RequestParam(name = "questionanswer4") String questionAnswer4,
+			@RequestParam(name = "questionanswer5") String questionAnswer5,
+			@RequestParam(name = "questionanswer6") String questionAnswer6,
+			@RequestParam(name = "questionanswer7") String questionAnswer7,
+			@RequestParam(name = "questionanswer8") String questionAnswer8,
+			@RequestParam(name = "questionanswer9") String questionAnswer9,
+			@RequestParam(name = "questionanswer10") String questionAnswer10,
+			@RequestParam(name = "questionanswer11") String questionAnswer11,
+			@RequestParam(name = "questionanswer12") String questionAnswer12,
+			@RequestParam(name = "questionanswer13") String questionAnswer13,
+			@RequestParam(name = "questionanswer14") String questionAnswer14,
+			@RequestParam(name = "questionanswer15") String questionAnswer15,
+			@RequestParam(name = "questionanswer16") String questionAnswer16,
+			@RequestParam(name = "questionanswer17") String questionAnswer17,
+			@RequestParam(name = "questionanswer18") String questionAnswer18,
+			@RequestParam(name = "questionanswer19") String questionAnswer19,
+			@RequestParam(name = "questionanswer20") String questionAnswer20,
+			@RequestParam(name = "questionanswer21") String questionAnswer21,
+			@RequestParam(name = "questionanswer22") String questionAnswer22,
+			@RequestParam(name = "questionanswer23") String questionAnswer23,
+			@RequestParam(name = "questionanswer24") String questionAnswer24,
+			@RequestParam(name = "questionanswer25") String questionAnswer25,
+			@RequestParam(name = "questionanswer26") String questionAnswer26,
+			@RequestParam(name = "questionanswer27") String questionAnswer27,
+			@RequestParam(name = "questionanswer28") String questionAnswer28,
 
 			//获得所有questionexplain的参数 
-			@RequestParam(name = "questionexplain1") String questionexplain1,
-			@RequestParam(name = "questionexplain2") String questionexplain2,
-			@RequestParam(name = "questionexplain3") String questionexplain3,
-			@RequestParam(name = "questionexplain4") String questionexplain4,
-			@RequestParam(name = "questionexplain5") String questionexplain5,
-			@RequestParam(name = "questionexplain6") String questionexplain6,
-			@RequestParam(name = "questionexplain7") String questionexplain7,
-			@RequestParam(name = "questionexplain8") String questionexplain8,
-			@RequestParam(name = "questionexplain9") String questionexplain9,
-			@RequestParam(name = "questionexplain10") String questionexplain10,
-			@RequestParam(name = "questionexplain11") String questionexplain11,
-			@RequestParam(name = "questionexplain12") String questionexplain12,
-			@RequestParam(name = "questionexplain13") String questionexplain13,
-			@RequestParam(name = "questionexplain14") String questionexplain14,
-			@RequestParam(name = "questionexplain15") String questionexplain15,
-			@RequestParam(name = "questionexplain16") String questionexplain16,
-			@RequestParam(name = "questionexplain17") String questionexplain17,
-			@RequestParam(name = "questionexplain18") String questionexplain18,
-			@RequestParam(name = "questionexplain19") String questionexplain19,
-			@RequestParam(name = "questionexplain20") String questionexplain20,
-			@RequestParam(name = "questionexplain21") String questionexplain21,
-			@RequestParam(name = "questionexplain22") String questionexplain22,
-			@RequestParam(name = "questionexplain23") String questionexplain23,
-			@RequestParam(name = "questionexplain24") String questionexplain24,
-			@RequestParam(name = "questionexplain25") String questionexplain25,
-			@RequestParam(name = "questionexplain26") String questionexplain26,
-			@RequestParam(name = "questionexplain27") String questionexplain27,
-			@RequestParam(name = "questionexplain28") String questionexplain28,
-			
+			@RequestParam(name = "questionexplain1") String questionExplain1,
+			@RequestParam(name = "questionexplain2") String questionExplain2,
+			@RequestParam(name = "questionexplain3") String questionExplain3,
+			@RequestParam(name = "questionexplain4") String questionExplain4,
+			@RequestParam(name = "questionexplain5") String questionExplain5,
+			@RequestParam(name = "questionexplain6") String questionExplain6,
+			@RequestParam(name = "questionexplain7") String questionExplain7,
+			@RequestParam(name = "questionexplain8") String questionExplain8,
+			@RequestParam(name = "questionexplain9") String questionExplain9,
+			@RequestParam(name = "questionexplain10") String questionExplain10,
+			@RequestParam(name = "questionexplain11") String questionExplain11,
+			@RequestParam(name = "questionexplain12") String questionExplain12,
+			@RequestParam(name = "questionexplain13") String questionExplain13,
+			@RequestParam(name = "questionexplain14") String questionExplain14,
+			@RequestParam(name = "questionexplain15") String questionExplain15,
+			@RequestParam(name = "questionexplain16") String questionExplain16,
+			@RequestParam(name = "questionexplain17") String questionExplain17,
+			@RequestParam(name = "questionexplain18") String questionExplain18,
+			@RequestParam(name = "questionexplain19") String questionExplain19,
+			@RequestParam(name = "questionexplain20") String questionExplain20,
+			@RequestParam(name = "questionexplain21") String questionExplain21,
+			@RequestParam(name = "questionexplain22") String questionExplain22,
+			@RequestParam(name = "questionexplain23") String questionExplain23,
+			@RequestParam(name = "questionexplain24") String questionExplain24,
+			@RequestParam(name = "questionexplain25") String questionExplain25,
+			@RequestParam(name = "questionexplain26") String questionExplain26,
+			@RequestParam(name = "questionexplain27") String questionExplain27,
+			@RequestParam(name = "questionexplain28") String questionExplain28,
+		
 			
 			//parentquestionname 获取 从听力一到六 text
-			@RequestParam(name = "parentquestionnameone") String parentquestionnameone,
-			@RequestParam(name = "parentquestionnametwo") String parentquestionnametwo,
-			@RequestParam(name = "parentquestionnamethree") String parentquestionnamethree,
-			@RequestParam(name = "parentquestionnamefour") String parentquestionnamefour,
-			@RequestParam(name = "parentquestionnamefive") String parentquestionnamefive,
-			@RequestParam(name = "parentquestionnamesix") String parentquestionnamesix,
-			@RequestParam(name = "parentquestionnametext") String parentquestionnametext,
+			@RequestParam(name = "parentquestionnameone") String parentQuestionnameOne,
+			@RequestParam(name = "parentquestionnametwo") String parentQuestionnameTwo,
+			@RequestParam(name = "parentquestionnamethree") String parentQuestionnameThree,
+			@RequestParam(name = "parentquestionnamefour") String parentQuestionnameFour,
+			@RequestParam(name = "parentquestionnamefive") String parentQuestionnameFive,
+			@RequestParam(name = "parentquestionnamesix") String parentQuestionnameSix,
+			@RequestParam(name = "parentquestionnametext") String parentQuestionnameText,
 			
 			//parentquestiondescription获取 从听力一到六 text
-			@RequestParam(name = "descriptionone") String descriptionone,
-			@RequestParam(name = "descriptiontwo") String descriptiontwo,
-			@RequestParam(name = "descriptionthree") String descriptionthree,
-			@RequestParam(name = "descriptionfour") String descriptionfour,
-			@RequestParam(name = "descriptionfive") String descriptionfive,
-			@RequestParam(name = "descriptionsix") String descriptionsix,
-			@RequestParam(name = "descriptiontext") String descriptiontext,
+			@RequestParam(name = "descriptionone") String descriptionOne,
+			@RequestParam(name = "descriptiontwo") String descriptionTwo,
+			@RequestParam(name = "descriptionthree") String descriptionThree,
+			@RequestParam(name = "descriptionfour") String descriptionFour,
+			@RequestParam(name = "descriptionfive") String descriptionFive,
+			@RequestParam(name = "descriptionsix") String descriptionSix,
+			@RequestParam(name = "descriptiontext") String descriptionText,
 			
 			//parentquestiontitle 获取 从听力一到六 text
-			@RequestParam(name = "parentquestiontitleone") String parentquestiontitleone,
-			@RequestParam(name = "parentquestiontitletwo") String parentquestiontitletwo,
-			@RequestParam(name = "parentquestiontitlethree") String parentquestiontitlethree,
-			@RequestParam(name = "parentquestiontitlefour") String parentquestiontitlefour,
-			@RequestParam(name = "parentquestiontitlefive") String parentquestiontitlefive,
-			@RequestParam(name = "parentquestiontitlesix") String parentquestiontitlesix,
-			@RequestParam(name = "parentquestiontitletext") String parentquestiontitletext,
+			@RequestParam(name = "parentquestiontitleone") String parentQuestiontitleOne,
+			@RequestParam(name = "parentquestiontitletwo") String parentQuestiontitleTwo,
+			@RequestParam(name = "parentquestiontitlethree") String parentQuestiontitleThree,
+			@RequestParam(name = "parentquestiontitlefour") String parentQuestiontitleFour,
+			@RequestParam(name = "parentquestiontitlefive") String parentQuestiontitleFive,
+			@RequestParam(name = "parentquestiontitlesix") String parentQuestiontitleSix,
+			@RequestParam(name = "parentquestiontitletext") String parentQuestiontitleText,
 			
 			//parentquestionscore 获取 从听力一到六 text
-			@RequestParam(name = "questionscoreone") String questionscoreone,
-			@RequestParam(name = "questionscoretwo") String questionscoretwo,
-			@RequestParam(name = "questionscorethree") String questionscorethree,
-			@RequestParam(name = "questionscorefour") String questionscorefour,
-			@RequestParam(name = "questionscorefive") String questionscorefive,
-			@RequestParam(name = "questionscoresix") String questionscoresix,
-			@RequestParam(name = "questionscoretext") String questionscoretext,
+			@RequestParam(name = "questionscoreone") String questionScoreOne,
+			@RequestParam(name = "questionscoretwo") String questionScoreTwo,
+			@RequestParam(name = "questionscorethree") String questionScoreThree,
+			@RequestParam(name = "questionscorefour") String questionScoreFour,
+			@RequestParam(name = "questionscorefive") String questionScoreFive,
+			@RequestParam(name = "questionscoresix") String questionScoreSix,
+			@RequestParam(name = "questionscoretext") String questionScoreText,
 			
 			//questionfrom  获取 从听力一到六 text
-			@RequestParam(name = "questionfromone") Integer questionfromone,
-			@RequestParam(name = "questionfromtwo") Integer questionfromtwo,
-			@RequestParam(name = "questionfromthree") Integer questionfromthree,
-			@RequestParam(name = "questionfromfour") Integer questionfromfour,
-			@RequestParam(name = "questionfromfive") Integer questionfromfive,
-			@RequestParam(name = "questionfromsix") Integer questionfromsix,
-			@RequestParam(name = "questionfromtext") String questionfromtext,
+			@RequestParam(name = "questionfromone") Integer questionFromOne,
+			@RequestParam(name = "questionfromtwo") Integer questionFromTwo,
+			@RequestParam(name = "questionfromthree") Integer questionFromThree,
+			@RequestParam(name = "questionfromfour") Integer questionFromFour,
+			@RequestParam(name = "questionfromfive") Integer questionFromFive,
+			@RequestParam(name = "questionfromsix") Integer questionFromSix,
+			@RequestParam(name = "questionfromtext") String questionFromText,
 			
 			//questionto  获取 从听力一到六 text
-			@RequestParam(name = "questiontoone") Integer questiontoone,
-			@RequestParam(name = "questiontotwo") Integer questiontotwo,
-			@RequestParam(name = "questiontothree") Integer questiontothree,
-			@RequestParam(name = "questiontofour") Integer questiontofour,
-			@RequestParam(name = "questiontofive") Integer questiontofive,
-			@RequestParam(name = "questiontosix") Integer questiontosix,
-			@RequestParam(name = "questiontotext") String questiontotext,
+			@RequestParam(name = "questiontoone") Integer questionToOne,
+			@RequestParam(name = "questiontotwo") Integer questionToTwo,
+			@RequestParam(name = "questiontothree") Integer questionToThree,
+			@RequestParam(name = "questiontofour") Integer questionToFour,
+			@RequestParam(name = "questiontofive") Integer questionToFive,
+			@RequestParam(name = "questiontosix") Integer questionToSix,
+			@RequestParam(name = "questiontotext") String questionToText,
 			
 			//听力文本域   parentquestion参数 parentquestionarticle
-			@RequestParam(name = "parentquestionarticle") String parentquestionarticletext,
+			@RequestParam(name = "parentquestionarticle") String parentQuestionArticleText,
 			
 			//听力文本域 解析参数
-			@RequestParam(name = "textquestionexplain1") String textquestionexplain1,
-			@RequestParam(name = "textquestionexplain2") String textquestionexplain2,
-			@RequestParam(name = "textquestionexplain3") String textquestionexplain3,
-			@RequestParam(name = "textquestionexplain4") String textquestionexplain4,
-			@RequestParam(name = "textquestionexplain5") String textquestionexplain5,
-			@RequestParam(name = "textquestionexplain6") String textquestionexplain6,
-			@RequestParam(name = "textquestionexplain7") String textquestionexplain7,
-			@RequestParam(name = "textquestionexplain8") String textquestionexplain8,
-			@RequestParam(name = "textquestionexplain9") String textquestionexplain9,
-			@RequestParam(name = "textquestionexplain10") String textquestionexplain10,
+			@RequestParam(name = "textquestionexplain1") String textQuestionExplain1,
+			@RequestParam(name = "textquestionexplain2") String textQuestionExplain2,
+			@RequestParam(name = "textquestionexplain3") String textQuestionExplain3,
+			@RequestParam(name = "textquestionexplain4") String textQuestionExplain4,
+			@RequestParam(name = "textquestionexplain5") String textQuestionExplain5,
+			@RequestParam(name = "textquestionexplain6") String textQuestionExplain6,
+			@RequestParam(name = "textquestionexplain7") String textQuestionExplain7,
+			@RequestParam(name = "textquestionexplain8") String textQuestionExplain8,
+			@RequestParam(name = "textquestionexplain9") String textQuestionExplain9,
+			@RequestParam(name = "textquestionexplain10") String textQuestionExplain10,
 			
 			//听力文本域 答案参数
-			@RequestParam(name = "textquestionanswer1") String textquestionanswer1,
-			@RequestParam(name = "textquestionanswer2") String textquestionanswer2,
-			@RequestParam(name = "textquestionanswer3") String textquestionanswer3,
-			@RequestParam(name = "textquestionanswer4") String textquestionanswer4,
-			@RequestParam(name = "textquestionanswer5") String textquestionanswer5,
-			@RequestParam(name = "textquestionanswer6") String textquestionanswer6,
-			@RequestParam(name = "textquestionanswer7") String textquestionanswer7,
-			@RequestParam(name = "textquestionanswer8") String textquestionanswer8,
-			@RequestParam(name = "textquestionanswer9") String textquestionanswer9,
-			@RequestParam(name = "textquestionanswer10") String textquestionanswer10,
+			@RequestParam(name = "textquestionanswer1") String textQuestionAnswer1,
+			@RequestParam(name = "textquestionanswer2") String textQuestionAnswer2,
+			@RequestParam(name = "textquestionanswer3") String textQuestionAnswer3,
+			@RequestParam(name = "textquestionanswer4") String textQuestionAnswer4,
+			@RequestParam(name = "textquestionanswer5") String textQuestionAnswer5,
+			@RequestParam(name = "textquestionanswer6") String textQuestionAnswer6,
+			@RequestParam(name = "textquestionanswer7") String textQuestionAnswer7,
+			@RequestParam(name = "textquestionanswer8") String textQuestionAnswer8,
+			@RequestParam(name = "textquestionanswer9") String textQuestionAnswer9,
+			@RequestParam(name = "textquestionanswer10") String textQuestionAnswer10,
 			HttpServletRequest request) {
 		
 		
@@ -325,188 +328,184 @@ public class ListeningController {
 				
 		//list集合存储所有的question 答案和解析 信息   方便在for循环中存储
 		List<String> questionLists = new ArrayList<String>();
-		questionLists.add(questionanswer1);
-		questionLists.add(questionanswer2);
-		questionLists.add(questionanswer3);
-		questionLists.add(questionanswer4);
-		questionLists.add(questionanswer5);
-		questionLists.add(questionanswer6);
-		questionLists.add(questionanswer7);
-		questionLists.add(questionanswer8);
-		questionLists.add(questionanswer9);
-		questionLists.add(questionanswer10);
-		questionLists.add(questionanswer11);
-		questionLists.add(questionanswer12);
-		questionLists.add(questionanswer13);
-		questionLists.add(questionanswer14);
-		questionLists.add(questionanswer15);
-		questionLists.add(questionanswer16);
-		questionLists.add(questionanswer17);
-		questionLists.add(questionanswer18);
-		questionLists.add(questionanswer19);
-		questionLists.add(questionanswer20);
-		questionLists.add(questionanswer21);
-		questionLists.add(questionanswer22);
-		questionLists.add(questionanswer23);
-		questionLists.add(questionanswer24);
-		questionLists.add(questionanswer25);
-		questionLists.add(questionanswer26);
-		questionLists.add(questionanswer27);
-		questionLists.add(questionanswer28);
-		questionLists.add(questionexplain1);
-		questionLists.add(questionexplain2);
-		questionLists.add(questionexplain3);
-		questionLists.add(questionexplain4);
-		questionLists.add(questionexplain5);
-		questionLists.add(questionexplain6);
-		questionLists.add(questionexplain7);
-		questionLists.add(questionexplain8);
-		questionLists.add(questionexplain9);
-		questionLists.add(questionexplain10);
-		questionLists.add(questionexplain11);
-		questionLists.add(questionexplain12);
-		questionLists.add(questionexplain13);
-		questionLists.add(questionexplain14);
-		questionLists.add(questionexplain15);
-		questionLists.add(questionexplain16);
-		questionLists.add(questionexplain17);
-		questionLists.add(questionexplain18);
-		questionLists.add(questionexplain19);
-		questionLists.add(questionexplain20);
-		questionLists.add(questionexplain21);
-		questionLists.add(questionexplain22);
-		questionLists.add(questionexplain23);
-		questionLists.add(questionexplain24);
-		questionLists.add(questionexplain25);
-		questionLists.add(questionexplain26);
-		questionLists.add(questionexplain27);
-		questionLists.add(questionexplain28);
+		questionLists.add(questionAnswer1);
+		questionLists.add(questionAnswer2);
+		questionLists.add(questionAnswer3);
+		questionLists.add(questionAnswer4);
+		questionLists.add(questionAnswer5);
+		questionLists.add(questionAnswer6);
+		questionLists.add(questionAnswer7);
+		questionLists.add(questionAnswer8);
+		questionLists.add(questionAnswer9);
+		questionLists.add(questionAnswer10);
+		questionLists.add(questionAnswer11);
+		questionLists.add(questionAnswer12);
+		questionLists.add(questionAnswer13);
+		questionLists.add(questionAnswer14);
+		questionLists.add(questionAnswer15);
+		questionLists.add(questionAnswer16);
+		questionLists.add(questionAnswer17);
+		questionLists.add(questionAnswer18);
+		questionLists.add(questionAnswer19);
+		questionLists.add(questionAnswer20);
+		questionLists.add(questionAnswer21);
+		questionLists.add(questionAnswer22);
+		questionLists.add(questionAnswer23);
+		questionLists.add(questionAnswer24);
+		questionLists.add(questionAnswer25);
+		questionLists.add(questionAnswer26);
+		questionLists.add(questionAnswer27);
+		questionLists.add(questionAnswer28);
+		questionLists.add(questionExplain1);
+		questionLists.add(questionExplain2);
+		questionLists.add(questionExplain3);
+		questionLists.add(questionExplain4);
+		questionLists.add(questionExplain5);
+		questionLists.add(questionExplain6);
+		questionLists.add(questionExplain7);
+		questionLists.add(questionExplain8);
+		questionLists.add(questionExplain9);
+		questionLists.add(questionExplain10);
+		questionLists.add(questionExplain11);
+		questionLists.add(questionExplain12);
+		questionLists.add(questionExplain13);
+		questionLists.add(questionExplain14);
+		questionLists.add(questionExplain15);
+		questionLists.add(questionExplain16);
+		questionLists.add(questionExplain17);
+		questionLists.add(questionExplain18);
+		questionLists.add(questionExplain19);
+		questionLists.add(questionExplain20);
+		questionLists.add(questionExplain21);
+		questionLists.add(questionExplain22);
+		questionLists.add(questionExplain23);
+		questionLists.add(questionExplain24);
+		questionLists.add(questionExplain25);
+		questionLists.add(questionExplain26);
+		questionLists.add(questionExplain27);
+		questionLists.add(questionExplain28);
 		
 		
 		//用list集合保存单选内容   方便用循环存储数据
 		List<String> selecttLists = new ArrayList<String>();
-		selecttLists.add(aselecttcontent1);
-		selecttLists.add(bselecttcontent1);
-		selecttLists.add(cselecttcontent1);
-		selecttLists.add(dselecttcontent1);
-		selecttLists.add(aselecttcontent2);
-		selecttLists.add(bselecttcontent2);
-		selecttLists.add(cselecttcontent2);
-		selecttLists.add(dselecttcontent2);
-		selecttLists.add(aselecttcontent3);
-		selecttLists.add(bselecttcontent3);
-		selecttLists.add(cselecttcontent3);
-		selecttLists.add(dselecttcontent3);
-		selecttLists.add(aselecttcontent4);
-		selecttLists.add(bselecttcontent4);
-		selecttLists.add(cselecttcontent4);
-		selecttLists.add(dselecttcontent4);
-		selecttLists.add(aselecttcontent5);
-		selecttLists.add(bselecttcontent5);
-		selecttLists.add(cselecttcontent5);
-		selecttLists.add(dselecttcontent5);
-		selecttLists.add(aselecttcontent6);
-		selecttLists.add(bselecttcontent6);
-		selecttLists.add(cselecttcontent6);
-		selecttLists.add(dselecttcontent6);
-		selecttLists.add(aselecttcontent7);
-		selecttLists.add(bselecttcontent7);
-		selecttLists.add(cselecttcontent7);
-		selecttLists.add(dselecttcontent7);
-		selecttLists.add(aselecttcontent8);
-		selecttLists.add(bselecttcontent8);
-		selecttLists.add(cselecttcontent8);
-		selecttLists.add(dselecttcontent8);
-		selecttLists.add(aselecttcontent9);
-		selecttLists.add(bselecttcontent9);
-		selecttLists.add(cselecttcontent9);
-		selecttLists.add(dselecttcontent9);
-		selecttLists.add(aselecttcontent10);
-		selecttLists.add(bselecttcontent10);
-		selecttLists.add(cselecttcontent10);
-		selecttLists.add(dselecttcontent10);
-		selecttLists.add(aselecttcontent11);
-		selecttLists.add(bselecttcontent11);
-		selecttLists.add(cselecttcontent11);
-		selecttLists.add(dselecttcontent11);
-		selecttLists.add(aselecttcontent12);
-		selecttLists.add(bselecttcontent12);
-		selecttLists.add(cselecttcontent12);
-		selecttLists.add(dselecttcontent12);
-		selecttLists.add(aselecttcontent13);
-		selecttLists.add(bselecttcontent13);
-		selecttLists.add(cselecttcontent13);
-		selecttLists.add(dselecttcontent13);
-		selecttLists.add(aselecttcontent14);
-		selecttLists.add(bselecttcontent14);
-		selecttLists.add(cselecttcontent14);
-		selecttLists.add(dselecttcontent14);
-		selecttLists.add(aselecttcontent15);
-		selecttLists.add(bselecttcontent15);
-		selecttLists.add(cselecttcontent15);
-		selecttLists.add(dselecttcontent15);
-		selecttLists.add(aselecttcontent16);
-		selecttLists.add(bselecttcontent16);
-		selecttLists.add(cselecttcontent16);
-		selecttLists.add(dselecttcontent16);
-		selecttLists.add(aselecttcontent17);
-		selecttLists.add(bselecttcontent17);
-		selecttLists.add(cselecttcontent17);
-		selecttLists.add(dselecttcontent17);
-		selecttLists.add(aselecttcontent18);
-		selecttLists.add(bselecttcontent18);
-		selecttLists.add(cselecttcontent18);
-		selecttLists.add(dselecttcontent18);
-		selecttLists.add(aselecttcontent19);
-		selecttLists.add(bselecttcontent19);
-		selecttLists.add(cselecttcontent19);
-		selecttLists.add(dselecttcontent19);
-		selecttLists.add(aselecttcontent20);
-		selecttLists.add(bselecttcontent20);
-		selecttLists.add(cselecttcontent20);
-		selecttLists.add(dselecttcontent20);
-		selecttLists.add(aselecttcontent21);
-		selecttLists.add(bselecttcontent21);
-		selecttLists.add(cselecttcontent21);
-		selecttLists.add(dselecttcontent21);
-		selecttLists.add(aselecttcontent22);
-		selecttLists.add(bselecttcontent22);
-		selecttLists.add(cselecttcontent22);
-		selecttLists.add(dselecttcontent22);
-		selecttLists.add(aselecttcontent23);
-		selecttLists.add(bselecttcontent23);
-		selecttLists.add(cselecttcontent23);
-		selecttLists.add(dselecttcontent23);
-		selecttLists.add(aselecttcontent24);
-		selecttLists.add(bselecttcontent24);
-		selecttLists.add(cselecttcontent24);
-		selecttLists.add(dselecttcontent24);
-		selecttLists.add(aselecttcontent25);
-		selecttLists.add(bselecttcontent25);
-		selecttLists.add(cselecttcontent25);
-		selecttLists.add(dselecttcontent25);
-		selecttLists.add(aselecttcontent26);
-		selecttLists.add(bselecttcontent26);
-		selecttLists.add(cselecttcontent26);
-		selecttLists.add(dselecttcontent26);
-		selecttLists.add(aselecttcontent27);
-		selecttLists.add(bselecttcontent27);
-		selecttLists.add(cselecttcontent27);
-		selecttLists.add(dselecttcontent27);
-		selecttLists.add(aselecttcontent28);
-		selecttLists.add(bselecttcontent28);
-		selecttLists.add(cselecttcontent28);
-		selecttLists.add(dselecttcontent28);
+		selecttLists.add(aSelecttContent1);
+		selecttLists.add(bSelecttContent1);
+		selecttLists.add(cSelecttContent1);
+		selecttLists.add(dSelecttContent1);
+		selecttLists.add(aSelecttContent2);
+		selecttLists.add(bSelecttContent2);
+		selecttLists.add(cSelecttContent2);
+		selecttLists.add(dSelecttContent2);
+		selecttLists.add(aSelecttContent3);
+		selecttLists.add(bSelecttContent3);
+		selecttLists.add(cSelecttContent3);
+		selecttLists.add(dSelecttContent3);
+		selecttLists.add(aSelecttContent4);
+		selecttLists.add(bSelecttContent4);
+		selecttLists.add(cSelecttContent4);
+		selecttLists.add(dSelecttContent4);
+		selecttLists.add(aSelecttContent5);
+		selecttLists.add(bSelecttContent5);
+		selecttLists.add(cSelecttContent5);
+		selecttLists.add(dSelecttContent5);
+		selecttLists.add(aSelecttContent6);
+		selecttLists.add(bSelecttContent6);
+		selecttLists.add(cSelecttContent6);
+		selecttLists.add(dSelecttContent6);
+		selecttLists.add(aSelecttContent7);
+		selecttLists.add(bSelecttContent7);
+		selecttLists.add(cSelecttContent7);
+		selecttLists.add(dSelecttContent7);
+		selecttLists.add(aSelecttContent8);
+		selecttLists.add(bSelecttContent8);
+		selecttLists.add(cSelecttContent8);
+		selecttLists.add(dSelecttContent8);
+		selecttLists.add(aSelecttContent9);
+		selecttLists.add(bSelecttContent9);
+		selecttLists.add(cSelecttContent9);
+		selecttLists.add(dSelecttContent9);
+		selecttLists.add(aSelecttContent10);
+		selecttLists.add(bSelecttContent10);
+		selecttLists.add(cSelecttContent10);
+		selecttLists.add(dSelecttContent10);
+		selecttLists.add(aSelecttContent11);
+		selecttLists.add(bSelecttContent11);
+		selecttLists.add(cSelecttContent11);
+		selecttLists.add(dSelecttContent11);
+		selecttLists.add(aSelecttContent12);
+		selecttLists.add(bSelecttContent12);
+		selecttLists.add(cSelecttContent12);
+		selecttLists.add(dSelecttContent12);
+		selecttLists.add(aSelecttContent13);
+		selecttLists.add(bSelecttContent13);
+		selecttLists.add(cSelecttContent13);
+		selecttLists.add(dSelecttContent13);
+		selecttLists.add(aSelecttContent14);
+		selecttLists.add(bSelecttContent14);
+		selecttLists.add(cSelecttContent14);
+		selecttLists.add(dSelecttContent14);
+		selecttLists.add(aSelecttContent15);
+		selecttLists.add(bSelecttContent15);
+		selecttLists.add(cSelecttContent15);
+		selecttLists.add(dSelecttContent15);
+		selecttLists.add(aSelecttContent16);
+		selecttLists.add(bSelecttContent16);
+		selecttLists.add(cSelecttContent16);
+		selecttLists.add(dSelecttContent16);
+		selecttLists.add(aSelecttContent17);
+		selecttLists.add(bSelecttContent17);
+		selecttLists.add(cSelecttContent17);
+		selecttLists.add(dSelecttContent17);
+		selecttLists.add(aSelecttContent18);
+		selecttLists.add(bSelecttContent18);
+		selecttLists.add(cSelecttContent18);
+		selecttLists.add(dSelecttContent18);
+		selecttLists.add(aSelecttContent19);
+		selecttLists.add(bSelecttContent19);
+		selecttLists.add(cSelecttContent19);
+		selecttLists.add(dSelecttContent19);
+		selecttLists.add(aSelecttContent20);
+		selecttLists.add(bSelecttContent20);
+		selecttLists.add(cSelecttContent20);
+		selecttLists.add(dSelecttContent20);
+		selecttLists.add(aSelecttContent21);
+		selecttLists.add(bSelecttContent21);
+		selecttLists.add(cSelecttContent21);
+		selecttLists.add(dSelecttContent21);
+		selecttLists.add(aSelecttContent22);
+		selecttLists.add(bSelecttContent22);
+		selecttLists.add(cSelecttContent22);
+		selecttLists.add(dSelecttContent22);
+		selecttLists.add(aSelecttContent23);
+		selecttLists.add(bSelecttContent23);
+		selecttLists.add(cSelecttContent23);
+		selecttLists.add(dSelecttContent23);
+		selecttLists.add(aSelecttContent24);
+		selecttLists.add(bSelecttContent24);
+		selecttLists.add(cSelecttContent24);
+		selecttLists.add(dSelecttContent24);
+		selecttLists.add(aSelecttContent25);
+		selecttLists.add(bSelecttContent25);
+		selecttLists.add(cSelecttContent25);
+		selecttLists.add(dSelecttContent25);
+		selecttLists.add(aSelecttContent26);
+		selecttLists.add(bSelecttContent26);
+		selecttLists.add(cSelecttContent26);
+		selecttLists.add(dSelecttContent26);
+		selecttLists.add(aSelecttContent27);
+		selecttLists.add(bSelecttContent27);
+		selecttLists.add(cSelecttContent27);
+		selecttLists.add(dSelecttContent27);
+		selecttLists.add(aSelecttContent28);
+		selecttLists.add(bSelecttContent28);
+		selecttLists.add(cSelecttContent28);
+		selecttLists.add(dSelecttContent28);
 		
-		
-//		根据examname查询exam,赋值给parentquestion,实现关联关系;
-//		前提必须有exam  需要判空
-//		Exam exam = new Exam();
-//		exam = this.examServiceImpl.findByExamName(examname);
-//		
-//		if(exam == null){
-//			return "404";
-//		}
+		// 根据examName找到exam对象
+		Exam exam = this.examServiceImpl.findByName(examName);
+		if (exam == null) {
+			return "404";
+		}
 		
 		
 		
@@ -523,11 +522,11 @@ public class ListeningController {
 		ParentQuestion parentquestionone = new ParentQuestion();
 		
 		//parentquestion与exam关联;
-		//parentquestion.setExam(exam);
+		parentquestionone.setExam(exam);
 		
-		parentquestionone.setParentQuestionName(parentquestionnameone);
-		parentquestionone.setDescription(descriptionone);
-		parentquestionone.setParentQuestionTitle(parentquestiontitleone);
+		parentquestionone.setParentQuestionName(parentQuestionnameOne);
+		parentquestionone.setDescription(descriptionOne);
+		parentquestionone.setParentQuestionTitle(parentQuestiontitleOne);
 
 		
 		//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
@@ -535,15 +534,15 @@ public class ListeningController {
 		
 		
 		//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
-		for (Integer i = 0; i < questiontoone-questionfromone+1; i++) {
+		for (Integer i = 0; i < questionToOne-questionFromOne+1; i++) {
 			Question question = new Question();
 			question.setParentQuestion(parentquestionone);
-			question.setQuestionContent(((Integer)(i+questionfromone)).toString());
+			question.setQuestionContent(((Integer)(i+questionFromOne)).toString());
 			question.setQuestionAnswer(questionLists.get(i));
 			
 			//集合questionLists中  前十个是answer  后十个是explain
 			question.setQuestionExplain(questionLists.get(i+28));
-			question.setQuestionScore(Float.parseFloat(questionscoreone));
+			question.setQuestionScore(Float.parseFloat(questionScoreOne));
 			
 			Set<Selectt> selectts = new HashSet<Selectt>(0);
 			
@@ -592,27 +591,27 @@ public class ListeningController {
 		
 //		这里没有实现
 //		parentquestion与exam关联;
-//		parentquestion.setExam(exam);
+		parentquestiontwo.setExam(exam);
 		
-		parentquestiontwo.setParentQuestionName(parentquestionnametwo);
-		parentquestiontwo.setDescription(descriptiontwo);
-		parentquestiontwo.setParentQuestionTitle(parentquestiontitletwo);
+		parentquestiontwo.setParentQuestionName(parentQuestionnameTwo);
+		parentquestiontwo.setDescription(descriptionTwo);
+		parentquestiontwo.setParentQuestionTitle(parentQuestiontitleTwo);
 		
 		//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
 		Set<Question> twoquestions = new HashSet<Question>(0);
 		
 		
 		//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
-		for (Integer i = 0; i < questiontotwo-questionfromtwo+1; i++) {
+		for (Integer i = 0; i < questionToTwo-questionFromTwo+1; i++) {
 			Question question = new Question();
 			question.setParentQuestion(parentquestiontwo);
-			question.setQuestionContent(((Integer)(i+questionfromtwo)).toString());
+			question.setQuestionContent(((Integer)(i+questionFromTwo)).toString());
 			//集合questionLists中  前28个是answer  i+8 对应answer下标
 			question.setQuestionAnswer(questionLists.get(i+8));
 			
 			//集合questionLists中  前28个是answer  后28个是explain
 			question.setQuestionExplain(questionLists.get(i+8+28));
-			question.setQuestionScore(Float.parseFloat(questionscoretwo));
+			question.setQuestionScore(Float.parseFloat(questionScoreTwo));
 			
 			Set<Selectt> selectts = new HashSet<Selectt>(0);
 			
@@ -658,27 +657,27 @@ public class ListeningController {
 		
 		
 		//parentquestion与exam关联;
-		//parentquestion.setExam(exam);
+		parentquestionthree.setExam(exam);
 		
-		parentquestionthree.setParentQuestionName(parentquestionnamethree);
-		parentquestionthree.setDescription(descriptionthree);
-		parentquestionthree.setParentQuestionTitle(parentquestiontitlethree);
+		parentquestionthree.setParentQuestionName(parentQuestionnameThree);
+		parentquestionthree.setDescription(descriptionThree);
+		parentquestionthree.setParentQuestionTitle(parentQuestiontitleThree);
 		
 		//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
 		Set<Question> threequestions = new HashSet<Question>(0);
 		
 		
 		//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
-		for (Integer i = 0; i < questiontothree-questionfromthree+1; i++) {
+		for (Integer i = 0; i < questionToThree-questionFromThree+1; i++) {
 			Question question = new Question();
 			question.setParentQuestion(parentquestionthree);
-			question.setQuestionContent(((Integer)(i+questionfromthree)).toString());
+			question.setQuestionContent(((Integer)(i+questionFromThree)).toString());
 			//集合questionLists中  前28个是answer  i+8+4对应answer下标
 			question.setQuestionAnswer(questionLists.get(i+12));
 			
 			//集合questionLists中  前28个是answer  后28个是explain  i+8+28+4对应下标
 			question.setQuestionExplain(questionLists.get(i+12+28));
-			question.setQuestionScore(Float.parseFloat(questionscorethree));
+			question.setQuestionScore(Float.parseFloat(questionScoreThree));
 			
 			Set<Selectt> selectts = new HashSet<Selectt>(0);
 			
@@ -724,27 +723,27 @@ public class ListeningController {
 		
 		
 		//parentquestion与exam关联;
-		//parentquestion.setExam(exam);
+		parentquestionfour.setExam(exam);
 		
-		parentquestionfour.setParentQuestionName(parentquestionnamefour);
-		parentquestionfour.setDescription(descriptionfour);
-		parentquestionfour.setParentQuestionTitle(parentquestiontitlefour);
+		parentquestionfour.setParentQuestionName(parentQuestionnameFour);
+		parentquestionfour.setDescription(descriptionFour);
+		parentquestionfour.setParentQuestionTitle(parentQuestiontitleFour);
 		
 		//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
 		Set<Question> fourquestions = new HashSet<Question>(0);
 		
 		
 		//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
-		for (Integer i = 0; i < questiontofour-questionfromfour+1; i++) {
+		for (Integer i = 0; i < questionToFour-questionFromFour+1; i++) {
 			Question question = new Question();
 			question.setParentQuestion(parentquestionfour);
-			question.setQuestionContent(((Integer)(i+questionfromfour)).toString());
+			question.setQuestionContent(((Integer)(i+questionFromFour)).toString());
 			//集合questionLists中  前28个是answer   i+8+4+4对应下标 answer
 			question.setQuestionAnswer(questionLists.get(i+16));
 			
 			//集合questionLists中  前28个是answer  后28个是explain  i+8+28+4+4对应下标
 			question.setQuestionExplain(questionLists.get(i+16+28));
-			question.setQuestionScore(Float.parseFloat(questionscorefour));
+			question.setQuestionScore(Float.parseFloat(questionScoreFour));
 			
 			Set<Selectt> selectts = new HashSet<Selectt>(0);
 			
@@ -791,27 +790,27 @@ public class ListeningController {
 		
 		
 		//parentquestion与exam关联;
-		//parentquestion.setExam(exam);
+		parentquestionfive.setExam(exam);
 		
-		parentquestionfive.setParentQuestionName(parentquestionnamefive);
-		parentquestionfive.setDescription(descriptionfive);
-		parentquestionfive.setParentQuestionTitle(parentquestiontitlefive);
+		parentquestionfive.setParentQuestionName(parentQuestionnameFive);
+		parentquestionfive.setDescription(descriptionFive);
+		parentquestionfive.setParentQuestionTitle(parentQuestiontitleFive);
 		
 		//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
 		Set<Question> fivequestions = new HashSet<Question>(0);
 		
 		
 		//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
-		for (Integer i = 0; i < questiontofive-questionfromfive+1; i++) {
+		for (Integer i = 0; i < questionToFive-questionFromFive+1; i++) {
 			Question question = new Question();
 			question.setParentQuestion(parentquestionfive);
-			question.setQuestionContent(((Integer)(i+questionfromfive)).toString());
+			question.setQuestionContent(((Integer)(i+questionFromFive)).toString());
 			//集合questionLists中  前28个是answer    i+8+4+4+4对应下标
 			question.setQuestionAnswer(questionLists.get(i+20));
 			
 			//集合questionLists中  前28个是answer  后十个是explain  i+8+28+4+4+4对应下标
 			question.setQuestionExplain(questionLists.get(i+20+28));
-			question.setQuestionScore(Float.parseFloat(questionscorefive));
+			question.setQuestionScore(Float.parseFloat(questionScoreFive));
 			
 			Set<Selectt> selectts = new HashSet<Selectt>(0);
 			
@@ -858,28 +857,28 @@ public class ListeningController {
 		
 		
 		//parentquestion与exam关联;
-		//parentquestion.setExam(exam);
+		parentquestionsix.setExam(exam);
 		
-		parentquestionsix.setParentQuestionName(parentquestionnamesix);
-		parentquestionsix.setDescription(descriptionsix);
-		parentquestionsix.setParentQuestionTitle(parentquestiontitlesix);
+		parentquestionsix.setParentQuestionName(parentQuestionnameSix);
+		parentquestionsix.setDescription(descriptionSix);
+		parentquestionsix.setParentQuestionTitle(parentQuestiontitleSix);
 		
 		//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
 		Set<Question> sixquestions = new HashSet<Question>(0);
 		
 		
 		//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
-		for (Integer i = 0; i < questiontosix-questionfromsix+1; i++) {
+		for (Integer i = 0; i < questionToSix-questionFromSix+1; i++) {
 			Question question = new Question();
 			question.setParentQuestion(parentquestionsix);
-			question.setQuestionContent(((Integer)(i+questionfromsix)).toString());
+			question.setQuestionContent(((Integer)(i+questionFromSix)).toString());
 			
 			//集合questionLists中  前28个是answer  i+8+4+4+4+4对应下标
 			question.setQuestionAnswer(questionLists.get(i+24));
 			
 			//集合questionLists中  前28个是answer  后28个是explain  i+8+28+4+4+4+4对应下标
 			question.setQuestionExplain(questionLists.get(i+24+28));
-			question.setQuestionScore(Float.parseFloat(questionscoresix));
+			question.setQuestionScore(Float.parseFloat(questionScoreSix));
 			
 			Set<Selectt> selectts = new HashSet<Selectt>(0);
 			
@@ -920,77 +919,77 @@ public class ListeningController {
 		 * @return				String
 		 * 
 		 */
-		if(examname.contains("2016")){
+		if(examName.contains("2016")){
 			return "redirect:list";
 		}
 		
 		List<String> questiontextLists = new ArrayList<String>();
-		questiontextLists.add(textquestionanswer1);
-		questiontextLists.add(textquestionanswer2);
-		questiontextLists.add(textquestionanswer3);
-		questiontextLists.add(textquestionanswer4);
-		questiontextLists.add(textquestionanswer5);
-		questiontextLists.add(textquestionanswer6);
-		questiontextLists.add(textquestionanswer7);
-		questiontextLists.add(textquestionanswer8);
-		questiontextLists.add(textquestionanswer9);
-		questiontextLists.add(textquestionanswer10);
-		questiontextLists.add(textquestionexplain1);
-		questiontextLists.add(textquestionexplain2);
-		questiontextLists.add(textquestionexplain3);
-		questiontextLists.add(textquestionexplain4);
-		questiontextLists.add(textquestionexplain5);
-		questiontextLists.add(textquestionexplain6);
-		questiontextLists.add(textquestionexplain7);
-		questiontextLists.add(textquestionexplain8);
-		questiontextLists.add(textquestionexplain9);
-		questiontextLists.add(textquestionexplain10);
+		questiontextLists.add(textQuestionAnswer1);
+		questiontextLists.add(textQuestionAnswer2);
+		questiontextLists.add(textQuestionAnswer3);
+		questiontextLists.add(textQuestionAnswer4);
+		questiontextLists.add(textQuestionAnswer5);
+		questiontextLists.add(textQuestionAnswer6);
+		questiontextLists.add(textQuestionAnswer7);
+		questiontextLists.add(textQuestionAnswer8);
+		questiontextLists.add(textQuestionAnswer9);
+		questiontextLists.add(textQuestionAnswer10);
+		questiontextLists.add(textQuestionExplain1);
+		questiontextLists.add(textQuestionExplain2);
+		questiontextLists.add(textQuestionExplain3);
+		questiontextLists.add(textQuestionExplain4);
+		questiontextLists.add(textQuestionExplain5);
+		questiontextLists.add(textQuestionExplain6);
+		questiontextLists.add(textQuestionExplain7);
+		questiontextLists.add(textQuestionExplain8);
+		questiontextLists.add(textQuestionExplain9);
+		questiontextLists.add(textQuestionExplain10);
+	
 		
-		
-		Integer questiontotextint = Integer.parseInt(questiontotext);
-		Integer questionfromtextint = Integer.parseInt(questionfromtext);
+		Integer questionToTextInt = Integer.parseInt(questionToText);
+		Integer questionFromTextInt = Integer.parseInt(questionFromText);
 		//判断 如果没传入参数questionform questionto 或      两者相等 不创建题；
-		if(questiontotextint == questionfromtextint){
+		if(questionToTextInt == questionFromTextInt){
 			return "redirect:list";
 		}
 		
 		//将获取到的参数赋值给parentquestion,保存parentquestion
-		ParentQuestion parentquestiontext = new ParentQuestion();
+		ParentQuestion parentQuestionText = new ParentQuestion();
 		
 		//parentquestion与exam关联;
-		//parentquestion.setExam(exam);
+		parentQuestionText.setExam(exam);
 		
-		parentquestiontext.setParentQuestionName(parentquestionnametext);
-		parentquestiontext.setDescription(descriptiontext);
-		parentquestiontext.setParentQuestionTitle(parentquestiontitletext);
-		parentquestiontext.setParentQuestionArticle(parentquestionarticletext);
+		parentQuestionText.setParentQuestionName(parentQuestionnameText);
+		parentQuestionText.setDescription(descriptionText);
+		parentQuestionText.setParentQuestionTitle(parentQuestiontitleText);
+		parentQuestionText.setParentQuestionArticle(parentQuestionArticleText);
 		
 		//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
 		Set<Question> textquestions = new HashSet<Question>(0);
 		//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
 		
 		
-		for (Integer i = 0; i < questiontotextint-questionfromtextint+1; i++) {
+		for (Integer i = 0; i < questionToTextInt-questionFromTextInt+1; i++) {
 			Question question = new Question();
-			question.setParentQuestion(parentquestiontext);
-			question.setQuestionContent(((Integer)(i+questionfromtextint)).toString());
+			question.setParentQuestion(parentQuestionText);
+			question.setQuestionContent(((Integer)(i+questionFromTextInt)).toString());
 			
 			//集合questionLists中  前10个是answer  
 			question.setQuestionAnswer(questiontextLists.get(i));
 			//集合questionLists中  前10个是answer  后10个是explain 
 			question.setQuestionExplain(questiontextLists.get(i+10));
 			
-			question.setQuestionScore(Float.parseFloat(questionscoretext));
+			question.setQuestionScore(Float.parseFloat(questionScoreText));
 
 			this.questionServiceImpl.addQuestion(question);
 
 			textquestions.add(question); 
 		}
 		
-		parentquestiontext.setQuestions(textquestions);
+		parentQuestionText.setQuestions(textquestions);
 		
 		//存储parentquestion
-		this.parentQuestionServiceImpl.addParentQuestion(parentquestiontext);
+		this.parentQuestionServiceImpl.addParentQuestion(parentQuestionText);
 		
 		return "redirect:list";
 	}
