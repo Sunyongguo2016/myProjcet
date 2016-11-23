@@ -16,7 +16,7 @@ public class Page<T> {
 	}
 	
 	public Page(int pageNum,int pageSize){
-		this.currentPageNum=pageSize;
+		this.currentPageNum=pageNum;
 		this.pageSize=pageSize;
 	}
 
