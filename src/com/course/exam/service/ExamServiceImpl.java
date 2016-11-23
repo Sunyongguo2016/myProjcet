@@ -29,6 +29,11 @@ public class ExamServiceImpl {
 		return this.examDaoImpl.getExam(examId);
 	}
 	
+	@Transactional(readOnly=true)
+	public Exam findByName(String examName){
+		return this.examDaoImpl.findByName(examName);
+	}
+	
 	public void editExam(Exam e) throws Exception{
 		Exam exam = this.examDaoImpl.getExam(e.getExamId());
 		exam.setExamName(e.getExamName());
