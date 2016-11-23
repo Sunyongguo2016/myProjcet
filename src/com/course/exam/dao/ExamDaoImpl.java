@@ -49,7 +49,6 @@ public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 
 	public void updateExam(Exam e) {
 		try {
-			System.out.println("dao" + e.getExamId() + e.getExamName() + e.getExamName() + e.getExamTime());
 			this.update(e);
 		} catch (Exception ee) {
 			ee.printStackTrace();

@@ -1,5 +1,7 @@
 package com.course.exam.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,7 +32,7 @@ public class ExamController {
 	
 	/**
 	 * 
-	 * @desc				添加试卷，获取addpage.jsp的参数，实现添加exam对象；
+	 * @desc				跳转到添加页面；
 	 * @author				童海苹
 	 * @createDate 			2016/11/22
 	 * @param 				获得试卷相关参数
@@ -61,6 +63,7 @@ public class ExamController {
 		e.setExamName(name);
 		e.setExamType(type);
 		e.setExamTime(time);
+		//数据库examUrl长度改成500 
 		e.setExamUrl(examUrl);
 		this.examServiceImpl.addExam(e);
 		return "redirect:list";
@@ -98,7 +101,6 @@ public class ExamController {
 		e.setExamName(name);
 		e.setExamType(type);
 		e.setExamTime(time);
-		System.out.println(e.getExamName()+e.getExamType()+e.getExamTime());
 		try {
 			this.examServiceImpl.editExam(e);
 		} catch (Exception e1) {
@@ -137,6 +139,13 @@ public class ExamController {
 			Model model){
 		
 		Page<Exam> page;
+		
+		try {
+			 searchParam = new String(searchParam.getBytes("ISO8859_1"), "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		
 		if(searchParam == null || "".equals(searchParam)){
 			page = this.examServiceImpl.listExam(pageNum, 5, null);	
 		}else{
