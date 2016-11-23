@@ -54,9 +54,9 @@
 					class="icon-caret-right"></span>听力管理</a></li>
 			<li><a href="${ctx }/choosefillinblank/list?parentQuestionName=ChooseFillInBlank" target="right"><span
 					class="icon-caret-right"></span>十五选十管理</a></li>
-			<li><a href="${ctx }/translationlist.jsp" target="right"><span
+			<li><a href="${ctx }/quickreading/list?parentQuestionName=quickReading" target="right"><span
 					class="icon-caret-right"></span>快速阅读</a></li>
-			<li><a href="${ctx }/readinglist.jsp" target="right"><span
+			<li><a href="${ctx }/reading/list?parentQuestionName=reading" target="right"><span
 					class="icon-caret-right"></span>阅读题管理</a></li>
 			<li><a href="${ctx }/translationlist.jsp" target="right"><span
 					class="icon-caret-right"></span>翻译题管理</a></li>
