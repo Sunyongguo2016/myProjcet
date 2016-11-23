@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="${ctx }/css/admin.css">
 <script src="${ctx }/js/jquery.js"></script>
 <script src="${ctx }/js/pintuer.js"></script>
+<script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.all.min.js"> </script>
 </head>
 <body>
 	<div class="panel admin-panel">
@@ -53,16 +55,37 @@
 						<input type="text" class="input" name="name" value="" />
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<div class="label">
 						<label>音频地址：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="examUrl"
-							data-validate="required:请输入音频地址" />
+					    <!-- 加载编辑器的容器 -->
+			    	<script id="container" name="examUrl" type="text/plain">
+        				
+   					 </script>
+					<!-- 实例化编辑器 -->
+					<script type="text/javascript">
+					UE.getEditor('container',{
+			            //这里可以选择自己需要的工具按钮名称,
+			            toolbars:[['fullscreen', 'attachment']],
+			            //focus时自动清空初始化时的内容
+			            autoClearinitialContent:true,
+			            //关闭字数统计
+			            wordCount:true,
+			            //关闭elementPath
+			            elementPathEnabled:true,
+			            //默认的编辑区域宽高
+			            initialFrameHeight:100,
+			            initialFrameWidth:500 
+			            //更多其他参数，请参考ueditor.config.js中的配置项
+			        });
+					</script>
 						<div class="tips"></div>
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<div class="label">
 						<label></label>
