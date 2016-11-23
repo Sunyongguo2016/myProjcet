@@ -34,8 +34,7 @@ public class ExamServiceImpl {
 		exam.setExamName(e.getExamName());
 		exam.setExamType(e.getExamType());
 		exam.setExamTime(e.getExamTime());
-		System.out.println("service" + e.getExamId() + e.getExamName() + e.getExamType() + e.getExamTime());
-		this.examDaoImpl.update(exam);
+		this.examDaoImpl.updateExam(exam);
 	}
 	
 	public void dropExam(int examId){
