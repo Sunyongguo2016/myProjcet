@@ -1,5 +1,7 @@
 package com.course.exam.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -56,7 +58,6 @@ public class ExamController {
 	@RequestMapping(value="add",method=RequestMethod.POST)
 	public String add(@RequestParam("type") String type, @RequestParam("time") int time, 
 			@RequestParam("name") String name, @RequestParam("examUrl") String examUrl){
-		
 		Exam e = new Exam();
 		e.setExamName(name);
 		e.setExamType(type);
@@ -98,7 +99,6 @@ public class ExamController {
 		e.setExamName(name);
 		e.setExamType(type);
 		e.setExamTime(time);
-		System.out.println(e.getExamName()+e.getExamType()+e.getExamTime());
 		try {
 			this.examServiceImpl.editExam(e);
 		} catch (Exception e1) {
@@ -135,11 +135,16 @@ public class ExamController {
 	public String list(@RequestParam(name="pageNum", defaultValue="1") int pageNum,
 			@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
 			Model model){
-		
+		System.out.println(searchParam);
 		Page<Exam> page;
 		if(searchParam == null || "".equals(searchParam)){
 			page = this.examServiceImpl.listExam(pageNum, 5, null);	
 		}else{
+			try {
+				 searchParam = new String(searchParam.getBytes("ISO8859_1"), "UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
 			page = this.examServiceImpl.listExam(pageNum, 5, new Object[]{searchParam});
 		}
 		request.setAttribute("page", page);
