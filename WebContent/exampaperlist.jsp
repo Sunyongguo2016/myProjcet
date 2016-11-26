@@ -15,20 +15,6 @@
 <link rel="stylesheet" href="${ctx }/css/admin.css">
 <script src="${ctx }/js/jquery.js"></script>
 <script src="${ctx }/js/pintuer.js"></script>
-<script type="text/javascript">
-	function search(){
-	alert("search");
-	var p=$("#searchParam").val();
-	alert(p);
-	window.location.href="${ctx }/exam/list?searchParam="+p;
-	
-	$("[name='pagen']").each(function(key,value){
-		
-		$(this).attr("href",$(this).attr("href")+"&searchParam='"+p+"'");
-	});
-		
-	}
-</script>
 </head>
 <body>
 	<form method="post" action="" id="listform">
@@ -45,9 +31,10 @@
 
 					<li><input type="text" placeholder="请输入搜索关键字" id="searchParam" name="searchParam" value="${searchParam }" 
 						class="input" style="width: 250px; line-height: 17px; display: inline-block" />
-						<a href="javascrpt:search()"
+						<a href="javascrpt:searchp()"
 						class="button border-main icon-search" 
-						 onclick="search();return false;">	搜索</a></li>
+						 onclick="searchp();return false;">	搜索</a>
+					</li>
 				</ul>
 			</div>
 			<table class="table table-hover text-center">
@@ -119,10 +106,14 @@
 		</div>
 	</form>
 	<script type="text/javascript">
-		//搜索
-		function changesearch() {
-
-		}
+	//搜索
+	function searchp(){
+		var p=$("#searchParam").val();
+		window . location . href = "${ctx }/exam/list?searchParam="+p;
+		$("[name='pagen']").each(function(key,value){
+			$(this).attr("href",$(this).attr("href")+"&searchParam='"+p+"'");
+		});
+	}
 
 		//单个删除
 		function del(id, mid, iscid) {
