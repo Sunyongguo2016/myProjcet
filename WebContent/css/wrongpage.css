@@ -1,0 +1,132 @@
+*{
+	background:write;
+	width: auto;
+}
+#elButton a  {
+	width: 30px;
+	height: 40px;
+	color: #fff;
+	text-decoration-color: #fff;
+	font-size:25px;
+	text-align: center;
+
+	font-family:verdana;
+
+	font-weight:bold;
+
+	text-decoration: none;
+
+	
+	background-color:#20B2AA;
+	border: 4px outset;
+	display: block;
+
+	width: 160px;
+
+	padding: 3px 5px;
+
+	margin: 1px;
+
+}
+
+#elButton a:hover {
+
+	background-color: #20B2AA;
+
+	color:#FFF;
+
+	padding-left:4px;
+
+	border:4px inset ;
+
+}
+#elButton div{
+	text-align: center;
+	width: 200px;
+}
+#elButton{
+	margin: 50px 0px 20px 40px;
+	width: 200px;
+	height: 400px;
+	float: left;
+}
+#jumpx{
+	width: 200px;
+	height: 100px;
+	padding-top: 200px;
+	font-family: 幼圆;
+	display: block;
+}
+#right{
+	float: left;
+	width: 950px;
+	height: 850px;
+	margin:30px;
+	border:10px inset;
+	background-image: url(../img/bgc.png);
+}
+#right2{
+	float: left;
+	width: 950px;
+	height: 850px;
+	margin: 30px;
+	border:10px inset;
+	background-image: url(../img/bgc.png);
+}
+#r1{
+	margin-top: 20px;
+	width: 850px;
+	padding: 30px 20px 20px 50px;
+	overflow: auto;
+	text-indent: 20px;
+	
+}
+p {
+	word-break: break-all;
+	
+}
+#r2{
+	width: 900px;
+	padding:20px 20px 20px 50px;
+}
+#r2l{
+	width: 900px;
+	padding: 10px;
+}
+.s1{
+	float: left;
+	margin-left: 200px;
+	width: 80px;
+}
+.s2{
+	float: left;
+	margin-left: 20px;
+	width: 80px;
+}
+#r3r{
+	padding-left: 300px;
+	float: left;
+}
+#r32{
+	width: 200px;
+	height: 100px;
+	padding-top: 150px;
+	font-family: 幼圆;
+	display: none;
+}
+#top{
+	margin:50px 0px 0px 30px;
+	line-height: 170%;
+}
+#buttom{
+	margin:320px  0px 10px 400px;
+}
+#buttom ul li{
+	float: left;
+	margin-left: 10px;
+	width: 45px;
+	height: 15px;
+	border: 1px solid;
+	text-align: center;
+	font-size: 10px;
+}

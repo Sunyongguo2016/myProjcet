@@ -1,0 +1,142 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	font-family: "宋体";
+}
+
+.banner{
+	height:410px;
+	width:1349px;
+}
+/*公告板*/
+#billboard{
+	position:absolute;
+	left:150px;
+	top:590px;
+	height:330px;
+	width:470px;
+	color:#FFFFFF;
+	/*float:left;*/
+}
+#billboard a{
+	float:right;
+	padding-right:40px;
+	color:#FFFFFF;
+}
+#billboard ul{
+	float:left;
+	padding-left:15px;
+	color:#FFFFFF;
+	padding-top:30px;
+}
+
+/*自测*/
+#exam{
+	position:absolute;
+	left:750px;
+	top:590px;
+	height:330px;
+	width:470px;
+	color:#FFFFFF;
+	/*float:left;*/
+}
+#exam a{
+	float:right;
+	padding-right:40px;
+	color:#FFFFFF;
+}
+#exam ul{
+	float:left;
+	padding-left:15px;
+	color:#FFFFFF;
+	padding-top:30px;
+}
+
+/*专项*/
+#sp{
+	position:absolute;
+	left:150px;
+	top:970px;
+	height:330px;
+	width:470px;
+	color:#FFFFFF;
+	/*float:left;*/
+}
+#sp a{
+	float:right;
+	padding-right:40px;
+	color:#FFFFFF;
+}
+#sp ul{
+	float:left;
+	padding-left:15px;
+	color:#FFFFFF;
+	padding-top:30px;
+}
+
+/*错题本*/
+#wrong{
+	position:absolute;
+	left:750px;
+	top:970px;
+	height:330px;
+	width:470px;
+	color:#FFFFFF;
+	/*float:left;*/
+}
+#wrong a{
+	float:right;
+	padding-right:40px;
+	color:#FFFFFF;
+}
+#wrong ul{
+	float:left;
+	padding-left:15px;
+	color:#FFFFFF;
+	padding-top:30px;
+}
+
+#footer{
+	position:absolute;
+	width:1329px;
+	top:1350px;
+	background-color: 	#20B2AA;
+	text-align: center;
+	color: #000;
+	padding:10px 10px;
+	color: #fff;
+}
+#footer a{
+	color: #fff;
+}
+#footer p{
+	margin-top: 10px;
+}
+.js{
+	margin:10px auto 0 auto;
+	overflow:hidden;
+}
+.js .rsp{
+	width:470px;
+	height:330px;
+	overflow:hidden;
+	position: absolute;
+	background:#000;
+	top:0px;
+	left:0px;
+}
+.js .text{
+	position:absolute;
+	width:430px;
+	left:-500px;
+	height:330px;
+	top:0px;
+	padding-top:20px;
+	padding-left:40px;
+	overflow:hidden;
+	border-style:none;
+	text-align:left;
+	line-height:30px;
+}
