@@ -5,10 +5,14 @@
 	text-decoration: none;
 	font-family: "宋体";
 }
-
 .banner{
 	height:410px;
 	width:1349px;
+}
+p{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
 }
 /*公告板*/
 #billboard{
@@ -17,21 +21,22 @@
 	top:590px;
 	height:330px;
 	width:470px;
-	color:#FFFFFF;
+	color:#FFF;
+	background-image: url(../images/billboard.jpg);
+	padding: 10px 10px;
 	/*float:left;*/
 }
 #billboard a{
-	float:right;
 	padding-right:40px;
-	color:#FFFFFF;
+	color:#FFF;
+	line-height: 25px;
+}
+#billboard a:hover{
+	color: #20B2AA;
 }
 #billboard ul{
-	float:left;
-	padding-left:15px;
-	color:#FFFFFF;
-	padding-top:30px;
+	margin-top: 10px;
 }
-
 /*自测*/
 #exam{
 	position:absolute;
@@ -39,21 +44,22 @@
 	top:590px;
 	height:330px;
 	width:470px;
-	color:#FFFFFF;
+	color:#FFF;
+	background-image: url(../images/exam.jpg);
+	padding: 10px 10px;
 	/*float:left;*/
 }
 #exam a{
-	float:right;
 	padding-right:40px;
-	color:#FFFFFF;
+	color:#FFF;
+	line-height: 25px;
+}
+#exam a:hover{
+	color: #20B2AA;
 }
 #exam ul{
-	float:left;
-	padding-left:15px;
-	color:#FFFFFF;
-	padding-top:30px;
+	margin-top: 10px;
 }
-
 /*专项*/
 #sp{
 	position:absolute;
@@ -61,19 +67,21 @@
 	top:970px;
 	height:330px;
 	width:470px;
-	color:#FFFFFF;
+	color:#FFF;
+	background-image: url(../images/project.jpg);
+	padding: 10px 10px;
 	/*float:left;*/
 }
 #sp a{
-	float:right;
 	padding-right:40px;
-	color:#FFFFFF;
+	color:#FFF;
+	line-height: 25px;
+}
+#sp a:hover{
+	color: #20B2AA;
 }
 #sp ul{
-	float:left;
-	padding-left:15px;
-	color:#FFFFFF;
-	padding-top:30px;
+	margin-top: 10px;
 }
 
 /*错题本*/
@@ -83,60 +91,35 @@
 	top:970px;
 	height:330px;
 	width:470px;
-	color:#FFFFFF;
+	color:#FFF;
+	background-image: url(../images/wrong.jpg);
+	padding: 10px 10px;
 	/*float:left;*/
 }
 #wrong a{
-	float:right;
 	padding-right:40px;
-	color:#FFFFFF;
+	color: #fff;
+	line-height: 25px;
+}
+#wrong a:hover{
+	color: #20B2AA;
 }
 #wrong ul{
-	float:left;
-	padding-left:15px;
-	color:#FFFFFF;
-	padding-top:30px;
+	margin-top: 10px;
 }
 
-#footer{
+.footer{
 	position:absolute;
 	width:1329px;
-	top:1350px;
-	background-color: 	#20B2AA;
-	text-align: center;
+	height: 50px;
+	background-color:#20B2AA;
+	line-height: 25px;
 	color: #000;
 	padding:10px 10px;
 	color: #fff;
+	top: 1400px;
 }
-#footer a{
+.footer a{
 	color: #fff;
 }
-#footer p{
-	margin-top: 10px;
-}
-.js{
-	margin:10px auto 0 auto;
-	overflow:hidden;
-}
-.js .rsp{
-	width:470px;
-	height:330px;
-	overflow:hidden;
-	position: absolute;
-	background:#000;
-	top:0px;
-	left:0px;
-}
-.js .text{
-	position:absolute;
-	width:430px;
-	left:-500px;
-	height:330px;
-	top:0px;
-	padding-top:20px;
-	padding-left:40px;
-	overflow:hidden;
-	border-style:none;
-	text-align:left;
-	line-height:30px;
-}
+

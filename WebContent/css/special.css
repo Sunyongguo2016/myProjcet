@@ -16,7 +16,7 @@ a {
 
 /*面包屑*/
 .breadcrumb {
-	top:510px;
+	top:180px;
 	color:#000000;
 	float:left;
 	font-size:14px;
@@ -28,7 +28,7 @@ a {
     width:233px;
     float:left;
     position:absolute;
-	top:550px;
+	top:210px;
 	left:230px;
 }
 .left h2{
@@ -65,7 +65,7 @@ a {
 	width:800px;
 	position:absolute;
   	left: 540px;
-  	top: 550px;
+  	top: 210px;
 }
 table {
   border-collapse:collapse;

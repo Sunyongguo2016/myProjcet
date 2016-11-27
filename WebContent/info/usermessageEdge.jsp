@@ -22,7 +22,7 @@
 			</div>
 			<div class="menu">
 				<ul>
-					<li class="current"><a href="index.html">网站首页</a></li>
+					<li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
 					<li><a href="${ctx }/categroy.jsp">大学英语四级</a></li>
 					<li><a href="${ctx }/category.jsp">大学英语六级</a></li>
 					<li><a href="${ctx }/arena.jsp">竞技场</a></li>
@@ -42,7 +42,7 @@
 						<ul>
 							<li><a href="${ctx }/usermessage.jsp">个人信息</a></li>
                             <li><a href="${ctx }/install.jsp">设置</a></li>
-                            <li><a href="${ctx }/index.jsp">退出登录</a></li>
+                            <li><a href="${ctx }/index_before.jsp">退出登录</a></li>
 						</ul>
 					</li>
 				</ul>

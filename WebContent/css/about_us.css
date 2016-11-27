@@ -8,15 +8,10 @@
 a {
 	color:#000000;
 }
-/*banner*/
-.banner {
-	width:1349px;
-	height:350px;
-}
 
 /*面包屑*/
 .breadcrumb {
-	top:510px;
+	top:170px;
 	color:#000000;
 	float:left;
 	font-size:14px;
@@ -28,7 +23,7 @@ a {
     width:233px;
     float:left;
     position:absolute;
-	top:550px;
+	top:200px;
 	left:183px;
 }
 .left h2{
@@ -64,7 +59,7 @@ a {
     width: 750px;
     float: left;
     background-color: #FFFFFF;
-	top:550px;
+	top:180px;
 	left:416px;
 	position:absolute;
 }
@@ -91,6 +86,14 @@ a {
     text-align: center;
     margin-bottom: 10px;
     border-bottom: 1px dotted #afafaf;
+}
+.page li{
+    float: left;
+    margin-left: 10px;
+}
+.page{
+    position: absolute;
+    right: 0px;
 }
 /*底部footer*/
 #footer{

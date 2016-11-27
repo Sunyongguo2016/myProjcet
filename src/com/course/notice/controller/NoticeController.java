@@ -148,4 +148,16 @@ public class NoticeController {
 		
 		return "notice/noticelist";
 	}
+	
+	/**
+	 * 
+	 *  田瑞航  写 
+	 */
+	@RequestMapping("billboardlist")
+	public String list(HttpServletRequest request, Model model){
+		
+//		田瑞航完成 这个函数 以及billboardlist.jsp内容动态获取
+		return "billboard/billboardlist";
+	}
+	
 }
