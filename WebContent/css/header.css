@@ -1,0 +1,156 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	
+}
+a{
+	color:#000;
+	font-size:15px;
+}
+a:hover{
+	color:#20B2AA;
+}
+.header{
+	height:80px;
+}
+.logo img{
+	height: 80px;
+	margin-left: 50px;
+	float: left;
+}
+.search{
+	float: left;
+	margin: 35px 0px 10px 300px;
+}
+.text{
+	height: 25px;
+	width: 300px;
+	border:2px solid #20B2AA;
+}
+.button{
+	background-color:#20B2AA;
+	border-color: #20B2AA;
+	width: 70px;
+	height:30px; 
+	color: white;
+	font-size: 18px;
+}
+.login{
+	display:block;
+	float: left;
+	margin:37px 0px 10px 150px;
+}
+.login button{
+	background-color: transparent;
+	border:0;
+	color:#20B2AA;
+	font-size:20px;	
+}
+
+.after_login{
+	display:none;
+}
+#username{
+	float: left;
+	margin: 20px 0px 0px 90px;
+}
+#username p{
+	margin-top: 5px;
+	text-align: center;
+	color: #000000;
+	padding:15px 15px;
+	font-size:18px;
+}
+.nav{ 
+	float: left;
+	margin-right: 0px;
+	margin-top: 0px;
+} 
+.nav img{
+	float: left;
+	margin-top: 20px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+.nav ul{
+	float: left; 
+  	list-style:none; 
+} 
+.nav ul li{ 
+	line-height:40px; 
+	text-align:center;
+	position: relative;
+} 
+.nav a{ 
+	text-decoration:none; 
+	color:#000000; 
+	display:block; 
+	width:40px; 
+	height:40px; 
+}
+.nav ul li ul li a{
+	text-decoration:none; 
+ 	color:#000000; 
+ 	display:block; 
+ 	width:100px; 
+	height:40px; 
+} 
+.nav a:hover{  
+	color:#000000; 
+} 
+.nav ul li ul li{ 
+ 	float:right;
+ 	background-color:#F0F0F0; 
+  	z-index:200;
+} 
+.nav ul li ul{
+	display:none;
+	padding-top:4px;
+	padding-left:30px;
+	height: 10px;
+	width: 40px;
+} 
+/*为了兼容IE7设置的CSS样式，但是又必须写在a:hover前面*/
+.nav ul li ul li a:link,ul li ul li a:visited{ 
+	background-color:#F0F0F0; 
+} 
+.nav ul li ul li a:hover{ 
+	background-color:#E3E3E3; 
+}
+
+.menu{
+	width:100%;
+	height: 50px;
+	background-color: #20B2AA;
+	box-shadow: 
+}
+.menu ul{
+	width:960px;
+	height:40px;
+	left:200px;
+	background-color: #20B2AA;
+	position:absolute;
+	margin: 0 auto; 
+}
+.menu ul li{
+	float: left;
+}
+.menu ul li a{
+	display: block;
+	padding:13px 30px;
+	font-size: 20px;
+	font-weight: bold;
+	color:#fff;
+}
+.menu .block{
+	width: 48px;
+	height: 2px;
+	background: #fff;
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+	z-index: 99;
+}

@@ -24,7 +24,7 @@ body{
 	width:50%; 
 	background:#E1FFFF; 
 	padding:10px; 
-	height:400px; 
+	height:600px; 
 	margin-left: 200px;
 	margin: 0 auto;
 }
@@ -50,18 +50,6 @@ body{
 	width: 100%;
 	height: 100px;
 	background-color: #20B2AA;
-}
-.head h2{
-	color: #fff;
-	text-align: center;
-	line-height: 100px;
-	display: block;
-}
-.head a{
-	text-align:center;
-	line-height: 100px;
-	float: left;
-	margin-left: 40px;
 }
 .left{
 	position: fixed;
