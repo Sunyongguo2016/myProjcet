@@ -70,6 +70,19 @@ public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 			return null;
 		}
 	}
+	
+	public Exam findByName(String examName){
+		String hql;
+		Object[] params = {examName};
+		hql="from Exam e where e.examName like ?";
+		try {
+			return this.findOne(hql, params);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	/**
 	 * 
@@ -81,7 +94,6 @@ public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 	 */
 	public void updateExam(Exam e) {
 		try {
-			System.out.println("dao" + e.getExamId() + e.getExamName() + e.getExamName() + e.getExamTime());
 			this.update(e);
 		} catch (Exception ee) {
 			ee.printStackTrace();

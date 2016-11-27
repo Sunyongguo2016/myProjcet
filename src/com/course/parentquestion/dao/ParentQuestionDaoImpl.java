@@ -25,7 +25,30 @@ public class ParentQuestionDaoImpl extends BaseDao<ParentQuestion, Integer> {
 		}
 	}
 	
-	//按大题名称和搜索条件查找parentquestion
+	//按大题名称和搜索条件查找parentquestion  适用于听力
+		public Page<ParentQuestion> findParentQuestionListeningByParentQuestionName(int pageNum, int pageSize,Object[] params){
+			String hql;
+			if(params!=null && params.length>1){
+				hql="from ParentQuestion p where p.parentQuestionName like ? and p.parentQuestionName like ?";
+				params[0]="%"+params[0].toString().substring(0, 20)+"%";
+				params[1]="%"+params[1]+"%";
+			}else{
+				hql="from ParentQuestion p where p.parentQuestionName like ?";
+				params[0]="%"+params[0].toString().substring(0, 20)+"%";
+			}
+			try {
+				Page<ParentQuestion> page=new Page<ParentQuestion>();
+				page.setCurrentPageNum(pageNum);
+				page.setPageSize(pageSize);
+				page=this.findByPage(pageNum, pageSize, hql, params);
+				return page;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+	
+	//按大题名称和搜索条件查找parentquestion  适用于十五选十等
 	public Page<ParentQuestion> findParentQuestionByParentQuestionName(int pageNum, int pageSize,Object[] params){
 		String hql;
 		if(params!=null && params.length>1){
@@ -47,6 +70,8 @@ public class ParentQuestionDaoImpl extends BaseDao<ParentQuestion, Integer> {
 			return null;
 		}
 	}
+	
+	
 	
 	
 	

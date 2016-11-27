@@ -32,7 +32,7 @@ public class ExamController {
 	
 	/**
 	 * 
-	 * @desc				添加试卷，获取addpage.jsp的参数，实现添加exam对象；
+	 * @desc				跳转到添加页面；
 	 * @author				童海苹
 	 * @createDate 			2016/11/22
 	 * @param 				获得试卷相关参数
@@ -62,6 +62,7 @@ public class ExamController {
 		e.setExamName(name);
 		e.setExamType(type);
 		e.setExamTime(time);
+		//数据库examUrl长度改成800 
 		e.setExamUrl(examUrl);
 		this.examServiceImpl.addExam(e);
 		return "redirect:list";
@@ -149,6 +150,6 @@ public class ExamController {
 		}
 		request.setAttribute("page", page);
 		request.setAttribute("searchParam", searchParam);
-		return "exampaperlist";
+		return "exam/exampaperlist";
 	}
 }

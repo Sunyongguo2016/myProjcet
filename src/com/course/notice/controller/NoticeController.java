@@ -129,8 +129,8 @@ public class NoticeController {
 	 */
 	@RequestMapping("list")
 	public String list(@RequestParam(name="pageNum", defaultValue="1") int pageNum,
-			@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
-			Model model){
+			@RequestParam(name="searchParam",defaultValue="") String searchParam,
+			HttpServletRequest request, Model model){
 		Page<Notice> page;
 		if(searchParam == null || "".equals(searchParam)){
 			page=this.noticeServiceImpl.listNotice(pageNum, 5, null);	
@@ -145,6 +145,7 @@ public class NoticeController {
 		}
 		request.setAttribute("page", page);
 		request.setAttribute("searchParam", searchParam);
+		
 		return "notice/noticelist";
 	}
 }

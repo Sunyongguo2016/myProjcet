@@ -1,6 +1,7 @@
 package com.course.choosefillinblank.controller;
 
 import java.io.UnsupportedEncodingException;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -16,6 +17,7 @@ import com.course.entity.Exam;
 import com.course.entity.ParentQuestion;
 import com.course.entity.Question;
 import com.course.entity.Selectt;
+import com.course.exam.service.ExamServiceImpl;
 import com.course.parentquestion.service.ParentQuestionServiceImpl;
 import com.course.question.service.QuestionServiceImpl;
 import com.course.selectt.service.SelecttServiceImpl;
@@ -34,8 +36,8 @@ import com.framework.Page;
 @RequestMapping("choosefillinblank")
 public class ChoosefillinblankController {
 
-//	@Resource
-//	private ExamServiceImpl examServiceImpl;
+	@Resource
+	private ExamServiceImpl examServiceImpl;
 	
 	@Resource
 	private ParentQuestionServiceImpl parentQuestionServiceImpl;
@@ -58,49 +60,49 @@ public class ChoosefillinblankController {
 	 * 
 	 */
 	@RequestMapping("add")
-	public String add(@RequestParam(name = "examname") String examname,
-			@RequestParam(name = "parentquestionname") String parentquestionname,
-			@RequestParam(name = "questionfrom", required = true) Integer questionfrom,
-			@RequestParam(name = "questionto") Integer questionto,
-			@RequestParam(name = "parentquestionarticle") String parentquestionarticle,
-			@RequestParam(name = "parentquestiontitle") String parentquestiontitle,
+	public String add(@RequestParam(name = "examname") String examName,
+			@RequestParam(name = "parentquestionname") String parentQuestionName,
+			@RequestParam(name = "questionfrom", required = true) Integer questionFrom,
+			@RequestParam(name = "questionto") Integer questionTo,
+			@RequestParam(name = "parentquestionarticle") String parentQuestionArticle,
+			@RequestParam(name = "parentquestiontitle") String parentQuestionTitle,
 			@RequestParam(name = "description") String description,
-			@RequestParam(name = "aselecttcontent") String aselecttcontent,
-			@RequestParam(name = "bselecttcontent") String bselecttcontent,
-			@RequestParam(name = "cselecttcontent") String cselecttcontent,
-			@RequestParam(name = "dselecttcontent") String dselecttcontent,
-			@RequestParam(name = "eselecttcontent") String eselecttcontent,
-			@RequestParam(name = "fselecttcontent") String fselecttcontent,
-			@RequestParam(name = "gselecttcontent") String gselecttcontent,
-			@RequestParam(name = "hselecttcontent") String hselecttcontent,
-			@RequestParam(name = "iselecttcontent") String iselecttcontent,
-			@RequestParam(name = "jselecttcontent") String jselecttcontent,
-			@RequestParam(name = "kselecttcontent") String kelecttcontent,
-			@RequestParam(name = "lselecttcontent") String lselecttcontent,
-			@RequestParam(name = "mselecttcontent") String mselecttcontent,
-			@RequestParam(name = "nselecttcontent") String nselecttcontent,
-			@RequestParam(name = "oselecttcontent") String oselecttcontent,
-			@RequestParam(name = "questionscore") String questionscore,
-			@RequestParam(name = "questionanswer36") String questionanswer36,
-			@RequestParam(name = "questionanswer37") String questionanswer37,
-			@RequestParam(name = "questionanswer38") String questionanswer38,
-			@RequestParam(name = "questionanswer39") String questionanswer39,
-			@RequestParam(name = "questionanswer40") String questionanswer40,
-			@RequestParam(name = "questionanswer41") String questionanswer41,
-			@RequestParam(name = "questionanswer42") String questionanswer42,
-			@RequestParam(name = "questionanswer43") String questionanswer43,
-			@RequestParam(name = "questionanswer44") String questionanswer44,
-			@RequestParam(name = "questionanswer45") String questionanswer45,
-			@RequestParam(name = "questionexplain36") String questionexplain36,
-			@RequestParam(name = "questionexplain37") String questionexplain37,
-			@RequestParam(name = "questionexplain38") String questionexplain38,
-			@RequestParam(name = "questionexplain39") String questionexplain39,
-			@RequestParam(name = "questionexplain40") String questionexplain40,
-			@RequestParam(name = "questionexplain41") String questionexplain41,
-			@RequestParam(name = "questionexplain42") String questionexplain42,
-			@RequestParam(name = "questionexplain43") String questionexplain43,
-			@RequestParam(name = "questionexplain44") String questionexplain44,
-			@RequestParam(name = "questionexplain45") String questionexplain45,
+			@RequestParam(name = "aselecttcontent") String aSelecttContent,
+			@RequestParam(name = "bselecttcontent") String bSelecttContent,
+			@RequestParam(name = "cselecttcontent") String cSelecttContent,
+			@RequestParam(name = "dselecttcontent") String dSelecttContent,
+			@RequestParam(name = "eselecttcontent") String eSelecttContent,
+			@RequestParam(name = "fselecttcontent") String fSelecttContent,
+			@RequestParam(name = "gselecttcontent") String gSelecttContent,
+			@RequestParam(name = "hselecttcontent") String hSelecttContent,
+			@RequestParam(name = "iselecttcontent") String iSelecttContent,
+			@RequestParam(name = "jselecttcontent") String jSelecttContent,
+			@RequestParam(name = "kselecttcontent") String kSelecttContent,
+			@RequestParam(name = "lselecttcontent") String lSelecttContent,
+			@RequestParam(name = "mselecttcontent") String mSelecttContent,
+			@RequestParam(name = "nselecttcontent") String nSelecttContent,
+			@RequestParam(name = "oselecttcontent") String oSelecttContent,
+			@RequestParam(name = "questionscore") String questionScore,
+			@RequestParam(name = "questionanswer36") String questionAnswer36,
+			@RequestParam(name = "questionanswer37") String questionAnswer37,
+			@RequestParam(name = "questionanswer38") String questionAnswer38,
+			@RequestParam(name = "questionanswer39") String questionAnswer39,
+			@RequestParam(name = "questionanswer40") String questionAnswer40,
+			@RequestParam(name = "questionanswer41") String questionAnswer41,
+			@RequestParam(name = "questionanswer42") String questionAnswer42,
+			@RequestParam(name = "questionanswer43") String questionAnswer43,
+			@RequestParam(name = "questionanswer44") String questionAnswer44,
+			@RequestParam(name = "questionanswer45") String questionAnswer45,
+			@RequestParam(name = "questionexplain36") String questionExplain36,
+			@RequestParam(name = "questionexplain37") String questionExplain37,
+			@RequestParam(name = "questionexplain38") String questionExplain38,
+			@RequestParam(name = "questionexplain39") String questionExplain39,
+			@RequestParam(name = "questionexplain40") String questionExplain40,
+			@RequestParam(name = "questionexplain41") String questionExplain41,
+			@RequestParam(name = "questionexplain42") String questionExplain42,
+			@RequestParam(name = "questionexplain43") String questionExplain43,
+			@RequestParam(name = "questionexplain44") String questionExplain44,
+			@RequestParam(name = "questionexplain45") String questionExplain45,
 			HttpServletRequest request) {
 		
 		
@@ -109,84 +111,78 @@ public class ChoosefillinblankController {
 		
 		//list集合存储所有的question 答案和解析 信息   方便在for循环中存储
 		List<String> questionLists = new ArrayList<String>();
-		questionLists.add(questionanswer36);
-		questionLists.add(questionanswer37);
-		questionLists.add(questionanswer38);
-		questionLists.add(questionanswer39);
-		questionLists.add(questionanswer40);
-		questionLists.add(questionanswer41);
-		questionLists.add(questionanswer42);
-		questionLists.add(questionanswer43);
-		questionLists.add(questionanswer44);
-		questionLists.add(questionanswer45);
-		questionLists.add(questionexplain36);
-		questionLists.add(questionexplain37);
-		questionLists.add(questionexplain38);
-		questionLists.add(questionexplain39);
-		questionLists.add(questionexplain40);
-		questionLists.add(questionexplain41);
-		questionLists.add(questionexplain42);
-		questionLists.add(questionexplain43);
-		questionLists.add(questionexplain44);
-		questionLists.add(questionexplain45);
-		
+		questionLists.add(questionAnswer36);
+		questionLists.add(questionAnswer37);
+		questionLists.add(questionAnswer38);
+		questionLists.add(questionAnswer39);
+		questionLists.add(questionAnswer40);
+		questionLists.add(questionAnswer41);
+		questionLists.add(questionAnswer42);
+		questionLists.add(questionAnswer43);
+		questionLists.add(questionAnswer44);
+		questionLists.add(questionAnswer45);
+		questionLists.add(questionExplain36);
+		questionLists.add(questionExplain37);
+		questionLists.add(questionExplain38);
+		questionLists.add(questionExplain39);
+		questionLists.add(questionExplain40);
+		questionLists.add(questionExplain41);
+		questionLists.add(questionExplain42);
+		questionLists.add(questionExplain43);
+		questionLists.add(questionExplain44);
+		questionLists.add(questionExplain45);
+	
 		
 		//用list集合保存单选内容   方便用循环存储数据
 		List<String> selecttLists = new ArrayList<String>();
-		selecttLists.add(aselecttcontent);
-		selecttLists.add(bselecttcontent);
-		selecttLists.add(cselecttcontent);
-		selecttLists.add(dselecttcontent);
-		selecttLists.add(eselecttcontent);
-		selecttLists.add(fselecttcontent);
-		selecttLists.add(gselecttcontent);
-		selecttLists.add(hselecttcontent);
-		selecttLists.add(iselecttcontent);
-		selecttLists.add(jselecttcontent);
-		selecttLists.add(kelecttcontent);
-		selecttLists.add(lselecttcontent);
-		selecttLists.add(mselecttcontent);
-		selecttLists.add(nselecttcontent);
-		selecttLists.add(oselecttcontent);
-
-//		待实现功能,这段注释不要学习
-//		根据examname查询exam,赋值给parentquestion,实现关联关系;
-//		前提必须有exam  需要判空
-//		Exam exam = null;
-//		exam = this.examServiceImpl.findByExamName(examname);
-//		
-//		if(exam == null){
-//			return "404";
-//		}
+		selecttLists.add(aSelecttContent);
+		selecttLists.add(bSelecttContent);
+		selecttLists.add(cSelecttContent);
+		selecttLists.add(dSelecttContent);
+		selecttLists.add(eSelecttContent);
+		selecttLists.add(fSelecttContent);
+		selecttLists.add(gSelecttContent);
+		selecttLists.add(hSelecttContent);
+		selecttLists.add(iSelecttContent);
+		selecttLists.add(jSelecttContent);
+		selecttLists.add(kSelecttContent);
+		selecttLists.add(lSelecttContent);
+		selecttLists.add(mSelecttContent);
+		selecttLists.add(nSelecttContent);
+		selecttLists.add(oSelecttContent);
+		
+		// 根据examName找到exam对象
+		Exam exam = this.examServiceImpl.findByName(examName);
+		if (exam == null) {
+			return "404";
+		}
 		
 		
 		//将获取到的参数赋值给parentquestion,保存parentquestion
-		ParentQuestion parentquestion = new ParentQuestion();
+		ParentQuestion parentQuestion = new ParentQuestion();
 		
-		//此处关联没有实现 
 		//parentquestion与exam关联;
-		//parentquestion.setExam(exam);
-		
-		parentquestion.setParentQuestionName(parentquestionname);
-		parentquestion.setDescription(description);
-		parentquestion.setParentQuestionTitle(parentquestiontitle);
-		parentquestion.setParentQuestionArticle(parentquestionarticle);
+		parentQuestion.setExam(exam);
+		parentQuestion.setParentQuestionName(parentQuestionName);
+		parentQuestion.setDescription(description);
+		parentQuestion.setParentQuestionTitle(parentQuestionTitle);
+		parentQuestion.setParentQuestionArticle(parentQuestionArticle);
 
 		
-		//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
+		//设置questions集合  将question加入questions  将questions作为属性加入parentQuestion
 		Set<Question> questions = new HashSet<Question>(0);
 		
 		
 		//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
-		for (Integer i = 0; i < questionto-questionfrom+1; i++) {
+		for (Integer i = 0; i < questionTo-questionFrom+1; i++) {
 			Question question = new Question();
-			question.setParentQuestion(parentquestion);
-			question.setQuestionContent(((Integer)(i+questionfrom)).toString());
+			question.setParentQuestion(parentQuestion);
+			question.setQuestionContent(((Integer)(i+questionFrom)).toString());
 			question.setQuestionAnswer(questionLists.get(i));
 			
 			//集合questionLists中  前十个是answer  后十个是explain
 			question.setQuestionExplain(questionLists.get(i+10));
-			question.setQuestionScore(Float.parseFloat(questionscore));
+			question.setQuestionScore(Float.parseFloat(questionScore));
 			
 			Set<Selectt> selectts = new HashSet<Selectt>(0);
 			
@@ -210,10 +206,10 @@ public class ChoosefillinblankController {
 			questions.add(question);
 		}
 		
-		parentquestion.setQuestions(questions);
+		parentQuestion.setQuestions(questions);
 		
-		//存储parentquestion
-		this.parentQuestionServiceImpl.addParentQuestion(parentquestion);
+		//存储parentQuestion
+		this.parentQuestionServiceImpl.addParentQuestion(parentQuestion);
 		return "redirect:list";
 	}
 	
@@ -277,7 +273,6 @@ public class ChoosefillinblankController {
 		 
 		 request.setAttribute("page", page);
 		 request.setAttribute("searchParam", searchParam);
-		 
 		 return "choosefillinblank/choosefillinblanklist";
 	 }
 }

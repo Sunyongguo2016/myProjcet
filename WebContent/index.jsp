@@ -38,7 +38,6 @@
 			<span class="icon-user"></span>公告设置
 		</h2>
 		<ul style="display: block">
-			<!-- <li><a href="userlist.html" target="right"><span class="icon-caret-right"></span>用户管理</a></li> -->
 			<li><a href="${ctx }/notice/list" target="right"><span
 					class="icon-caret-right"></span>公告管理</a></li>
 		</ul>
@@ -48,17 +47,17 @@
 		<ul style="display: block">
 			<li><a href="${ctx }/exam/list" target="right"><span
 					class="icon-caret-right"></span>试卷管理</a></li>
-			<li><a href="${ctx }/compositionlist.jsp" target="right"><span
+			<li><a href="${ctx }/writing/list?parentQuestionName=Writing" target="right"><span
 					class="icon-caret-right"></span>作文题管理</a></li>
-			<li><a href="${ctx }/listening/list" target="right"><span
+			<li><a href="${ctx }/listening/list?parentQuestionName=ListeningComprehension" target="right"><span
 					class="icon-caret-right"></span>听力管理</a></li>
 			<li><a href="${ctx }/choosefillinblank/list?parentQuestionName=ChooseFillInBlank" target="right"><span
 					class="icon-caret-right"></span>十五选十管理</a></li>
-			<li><a href="${ctx }/translationlist.jsp" target="right"><span
+			<li><a href="${ctx }/quickreading/list?parentQuestionName=QuickReading" target="right"><span
 					class="icon-caret-right"></span>快速阅读</a></li>
-			<li><a href="${ctx }/readinglist.jsp" target="right"><span
+			<li><a href="${ctx }/reading/list?parentQuestionName=LastReading" target="right"><span
 					class="icon-caret-right"></span>阅读题管理</a></li>
-			<li><a href="${ctx }/translationlist.jsp" target="right"><span
+			<li><a href="${ctx }/translation/list?parentQuestionName=Translation" target="right"><span
 					class="icon-caret-right"></span>翻译题管理</a></li>
 			
 

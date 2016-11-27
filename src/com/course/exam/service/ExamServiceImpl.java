@@ -48,9 +48,15 @@ public class ExamServiceImpl {
 	 * @version 			V1.0
 	 * 
 	 */
+
 	@Transactional(readOnly = true)
 	public Exam getExam(int examId){
 		return this.examDaoImpl.getExam(examId);
+	}
+	
+	@Transactional(readOnly=true)
+	public Exam findByName(String examName){
+		return this.examDaoImpl.findByName(examName);
 	}
 	
 	/**
@@ -66,7 +72,7 @@ public class ExamServiceImpl {
 		exam.setExamName(e.getExamName());
 		exam.setExamType(e.getExamType());
 		exam.setExamTime(e.getExamTime());
-		System.out.println("service" + e.getExamId() + e.getExamName() + e.getExamType() + e.getExamTime());
+
 		this.examDaoImpl.updateExam(exam);
 	}
 	

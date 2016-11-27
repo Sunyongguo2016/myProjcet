@@ -3,6 +3,7 @@
   <display-name>myProject</display-name>
   <welcome-file-list>
     <welcome-file>index_before.jsp</welcome-file>
+
   </welcome-file-list>
   <context-param>
   	<param-name>contextConfigLocation</param-name>
