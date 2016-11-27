@@ -58,7 +58,6 @@ public class ExamController {
 	@RequestMapping(value="add",method=RequestMethod.POST)
 	public String add(@RequestParam("type") String type, @RequestParam("time") int time, 
 			@RequestParam("name") String name, @RequestParam("examUrl") String examUrl){
-		
 		Exam e = new Exam();
 		e.setExamName(name);
 		e.setExamType(type);

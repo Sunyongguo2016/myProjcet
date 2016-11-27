@@ -9,6 +9,14 @@ import com.framework.Page;
 @Repository
 public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 
+	/**
+	 * 
+	 * @Description 		增加试卷
+	 * @author 				童海苹
+	 * @createDate  		2016/11/22
+	 * @version 			V1.0
+	 * 
+	 */
 	public void saveExam(Exam e) {
 		try {
 			this.save(e);
@@ -16,7 +24,15 @@ public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 			ee.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * 
+	 * @Description 		按页查询试卷
+	 * @author 				童海苹
+	 * @createDate  		2016/11/22
+	 * @version 			V1.0
+	 * 
+	 */
 	public Page<Exam> findExam(int pageNum, int pageSize, Object[] params) {
 		String hql;
 		if (params != null && params.length > 0) {
@@ -37,6 +53,14 @@ public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 		}
 	}
 
+	/**
+	 * 
+	 * @Description 		根据ID查询试卷
+	 * @author 				童海苹
+	 * @createDate  		2016/11/22
+	 * @version 			V1.0
+	 * 
+	 */
 	public Exam getExam(int examId) {
 		try {
 			Exam e = this.get(examId);
@@ -60,6 +84,14 @@ public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 		}
 	}
 
+	/**
+	 * 
+	 * @Description 		编辑试卷
+	 * @author 				童海苹
+	 * @createDate  		2016/11/22
+	 * @version 			V1.0
+	 * 
+	 */
 	public void updateExam(Exam e) {
 		try {
 			this.update(e);
@@ -68,6 +100,14 @@ public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 		}
 	}
 
+	/**
+	 * 
+	 * @Description 		删除试卷
+	 * @author 				童海苹
+	 * @createDate  		2016/11/22
+	 * @version 			V1.0
+	 * 
+	 */
 	public void deleteExam(int examId) {
 		try {
 			this.delete(examId);
