@@ -1,6 +1,11 @@
 package com.course.login.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -70,6 +75,28 @@ public class LoginController {
 			return "redirect:/login_use.jsp";
 		}	
 	}
+	
+	@RequestMapping("checkname")
+	public void CheckNameExist(HttpServletRequest request, HttpServletResponse response){
+		String name=request.getParameter("username");
+		StudentInfo s = this.loginServiceImpl.checkStudent(name);
+		
+		if(s != null){
+			try {
+				response.getWriter().write("exist");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				response.getWriter().write("");
+			} catch (IOException e) {
+			}
+		}
+		
+	}
+	
+	
 	
 	/**
 	 * 
