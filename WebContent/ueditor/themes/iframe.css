@@ -1,5 +1,4 @@
 /*可以在这里添加你自己的css*/
-<span style="font-size:14px;">/*可以在这里添加你自己的css*/  
 img {  
  max-width: 100%; /*图片自适应宽度*/  
 }  
@@ -17,5 +16,4 @@ body {
  border: 0 none;  
  height: 100%;  
 }  
-#edui1_imagescale{display:none !important;} /*去除点击图片后出现的拉伸边框*/</span> 
-
+#edui1_imagescale{display:none !important;}

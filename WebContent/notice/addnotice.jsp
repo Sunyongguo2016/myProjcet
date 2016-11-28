@@ -16,7 +16,7 @@
 <script src="${ctx }/js/jquery.js"></script>
 <script src="${ctx }/js/pintuer.js"></script>
 <script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.all.js"> </script>
 </head>
 <body>
 	<div class="panel admin-panel">
@@ -70,6 +70,7 @@
 					UE.getEditor('container',{
 			            //这里可以选择自己需要的工具按钮名称,
 			            toolbars:[['fullscreen', 'bold','italic','underline','paragraph','insertorderedlist', 'insertunorderedlist','link' ,'unlink' ,'date','cleardoc', 'simpleupload','attachment']],
+			           
 			            //focus时自动清空初始化时的内容
 			            autoClearinitialContent:true,
 			            //关闭字数统计

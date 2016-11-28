@@ -16,7 +16,7 @@
 <script src="${ctx }/js/jquery.js"></script>
 <script src="${ctx }/js/pintuer.js"></script>
 <script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.all.js"> </script>
 </head>
 <body>
 	<div class="panel admin-panel">
