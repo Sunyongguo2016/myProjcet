@@ -20,9 +20,31 @@
 	  }
 </style>
 <script type="text/javascript">
-
-	
-
+function checkExist(){
+	var val = document.getElementById("username1").value;
+	$.get("${ctx }/loginuser/checkname",{'username':val},function(data){
+		var tip = document.getElementById("userTip");
+		if("exist"==data){
+			tip.innerHTML="用户名不可重复";
+			tip.style.color = "red";
+		} else if(""==data) {
+			tip.innerHTML="用户名可用";
+			tip.style.color = "green";
+		}
+	});
+}
+function checkPwd(){
+	var pwd = document.getElementById("pass").value;
+	var repwd = docuemnt.getElementById("repassword").value;
+	var repwdTip = document.getElementById("repwdTip");
+	if(pwd == repwd){
+		repwdTip.innerHTML = "密码和确认密码一致";
+		repwdTip.style.color = "green";
+	} else {
+		repwdTip.innerHTML = "密码和确认密码不一致";
+		repwdTip.style.color = "red";
+	}
+}
 </script>		
 </head>
 <body>
@@ -53,8 +75,8 @@
 		<form action="${ctx }/loginuser/regist" method="post" id="my-form">
 			<div class="username">
 				<label>用户名：</label>
-				<input id="username1" name="username" type="text" value="" />
-				<span id="userTip" ></span>
+				<input id="username1" name="username" type="text" value="" onblur="checkExist();"/>
+				<span id="userTip" style="display:inline" ></span>
 			</div>
 			<div class="password">
 				<label>密&nbsp;码：</label><input id="pass" name="password"
@@ -62,9 +84,10 @@
 			</div>
 			<div class="repassword">
 				<label>确认密码:</label><input id="repassword" name="surepassword"
-					type="password" />
+					type="password" onblur="checkPwd();"/>
+					<span id = "repwdTip" style="display:inline"></span>
 			</div>
-			<div class="img" float="left">
+	 	<div class="img" float="left">
 				<label>上传头像：</label> 
 					    <!-- 加载编辑器的容器 -->
 			    	<script id="container" name="noticeContent" type="text/plain">
@@ -88,8 +111,8 @@
 			        });
 					</script>
 			</div>
-			
-			<div class="" float="clear">
+				
+			<div class="">
 				<table border="0" cellspacing="5" cellpadding="5">
 					<tr>
 						<td class="yanzhengma">验证码：</td>
@@ -110,7 +133,7 @@
 					</tr>
 				</table>
 			</div>
-			<div id="submitreset">
+			<div id="submitreset" >
 				<a href="${ctx }/index_before.jsp"><button type="submit"
 						id="submit">提交</button></a>
 			</div>
