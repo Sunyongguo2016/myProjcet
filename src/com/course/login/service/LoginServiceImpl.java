@@ -3,7 +3,6 @@ package com.course.login.service;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-
 import com.course.entity.StudentInfo;
 import com.course.login.dao.LoginDaoImpl;
 
@@ -21,10 +20,11 @@ public class LoginServiceImpl {
 	 * @version 			V1.0
 	 * 
 	 */
-	public void regist(String name,String pwd){
+	public void regist(String name,String pwd, String img){
 		StudentInfo student = new StudentInfo();
 		student.setLoginName(name);
 		student.setPassword(pwd);
+		student.setUrl(img);
 		student.setRoleName("student");
 		try {
 			this.loginDaoImpl.save(student);
@@ -77,16 +77,14 @@ public class LoginServiceImpl {
 	 * @version 			V1.0
 	 * 
 	 */
-	public void editStudentInfo(StudentInfo s){
-		StudentInfo stu = this.loginDaoImpl.getStudentInfo(s.getStudentId());
-		System.out.println("editStudentInfo:password"+stu.getPassword());
-		stu.setHobby(s.getHobby());
-		stu.setLocation(s.getLocation());
-		stu.setIntroduce(s.getIntroduce());
+	public void editStudentInfo(StudentInfo stu){
+		
 		try {
 			this.loginDaoImpl.updateStudentInfo(stu);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
 }
+

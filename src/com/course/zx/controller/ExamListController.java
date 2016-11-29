@@ -27,9 +27,6 @@ public class ExamListController {
 //		实现这个函数  以及specialprojectlist.jsp的内容动态获取
 		return "examzx/specialprojectlist";
 	}
-	
-	
-	
 	/**
 	 * 
 	 * @desc				查看试卷，封装到page对象里  返回jsp页面

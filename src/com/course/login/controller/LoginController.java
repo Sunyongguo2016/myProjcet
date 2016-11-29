@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.course.entity.Exam;
 import com.course.entity.StudentInfo;
 import com.course.login.service.LoginServiceImpl;
 
@@ -32,15 +33,9 @@ public class LoginController {
 	 * 
 	 */
 	@RequestMapping(value = "regist", method = RequestMethod.POST)
-	public String regist(@RequestParam("username") String name, @RequestParam("password") String password, HttpSession session){
-		StudentInfo si = this.loginServiceImpl.checkStudent(name);
-		if(si == null){
-			this.loginServiceImpl.regist(name, password);
-			return "redirect:/login_use.jsp";
-		} else {
-			//session.setAttribute("userna", "exist");
-			return "register"; 
-		}
+	public String regist(@RequestParam("username") String name, @RequestParam("password") String password, @RequestParam("content") String img, HttpSession session){
+		this.loginServiceImpl.regist(name, password,img);
+		return "redirect:/login_use.jsp";
 	}
 	
 	/**
@@ -50,11 +45,12 @@ public class LoginController {
 	 * @createDate 			2016/11/23
 	 * @param 				uer登录名，pwd密码
 	 * @return				String
+	 * @throws IOException 
 	 * 
 	 */
 	@RequestMapping("login")
 	public String login(@RequestParam("uer") String name, @RequestParam("pwd") String password,
-			HttpSession session){
+			HttpSession session, HttpServletResponse response) throws IOException{
 		StudentInfo lu = this.loginServiceImpl.login(name,password);
 		
 		if(lu != null){
@@ -68,6 +64,7 @@ public class LoginController {
 			} else if("manager".equals(role)){
 				return "index";
 			} else {
+				System.out.println("lu is not exist");
 				return "login_use";
 			}
 		} else {
@@ -75,7 +72,16 @@ public class LoginController {
 			return "redirect:/login_use.jsp";
 		}	
 	}
-	
+	/**
+	 * 
+	 * @desc				验证用户名是否已被占用
+	 * @author				童海苹
+	 * @createDate 			2016/11/28
+	 * @param 				
+	 * @return				
+	 * @throws IOException 
+	 * 
+	 */
 	@RequestMapping("checkname")
 	public void CheckNameExist(HttpServletRequest request, HttpServletResponse response){
 		String name=request.getParameter("username");
@@ -91,12 +97,11 @@ public class LoginController {
 			try {
 				response.getWriter().write("");
 			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 		
 	}
-	
-	
 	
 	/**
 	 * 
@@ -111,15 +116,77 @@ public class LoginController {
 	public String setInfo(@RequestParam("hobby") String hobby, @RequestParam("location") String location, @RequestParam("introduce") String introduce, HttpSession session){
 		int sId = (int) session.getAttribute("stuId");
 		StudentInfo stu = this.loginServiceImpl.getStudentInfo(sId);
-		System.out.println("password"+stu.getPassword());
 		stu.setHobby(hobby);
 		stu.setLocation(location);
 		stu.setIntroduce(introduce);
+		System.out.println("hobby.."+stu.getHobby()+"location"+stu.getLocation());
 		
 		this.loginServiceImpl.editStudentInfo(stu);
-		StudentInfo newStudent = this.loginServiceImpl.getStudentInfo(sId);
-		System.out.println("hobby:"+newStudent.getIntroduce()+stu.getHobby());
-		session.setAttribute("stu", newStudent);
 		return "info/usermessage";
 	}
+	
+	/**
+	 * 
+	 * @desc				修改密码时验证旧密码是否输入正确
+	 * @author				童海苹
+	 * @createDate 			2016/11/29
+	 * @param 				
+	 * @return				void
+	 * 
+	 */
+	@RequestMapping(value="checkOldPwd")
+	public void checkOldPwd(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+		String opwd =request.getParameter("oldPwd");
+		int sId = (int) session.getAttribute("stuId");
+		StudentInfo stu = this.loginServiceImpl.getStudentInfo(sId);
+		System.out.println(stu.getPassword()+"opwd"+opwd);
+		
+		if(opwd.equals(stu.getPassword())){
+			try {
+				response.getWriter().write("yes");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				response.getWriter().write("no");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	/**
+	 * 
+	 * @desc				重置密码
+	 * @author				童海苹
+	 * @createDate 			2016/11/28
+	 * @param 				
+	 * @return				void
+	 * 
+	 */
+	@RequestMapping(value = "resetPwd", method = RequestMethod.POST)
+	public String resetPwd(HttpSession session, @RequestParam("oldPwd") String opwd,
+			@RequestParam("password") String pwd, @RequestParam(name="content",defaultValue="") String img,
+			HttpServletRequest request, HttpServletResponse response){
+		System.out.println("old"+opwd+"new"+pwd);
+		int sId = (int) session.getAttribute("stuId");
+		StudentInfo stu = this.loginServiceImpl.getStudentInfo(sId);
+		System.out.println(stu.getPassword());
+		
+		if(opwd.equals(stu.getPassword())){
+			System.out.println("old is right");
+			stu.setPassword(pwd);
+			stu.setUrl(img);
+			this.loginServiceImpl.editStudentInfo(stu);
+			
+			return "index_before";
+		} else {
+			
+			System.out.println("old is wrong");
+		}
+		return "info/install";
+	}
+
 }
+
+	

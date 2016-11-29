@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="${ctx }/css/register.css">
 <script type="text/javascript" src="${ctx }/js/jquery-1.3.1.js" /></script>
 <script src="${ctx }/js/header.js"></script>
-
+<script src="${ctx }/js/reg.js"></script>
 <script src="${ctx }/js/yanzheng.js"></script>
 <script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.all.min.js"> </script>
@@ -25,26 +25,23 @@ function checkExist(){
 	$.get("${ctx }/loginuser/checkname",{'username':val},function(data){
 		var tip = document.getElementById("userTip");
 		if("exist"==data){
-			tip.innerHTML="用户名不可重复";
-			tip.style.color = "red";
-		} else if(""==data) {
-			tip.innerHTML="用户名可用";
-			tip.style.color = "green";
+			alert("用户名不可重复");
+		} 
+		if(val == ""){
+			alert("用户名不可为空");
+		} else if(val.length<5||form.username.value.length>100){
+			alert("输入用户名长度不对！");
 		}
+		
 	});
 }
 function checkPwd(){
-	var pwd = document.getElementById("pass").value;
-	var repwd = docuemnt.getElementById("repassword").value;
-	var repwdTip = document.getElementById("repwdTip");
-	if(pwd == repwd){
-		repwdTip.innerHTML = "密码和确认密码一致";
-		repwdTip.style.color = "green";
-	} else {
-		repwdTip.innerHTML = "密码和确认密码不一致";
-		repwdTip.style.color = "red";
+	var pwd = document.getElementById("password").value;
+	if(pwd.length<6 || pwd.lengtth>100){
+		alert("密码长度不对！")
 	}
 }
+
 </script>		
 </head>
 <body>
@@ -70,34 +67,37 @@ function checkPwd(){
 		</div>
 	</div>
 	<!--内容-->
-	<div class="" id="content">
+	<div class="" id="content" >
 		<!-- Begin Form -->
-		<form action="${ctx }/loginuser/regist" method="post" id="my-form">
+		<form action="${ctx }/loginuser/regist" method="post" id="my-form" onsubmit="return check(this)">
+			
 			<div class="username">
 				<label>用户名：</label>
-				<input id="username1" name="username" type="text" value="" onblur="checkExist();"/>
-				<span id="userTip" style="display:inline" ></span>
+				<input id="username1" name="username" type="text" value="" placeholder="用户名(不少于5个字符)" onblur="checkExist();"/>
+				
 			</div>
 			<div class="password">
 				<label>密&nbsp;码：</label><input id="pass" name="password"
-					type="password" />
+					type="password" placeholder="密码(不少于6个字符)" />
 			</div>
 			<div class="repassword">
 				<label>确认密码:</label><input id="repassword" name="surepassword"
-					type="password" onblur="checkPwd();"/>
-					<span id = "repwdTip" style="display:inline"></span>
+					type="password" />
+					
 			</div>
-	 	<div class="img" float="left">
-				<label>上传头像：</label> 
-					    <!-- 加载编辑器的容器 -->
-			    	<script id="container" name="noticeContent" type="text/plain">
-        				${notice.noticeContent}
+	 		<div class="img">
+				<label>上传头像：</label>
+					<div class="edit">
+						 <!-- 加载编辑器的容器 -->
+			    	<script id="container" name="content" type="text/plain">
+        				
    					 </script>
 					<!-- 实例化编辑器 -->
 					<script type="text/javascript">
 					UE.getEditor('container',{
-			            //这里可以选择自己需要的工具按钮名称
-			            toolbars:[['fullscreen', 'cleardoc', 'simpleupload','attachment']],
+			            //这里可以选择自己需要的工具按钮名称,
+			            toolbars:[['fullscreen','simpleupload']],
+			           
 			            //focus时自动清空初始化时的内容
 			            autoClearinitialContent:true,
 			            //关闭字数统计
@@ -105,13 +105,14 @@ function checkPwd(){
 			            //关闭elementPath
 			            elementPathEnabled:true,
 			            //默认的编辑区域宽高
-			            initialFrameHeight:100,
+			            initialFrameHeight:230,
 			            initialFrameWidth:300 
 			            //更多其他参数，请参考ueditor.config.js中的配置项
 			        });
 					</script>
+					</div> 
+					   
 			</div>
-				
 			<div class="">
 				<table border="0" cellspacing="5" cellpadding="5">
 					<tr>
@@ -133,9 +134,13 @@ function checkPwd(){
 					</tr>
 				</table>
 			</div>
+			
+			
+			
+			
 			<div id="submitreset" >
-				<a href="${ctx }/index_before.jsp"><button type="submit"
-						id="submit">提交</button></a>
+				<input onclick="validateCode();" type="submit"
+						id="submit" value="提交"/>
 			</div>
 		</form>
 		<!-- End Form -->
@@ -152,6 +157,9 @@ function checkPwd(){
 		<p>版权所有：猿计划项目小组</p>
 	</div>
 	</div>
+	<script type="text/javascript">
+		window.onload=createCode;
+	</script>
 
 </body>
 </html>

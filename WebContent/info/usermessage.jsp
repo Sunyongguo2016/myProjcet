@@ -34,15 +34,15 @@
 				<a href="${ctx }/search.jsp"><img src="${ctx }/images/search.png"></a>
 			</div>
 			<div class="" id="username">
-				<p>${stu.loginName }</p>
+				<p>${student.loginName }</p>
 			</div>
 			<div class="nav" id="nav">
 				<ul>
-					<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#"><img src="${ctx }/images/123.png"></a>
+					<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
 						<ul>
 							<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
-                            <li><a href="install.html">设置</a></li>
-                            <li><a href="index.html">退出登录</a></li>
+                            <li><a href="${ctx }/info/install.jsp">设置</a></li>
+                            <li><a href="${ctx }/index_before.jsp">退出登录</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -52,10 +52,10 @@
 		<div class="" id="content">
 			<div class="" id="user">
 				<div class="" id="img">
-					<img src="${ctx }/images/123.png">
+					${student.url }
 				</div>
 				<div class="" id="name">
-					<p>${stu.loginName }</p>
+					<p>${student.loginName }</p>
 				</div>
 			</div>
 			<div class="" id="message">
@@ -63,15 +63,15 @@
 				<table>
 					<tr>
 						<td>兴趣爱好：</td>
-						<td>${stu.hobby }</td>
+						<td>${student.hobby }</td>
 					</tr>
 					<tr>
 						<td>所在地：</td>
-						<td>${stu.location }</td>
+						<td>${student.location }</td>
 					</tr>
 					<tr>
 						<td>个人介绍：</td>
-						<td>${stu.introduce }</td>
+						<td>${student.introduce }</td>
 					</tr>
 				</table>
 				</div>
