@@ -53,44 +53,44 @@ public class QuickReadingController {
 			@RequestParam(name = "questionfrom") Integer questionFrom,
 			@RequestParam(name = "questionto") Integer questionTo,
 			
-			@RequestParam(name = "selecttcontent46") String selecttContent46,
+			@RequestParam(name = "questioncontent46") String questionContent46,
 			@RequestParam(name = "questionanswer46") String questionAnswer46,
 			@RequestParam(name = "questionexplain46") String questionExplain46,
 			
 			
-			@RequestParam(name = "selecttcontent47") String selecttContent47,
+			@RequestParam(name = "questioncontent47") String questionContent47,
 			@RequestParam(name = "questionanswer47") String questionAnswer47,
 			@RequestParam(name = "questionexplain47") String questionExplain47,
 			
-			@RequestParam(name = "selecttcontent48") String selecttContent48,
+			@RequestParam(name = "questioncontent48") String questionContent48,
 			@RequestParam(name = "questionanswer48") String questionAnswer48,
 			@RequestParam(name = "questionexplain48") String questionExplain48,
 			
-			@RequestParam(name = "selecttcontent49") String selecttContent49,
+			@RequestParam(name = "questioncontent49") String questionContent49,
 			@RequestParam(name = "questionanswer49") String questionAnswer49,
 			@RequestParam(name = "questionexplain49") String questionExplain49,
 			
-			@RequestParam(name = "selecttcontent50") String selecttContent50,
+			@RequestParam(name = "questioncontent50") String questionContent50,
 			@RequestParam(name = "questionanswer50") String questionAnswer50,
 			@RequestParam(name = "questionexplain50") String questionExplain50,
 			
-			@RequestParam(name = "selecttcontent51") String selecttContent51,
+			@RequestParam(name = "questioncontent51") String questionContent51,
 			@RequestParam(name = "questionanswer51") String questionAnswer51,
 			@RequestParam(name = "questionexplain51") String questionExplain51,
 			
-			@RequestParam(name = "selecttcontent52") String selecttContent52,
+			@RequestParam(name = "questioncontent52") String questionContent52,
 			@RequestParam(name = "questionanswer52") String questionAnswer52,
 			@RequestParam(name = "questionexplain52") String questionExplain52,
 			
-			@RequestParam(name = "selecttcontent53") String selecttContent53,
+			@RequestParam(name = "questioncontent53") String questionContent53,
 			@RequestParam(name = "questionanswer53") String questionAnswer53,
 			@RequestParam(name = "questionexplain53") String questionExplain53,
 			
-			@RequestParam(name = "selecttcontent54") String selecttContent54,
+			@RequestParam(name = "questioncontent54") String questionContent54,
 			@RequestParam(name = "questionanswer54") String questionAnswer54,
 			@RequestParam(name = "questionexplain54") String questionExplain54,
 			
-			@RequestParam(name = "selecttcontent55") String selecttContent55,
+			@RequestParam(name = "questioncontent55") String questionContent55,
 			@RequestParam(name = "questionanswer55") String questionAnswer55,
 			@RequestParam(name = "questionexplain55") String questionExplain55,
 			HttpServletRequest request){
@@ -120,6 +120,17 @@ public class QuickReadingController {
 			questionLists.add(questionExplain54);
 			questionLists.add(questionExplain55);
 			
+			questionLists.add(questionContent46);
+			questionLists.add(questionContent47);
+			questionLists.add(questionContent48);
+			questionLists.add(questionContent49);
+			questionLists.add(questionContent50);
+			questionLists.add(questionContent51);
+			questionLists.add(questionContent52);
+			questionLists.add(questionContent53);
+			questionLists.add(questionContent54);
+			questionLists.add(questionContent55);
+			
 			
 			// 根据examName找到exam对象
 			Exam exam = this.examServiceImpl.findByName(examName);
@@ -139,11 +150,10 @@ public class QuickReadingController {
 			//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
 			Set<Question> questions = new HashSet<Question>(0);
 			
-			for(Integer i = 0;i<questionTo-questionFrom+1;i++)
-			{
+			for(Integer i = 0;i<questionTo-questionFrom+1;i++){
 				Question question = new Question();
 				question.setParentQuestion(parentQuestion);
-				question.setQuestionContent(((Integer)(i+questionFrom)).toString());
+				question.setQuestionContent(((Integer)(i+questionFrom)).toString()+"."+questionLists.get(i+20));
 				question.setQuestionAnswer(questionLists.get(i));
 				question.setQuestionExplain(questionLists.get(i+10));
 				question.setQuestionScore(Float.parseFloat(questionScore));
@@ -154,7 +164,7 @@ public class QuickReadingController {
 				}
 			
 				return "redirect:list";	
-				}
+			}
 			
 				
 			/**

@@ -114,7 +114,7 @@
 						<label>第一题 ：</label>
 					</div>
 					<div class="field">
-						<textarea name="selecttcontent46" class="input"
+						<textarea name="questioncontent46" class="input"
 							style="height: 70px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -142,7 +142,7 @@
 						<label>第二题：</label>
 					</div>
 					<div class="field">
-						<textarea name="selecttcontent47" class="input"
+						<textarea name="questioncontent47" class="input"
 							style="height: 70px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -170,7 +170,7 @@
 						<label>第三题：</label>
 					</div>
 					<div class="field">
-						<textarea name="selecttcontent48" class="input"
+						<textarea name="questioncontent48" class="input"
 							style="height: 70px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -198,7 +198,7 @@
 						<label>第四题：</label>
 					</div>
 					<div class="field">
-						<textarea name="selecttcontent49" class="input"
+						<textarea name="questioncontent49" class="input"
 							style="height: 70px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -226,7 +226,7 @@
 						<label>第五题：</label>
 					</div>
 					<div class="field">
-						<textarea name="selecttcontent50" class="input"
+						<textarea name="questioncontent50" class="input"
 							style="height: 70px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -254,7 +254,7 @@
 						<label>第六题：</label>
 					</div>
 					<div class="field">
-						<textarea name="selecttcontent51" class="input"
+						<textarea name="questioncontent51" class="input"
 							style="height: 70px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -282,7 +282,7 @@
 						<label>第七题：</label>
 					</div>
 					<div class="field">
-						<textarea name="selecttcontent52" class="input"
+						<textarea name="questioncontent52" class="input"
 							style="height: 70px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -309,7 +309,7 @@
 						<label>第八题：</label>
 					</div>
 					<div class="field">
-						<textarea name="selecttcontent53" class="input"
+						<textarea name="questioncontent53" class="input"
 							style="height: 70px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -337,7 +337,7 @@
 						<label>第九题：</label>
 					</div>
 					<div class="field">
-						<textarea name="selecttcontent54" class="input"
+						<textarea name="questioncontent54" class="input"
 							style="height: 70px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -365,7 +365,7 @@
 						<label>第十题：</label>
 					</div>
 					<div class="field">
-						<textarea name="selecttcontent55" class="input"
+						<textarea name="questioncontent55" class="input"
 							style="height: 70px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
