@@ -98,7 +98,7 @@
                 <li><a href="${ctx }/examzx/specialprojectlist.jsp">阅读专项练习</a></li>
                 <li><a href="${ctx }/examzx/specialprojectlist.jsp">翻译专项练习</a></li>
               </ul>
-              <p><a href="${ctx }/examzx/list?parentQuestionName=">MORE>></a></p>
+              <p><a href="${ctx }/examzx/list">MORE>></a></p>
         </div>	
         <!-- 错题本 -->
         <div id="wrong">
