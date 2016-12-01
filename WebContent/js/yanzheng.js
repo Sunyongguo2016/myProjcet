@@ -31,6 +31,6 @@ function validateCode()
     }
     else 
     {
-        alert("验证码正确！");
+        
     }        
 }    

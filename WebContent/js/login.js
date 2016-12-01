@@ -1,26 +1,23 @@
- $(document).ready(function() {
-	
-	$("#login").click(function(){
-		$.XYTipsWindow({
-			___title:"登录",
-			___content:"iframe:login_use.jsp",
-			___width:"460",
-			___height:"150",
-			___showbg:true,
-			___drag:"___boxTitle"
-
-		});
-	});
-	
-	$("#reg").click(function(){
-		$.XYTipsWindow({
-			___title:"注册",
-			___content:"iframe:reg.jsp",
-			___width:"460",
-			___height:"450",
-			___showbg:true,
-			___drag:"___boxTitle"
-		});
-	});
-	
- })
+	function check(form){
+			if (form.uer.value=="") {
+				alert("请输入用户名！");
+				form.uer.focus();
+				return false;
+			}
+			if (form.pwd.value=="") {
+				alert("请输入密码！");
+				form.pwd.focus();
+				return false;
+			}
+			if (form.uer.value.length<5||form.uer.value.length>100) {
+				alert("输入用户名长度不对！");
+				form.uer.focus();
+				return false;
+			}
+			if (form.pwd.value.length<6||form.pwd.value.length>100) {
+				alert("输入密码长度不对！");
+				form.pwd.focus();
+				return false;
+			};
+			return true;
+		}

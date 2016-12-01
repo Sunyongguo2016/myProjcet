@@ -10,78 +10,119 @@
     <link rel="stylesheet" type="text/css" href="${ctx }/css/install.css">
     <script type="text/javascript" src="${ctx }/js/jquery-1.3.1.js"/></script>
     <script src="${ctx }/js/header.js"></script>
-    <script src="${ctx }/js/install.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.all.min.js"> </script>
     <!--验证码-->
     <script src="${ctx }/js/yanzheng.js"></script>
+    <script src="${ctx }/js/install.js"></script>
     <!--二级菜单-->
     <script src="${ctx }/js/nav.js"></script>
+    <script src="${ctx }/js/reset.js"></script>
+    <script type="text/javascript">
+    function checkOldPwd(){
+    	var val = document.getElementById("oldPwd").value;
+    	$.get("${ctx }/loginuser/checkOldPwd",{'oldPwd':val},function(data){
+    		if("yes"==data){
+    			
+    		} else if("no"==data){
+    			alert("旧密码错误！");
+    		} 
+    	});
+    }
+    
+	</script>
+    
+    
 </head>
 <body>
     <div class="" message="usermessage">
         <!--页面头信息-->
-        <div class="" id="header"> 
-            <div class="" id="logo">
-                <img src="${ctx }/images/logo.png">
-            </div>
-            <div class="menu">
-                <ul>
-                    <li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
+         <div class="" id="header"> 
+			<div class="" id="logo">
+				<img src="${ctx }/images/logo.png">
+			</div>
+			<div class="menu">
+				<ul>
+					<li class="current"><a href="index.html">网站首页</a></li>
                     <li><a href="${ctx }/category.jsp">大学英语四级</a></li>
                     <li><a href="${ctx }/category.jsp">大学英语六级</a></li>
                     <li><a href="${ctx }/arena.jsp">竞技场</a></li>
                     <li><a href="${ctx }/about_us.jsp">关于我们</a></li>
-                </ul>
-            </div>
-
-            <div id="search">
-                <input type="text" class="text"/>
-                <a href="search.html"><img src="${ctx }/images/search.png"></a>
-            </div>
-            <div id="username">
-                <p>用户名</p>
-            </div>
-            <div class="nav" id="nav">
-                <ul>
-                    <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#"><img src="${ctx }/images/123.png"></a>
-                        <ul>
-                            <li><a href="${ctx }/usermessage.jsp">个人信息</a></li>
-                            <li><a href="${ctx }/install.jsp">设置</a></li>
+				</ul>
+			</div>
+			<div class="" id="search">
+				<input type="text" class="text"/>
+				<a href="${ctx }/search.jsp"><img src="${ctx }/images/search.png"></a>
+			</div>
+			<div class="" id="username">
+				<p>${student.loginName }</p>
+			</div>
+			<div class="nav" id="nav">
+				<ul>
+					<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
+						<ul>
+							<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
+                            <li><a href="${ctx }/info/install.jsp">设置</a></li>
                             <li><a href="${ctx }/index_before.jsp">退出登录</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
         <!--内容-->
-        <div class="" id="content">
-            <!-- Begin Form -->
-            <form id="my-form">
-                <div class="username"><label>用户名：</label><div class="username1"><p>田瑞航</p></div></div>
-                <div class="alter"><label>旧密码：</label><input id="alter" name="" type="text"></div>
-                <div class="password"><label>新密码：</label><input id="pass" name="password" type="password"/></div>
-                <div class="repassword"><label>确认密码：</label><input id="surepass" name="surepassword" type="password"/></div>
-                <div class="img"><label>头&nbsp;&nbsp;像：</label>
-                <img src="${ctx }/images/123.png" height="90px" width="90px" style="border: 1px solid #ffffff;border-radius: 50%;"><input id="file" name="file" multiple type="file"/></div>
-                <div class="">
-                    <table border="0" cellspacing="5" cellpadding="5" >
-                         <tr>
-                            <td class="yanzhengma">验证码：</td><td><input  style="float:left;" type="text"   id="inputCode" /></td><td></td>
-                        </tr>
-                        <tr>
-                           <td> <div class="code" id="checkCode" onclick="createCode()" ></div></td>
-                            <td><a  href="#" onclick="createCode()" class="href">看不清换一张</a></td>
-                        </tr>
-                       
-                        <tr><td><input id="Button1"  onclick="validateCode();" type="button" value="确定" /></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div id="submitreset">
-                    <button type="submit" id="submit">提交</button>
-                </div>
+        <div class="content">
+            <form class="form" action="${ctx }/loginuser/resetPwd" method="post" onsubmit="return check(this)">
+            	<table>
+            		<tr>
+            			<td><label>用户名：</label></td>
+            			<td><label name="username">${student.loginName }</label></td>
+            		</tr>
+            		<tr>
+            			<td><label>旧密码：</label></td>
+            			<td><input id="oldPwd" name="oldPwd" type="password" onblur="checkOldPwd();"/></td>
+            		</tr>
+            		<tr>
+            			<td><label>新密码：</label></td>
+            			<td><input id="password" name="password" type="password" placeholder="密码(不少于6个字符)"/></td>
+            		</tr>
+            		<tr>
+            			<td><label>确认密码：</label></td>
+            			<td><input name="surepassword" type="password"/></td>
+            		</tr>
+            		<tr>
+            			<td><label>头像：</label></td>
+            			<td>
+            					 <!-- 加载编辑器的容器 -->
+			    	<script id="container" name="content" type="text/plain">
+        				
+   					 </script>
+					<!-- 实例化编辑器 -->
+					<script type="text/javascript">
+					UE.getEditor('container',{
+			            //这里可以选择自己需要的工具按钮名称,
+			            toolbars:[['fullscreen','simpleupload']],
+			           
+			            //focus时自动清空初始化时的内容
+			            autoClearinitialContent:true,
+			            //关闭字数统计
+			            wordCount:true,
+			            //关闭elementPath
+			            elementPathEnabled:true,
+			            //默认的编辑区域宽高
+			            initialFrameHeight:230,
+			            initialFrameWidth:400 
+			            //更多其他参数，请参考ueditor.config.js中的配置项
+			        });
+					</script>
+            			</td>
+            		</tr>
+            		<tr>
+            			<td class="yanzhengma">验证码：</td>
+            			<td><input style="float:left;" type="text"   id="inputCode" /><div class="code" id="checkCode" onclick="createCode()" ></div><a  id="look" href="#" onclick="createCode()" class="href">看不清换一张</a></td>
+            		</tr>
+            	</table>
+                    <input type="submit" id="submit" value="提交" onclick="validateCode();"/>
             </form>
-            <!-- End Form -->
         </div>
         
         <!--页尾信息-->
@@ -91,5 +132,8 @@
         </div>
     </div>
 
+	<script type="text/javascript">
+		window.onload=createCode;
+	</script>
 </body>
 </html>
