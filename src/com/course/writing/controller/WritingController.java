@@ -57,7 +57,7 @@ public class WritingController {
 			@RequestParam(name = "parentQuestionArticle") String parentQuestionArticle,
 			@RequestParam(name = "description") String description,
 			@RequestParam(name = "questionExplain") String questionExplain,
-			@RequestParam(name = "imgUrl") String imgUrl, 
+			@RequestParam(value = "imgUrl", required = false) String imgUrl, 
 			@RequestParam(name = "questionScore") float questionScore) {
 
 		// 根据examName找到exam对象
