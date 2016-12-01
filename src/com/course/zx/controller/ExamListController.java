@@ -35,9 +35,6 @@ public class ExamListController {
 //		实现这个函数  以及specialprojectlist.jsp的内容动态获取
 		return "examzx/specialprojectlist";
 	}
-	
-	
-	
 	/**
 	 * 
 	 * @desc				实现parentquestion的获取,返回zxpreview.jsp页面

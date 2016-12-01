@@ -22,7 +22,9 @@ a:hover{
 }
 .search{
 	float: left;
-	margin: 35px 0px 10px 300px;
+	position: absolute;
+	top: 30px;
+	right: 200px;
 }
 .text{
 	height: 25px;
@@ -40,7 +42,9 @@ a:hover{
 .login{
 	display:block;
 	float: left;
-	margin:37px 0px 10px 150px;
+	position: absolute;
+	top: 35px;
+	right: 30px;
 }
 .login button{
 	background-color: transparent;
