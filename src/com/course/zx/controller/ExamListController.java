@@ -11,9 +11,13 @@ import com.course.entity.ParentQuestion;
 import com.course.parentquestion.service.ParentQuestionServiceImpl;
 import com.framework.Page;
 
+
 @Controller
 @RequestMapping("examzx")
 public class ExamListController {
+	
+	@Resource
+	private ParentQuestionServiceImpl parentQuestionServiceImpl;
 	
 	/**
 	 * 
@@ -46,24 +50,23 @@ public class ExamListController {
 		request.setAttribute("pqType",parentQuestionName);
 		return "examzx/specialprojectlist";
 	}
-	
-	
-	
 	/**
 	 * 
-	 * @desc				查看试卷，封装到page对象里  返回jsp页面
+	 * @desc				实现parentquestion的获取,返回zxpreview.jsp页面
 	 * @author				李翘楚
-	 * @createDate 			2016/11/22
-	 * @param 				pageNum页码，searchParam搜索参数
+	 * @createDate 			2016/12/1
+	 * @param 				parentQuestionId  大题id  
 	 * @return				String
 	 * 
 	 */
 	@RequestMapping("preview")
-	public String preview(@RequestParam(name="parentQuestionId", defaultValue="1") int parentQuestionId ,
-			HttpServletRequest request,
-			Model model){
+	public String preview(@RequestParam(name="parentQuestionId", defaultValue="2") int parentQuestionId ,
+				HttpServletRequest request,
+				Model model){
 		
-//		实现这个函数  以及zxpreview的动态获取内容
+		ParentQuestion parentQuestion = new ParentQuestion();
+		parentQuestion = this.parentQuestionServiceImpl.getParentQuestion(parentQuestionId);
+		request.setAttribute("parentQuestion", parentQuestion);
 		return "examzx/zxpreview";
 	}
 	

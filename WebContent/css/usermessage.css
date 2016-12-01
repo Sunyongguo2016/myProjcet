@@ -51,6 +51,8 @@
 #search{
 	float: left;
 	margin-top: 10px;
+	position:absolute;
+	right:200px;
 }
 #search img{
 	float: right;
@@ -76,7 +78,8 @@
 }
 #username{
 	float: left;
-	margin: 0px 0px 0px 15px;
+	right:75px;
+	position:absolute;
 }
 #username p{
 	margin-top: 5px;
@@ -105,8 +108,8 @@
 }
 .nav{ 
 	float: left;
-	margin-right: 0px;
-	margin-top: 0px;
+	position:absolute;
+	right:40px;
 } 
 .nav ul{
 	float: left; 
