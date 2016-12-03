@@ -1,8 +1,10 @@
 package com.course.entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,8 +23,8 @@ public class Exam {
 	private String examName;
 	private Integer examTime;
 	private String examUrl;
-
-	private Set<ParentQuestion> parentQuestions = new HashSet<ParentQuestion>(0);
+	
+	private List<ParentQuestion> parentQuestions = new ArrayList<ParentQuestion>(0); 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,11 +62,11 @@ public class Exam {
 		this.examUrl = examUrl;
 	}
 
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="exam")
-	public Set<ParentQuestion> getParentQuestions() {
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="exam")
+	public List<ParentQuestion> getParentQuestions() {
 		return parentQuestions;
 	}
-	public void setParentQuestions(Set<ParentQuestion> parentQuestions) {
+	public void setParentQuestions(List<ParentQuestion> parentQuestions) {
 		this.parentQuestions = parentQuestions;
 	}
 }

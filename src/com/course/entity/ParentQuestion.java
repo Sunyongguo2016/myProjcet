@@ -1,8 +1,12 @@
 package com.course.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "parentquestion")
@@ -26,7 +31,7 @@ public class ParentQuestion {
 	private String imgUrl;
 	
 	private Exam exam;
-	private Set<Question> questions = new HashSet<Question>(0);
+	private List<Question> questions = new ArrayList<Question>(0);
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -82,11 +87,11 @@ public class ParentQuestion {
 		this.exam = exam;
 	}
 
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="parentQuestion")
-	public Set<Question> getQuestions() {
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="parentQuestion")
+	public List<Question> getQuestions() {
 		return questions;
 	}
-	public void setQuestions(Set<Question> questions) {
+	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
 	

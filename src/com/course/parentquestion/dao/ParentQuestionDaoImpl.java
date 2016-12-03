@@ -55,10 +55,13 @@ public class ParentQuestionDaoImpl extends BaseDao<ParentQuestion, Integer> {
 			hql="from ParentQuestion p where p.parentQuestionName like ? and p.parentQuestionArticle like ?";
 			params[0]="%"+params[0]+"%";
 			params[1]="%"+params[1]+"%";
-		}else{
+		}else if(params!=null && params.length>0){
 			hql="from ParentQuestion p where p.parentQuestionName like ?";
 			params[0]="%"+params[0]+"%";
+		}else{
+			hql="from ParentQuestion";
 		}
+		
 		try {
 			Page<ParentQuestion> page=new Page<ParentQuestion>();
 			page.setCurrentPageNum(pageNum);
@@ -70,9 +73,6 @@ public class ParentQuestionDaoImpl extends BaseDao<ParentQuestion, Integer> {
 			return null;
 		}
 	}
-	
-	
-	
 	
 	
 	

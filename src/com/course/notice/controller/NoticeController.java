@@ -38,9 +38,10 @@ public class NoticeController {
 	 * 
 	 */
 	@RequestMapping("add")
-	public String add(@RequestParam(name="title") String title,@RequestParam(name="type") String type,HttpServletRequest request)
-	{
-		String content = request.getParameter("content");
+	public String add(@RequestParam(name="title") String title,
+			@RequestParam(name="type") String type,
+			@RequestParam(value = "content", required = false) String content,
+			HttpServletRequest request){
 
 		//构建date类型，传入数据库
 		Date date = new Date();

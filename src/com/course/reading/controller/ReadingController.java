@@ -55,6 +55,7 @@ public class ReadingController {
 			@RequestParam(name = "questionfrom2") Integer questionFrom2,
 			@RequestParam(name = "questionto2") Integer questionTo2,
 			
+			@RequestParam(name = "question56") String question56,
 			@RequestParam(name = "aselecttcontent56") String aSelecttContent56,
 			@RequestParam(name = "bselecttcontent56") String bSelecttContent56,
 			@RequestParam(name = "cselecttcontent56") String cSelecttContent56,
@@ -164,6 +165,17 @@ public class ReadingController {
 			questionLists.add(questionExplain63);
 			questionLists.add(questionExplain64);
 			questionLists.add(questionExplain65);
+			questionLists.add(question56);
+			questionLists.add(question57);
+			questionLists.add(question58);
+			questionLists.add(question59);
+			questionLists.add(question60);
+			questionLists.add(question61);
+			questionLists.add(question62);
+			questionLists.add(question63);
+			questionLists.add(question64);
+			questionLists.add(question65);
+			
 			
 			//用list集合保存单选内容方便用循环存储数据
 			List<String> selecttLists = new ArrayList<String>();
@@ -246,21 +258,20 @@ public class ReadingController {
 
 			
 			//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
-			Set<Question> onequestions = new HashSet<Question>(0);
-			
+			List<Question> onequestions = new ArrayList<Question>(0);
 			
 			//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
 			for (Integer i = 0; i < questionTo-questionFrom+1; i++) {
 				Question question = new Question();
 				question.setParentQuestion(parentQuestionOne);
-				question.setQuestionContent(((Integer)(i+questionFrom)).toString());
+				question.setQuestionContent(((Integer)(i+questionFrom)).toString()+"."+questionLists.get(i+20));
 				question.setQuestionAnswer(questionLists.get(i));
 				
 				//集合questionLists中  前十个是answer  后十个是explain
 				question.setQuestionExplain(questionLists.get(i+10));
 				question.setQuestionScore(Float.parseFloat(questionScore));
 				
-				Set<Selectt> selectts = new HashSet<Selectt>(0);
+				List<Selectt> selectts = new ArrayList<Selectt>(0);
 				
 				//存储selectt表  将selectts赋值给question 与question联系起来
 				for(Integer j = 0; j<4; j++){
@@ -314,14 +325,14 @@ public class ReadingController {
 			parentQuestionTwo.setParentQuestionTitle(parentQuestionTitle2);
 			
 			//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
-			Set<Question> twoquestions = new HashSet<Question>(0);
+			List<Question> twoquestions = new ArrayList<Question>(0);
 			
 			
 			//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
 			for (Integer i = 0; i < questionTo2-questionFrom2+1; i++) {
 				Question question = new Question();
 				question.setParentQuestion(parentQuestionTwo);
-				question.setQuestionContent(((Integer)(i+questionFrom2)).toString());
+				question.setQuestionContent(((Integer)(i+questionFrom2)).toString()+"."+questionLists.get(i+5+20));
 				//集合questionLists中  
 				question.setQuestionAnswer(questionLists.get(i+5));
 				
@@ -329,7 +340,7 @@ public class ReadingController {
 				question.setQuestionExplain(questionLists.get(i+5+10));
 				question.setQuestionScore(Float.parseFloat(questionScore));
 				
-				Set<Selectt> selectts = new HashSet<Selectt>(0);
+				List<Selectt> selectts = new ArrayList<Selectt>(0);
 				
 				//存储selectt表  将selectts赋值给question 与question联系起来
 				for(Integer j = 0; j<4; j++){
@@ -376,7 +387,7 @@ public class ReadingController {
 		 public String list(@RequestParam(name="pageNum", defaultValue="1") int pageNum,
 				 @RequestParam(name="searchParam",defaultValue="") String searchParam,
 				 //添加参数parentQuestionName  用于按大题名称查找parentquestion表   设置默认值
-				 @RequestParam(name="parentQuestionName",defaultValue="Reading") String parentQuestionName,
+				 @RequestParam(name="parentQuestionName",defaultValue="LastReading") String parentQuestionName,
 				 HttpServletRequest request, Model model){
 			 
 			 Page<ParentQuestion> page;

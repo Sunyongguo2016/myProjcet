@@ -35,7 +35,9 @@
 			<div>
             	<div class="header">
 					<div class="logo">
-						<img src="${ctx }/images/logo.png"/>
+						<a href="index_before.jsp">
+							<img src="${ctx }/images/logo.png"/>
+						</a>
 					</div>
 					<div class="search">
 						<input type="text" class="text"/>
@@ -52,10 +54,10 @@
                         </div>
                         <div class="nav" id="nav">
                             <ul>
-                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#"><img src="${ctx }/images/leftuser.jpg"></a>
+                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
                                     <ul>
                                         <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
-                                        <li><a href="${ctx }/install.jsp">设置</a></li>
+                                        <li><a href="${ctx }/info/install.jsp">设置</a></li>
                                         <li><a href="${ctx }/index_before.jsp">退出登录</a></li>
                                     </ul>
                                 </li>

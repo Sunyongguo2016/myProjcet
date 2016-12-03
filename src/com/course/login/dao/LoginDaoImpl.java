@@ -68,11 +68,13 @@ public class LoginDaoImpl extends BaseDao<StudentInfo, Integer>{
 	 */
 	public void updateStudentInfo(StudentInfo s){
 		try {
-			System.out.println("updateStudentInfoId:"+s.getStudentId()+"updateStudentInfo:"+s.getHobby());
-			this.update(s);
+			System.out.println("updateStudentInfoId:"+s.getPassword()+"updateStudentInfo:"+s.getHobby());
+			this.save(s);
+			System.out.println("save");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
+
 }
