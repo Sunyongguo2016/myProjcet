@@ -31,8 +31,10 @@ public class Error {
 		this.errorId = errorId;
 	}
 	
-	@ManyToOne
+/*	@ManyToOne
 	@JoinColumn(name="studentId")
+*/	@OneToOne
+	@JoinColumn(name = "studentId")
 	public StudentInfo getStudentInfo() {
 		return studentInfo;
 	}
