@@ -16,6 +16,9 @@
         <script type="text/javascript" src="${ctx }/js/login.js"></script>
         <script type="text/javascript" src="${ctx }/js/header.js"></script>       
         <title>专项练习</title>
+        <script type="text/javascript">
+        
+        </script>
     </head>
     <body>
      	<!-- header-->
@@ -67,25 +70,25 @@
         <!--左侧边栏-->
         <div class="left">
         	<h2>专项练习</h2>
-            <div class="vtitle"><a href="${ctx }/examzx/specialprojectlist.jsp">全部</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list">全部</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/specialprojectlist.jsp">作文</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Writing">作文</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/specialprojectlist.jsp">听力</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=ListeningComprehension">听力</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/specialprojectlist.jsp">十五选十</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=ChooseFillInBlank">十五选十</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/specialprojectlist.jsp">快速阅读</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=QuickReading">快速阅读</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/specialprojectlist.jsp">阅读</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=LastReading">阅读</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/specialprojectlist.jsp">翻译</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Translation">翻译</a></div>
                 <div class="vcon" style="display: none;">
             </div>
             <div class="leftfoot"></div>
@@ -94,87 +97,33 @@
         <div class="right">
             <table>
                 <tr class="title">
+                	<td>题目ID</td>
                     <td>专项标题</td>
                     <td>类型</td>
                     <td>试卷预览</td>
                     <td>进入训练</td>
                 </tr>
-                <tr>
-                    <td>2016年12月大学英语六级作文万能模板汇总</td>
-                    <td>听力</td>
-                    <td><a href="${ctx }/examzx/preview?parentQuestionId=">查看试卷</a></td>
-                    <td><a href="${ctx }/examzx/zxcontent.jsp"><input type="button" value="进入练习" /></a></td>
-                </tr>
-               <tr>
-                    <td>2016年12月大学英语六级作文万能模板汇总</td>
-                    <td>听力</td>
-                    <td><a href="${ctx }/preview?parentQuestionId=">查看试卷</a></td>
-                    <td><a href="${ctx }/examzx/zxcontent.jsp"><input type="button" value="进入练习" /></a></td>
-                </tr>               
-                <tr>
-                    <td>2016年12月大学英语六级作文万能模板汇总</td>
-                    <td>听力</td>
-                    <td><a href="zxpreview.html">查看试卷</a></td>
-                    <td><a href="zx.html"><input type="button" value="进入练习" /></a></td>
-                </tr>
-                <tr>
-                    <td>2016年12月大学英语六级作文万能模板汇总</td>
-                    <td>听力</td>
-                    <td><a href="zxpreview.html">查看试卷</a></td>
-                    <td><a href="zx.html"><input type="button" value="进入练习" /></a></td>
-                </tr>
-                <tr>
-                    <td>2016年12月大学英语六级作文万能模板汇总</td>
-                    <td>听力</td>
-                    <td><a href="zxpreview.html">查看试卷</a></td>
-                    <td><a href="zx.html"><input type="button" value="进入练习" /></a></td>
-                </tr>
-                <tr>
-                    <td>2016年12月大学英语六级作文万能模板汇总</td>
-                    <td>听力</td>
-                    <td><a href="zxpreview.html">查看试卷</a></td>
-                    <td><a href="zx.html"><input type="button" value="进入练习" /></a></td>
-                </tr>
-                <tr>
-                    <td>2016年12月大学英语六级作文万能模板汇总</td>
-                    <td>听力</td>
-                    <td><a href="zxpreview.html">查看试卷</a></td>
-                    <td><a href="zx.html"><input type="button" value="进入练习" /></a></td>
-                </tr>
-                <tr>
-                    <td>2016年12月大学英语六级作文万能模板汇总</td>
-                    <td>听力</td>
-                    <td><a href="zxpreview.html">查看试卷</a></td>
-                    <td><a href="zx.html"><input type="button" value="进入练习" /></a></td>
-                </tr>
-                <tr>
-                    <td>2016年12月大学英语六级作文万能模板汇总</td>
-                    <td>听力</td>
-                    <td><a href="#">查看试卷</a></td>
-                    <td><a href="examination.html"><input type="button" value="进入练习" /></a></td>
-                </tr>
-                <tr>
-                    <td>2016年12月大学英语六级作文万能模板汇总</td>
-                    <td>听力</td>
-                    <td><a href="#">查看试卷</a></td>
-                    <td><a href="examination.html"><input type="button" value="进入练习" /></a></td>
-                </tr><tr>
-                    <td>2016年12月大学英语六级作文万能模板汇总</td>
-                    <td>听力</td>
-                    <td><a href="#">查看试卷</a></td>
-                    <td><a href="examination.html"><input type="button" value="进入练习" /></a></td>
-                </tr>
+                <c:forEach items="${page.list}" var="zx">
+                 	<tr>              
+                 		<td>${zx.parentQuestionId}</td>
+	                    <td>${zx.exam.examName}</td>
+	                    <td>${zx.parentQuestionName}</td>	               
+	                    <td><a href="${ctx }/examzx/preview?parentQuestionId=${zx.parentQuestionId}">查看试卷</a></td>
+	                    <td><a href="${ctx }/examzx/zxcontent.jsp"><input type="button" value="进入练习" /></a></td>
+                	</tr>
+                </c:forEach>
+           
                 <tr>
                     <td colspan="5">
-                       <div class="pagecss">
-                            <span class="page"><a href="#">首页</a></span>
-                            <span class="page"><a href="#">上一页</a></span>
-                            <span class="page"><a href="#">1</a></span>
-                            <span class="page"><a href="#">2</a></span>
-                            <span class="page"><a href="#">3</a></span>
-                            <span class="page"><a href="#">下一页</a></span>
-                            <span class="page"><a href="#">尾页</a></span>
-                        </div>
+                       <div class="pagecss">  
+                            <span class="page"><a href="${ctx }/examzx/list?pageNum=1&parentQuestionName=${pqType}">首页</a></span>
+                            <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.prePageNum }&parentQuestionName=${pqType}">上一页</a></span>
+                            <c:forEach begin="1" end="${page.totalPageNum }" var="pageNum"   >	
+								   <span class="page"><a href="${ctx }/examzx/list?pageNum=${pageNum }&parentQuestionName=${pqType}">${pageNum }</a></span>
+							</c:forEach>             
+                            <span class="page" ><a href="${ctx }/examzx/list?pageNum=${page.nextPageNum} &parentQuestionName=${pqType}" >下一页</a></span>
+                            <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.totalPageNum }&parentQuestionName=${pqType}">尾页</a></span>                       
+                        </div>                         
                     </td>
                 </tr>
             </table>
@@ -185,4 +134,5 @@
                     <p>版权所有：猿计划项目小组</p>
             </div>
 	</body>
+	
 </html>

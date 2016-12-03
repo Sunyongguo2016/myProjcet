@@ -32,6 +32,12 @@ public class ParentQuestionServiceImpl {
 		return this.parentQuestionDaoImpl.findParentQuestionByParentQuestionName(pageNum, pageSize, params);
 	}
 	
+	//按大题名称查找parentQuestion，通过parentQuestion找到examName,使用于专项
+	@Transactional(readOnly=true)
+	public Page<ParentQuestion> listParentQuestionExamByParentQuestionName(int pageNum,int pageSize,Object[] params){
+		return this.parentQuestionDaoImpl.findParentQuestionExamByParentQuestionName(pageNum, pageSize, params);
+	}
+	
 	@Transactional(readOnly=true)
 	public Page<ParentQuestion> listParentQuestion(int pageNum,int pageSize,Object[] params){
 		return this.parentQuestionDaoImpl.findParentQuestion(pageNum, pageSize, params);
