@@ -41,9 +41,9 @@ public class ExamListController {
 		Page<ParentQuestion> page;
 		
 		if( parentQuestionName== null || "".equals(parentQuestionName)){
-			page=this.parentQuestionSeriviceImpl.listParentQuestionExamByParentQuestionName(pageNum, 5, null);	
+			page=this.parentQuestionSeriviceImpl.listParentQuestionByParentQuestionName(pageNum, 10, null);	
 		}else{
-			page=this.parentQuestionSeriviceImpl.listParentQuestionExamByParentQuestionName(pageNum, 5, new Object[]{parentQuestionName});
+			page=this.parentQuestionSeriviceImpl.listParentQuestionByParentQuestionName(pageNum, 10, new Object[]{parentQuestionName});
 		}
 		
 		request.setAttribute("page", page);
@@ -67,6 +67,7 @@ public class ExamListController {
 		ParentQuestion parentQuestion = new ParentQuestion();
 		parentQuestion = this.parentQuestionServiceImpl.getParentQuestion(parentQuestionId);
 		request.setAttribute("parentQuestion", parentQuestion);
+
 		return "examzx/zxpreview";
 	}
 	

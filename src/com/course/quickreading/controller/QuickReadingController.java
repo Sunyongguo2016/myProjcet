@@ -148,7 +148,7 @@ public class QuickReadingController {
 			parentQuestion.setParentQuestionArticle(parentQuestionArticle);
 	
 			//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
-			Set<Question> questions = new HashSet<Question>(0);
+			List<Question> questions = new ArrayList<Question>(0);
 			
 			for(Integer i = 0;i<questionTo-questionFrom+1;i++){
 				Question question = new Question();

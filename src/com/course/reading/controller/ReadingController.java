@@ -258,8 +258,7 @@ public class ReadingController {
 
 			
 			//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
-			Set<Question> onequestions = new HashSet<Question>(0);
-			
+			List<Question> onequestions = new ArrayList<Question>(0);
 			
 			//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
 			for (Integer i = 0; i < questionTo-questionFrom+1; i++) {
@@ -272,7 +271,7 @@ public class ReadingController {
 				question.setQuestionExplain(questionLists.get(i+10));
 				question.setQuestionScore(Float.parseFloat(questionScore));
 				
-				Set<Selectt> selectts = new HashSet<Selectt>(0);
+				List<Selectt> selectts = new ArrayList<Selectt>(0);
 				
 				//存储selectt表  将selectts赋值给question 与question联系起来
 				for(Integer j = 0; j<4; j++){
@@ -326,7 +325,7 @@ public class ReadingController {
 			parentQuestionTwo.setParentQuestionTitle(parentQuestionTitle2);
 			
 			//设置questions集合  将question加入questions  将questions作为属性加入parentquestion
-			Set<Question> twoquestions = new HashSet<Question>(0);
+			List<Question> twoquestions = new ArrayList<Question>(0);
 			
 			
 			//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
@@ -341,7 +340,7 @@ public class ReadingController {
 				question.setQuestionExplain(questionLists.get(i+5+10));
 				question.setQuestionScore(Float.parseFloat(questionScore));
 				
-				Set<Selectt> selectts = new HashSet<Selectt>(0);
+				List<Selectt> selectts = new ArrayList<Selectt>(0);
 				
 				//存储selectt表  将selectts赋值给question 与question联系起来
 				for(Integer j = 0; j<4; j++){

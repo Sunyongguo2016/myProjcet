@@ -1,7 +1,9 @@
 package com.course.translation.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -79,7 +81,7 @@ public class TranslationController {
 		question.setQuestionScore(questionScore);
 
 		// 设置questions集合将question加入questions
-		Set<Question> questions = new HashSet<Question>(0);
+		List<Question> questions = new ArrayList<Question>(0);
 		questions.add(question);
 
 		// 将questions作为属性加入parentquestion
@@ -105,7 +107,7 @@ public class TranslationController {
 		ParentQuestion parentQuestion = this.parentQuestionServiceImpl.getParentQuestion(parentQuestionId);
 
 		// 得到大题下的小题
-		Set<Question> questions = parentQuestion.getQuestions();
+		List<Question> questions = parentQuestion.getQuestions();
 
 		// 删除小题
 		for (Question i : questions) {
