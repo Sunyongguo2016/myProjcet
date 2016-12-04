@@ -1,7 +1,9 @@
 package com.course.writing.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -57,7 +59,7 @@ public class WritingController {
 			@RequestParam(name = "parentQuestionArticle") String parentQuestionArticle,
 			@RequestParam(name = "description") String description,
 			@RequestParam(name = "questionExplain") String questionExplain,
-			@RequestParam(name = "imgUrl") String imgUrl, 
+			@RequestParam(value = "imgUrl", required = false) String imgUrl, 
 			@RequestParam(name = "questionScore") float questionScore) {
 
 		// 根据examName找到exam对象
@@ -81,7 +83,7 @@ public class WritingController {
 		question.setQuestionScore(questionScore);
 
 		// 设置questions集合将question加入questions
-		Set<Question> questions = new HashSet<Question>(0);
+		List<Question> questions = new ArrayList<Question>(0);
 		questions.add(question);
 
 		// 将questions作为属性加入parentquestion
@@ -106,7 +108,7 @@ public class WritingController {
 		ParentQuestion parentQuestion = this.parentQuestionServiceImpl.getParentQuestion(parentQuestionId);
 
 		// 得到大题下的小题
-		Set<Question> questions = parentQuestion.getQuestions();
+		List<Question> questions = parentQuestion.getQuestions();
 
 		// 删除小题
 		for (Question i : questions) {
