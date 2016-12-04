@@ -46,4 +46,27 @@ public class ErrorDaoImpl extends BaseDao<Error, Integer> {
 		}
 	}
 
+	/**
+	 * 
+	 * @Description 		查询错题
+	 * @author 				童海苹
+	 * @createDate  		2016/12/3
+	 * @version 			V1.0
+	 * 
+	 */
+	public Page<Error> findCollectContent(int pageNum, int pageSize, int studentId, int examId, int parentQuestionId) {
+		
+		String hql;
+		hql = "from Error e where e.studentInfo = studentId and e.exam = examId and e.parentQuestion = parentQuestionId";
+		try {
+			Page<Error> page = new Page<Error>();
+			page.setCurrentPageNum(pageNum);
+			page.setPageSize(pageSize);
+			page = this.findByPage(pageNum, pageSize, hql, null);
+			return page;
+		} catch (Exception ee) {
+			ee.printStackTrace();
+			return null;
+		}
+	}
 }

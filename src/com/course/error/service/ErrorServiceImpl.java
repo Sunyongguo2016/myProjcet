@@ -14,14 +14,14 @@ public class ErrorServiceImpl {
 	@Resource
 	private ErrorDaoImpl errorDaoImpl;
 	
-/*	@Transactional(readOnly = true)
-	public Page<Exam> selectlistError(int pageNum, int pageSize, Object[]params){
-		return this.errorDaoImpl.findError(pageNum, pageSize, params);
-	}
-*/	
 	@Transactional(readOnly = true)
-	public Page<Error> ErrorCollect(int pageNum, int pageSize,int collet, int studentId, Object[]params){
+	public Page<Error> errorCollect(int pageNum, int pageSize,int collet, int studentId, Object[]params){
 		return this.errorDaoImpl.findCollectError(pageNum, pageSize, collet, studentId, params);
+	}
+	
+	@Transactional(readOnly = true)
+	public Page<Error> errorContent(int pageNum, int pageSize, int studentId, int examId, int parentQuestionId){
+		return this.errorDaoImpl.findCollectContent(pageNum, pageSize, studentId, examId, parentQuestionId);
 	}
 
 }
