@@ -1,8 +1,10 @@
 package com.course.entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +27,7 @@ public class Question {
 	private float questionScore;
 	
 	private ParentQuestion parentQuestion;
-	private Set<Selectt> selectts = new HashSet<Selectt>(0);
+	private List<Selectt> selectts = new ArrayList<Selectt>(0);
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -72,13 +74,11 @@ public class Question {
 		this.parentQuestion = parentQuestion;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="question")
-	public Set<Selectt> getSelectts() {
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="question")
+	public List<Selectt> getSelectts() {
 		return selectts;
 	}
-	public void setSelectts(Set<Selectt> selectts) {
+	public void setSelectts(List<Selectt> selectts) {
 		this.selectts = selectts;
 	}
-	
-	
 }

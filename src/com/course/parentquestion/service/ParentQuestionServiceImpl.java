@@ -26,11 +26,12 @@ public class ParentQuestionServiceImpl {
 		return this.parentQuestionDaoImpl.findParentQuestionListeningByParentQuestionName(pageNum, pageSize, params);
 	}
 	
-	//按大题名称查找parentQuestion  适用于十五选十等
+	//按大题名称查找parentQuestion  适用于十五选十 专项等
 	@Transactional(readOnly=true)
 	public Page<ParentQuestion> listParentQuestionByParentQuestionName(int pageNum,int pageSize,Object[] params){
 		return this.parentQuestionDaoImpl.findParentQuestionByParentQuestionName(pageNum, pageSize, params);
 	}
+	
 	
 	@Transactional(readOnly=true)
 	public Page<ParentQuestion> listParentQuestion(int pageNum,int pageSize,Object[] params){

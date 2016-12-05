@@ -85,7 +85,7 @@
 }
 #content{
 	width: 1000px;
-	height:480px;
+	height:680px;
 	border:2px solid #C0C0C0;
 	margin: 20px 168px 20px 168px;
 	background-color: #efefef;
@@ -143,27 +143,26 @@
 	font-weight: 10px;
 	margin: 230px 0px 0px -406px;
 }
-.img img{
+.edit{
 	float: left;
-	margin: 230px 0px 0px -286px;
+	margin: 230px 0px 0px -280px;
 }
-.img input{
-	float: left;
-	width: 180px;
-	height: 25px;
-	margin: 300px 0px 0px -180px;
-}
+
 .yanzhengma{
 	float: left;
 	font-size: 22px;
 	font-weight: 10px;
-	margin: 340px 0px 0px -410px;
+	margin: 560px 0px 0px -422px;
+}
+#my-form .img{
+	margin:0 auto;
+	position:relative;
 }
 #inputCode{
 	float: left;
 	width: 100px;
 	height: 25px;
-	margin: 340px 0px 0px -296px;
+	margin: 560px 0px 0px -310px;
 }
 .code{
 	background-color: grey;
