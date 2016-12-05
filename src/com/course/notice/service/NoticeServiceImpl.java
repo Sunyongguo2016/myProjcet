@@ -18,7 +18,18 @@ public class NoticeServiceImpl {
 	public void addNotice(Notice p){
 		this.productDaoImpl.saveNotice(p);
 	}
-
+	
+	@Transactional(readOnly=true)
+	public Page<Notice> listContent(int pageNum,int pageSize,Object[] params){
+		return this.productDaoImpl.findContent(pageNum, pageSize, params);
+	}
+	
+	@Transactional(readOnly=true)
+	public Page<Notice> listType(int pageNum,int pageSize,Object[] params){
+		return this.productDaoImpl.findType(pageNum, pageSize, params);
+	}
+	
+	
 	@Transactional(readOnly=true)
 	public Page<Notice> listNotice(int pageNum,int pageSize,Object[] params){
 		return this.productDaoImpl.findNotice(pageNum, pageSize, params);
