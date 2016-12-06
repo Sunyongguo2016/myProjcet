@@ -1,7 +1,6 @@
 package com.course.error.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.course.entity.Exam;
-import com.course.entity.StudentInfo;
+import com.course.entity.Error;
 import com.course.error.service.ErrorServiceImpl;
-import com.course.exam.service.ExamServiceImpl;
 import com.course.login.service.LoginServiceImpl;
 import com.framework.Page;
 
@@ -35,7 +32,7 @@ public class ErrorController {
 			Model model){
 		int stuId = (int)session.getAttribute("stuId");
 		System.out.println(stuId);
-		Page <Error> page;
+		Page<Error> page;
 		if(searchParam == null || "".equals(searchParam)){
 			if(isCollect == 1){
 				request.setAttribute("isCol", 1);
