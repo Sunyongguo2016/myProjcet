@@ -2,11 +2,27 @@ package com.course.error.dao;
 
 import org.springframework.stereotype.Repository;
 
+import com.course.entity.Error;
 import com.framework.BaseDao;
 import com.framework.Page;
 
 @Repository
 public class ErrorDaoImpl extends BaseDao<Error, Integer> {
+	/**
+	 * 
+	 * @Description 		存储错题
+	 * @author 				孙晓辉
+	 * @createDate  		2016/12/4
+	 * @version 			V1.0
+	 * 
+	 */
+	public void saveError(Error error){
+		try {
+			this.save(error);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 
 	 * @Description 		按页查询试卷
