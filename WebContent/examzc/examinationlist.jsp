@@ -15,7 +15,12 @@
         <script src="${ctx }/js/nav.js"></script>
         <script type="text/javascript" src="${ctx }/js/login.js"></script>
         <script type="text/javascript" src="${ctx }/js/header.js"></script>    
-        <title>自测</title>
+        <title>自测列表</title>
+        <style type="text/css">
+        .current{
+        	font-weight:900;
+        }
+        </style>
     </head>
     <body>
      <!-- header-->
@@ -67,19 +72,16 @@
     <!--左侧边栏-->
     <div class="left">
         <h2>试卷选择</h2>
-        <div class="vtitle"><a href="${ctx }/examzc/examinationlist.jsp">全部试卷</a></div>
+        <div class="vtitle"><a href="${ctx }/examonline/list">全部试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
-        <div class="vtitle"><a href="${ctx }/examzc/examinationlist.jsp">2014-2016年试卷</a></div>
+        <div class="vtitle"><a href="${ctx }/examonline/list?examTime=2016">2016年试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
-        <div class="vtitle"><a href="${ctx }/examzc/examinationlist.jsp">2011-2013年试卷</a></div>
+        <div class="vtitle"><a href="${ctx }/examonline/list?examTime=2015">2015年试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
-        <div class="vtitle"><a href="examinationlist.html">2008-2010年试卷</a></div>
-            <div class="vcon" style="display: none;">
-        </div>
-        <div class="vtitle"><a href="examinationlist.html">2005-2007年试卷</a></div>
+        <div class="vtitle"><a href="${ctx}/examonline/list?examTime=2014">2014年试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
         <div class="leftfoot"></div>
@@ -95,106 +97,33 @@
                 <td>进入考试</td>
             </tr>
             <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="${ctx }/examzc/preview.jsp">查看试卷</a></td>
-                <td><a href="${ctx }/examzc/test.jsp"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="${ctx }/examzc/preview.jsp">查看试卷</a></td>
-                <td><a href="${ctx }/examzc/test.jsp"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="preview.html">查看试卷</a></td>
-                <td><a href="test.html"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="preview.html">查看试卷</a></td>
-                <td><a href="test.html"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="#">查看试卷</a></td>
-                <td><a href="test.html"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="#">查看试卷</a></td>
-                <td><a href="test.html"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="#">查看试卷</a></td>
-                <td><a href="test.html"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="#">查看试卷</a></td>
-                <td><a href="test.html"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="#">查看试卷</a></td>
-                <td><a href="test.html"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="#">查看试卷</a></td>
-                <td><a href="test.html"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="#">查看试卷</a></td>
-                <td><a href="test.html"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="#">查看试卷</a></td>
-                <td><a href="test.html"><input type="button" value="进入考试" /></a></td>
-            </tr>
-            <tr>
-                <td>2016年大学英语四级考前冲刺试题及答案解析(十五)</td>
-                <td>2016年</td>
-                <td>模拟题</td>
-                <td><a href="#">查看试卷</a></td>
-                <td><a href="test.html"><input type="button" value="进入考试" /></a></td>
+            	<c:forEach items="${page.list }" var="exam">
+            	<tr>
+                <td><a href="${ctx}/examonline/look?examName=${exam.examName}">${exam.examName }</a></td>
+                <td><a href="${ctx }/examonline/list1?examTime=${exam.examTime }">${exam.examTime }年</a></td>
+                <td><a href="${ctx}/examonline/list2?examType=${exam.examType}">${exam.examType }</a></td>
+                <td><a href="${ctx }/examonline/look?examId=${exam.examId}"><input type="button" value="查看试卷" /></a></td>
+                <td><a href="${ctx }/examonline/exam?examId=${exam.examId}"><input type="button" value="进入考试" /></a></td>
+                </tr>
+                </c:forEach>
             </tr>           
             <tr>
                 <td colspan="5">
                     <div class="pagecss">
-                        <span class="page"><a href="#">首页</a></span>
-                        <span class="page"><a href="#">上一页</a></span>
-                        <span class="page"><a href="#">1</a></span>
-                        <span class="page"><a href="#">2</a></span>
-                        <span class="page"><a href="#">3</a></span>
-                        <span class="page"><a href="#">下一页</a></span>
-                        <span class="page"><a href="#">尾页</a></span>
+                        <span class="page"><a href="${ctx }/examonline/list1?pageNum=1&examTime=${exam.examTime }">首页</a></span>
+                        <span class="page"><a href="${ctx }/examonline/list1?pageNum=${page.prePageNum}&examTime=${exam.examTime }">上一页</a></span>
+                        <c:forEach begin="1" end="${page.totalPageNum }" var="pageNum">
+			        	<c:choose> 
+			        	<c:when test="${page.currentPageNum == pageNum}">
+                        <span class="current"><a href="#">${page.currentPageNum }</a></span>
+                        </c:when>
+                        <c:otherwise>
+                        <a name="pagen" href="${ctx }/examonline/list1?pageNum=${pageNum }&examTime=${exam.examTime }">${pageNum }</a>
+                        </c:otherwise>
+                        </c:choose>
+                        </c:forEach>
+                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.nextPageNum }&examTime=${exam.examTime }">下一页</a></span>
+                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.totalPageNum }&examTime=${exam.examTime }">尾页</a></span>
                     </div>
                 </td>
             </tr>
