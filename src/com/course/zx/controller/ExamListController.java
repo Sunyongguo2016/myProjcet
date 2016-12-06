@@ -50,6 +50,7 @@ public class ExamListController {
 		request.setAttribute("pqType",parentQuestionName);
 		return "examzx/specialprojectlist";
 	}
+	
 	/**
 	 * 
 	 * @desc				实现parentquestion的获取,返回zxpreview.jsp页面
@@ -60,7 +61,7 @@ public class ExamListController {
 	 * 
 	 */
 	@RequestMapping("preview")
-	public String preview(@RequestParam(name="parentQuestionId", defaultValue="2") int parentQuestionId ,
+	public String preview(@RequestParam(name="parentQuestionId", defaultValue="1") int parentQuestionId ,
 				HttpServletRequest request,
 				Model model){
 		
@@ -70,5 +71,36 @@ public class ExamListController {
 
 		return "examzx/zxpreview";
 	}
+	
+	/**
+	 * 
+	 * @desc				实现parentquestion的获取,返回zxcontent.jsp页面
+	 * @author				李翘楚
+	 * @createDate 			2016/12/1
+	 * @param 				parentQuestionId  大题id  
+	 * @return				String
+	 * 
+	 */
+	@RequestMapping("test")
+	public String test(@RequestParam(name="parentQuestionId", defaultValue="1") int parentQuestionId ,
+				HttpServletRequest request,
+				Model model){
+		
+		ParentQuestion parentQuestion = new ParentQuestion();
+		parentQuestion = this.parentQuestionServiceImpl.getParentQuestion(parentQuestionId);
+		request.setAttribute("parentQuestion", parentQuestion);
+
+		return "examzx/zxcontent";
+	}
+	
+	/**
+	 * 
+	 * @desc				跳转到判断页面
+	 * @author				李翘楚
+	 * @createDate 			2016/12/1
+	 * @param 				parentQuestionId  大题id  
+	 * @return				String
+	 * 
+	 */
 	
 }

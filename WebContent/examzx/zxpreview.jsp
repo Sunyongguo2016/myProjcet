@@ -18,6 +18,12 @@
 		<style>
 			.div-key-container{margin:5px 25px; border:dotted 1px #ddd; padding:5px;}
 			.div-key-container span{font-weight:bold}
+			#after_tested{
+			display:none;
+			background-color:#E1F9FC;
+			margin-left:15px;
+			width:900px;
+			}
 		</style>
 		<script type="text/javascript">
 
@@ -220,6 +226,14 @@
 						                                        </ul>
 			                                                </td>
 			                                            </tr>
+			                                            <tr id="after_tested">
+			                                            	<td colspan="2">
+			                                            		<ul>
+			                                            			<li><label><b>答案：</b>${question.questionAnswer}</label></li>
+			                                            			<li><label><b>解析：</b>${question.questionExplain}</label></li>
+			                                            		</ul>
+			                                            	</td>
+			                                            </tr>
 			                                        </tbody>
 		                                        </c:forEach>
 		                                    </table>
@@ -247,6 +261,14 @@
 						                                        	</c:forEach>			                                        
 						                                        </ul>
 			                                                </td>
+			                                            </tr>
+			                                            <tr id="after_tested">
+			                                            	<td colspan="2">
+			                                            		<ul>
+			                                            			<li><label><b>答案：</b>${question.questionAnswer}</label></li>
+			                                            			<li><label><b>解析：</b>${question.questionExplain}</label></li>
+			                                            		</ul>
+			                                            	</td>
 			                                            </tr>
 			                                        </tbody>
 		                                        </c:forEach>
@@ -277,6 +299,14 @@
 		                                    				</c:forEach>
 		                                    			</td>
 		                                    		</tr>
+		                                    		<tr id="after_tested">
+		                                            	<td colspan="2">
+		                                            		<ul>
+		                                            			<li><label><b>答案：</b>${question.questionAnswer}</label></li>
+		                                            			<li><label><b>解析：</b>${question.questionExplain}</label></li>
+		                                            		</ul>
+		                                            	</td>
+		                                            </tr>
 		                                    	</tbody>
 		                                    </table>
                                     	</c:when>
@@ -297,6 +327,16 @@
 		                                                
 		                                                </td>
 		                                            </tr>
+		                                            <tr id="after_tested">
+		                                            	<td colspan="2">
+			                                            	<b>范文：</b>
+			                                            	<ul>
+			                                            		<c:forEach items="${parentQuestion.questions}" var="qust">
+			                                            			<li><label>${qust.questionExplain}</label></li>
+			                                            		</c:forEach>
+			                                            	</ul>
+		                                            	</td>
+		                                            </tr>
 		                                        </tbody>
 		                                    </table>
                                     	</c:when>
@@ -315,6 +355,16 @@
 																	</label></li>
 		                                                
 		                                                </td>
+		                                            </tr>
+		                                            <tr id="after_tested">
+                                            			<td colspan="2">
+		                                            	<b>范文：</b>
+		                                            	<ul>
+		                                            		<c:forEach items="${parentQuestion.questions}" var="qust">
+		                                            			<li><label>${qust.questionExplain}</label></li>
+		                                            		</c:forEach>
+		                                            	</ul>
+		                                            	</td>
 		                                            </tr>
 		                                        </tbody>
 		                                    </table>
@@ -362,6 +412,17 @@
 		                                    				</c:forEach>
 		                                    			</td>
 		                                    		</tr>
+		                                    		<tr id="after_tested">
+		                                            	<td colspan="2">
+		                                            		<ul>
+		                                            			<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
+		                                            			<li><label>(${qust.questionContent})</label></li>
+		                                            			<li><label><b>答案：</b>${qust.questionAnswer}</label></li>
+		                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
+		                                            			</c:forEach>
+		                                            		</ul>
+		                                            	</td>
+	                                               </tr>
 		                                        </tbody>
 		                                    </table>
 		                                    
@@ -386,6 +447,14 @@
 			                                        <tbody>
 			                                        	<tr>
 			                                            	<td colspan="2"></td>
+			                                            </tr>
+			                                            <tr id="after_tested">
+			                                            	<td colspan="2">
+			                                            	<ul>
+			                                            		<li><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>答案：</b>${qust.questionAnswer}</label></li>
+																<li><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>解析：</b>${qust.questionExplain}</label></li>
+															</ul>
+			                                            	</td>
 			                                            </tr>
 			                                        </tbody>
 			                                    </table>
@@ -417,6 +486,14 @@
 						                                        </ul>
 			                                                </td>
 			                                            </tr>
+			                                            <tr id="after_tested">
+			                                            	<td colspan="2">
+			                                            		<ul>
+			                                            			<li><label><b>答案：</b>${qust.questionAnswer}</label></li>
+			                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
+			                                            		</ul>
+			                                            	</td>
+			                                            </tr>
 			                                        </tbody>
 		                                        </c:forEach>
 		                                    </table>
@@ -445,6 +522,14 @@
 						                                        	</c:forEach>			                                        
 						                                        </ul>
 			                                                </td>
+			                                            </tr>
+			                                             <tr id="after_tested">
+			                                            	<td colspan="2">
+			                                            		<ul>
+			                                            			<li><label><b>答案：</b>${qust.questionAnswer}</label></li>
+			                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
+			                                            		</ul>
+			                                            	</td>
 			                                            </tr>
 			                                        </tbody>
 		                                        </c:forEach>
@@ -475,5 +560,14 @@
 			</tbody></table>
         </div>
     </div>
+    <script type="text/javascript">
+	    var str = '${tested}';
+		window.onload = function changStyle(){
+			if("on" == str){
+				var v = document.getElementById("after_tested");
+				v.style.display="block";
+			}
+		}
+    </script>
 </body>
 </html>
