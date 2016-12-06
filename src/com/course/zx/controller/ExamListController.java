@@ -35,16 +35,18 @@ public class ExamListController {
 	@RequestMapping("list")
 	public String list(@RequestParam(name="pageNum", defaultValue="1") int pageNum,
 			@RequestParam(name="parentQuestionName",defaultValue="") String parentQuestionName,
+			@RequestParam(name="examType",defaultValue="") String examType,
 			HttpServletRequest request,
 			Model model){
-		
 		Page<ParentQuestion> page;
 		
-		if( parentQuestionName== null || "".equals(parentQuestionName)){
-			page=this.parentQuestionSeriviceImpl.listParentQuestionByParentQuestionName(pageNum, 10, null);	
-		}else{
-			page=this.parentQuestionSeriviceImpl.listParentQuestionByParentQuestionName(pageNum, 10, new Object[]{parentQuestionName});
+		try {
+			examType = new String(examType.getBytes("ISO8859_1"), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
+		System.out.println(examType);
+		page=this.parentQuestionSeriviceImpl.listParentQuestionByParentQuestionNameAndExamType(pageNum, 10, new Object[]{parentQuestionName,examType});	
 		
 		request.setAttribute("page", page);
 		request.setAttribute("pqType",parentQuestionName);
