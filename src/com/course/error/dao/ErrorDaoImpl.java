@@ -20,17 +20,16 @@ public class ErrorDaoImpl extends BaseDao<Error, Integer> {
 		String hql;
 		if (params != null && params.length > 0) {
 			if(isCollect == 1){
-				hql = "from Error e where e.isCollect =1 and e.studentInfo = studentId and e.exam in(select examId from Exam ex where ex.examName like ?)";
-				
+				hql = "from Error e where e.isCollect =1 and e.studentInfo in(select s from StudentInfo s where s.studentId="+studentId+") and e.exam in(select ex from Exam ex where ex.examName like ?)";
 			} else {
-				hql = "from Error e where e.studentInfo = studentId and e.exam in(select examId from Exam ex where ex.examName like ?)";
+				hql = "from Error e where e.studentInfo in(select s from StudentInfo s where s.studentId="+studentId+") and e.exam in(select ex from Exam ex where ex.examName like ?)";
 			}
 			params[0] = "%" + params[0] + "%";
 		}else{
 			if(isCollect == 1){
-				hql = "from Error e where e.isCollect =1 and e.studentInfo = studentId";
+				hql = "from Error e where e.isCollect =1 and e.studentInfo in(select s from StudentInfo s where s.studentId="+studentId+")";
 			} else {
-				hql = "from Error e where e.studentInfo = studentId";
+				hql = "from Error e where e.studentInfo in(select s from StudentInfo s where s.studentId="+studentId+")";
 			}
 		}
 		
