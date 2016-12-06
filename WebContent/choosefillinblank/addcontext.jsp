@@ -82,83 +82,83 @@
 					<div class="label">
 						<label>选项A：</label>
 					</div>
-					<input type="text" class="input w50" name="aselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent1" value="" />
 					<div class="label">
 						<label>选项B：</label>
 					</div>
-					<input type="text" class="input w50" name="bselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent2" value="" />
 				</div>
 				<div class="form-group">
 					<div class="label">
 						<label>选项C：</label>
 					</div>
-					<input type="text" class="input w50" name="cselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent3" value="" />
 					<div class="label">
 						<label>选项D：</label>
 					</div>
-					<input type="text" class="input w50" name="dselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent4" value="" />
 				</div>
 
 				<div class="form-group">
 					<div class="label">
 						<label>选项E：</label>
 					</div>
-					<input type="text" class="input w50" name="eselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent5" value="" />
 					<div class="label">
 						<label>选项F：</label>
 					</div>
-					<input type="text" class="input w50" name="fselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent6" value="" />
 				</div>
 
 				<div class="form-group">
 					<div class="label">
 						<label>选项G：</label>
 					</div>
-					<input type="text" class="input w50" name="gselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent7" value="" />
 					<div class="label">
 						<label>选项H：</label>
 					</div>
-					<input type="text" class="input w50" name="hselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent8" value="" />
 				</div>
 
 				<div class="form-group">
 					<div class="label">
 						<label>选项I：</label>
 					</div>
-					<input type="text" class="input w50" name="iselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent9" value="" />
 					<div class="label">
 						<label>选项J：</label>
 					</div>
-					<input type="text" class="input w50" name="jselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent10" value="" />
 				</div>
 
 				<div class="form-group">
 					<div class="label">
 						<label>选项K：</label>
 					</div>
-					<input type="text" class="input w50" name="kselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent11" value="" />
 					<div class="label">
 						<label>选项L：</label>
 					</div>
-					<input type="text" class="input w50" name="lselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent12" value="" />
 				</div>
 
 				<div class="form-group">
 					<div class="label">
 						<label>选项M：</label>
 					</div>
-					<input type="text" class="input w50" name="mselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent13" value="" />
 					<div class="label">
 						<label>选项N：</label>
 					</div>
-					<input type="text" class="input w50" name="nselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent14" value="" />
 				</div>
 
 				<div class="form-group">
 					<div class="label">
 						<label>选项O：</label>
 					</div>
-					<input type="text" class="input w50" name="oselecttcontent" value="" />
+					<input type="text" class="input w50" name="selecttcontent15" value="" />
 
 				</div>
 
