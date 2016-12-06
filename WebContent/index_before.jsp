@@ -40,8 +40,8 @@
 						</a>
 					</div>
 					<div class="search">
-						<input type="text" class="text"/>
-    					<a href="${ctx }/search.jsp"><input type="submit" class="button" value="搜索"/></a>
+							<input id="searchParam" type="text" name="searchParam" class="text"/>
+    						<a href="javascrpt:search()" onclick="searchp();return false;"><input type="submit" name="" class="button" value="搜索"/></a>
 					</div>
 					<div class="login" id="login">
                     	<a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;|
@@ -69,9 +69,8 @@
 				<div class="menu">
 					<ul>
 						<li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
-						<li><a href="${ctx }/category.jsp">大学英语四级</a></li>
-						<li><a href="${ctx }/category.jsp">大学英语六级</a></li>
-						<li><a href="${ctx }/arena.jsp">竞技场</a></li>
+						<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+						<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
 						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 					</ul>
 				</div>
@@ -122,12 +121,9 @@
 				<h2>大学英语四级</h2>
 				<hr/>
 				<ul>
-					<li><a href="${ctx }/test.jsp">[大学英语四级]2013年6月大学英语四级考试历年真题及答案解析（第3套）</a></li>
-					<li><a href="${ctx }/test.jsp">[大学英语四级]2013年6月大学英语四级考试历年真题及答案解析（第3套）</a></li>
-					<li><a href="${ctx }/test.jsp">[大学英语四级]2013年6月大学英语四级考试历年真题及答案解析（第3套）</a></li>
-					<li><a href="${ctx }/test.jsp">[大学英语四级]2013年6月大学英语四级考试历年真题及答案解析（第3套）</a></li>
-					<li><a href="${ctx }/test.jsp">[大学英语四级]2013年6月大学英语四级考试历年真题及答案解析（第3套）</a></li>
-					<li><a href="${ctx }/test.jsp">[大学英语四级]2013年6月大学英语四级考试历年真题及答案解析（第3套）</a></li>
+				<c:forEach items="${pageExamFour.list }" var="exam">
+					<li><a href="${ctx }/examzc/preview.jsp">${exam.examName }..预览</a></li>
+				</c:forEach>
 				</ul>
 				<p><a href="${ctx }/category.jsp" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
 				</div>
@@ -138,12 +134,9 @@
 				<h2>大学英语六级</h2>
 				<hr/>
 				<ul>
-					<li><a href="test.html">[大学英语六级]2013年6月大学英语六级考试历年真题及答案解析（第3套）</a></li>
-					<li><a href="test.html">[大学英语六级]2013年6月大学英语六级考试历年真题及答案解析（第3套）</a></li>
-					<li><a href="test.html">[大学英语六级]2013年6月大学英语六级考试历年真题及答案解析（第3套）</a></li>
-					<li><a href="test.html">[大学英语六级]2013年6月大学英语六级考试历年真题及答案解析（第3套）</a></li>
-					<li><a href="test.html">[大学英语六级]2013年6月大学英语六级考试历年真题及答案解析（第3套）</a></li>
-					<li><a href="test.html">[大学英语六级]2013年6月大学英语六级考试历年真题及答案解析（第3套）</a></li>
+					<c:forEach items="${pageExamSix.list }" var="exam">
+						<li><a href="${ctx }/examzc/preview.jsp">${exam.examName }..预览</a></li>
+					</c:forEach>
 				</ul>
 				<p><a href="${ctx }/category.jsp" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
 				</div>
@@ -208,5 +201,11 @@
 				<p>版权所有：猿计划项目小组</p>
 			</div>
 		</div>
+		<script type="text/javascript">
+		function searchp(){
+			var p=$("#searchParam").val();
+			window . location . href = "${ctx }/exam/search?searchParam="+p;
+		}
+		</script>
 	</body>
 </html>

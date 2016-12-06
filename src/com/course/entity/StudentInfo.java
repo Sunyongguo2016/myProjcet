@@ -85,7 +85,6 @@ public class StudentInfo {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="studentInfo")
 	public Set<Error> getErrors() {
 		return errors;

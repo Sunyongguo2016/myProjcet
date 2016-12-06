@@ -1,6 +1,7 @@
 package com.course.exam.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -136,7 +137,6 @@ public class ExamController {
 	public String list(@RequestParam(name="pageNum", defaultValue="1") int pageNum,
 			@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
 			Model model){
-		System.out.println(searchParam);
 		Page<Exam> page;
 		if(searchParam == null || "".equals(searchParam)){
 			page = this.examServiceImpl.listExam(pageNum, 5, null);	
@@ -152,4 +152,40 @@ public class ExamController {
 		request.setAttribute("searchParam", searchParam);
 		return "exam/exampaperlist";
 	}
+	
+	
+	/**
+	 * 
+	 * @desc				试卷搜索功能
+	 * @author				孙永国
+	 * @createDate 			2016/12/3
+	 * @param 				pageNum页码，searchParam搜索参数
+	 * @return				String
+	 * 
+	 */
+	@RequestMapping("search")
+	public String search(@RequestParam(name="pageNum", defaultValue="1") int pageNum,
+			@RequestParam(name="searchParam",defaultValue="") String searchParam,
+			@RequestParam(name="examType",defaultValue="") String examType,
+			HttpServletRequest request,
+			Model model){
+		Page<Exam> page;
+		
+		try {
+			 searchParam = new String(searchParam.getBytes("ISO8859_1"), "UTF-8");
+			 examType = new String(examType.getBytes("ISO8859_1"), "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+		}
+		
+		page = this.examServiceImpl.listExam(pageNum, 5, new Object[]{searchParam,examType});
+		
+		request.setAttribute("page", page);
+		request.setAttribute("searchParam", searchParam);
+		request.setAttribute("examType", examType);
+		
+		//搜索jsp
+		return "search";
+	}
+	
 }

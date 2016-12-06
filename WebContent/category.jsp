@@ -65,11 +65,9 @@
 		<h2>公告板</h2>
               <hr/>
               <ul>
-                <li><a href="${ctx }/billboard/billboard.jsp">公告内容页1</a></li>
-                <li><a href="${ctx }/billboard/billboard.jsp">公告内容页2</a></li>
-                <li><a href="${ctx }/billboard/billboard.jsp">公告内容页3</a></li>
-                <li><a href="${ctx }/billboard/billboard.jsp">公告内容页4</a></li>
-                <li><a href="${ctx }/billboard/billboard.jsp">公告内容页5</a></li>
+              	<c:forEach items="${pageNotice.list }" var="n">
+               	 <li><a href="${ctx }/billboard/billboard.jsp">${n.noticeTitle}</a></li>
+				</c:forEach>
               </ul>
               <p><a href="${ctx }/notice/billboardlist">MORE>></a></p>
          </div>
@@ -78,11 +76,9 @@
         	<h2>自测题</h2>
               <hr/>
               <ul>
-                <li><a href="${ctx }/examzc/preview.jsp">全国自测内容页一..预览</a></li>
-                <li><a href="${ctx }/examzc/preview.jsp">全国自测内容页二..预览</a></li>
-                <li><a href="${ctx }/examzc/preview.jsp">全国自测内容页三..预览</a></li>
-                <li><a href="${ctx }/examzc/preview.jsp">全国自测内容页四..预览</a></li>
-                <li><a href="${ctx }/examzc/preview.jsp">全国自测内容页五..预览</a></li>
+              <c:forEach items="${pageExam.list }" var="exam">
+                <li><a href="${ctx }/examzc/preview.jsp">${exam.examName }..预览</a></li>
+				</c:forEach>
               </ul>
               <p><a href="${ctx }/examonline/list">MORE>></a></p>
         </div>	
@@ -91,14 +87,13 @@
         	<h2>专项练习</h2>
               <hr/>
               <ul>
-                <li><a href="${ctx }/examzx/list?parentQuestionName=Writing">写作专项练习</a></li>
-                <li><a href="${ctx }/examzx/specialprojectlist.jsp">听力专项练习</a></li>
-                <li><a href="${ctx }/examzx/specialprojectlist.jsp">十五选十专项练习</a></li>
-                <li><a href="${ctx }/examzx/specialprojectlist.jsp">快速阅读专项练习</a></li>
-                <li><a href="${ctx }/examzx/specialprojectlist.jsp">阅读专项练习</a></li>
-                <li><a href="${ctx }/examzx/specialprojectlist.jsp">翻译专项练习</a></li>
+                <li><a href="${ctx }/examzx/list?parentQuestionName=Writing&examType=${examType}">写作专项练习</a></li>
+                <li><a href="${ctx }/examzx/list?parentQuestionName=ChooseFillInBlank&examType=${examType}">十五选十专项练习</a></li>
+                <li><a href="${ctx }/examzx/list?parentQuestionName=QuickReading&examType=${examType}">快速阅读专项练习</a></li>
+                <li><a href="${ctx }/examzx/list?parentQuestionName=LastReading&examType=${examType}">阅读专项练习</a></li>
+                <li><a href="${ctx }/examzx/list?parentQuestionName=Translation&examType=${examType}">翻译专项练习</a></li>
               </ul>
-              <p><a href="${ctx }/examzx/list">MORE>></a></p>
+              <p><a href="${ctx }/examzx/list?examType=${examType}">MORE>></a></p>
         </div>	
         <!-- 错题本 -->
         <div id="wrong">
