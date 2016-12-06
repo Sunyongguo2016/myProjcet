@@ -97,6 +97,10 @@
           <p><span> <input type="radio" name=""> ${se.selecttName }) ${se.selecttContent } </span></p>
 
           </div>
+          <%--答案及解析 --%>
+          <div name="r2l" style="display:none;">
+          	<span id="r2l1"></span><span id="r2l2"></span>
+          </div>
           </c:forEach>
           
       </div>
@@ -105,11 +109,11 @@
       <div id="r3">
          <input type="submit" value="提交" class="s1">
 
-         <input type="submit" value="解析" class="s2">
+         
          <div id="r3r">
-            <img src="${ctx }/images/save.png">
+            <a href="${ctx }/error/setCollect?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><img src="${ctx }/images/save.png"></a>
             <img src="${ctx }/images/note.png" id="bum">
-            <img src="${ctx }/images/delete.png">
+            <a href="${ctx }/error/delete?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><img src="${ctx }/images/delete.png"></a>
          </div>
       </div>
  	</div> 		

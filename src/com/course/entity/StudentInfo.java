@@ -26,7 +26,7 @@ public class StudentInfo {
 	private String roleName;
 
 	private Set<Score> scores = new HashSet<Score>(0);
-	//private Set<Error> errors = new HashSet<Error>(0);
+	private Set<Error> errors = new HashSet<Error>(0);
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -85,15 +85,15 @@ public class StudentInfo {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-/*	
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="studentInfo")
+	
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="studentInfo")
 	public Set<Error> getErrors() {
 		return errors;
 	}
 	public void setErrors(Set<Error> errors) {
 		this.errors = errors;
 	}
-*/	
+	
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="studentInfo")
 	public Set<Score> getScores() {
 		return scores;
