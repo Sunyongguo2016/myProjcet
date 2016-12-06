@@ -79,7 +79,7 @@ body{background:#fff}
 
 
 
-/** 表单样式 **/
+/** 琛ㄥ崟鏍峰紡 **/
 .tm_table_form{ border-collapse:collapse}
 .tm_table_form caption{font-size:20px; font-family:Tahoma, Geneva, 'Microsoft Yahei'; margin:5px 0; text-align:left; color:#000}
 .tm_table_form thead tr th{ font-weight:normal; text-align:right; font-size:12px; border:solid 1px #eee; background:#f5f5f5; line-height:20px; }
@@ -90,7 +90,7 @@ body{background:#fff}
 .tm_table_form tfoot tr th{ font-weight:normal; text-align:right; font-size:12px; padding:40px 0; }
 .tm_table_form tfoot tr td{}
 
-/** 表格样式 **/
+/** 琛ㄦ牸鏍峰紡 **/
 .tm_table_list{ border-collapse:collapse; }
 .tm_table_list thead tr th{ border-bottom:solid 1px #ddd; font-size:12px; background:#f5f5f5;}
 .tm_table_list tbody{border:solid 1px #eee; }
@@ -98,16 +98,16 @@ body{background:#fff}
 .tm_table_list tbody tr td a{color:#000; }
 .tm_table_list tfoot tr td{ text-align:center; height:50px;}
 
-/** 搜索框 **/
+/** 鎼滅储妗� **/
 .tm_searchbox{ margin:20px 0 0 0; padding:10px 5px; border:solid 1px #eee}
 
-/** 图片预览 **/
+/** 鍥剧墖棰勮 **/
 .tm_img_preview{width:80px; height:80px; padding:1px; border:solid 1px #eee; margin:0 0 10px 0; position:relative}
 .tm_img_preview img{width:100%; height:100%; border:none;}
 .tm_img_preview a{ position:absolute; top:5px; right:5px; width:16px; height:16px; text-align:center; display:block; background:url(../images/icos/delete.png) no-repeat;}
 .tm_img_preview_m{width:30px; height:30px; padding:1px; border:solid 1px #eee; }
 
-/** 试题答案与详情设置表格 **/
+/** 璇曢绛旀涓庤鎯呰缃〃鏍� **/
 .tm_question_options{border-collapse:collapse; margin:10px 0; border:none; width:80%; border:solid 1px #eee !important}
 .tm_question_options tr th{background:#fff !important; text-align:left !important; border-left:none !important; border-right:none !important; padding:5px !important;}
 .tm_question_options tr th textarea{width:98%}
@@ -117,12 +117,12 @@ body{background:#fff}
 .tm_question_blank input{width:200px; float:left}
 .tm_question_blank span, .tm_question_blank a{float:left; margin:5px 5px 0 5px; width:30px; text-align:right}
 
-/** 试卷详情设置 start **/
+/** 璇曞嵎璇︽儏璁剧疆 start **/
 .tm_adm_paper{}
 .tm_adm_paper_head{ background:#f5f5f5; font-family:Tahoma, Geneva, 'Microsoft Yahei'; padding:5px; border-bottom:dotted 1px #aaa;}
 .tm_adm_paper_head h1{font-size:20px; text-align:center}
-.tm_adm_paper_head h2{font-size:12px; text-align:center; font-weight:normal; font-family:Tahoma, Geneva, '宋体'; }
-.tm_adm_paper_head h3{font-size:12px; text-align:center; font-weight:normal; font-family:Tahoma, Geneva, '宋体'; }
+.tm_adm_paper_head h2{font-size:12px; text-align:center; font-weight:normal; font-family:Tahoma, Geneva, '瀹嬩綋'; }
+.tm_adm_paper_head h3{font-size:12px; text-align:center; font-weight:normal; font-family:Tahoma, Geneva, '瀹嬩綋'; }
 
 .tm_adm_paper_body{ background:#fff}
 .tm_adm_paper_body_section{ list-style:none; padding:0; margin:0; min-width:600px;}
@@ -162,9 +162,9 @@ ul.tm_adm_questionlist li:last-child{border-bottom:none; margin:0px; padding:0px
 
 .tm_adm_paper_foot{ text-align:center; margin:10px 0;}
 
-/** 试卷详情设置 end **/
+/** 璇曞嵎璇︽儏璁剧疆 end **/
 
-/** 消息框 **/
+/** 娑堟伅妗� **/
 .tm_message{border-collapse:collapse; width:400px; margin:100px auto; border:solid 1px #eee}
 .tm_message thead tr th{text-align:center; font-size:12px; background:#f5f5f5; line-height:30px;}
 .tm_message tbody tr td{ padding:10px;}
@@ -173,13 +173,13 @@ ul.tm_adm_questionlist li:last-child{border-bottom:none; margin:0px; padding:0px
 
 
 
-/** 用户试卷详情 **/
+/** 鐢ㄦ埛璇曞嵎璇︽儏 **/
 .tm_paper{min-width:600px;}
 
 .tm_paper_head{ background:#E1FFFF; font-family:Tahoma, Geneva, 'Microsoft Yahei'; padding:5px; }
 .tm_paper_head h1{font-size:20px; text-align:center}
-.tm_paper_head h2{font-size:12px; text-align:center; font-weight:normal; font-family:Tahoma, Geneva, '宋体'; }
-.tm_paper_head h3{font-size:12px; text-align:center; font-weight:normal; font-family:Tahoma, Geneva, '宋体'; }
+.tm_paper_head h2{font-size:12px; text-align:center; font-weight:normal; font-family:Tahoma, Geneva, '瀹嬩綋'; }
+.tm_paper_head h3{font-size:12px; text-align:center; font-weight:normal; font-family:Tahoma, Geneva, '瀹嬩綋'; }
 
 .tm_paper_body{background:#fff}
 
@@ -209,12 +209,12 @@ ul.tm_adm_questionlist li:last-child{border-bottom:none; margin:0px; padding:0px
 
 
 
-/** 参数表格样式 **/
+/** 鍙傛暟琛ㄦ牸鏍峰紡 **/
 .tm_param_list{ border-collapse:collapse; }
 .tm_param_list tr th{ border:solid 1px #eee; font-size:12px; background:#f5f5f5;}
 .tm_param_list tr td{ border:solid 1px #eee; text-align:center; line-height:20px; padding:5px; text-align:left;}
 
-/** 新闻列表样式 **/
+/** 鏂伴椈鍒楄〃鏍峰紡 **/
 .tm_news_list{ border-collapse:collapse; }
 .tm_news_list tbody tr th{ border-bottom:solid 1px #eee; text-align:right; line-height:20px; padding:5px; font-weight:normal;}
 .tm_news_list tbody{border:solid 1px #eee; }
