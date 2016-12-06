@@ -96,8 +96,9 @@ public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 	public Page<Exam> findExamByType(int pageNum, int pageSize, Object[] params) {
 		String hql;
 		if (params != null && params.length > 0) {
+			System.out.println("examtype"+params[0]);
 			hql = "from Exam e where e.examType like ?";
-			params[0] = "%"+params[0]+"%";
+			params[0] = "%" + params[0] + "%";
 		} else {
 			hql = "from Exam";
 		}

@@ -1,5 +1,7 @@
 package com.course.examonline.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -146,9 +148,19 @@ public class ExamonlineController {
 			HttpServletRequest request,
 			Model model){
 		Page<Exam> page=null; 
+		
+			try {
+				examType = new String(examType.getBytes("ISO8859_1"), "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		if(examType!=null){
+			System.out.println("examtype is not null:"+examType);
 			page = this.examServiceImpl.listExamByType(pageNum, 10, new Object[]{examType});
 		}else{
+			System.out.println("examtype is null:"+examType);
 			page = this.examServiceImpl.listExamByType(pageNum, 10,null);
 		}
 		request.setAttribute("page", page);

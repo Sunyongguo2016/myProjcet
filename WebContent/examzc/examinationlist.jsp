@@ -99,7 +99,7 @@
             <tr>
             	<c:forEach items="${page.list }" var="exam">
             	<tr>
-                <td><a href="${ctx}/examonline/look?examName=${exam.examName}">${exam.examName }</a></td>
+                <td><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }</a></td>
                 <td><a href="${ctx }/examonline/list1?examTime=${exam.examTime }">${exam.examTime }年</a></td>
                 <td><a href="${ctx}/examonline/list2?examType=${exam.examType}">${exam.examType }</a></td>
                 <td><a href="${ctx }/examonline/look?examId=${exam.examId}"><input type="button" value="查看试卷" /></a></td>
