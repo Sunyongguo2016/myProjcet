@@ -4,9 +4,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name="score")
@@ -36,8 +34,8 @@ public class Score {
 		this.score = score;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name="studentId")
+	@OneToOne
+	@JoinColumn(name = "studentId")
 	public StudentInfo getStudentInfo() {
 		return studentInfo;
 	}
@@ -46,7 +44,7 @@ public class Score {
 	}
 	
 	@OneToOne
-	@PrimaryKeyJoinColumn
+	@JoinColumn(name = "examId")
 	public Exam getExam() {
 		return exam;
 	}
@@ -55,7 +53,7 @@ public class Score {
 	}
 	
 	@OneToOne
-	@PrimaryKeyJoinColumn
+	@JoinColumn(name = "parentQuestionId")
 	public ParentQuestion getParentQuestion() {
 		return parentQuestion;
 	}
@@ -65,7 +63,7 @@ public class Score {
 	}
 	
 	@OneToOne
-	@PrimaryKeyJoinColumn
+	@JoinColumn(name = "questionId")
 	public Question getQuestion() {
 		return question;
 	}
