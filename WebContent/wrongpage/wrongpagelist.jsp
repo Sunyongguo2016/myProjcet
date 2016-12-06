@@ -38,22 +38,23 @@
 				 <input type="text" class="text" id="searchParam" name="searchParam" value="${searchParam }" /> 
 				<input type="submit" class="button" value="搜索" onclick="searchp();return false;"/>
 			</div>
-			<div class="login">
+			<div class="login" style="display:none;">
 				<a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;| <a href="${ctx }/register.jsp"><button>注册</button></a>
 			</div>
-			<div class="after_login">
+			<div class="after_login" style="display:block;">
 				<div id="username">
 					<p>${student.loginName }</p>
 				</div>
 				<div class="nav" id="nav">
 					<ul>
-						<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a
-							href="#"><img src="${ctx }/images/leftuser.jpg"></a>
+						<li onmousemove="showsub(this)" onmouseout="hidesub(this)">
+						<a href="#">${student.url }</a>
 							<ul>
 								<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
 								<li><a href="${ctx }/info/install.jsp">设置</a></li>
 								<li><a href="${ctx }/index_before.jsp">退出登录</a></li>
-							</ul></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -95,8 +96,8 @@
 			<div class="wenzhang_content">
 				<ul>
 					<c:forEach items="${page.list }" var="ex">
-						<a href="${ctx }/wrongpage/wrongpage.jsp">
-							<li>${ex.exam.examName}${ex.parentQuestion.parentQuestionName }${ex.isCollect }
+						<a href="${ctx }/error/wrongpage?examId=${ex.exam.examId}&parentQuestionId=${ex.parentQuestion.parentQuestionId }">
+							<li>${ex.exam.examName}${ex.parentQuestion.parentQuestionName }
 								<hr style="border: 1px dashed grey;" />
 						</li>
 						</a>
