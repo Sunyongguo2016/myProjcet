@@ -84,7 +84,7 @@
                 <li><a href="${ctx }/examzc/preview.jsp">全国自测内容页四..预览</a></li>
                 <li><a href="${ctx }/examzc/preview.jsp">全国自测内容页五..预览</a></li>
               </ul>
-              <p><a href="${ctx }/examzc/examinationlist.jsp">MORE>></a></p>
+              <p><a href="${ctx }/examonline/list">MORE>></a></p>
         </div>	
         <!-- 专项练习 -->
         <div id="sp">
