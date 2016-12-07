@@ -7,7 +7,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>专项训练-听力</title>
-	<link rel="shortcut icon" href="#">
 	<link rel="stylesheet" type="text/css" href="${ctx }/css/style.css">
 	<script src="${ctx }/js/jquery.js" type="text/javascript"></script>
 	<script src="${ctx }/js/baseutil.js" type="text/javascript"></script>
@@ -66,7 +65,7 @@
 			}else{
 				clearInterval(tm_timer);
 				$("#div_processor_timer").html('考试时间到，试卷将自动提交!');
-				$("form").attr("action","${ctx }/testscore/score?examId=${exam.examId}");
+				$("form").attr("action","${ctx }/zxscore/score?parentQuestionId=${parentQuestion.parentQuestionId}");
 				$("form").submit();
 			}
 		}
@@ -123,7 +122,7 @@
 	
 					window.onbeforeunload = null;
 					
-					$("form").attr("action","${ctx }/testscore/score?examId=${exam.examId}");
+					$("form").attr("action","${ctx }/zxscore/score?parentQuestionId=${parentQuestion.parentQuestionId}");
 					$("form").submit();
 	
 				}else{
@@ -498,7 +497,7 @@
                             <!-- /tm_paper_body -->
                             
                             <div class="tm_adm_paper_foot">
-								<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserPaper.submitPaper();">提交</button>
+								<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserpaper.submitpaper();">提交</button>
                             </div>
 
 
@@ -530,14 +529,19 @@
 
 
 	<div id="div_processor" style="left: 906px; top: 20px;">
-		离考试结束还有：
-		<div id="div_processor_timer" style="margin-top:5px;"><span class="tm_label">0:19:29</span></div>
-
-		<div id="div_processor_fastto"></div>
-		<div id="div_processor_ops">
-			<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserPaper.submitPaper();">提交</button>
-			<button class="tm_btn tm_btn_primary" type="button" onclick="">暂停</button>
-			<button class="tm_btn tm_btn_primary" type="button" onclick="">返回</button>
+		<div id="time">
+			离考试结束还有：
+			<div id="div_processor_timer" style="margin-top:5px;"><span class="tm_label">0:20:00</span></div>
+			<div id="div_processor_fastto"></div>
+			<div>
+				该大题您已使用：
+				<div style="margin-top:5px;"><span  class="tm_label">0:19:29</span></div>
+			</div>
+			<div id="div_processor_ops">
+				<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserpaper.submitpaper();">提交</button>
+				<button class="tm_btn tm_btn_primary" type="button" onclick="">暂停/开始</button>
+				<button class="tm_btn tm_btn_primary" type="button" onclick="">返回</button>
+			</div>
 		</div>
 	</div>
 </body>
