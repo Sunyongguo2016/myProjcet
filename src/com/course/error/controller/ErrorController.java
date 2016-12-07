@@ -100,12 +100,19 @@ public class ErrorController {
 	 * 
 	 */
 	@RequestMapping(value = "setCollect")
-	public void setCollect(HttpSession session, @RequestParam(name="examId") int examId, 
+	public String setCollect(HttpSession session, @RequestParam(name="examId") int examId, 
 			@RequestParam(name="parentQuestionId") int parentQuestionId, HttpServletRequest request){
 		int stuId = (int)session.getAttribute("stuId");
-		Error error = this.errorServiceImpl.findError(stuId, examId, parentQuestionId);
-		error.setIsCollect(1);
-		this.errorServiceImpl.editError(error);
+		List<Error> list = (List<Error>) this.errorServiceImpl.findEList(stuId, examId, parentQuestionId);
+		for(int i = 0;i < list.size();i++){
+			Error error = list.get(i);
+			System.out.println("finderrorlist:"+error.getErrorId()+error.getExperience());
+			error.setIsCollect(1);
+			this.errorServiceImpl.editError(error);
+			
+		}
+		return "wrongpage/wrongpagelist";
+		
 	}
 	/**
 	 * 
@@ -115,18 +122,29 @@ public class ErrorController {
 	 * @version 			V1.0
 	 * 
 	 */
+/*	@RequestMapping("comment")
+	public String comment(HttpSession session, @RequestParam(name="examId") int examId, 
+			@RequestParam(name="parentQuestionId") int parentQuestionId, 
+			 HttpServletRequest request, Model model){
+//		int stuId = (int)session.getAttribute("stuId");
+//		System.out.println("get:"+examId+parentQuestionId);
+//		Error error = this.errorServiceImpl.findError(stuId, examId, parentQuestionId);
+//		System.out.println("finderror"+error.getErrorId()+error.getExperience());
+		//判题待完成
+		System.out.println();
+		request.setAttribute("submitt", "on");
+		return "wrongpage/wrongpage";
+	}
+*/	
 	@RequestMapping("comment")
 	public String comment(HttpSession session, @RequestParam(name="examId") int examId, 
 			@RequestParam(name="parentQuestionId") int parentQuestionId, 
 			 HttpServletRequest request, Model model){
-		int stuId = (int)session.getAttribute("stuId");
-		System.out.println("get:"+examId+parentQuestionId);
-		Error error = this.errorServiceImpl.findError(stuId, examId, parentQuestionId);
-		System.out.println("finderror"+error.getErrorId()+error.getExperience());
 		//判题待完成
-		return "wrongpage/wrongpage";
+		System.out.println("判题");
+		session.setAttribute("submitt","on");
+		return "redirect:wrongpage?examId="+examId+"&parentQuestionId="+parentQuestionId;
 	}
-	
 	/**
 	 * 
 	 * @Description 		错题本对某条记录的删除功能
@@ -135,32 +153,20 @@ public class ErrorController {
 	 * @version 			V1.0
 	 * 
 	 */
-	//此方法待完善
+	//此方法删除失败
 	@RequestMapping("delete")
 	public String deleteWrongQuestion(HttpSession session, @RequestParam(name="examId") int examId, 
 			@RequestParam(name="parentQuestionId") int parentQuestionId, 
 			 HttpServletRequest request, Model model){
 		int stuId = (int)session.getAttribute("stuId");
 		System.out.println("get:"+examId+parentQuestionId);
-	/*	Page<Error> page;
-		page = this.errorServiceImpl.errorContent(1, 5, stuId, examId, parentQuestionId);
-		List<Error>list = page.getList();
+		List<Error> list = (List<Error>) this.errorServiceImpl.findEList(stuId, examId, parentQuestionId);
 		for(int i = 0;i < list.size();i++){
-			System.out.println("getpage:"+list.get(i).getErrorId());
+			System.out.println("controller-errorlist:"+list.get(i).getErrorId()+list.get(i).getExperience());
+			this.errorServiceImpl.dropError(list.get(i).getErrorId());
+			System.out.println("delete");
 		}
-	*/	
 		
-	/*	List<Error> list = new ArrayList<Error>(0);
-		list = this.errorServiceImpl.findErrorList(stuId, examId, parentQuestionId);
-		for(int i = 0;i < list.size();i++){
-			System.out.println("finderrorlist:"+list.get(i).getErrorId()+list.get(i).getExperience());
-		}
-	*/	//Error error = this.errorServiceImpl.findError(stuId, examId, parentQuestionId);
-		//System.out.println("finderror"+error.getErrorId()+error.getExperience());
-//		int errorId = error.getErrorId();
-//		System.out.println(errorId);
-//		this.errorServiceImpl.dropError(errorId);
-		//request.setAttribute("erId", errorId);
 		return "wrongpage/wrongpagelist";
 	}
 	

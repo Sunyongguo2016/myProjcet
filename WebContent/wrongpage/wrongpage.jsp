@@ -17,6 +17,27 @@
 		<script src="${ctx }/js/wrongpage2.js"></script>
 		<script src="${ctx }/js/wrongpage3.js"></script>
 		<title>错题本</title>
+		<style type="text/css">
+			#r2l1{
+			color:red;
+			font-size:15px;
+			
+			}
+			#r2la{
+			display:none;
+			}
+		
+		</style>
+		<script type="text/javascript">
+			var str = '${submitt}';
+			
+			window.onload = function changStyle(){
+				if("on" == str){
+					var log = document.getElementById("r2la");
+					log.style.display="block";
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<div class="body">
@@ -44,7 +65,7 @@
                                     <ul>
                                         <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
                                         <li><a href="${ctx }/info/install.jsp">设置</a></li>
-                                        <li><a href="${ctx }/index_before.jsp">退出登录</a></li>
+                                        <li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -82,41 +103,38 @@
 
 		   </div> 
     <div id="right2">
-    
       <div id="r1">
-      		<p>${pque.parentQuestionArticle }</p>
-      		
-      </div>
-     	<c:forEach items="${pque.questions }" var="qs">
+        <p>${pque.parentQuestionArticle } </p>
+       </div>
+       <c:forEach items="${pque.questions }" var="qs">
       <div id="r2">
-      <%--    <p><span>60. The author believes that, since the signing of the Kyoto Protocol, ________. </span></p>
-      --%>     <p><span>${qs.questionContent }</span></p>
+          <p><span>${qs.questionContent } </span></p>
           <c:forEach items="${qs.selectts }" var="se">
-          <div name="r2l"> 
+          <div id="r2l"> 
 
-          <p><span> <input type="radio" name=""> ${se.selecttName }) ${se.selecttContent } </span></p>
+          <p><span> <input type="radio" name=""> ${se.selecttName }) ${se.selecttContent }  </span></p>
 
-          </div>
-          <%--答案及解析 --%>
-          <div name="r2l" style="display:none;">
-          	<span id="r2l1"></span><span id="r2l2"></span>
           </div>
           </c:forEach>
+          <%--答案及解析 --%>
+          <br>
+         
+          <div name="r2l" id="r2la">
+          	<span id="r2l1">答案：${qs.questionAnswer }</span>
+          	<span id="r2l2">${qs.questionExplain }</span>
+          </div>
           
       </div>
       </c:forEach>
-      
       <div id="r3">
-         <input type="submit" value="提交" class="s1">
-
-         
+         <a href="${ctx }/error/comment?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><input type="button" value="提交" class="s1"></a>
          <div id="r3r">
             <a href="${ctx }/error/setCollect?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><img src="${ctx }/images/save.png"></a>
-            <img src="${ctx }/images/note.png" id="bum">
+            <a href="${ctx }/error/comment?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><img src="${ctx }/images/note.png" id="bum"/></a>
             <a href="${ctx }/error/delete?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><img src="${ctx }/images/delete.png"></a>
-         </div>
-      </div>
- 	</div> 		
+         	</div>
+      		</div>
+ 		 </div> 		
 	</div>
 			<div class="footer">
 				<p><a href="${ctx }/about_us.jsp">联系我们</a> | <a href="${ctx }/about_us.jsp">人才招聘</a> | <a href="${ctx }/about_us.jsp">教师合作</a> | <a href="${ctx }/about_us.jsp">项目介绍</a></p>

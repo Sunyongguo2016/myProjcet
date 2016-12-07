@@ -11,6 +11,7 @@ import com.course.error.dao.ErrorDaoImpl;
 import com.framework.Page;
 
 @Service
+@Transactional(readOnly = false)
 public class ErrorServiceImpl {
 	@Resource
 	private ErrorDaoImpl errorDaoImpl;
@@ -25,13 +26,25 @@ public class ErrorServiceImpl {
 		return this.errorDaoImpl.findCollectContent(pageNum, pageSize, studentId, examId, parentQuestionId);
 	}
 
-	public void dropError(int errorId){
-		this.errorDaoImpl.deleteError(errorId);
+	public void dropError(int e){
+		this.errorDaoImpl.deleteError(e);
+		System.out.println("service-delete");
 	}
 	
 	public Error findError(int studentId, int examId, int pqId){
 		return  this.errorDaoImpl.getErr(studentId, examId, pqId);
 	}
+	 
+//	public Page<Error> findErrorList(int studentId, int examId, int pqId){
+//		return this.errorDaoImpl.findCollectContent(1,10,studentId,examId,pqId);
+//	}
+	
+	public List<Error> findEList(int studentId, int examId, int pqId){
+		List<Error> errors = this.errorDaoImpl.findErrorList(studentId,examId,pqId);
+		return errors;
+
+	}
+	
 	public void editError(Error e){
 		this.errorDaoImpl.updateError(e);
 	}

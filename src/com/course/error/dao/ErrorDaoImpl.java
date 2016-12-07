@@ -1,8 +1,12 @@
 package com.course.error.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.course.entity.Error;
+import com.course.entity.Exam;
 import com.framework.BaseDao;
 import com.framework.Page;
 
@@ -54,39 +58,36 @@ public class ErrorDaoImpl extends BaseDao<Error, Integer> {
 	 * 
 	 */
 	//此方法待修改
-	public Page<Error> findCollectContent(int pageNum, int pageSize, int studentId, int examId, int parentQuestionId) {
+		public Page<Error> findCollectContent(int pageNum, int pageSize, int studentId, int examId, int parentQuestionId) {
+			
+			String hql;
+			hql = "from Error e where e.studentInfo in(select s from StudentInfo s where s.studentId="+studentId+") and e.exam in(select e from Exam e where e.examId="+examId+") and e.parentQuestion in(select p from ParentQuestion p where p.parentQuestionId="+parentQuestionId+")";
+			try {
+				Page<Error> page = new Page<Error>();
+				page.setCurrentPageNum(pageNum);
+				page.setPageSize(pageSize);
+				page = this.findByPage(pageNum, pageSize, hql, null);
+				return page;
+			} catch (Exception ee) {
+				ee.printStackTrace();
+				return null;
+			}
+		}
 		
-		String hql;
-		hql = "from Error e where e.studentInfo = studentId and e.exam = examId and e.parentQuestion = parentQuestionId";
-		try {
-			Page<Error> page = new Page<Error>();
-			page.setCurrentPageNum(pageNum);
-			page.setPageSize(pageSize);
-			page = this.findByPage(pageNum, pageSize, hql, null);
-			return page;
-		} catch (Exception ee) {
-			ee.printStackTrace();
-			return null;
+		
+		public List<Error> findErrorList(int studentId, int examId, int parentQuestionId){
+			String hql;
+			hql = "from Error e where e.studentInfo in(select s from StudentInfo s where s.studentId="+studentId+") and e.exam in(select e from Exam e where e.examId="+examId+") and e.parentQuestion in(select p from ParentQuestion p where p.parentQuestionId="+parentQuestionId+")";
+			List<Error> errors = new ArrayList<Error>(0);
+			try {
+				errors = super.findByProperty(hql, null);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return errors;
 		}
-	}
-	
-	/**
-	 * 
-	 * @Description 		删除某一错题
-	 * @author 				童海苹
-	 * @createDate  		2016/12/4
-	 * @version 			V1.0
-	 * 
-	 */
-	public void deleteError(int errorId){
-		try {
-			this.delete(errorId);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
+		
 	/**
 	 * 
 	 * @Description 		根据studentId,examId,parentQuestionId等字段查询某一错题记录
@@ -95,10 +96,9 @@ public class ErrorDaoImpl extends BaseDao<Error, Integer> {
 	 * @version 			V1.0
 	 * 
 	 */
-	//待完善
 	public Error getErr(int studentId, int examId, int parentQuestionId){
 		String hql;
-		hql = "from Error e where e.studentInfo = studentId and e.exam = examId and e.parentQuestion = parentQuestionId";
+		hql = "from Error e where e.studentInfo in(select s from StudentInfo s where s.studentId="+studentId+") and e.exam in(select e from Exam e where e.examId="+examId+") and e.parentQuestion in(select p from ParentQuestion p where p.parentQuestionId="+parentQuestionId+")";
 		Error error = new Error();
 		try {
 			error = super.findOne(hql, null);
@@ -109,8 +109,42 @@ public class ErrorDaoImpl extends BaseDao<Error, Integer> {
 		return error;
 	}
 	
+	/**
+	 * 
+	 * @Description 		根据ID查询试卷
+	 * @author 				童海苹
+	 * @createDate  		2016/11/22
+	 * @version 			V1.0
+	 * 
+	 */
+	public Error getError(int errorId) {
+		try {
+			Error e = this.get(errorId);
+			return e;
+		} catch (Exception ee) {
+			ee.printStackTrace();
+			return null;
+		}
+	}
 	
 	
+	/**
+	 * 
+	 * @Description 		删除某一错题
+	 * @author 				童海苹
+	 * @createDate  		2016/12/4
+	 * @version 			V1.0
+	 * 
+	 */
+	public void deleteError(int err){
+		try {
+			this.delete(err);
+			System.out.println("dao-delete");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * 
