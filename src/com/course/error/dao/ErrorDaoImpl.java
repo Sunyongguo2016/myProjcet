@@ -10,6 +10,21 @@ import com.framework.Page;
 public class ErrorDaoImpl extends BaseDao<Error, Integer> {
 	/**
 	 * 
+	 * @Description 		存储错题
+	 * @author 				孙晓辉
+	 * @createDate  		2016/12/4
+	 * @version 			V1.0
+	 * 
+	 */
+	public void saveError(Error error){
+		try {
+			this.save(error);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * 
 	 * @Description 		按页查询试卷
 	 * @author 				童海苹
 	 * @createDate  		2016/11/22

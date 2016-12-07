@@ -204,7 +204,7 @@
 						<label>小题一答案：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="questionanswer36"/>
+						<input type="text" class="input w50" value="" name="questionanswer1"/>
 						<div class="tips"></div>
 					</div>
 				</div>
@@ -214,7 +214,7 @@
 						<label>小题一解析：</label>
 					</div>
 					<div class="field">
-						<textarea name="questionexplain36" class="input"
+						<textarea name="questionexplain1" class="input"
 							style="height: 100px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -226,7 +226,7 @@
 						<label>小题二答案：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="questionanswer37"/>
+						<input type="text" class="input w50" value="" name="questionanswer2"/>
 						<div class="tips"></div>
 					</div>
 				</div>
@@ -236,7 +236,7 @@
 						<label>小题二解析：</label>
 					</div>
 					<div class="field">
-						<textarea name="questionexplain37" class="input"
+						<textarea name="questionexplain2" class="input"
 							style="height: 100px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -248,7 +248,7 @@
 						<label>小题三答案：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="questionanswer38"/>
+						<input type="text" class="input w50" value="" name="questionanswer3"/>
 						<div class="tips"></div>
 					</div>
 				</div>
@@ -258,7 +258,7 @@
 						<label>小题三解析：</label>
 					</div>
 					<div class="field">
-						<textarea name="questionexplain38" class="input"
+						<textarea name="questionexplain3" class="input"
 							style="height: 100px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -270,7 +270,7 @@
 						<label>小题四答案：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="questionanswer39"/>
+						<input type="text" class="input w50" value="" name="questionanswer4"/>
 						<div class="tips"></div>
 					</div>
 				</div>
@@ -280,7 +280,7 @@
 						<label>小题四解析：</label>
 					</div>
 					<div class="field">
-						<textarea name="questionexplain39" class="input"
+						<textarea name="questionexplain4" class="input"
 							style="height: 100px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -292,7 +292,7 @@
 						<label>小题五答案：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="questionanswer40"/>
+						<input type="text" class="input w50" value="" name="questionanswer5"/>
 						<div class="tips"></div>
 					</div>
 				</div>
@@ -302,7 +302,7 @@
 						<label>小题五解析：</label>
 					</div>
 					<div class="field">
-						<textarea name="questionexplain40" class="input"
+						<textarea name="questionexplain5" class="input"
 							style="height: 100px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -314,7 +314,7 @@
 						<label>小题六答案：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="questionanswer41"/>
+						<input type="text" class="input w50" value="" name="questionanswer6"/>
 						<div class="tips"></div>
 					</div>
 				</div>
@@ -324,7 +324,7 @@
 						<label>小题六解析：</label>
 					</div>
 					<div class="field">
-						<textarea name="questionexplain41" class="input"
+						<textarea name="questionexplain6" class="input"
 							style="height: 100px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -336,7 +336,7 @@
 						<label>小题七答案：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="questionanswer42"/>
+						<input type="text" class="input w50" value="" name="questionanswer7"/>
 						<div class="tips"></div>
 					</div>
 				</div>
@@ -346,7 +346,7 @@
 						<label>小题七解析：</label>
 					</div>
 					<div class="field">
-						<textarea name="questionexplain42" class="input"
+						<textarea name="questionexplain7" class="input"
 							style="height: 100px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -358,7 +358,7 @@
 						<label>小题八答案：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="questionanswer43"/>
+						<input type="text" class="input w50" value="" name="questionanswer8"/>
 						<div class="tips"></div>
 					</div>
 				</div>
@@ -368,7 +368,7 @@
 						<label>小题八解析：</label>
 					</div>
 					<div class="field">
-						<textarea name="questionexplain43" class="input"
+						<textarea name="questionexplain8" class="input"
 							style="height: 100px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -380,7 +380,7 @@
 						<label>小题九答案：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="questionanswer44"/>
+						<input type="text" class="input w50" value="" name="questionanswer9"/>
 						<div class="tips"></div>
 					</div>
 				</div>
@@ -390,7 +390,7 @@
 						<label>小题九解析：</label>
 					</div>
 					<div class="field">
-						<textarea name="questionexplain44" class="input"
+						<textarea name="questionexplain9" class="input"
 							style="height: 100px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>
@@ -402,7 +402,7 @@
 						<label>小题十答案：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="questionanswer45"/>
+						<input type="text" class="input w50" value="" name="questionanswer10"/>
 						<div class="tips"></div>
 					</div>
 				</div>
@@ -412,7 +412,7 @@
 						<label>小题十解析：</label>
 					</div>
 					<div class="field">
-						<textarea name="questionexplain45" class="input"
+						<textarea name="questionexplain10" class="input"
 							style="height: 100px; border: 1px solid #ddd;"></textarea>
 						<div class="tips"></div>
 					</div>

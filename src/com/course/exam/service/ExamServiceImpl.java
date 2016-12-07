@@ -42,6 +42,32 @@ public class ExamServiceImpl {
 	
 	/**
 	 * 
+	 * @Description 		根据时间查询试卷
+	 * @author 				孙晓辉
+	 * @createDate  		2016/11/30
+	 * @version 			V1.0
+	 * 
+	 */
+	@Transactional(readOnly = true)
+	public Page<Exam>listExamByTime(int pageNum, int pageSize, Object[]params){
+		return this.examDaoImpl.findExamByTime(pageNum, pageSize, params);
+	}
+	
+	/**
+	 * 
+	 * @Description 		根据类型查询试卷
+	 * @author 				孙晓辉
+	 * @createDate  		2016/11/30
+	 * @version 			V1.0
+	 * 
+	 */
+	@Transactional(readOnly = true)
+	public Page<Exam>listExamByType(int pageNum, int pageSize, Object[]params){
+		return this.examDaoImpl.findExamByType(pageNum, pageSize, params);
+	}
+	
+	/**
+	 * 
 	 * @Description 		根据ID查询试卷
 	 * @author 				童海苹
 	 * @createDate  		2016/11/22

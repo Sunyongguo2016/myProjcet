@@ -3,10 +3,15 @@ package com.course.zx.controller;
 import java.io.UnsupportedEncodingException;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.course.entity.Exam;
 import com.course.entity.ParentQuestion;
 import com.course.parentquestion.service.ParentQuestionServiceImpl;
 import com.framework.Page;
@@ -52,6 +57,7 @@ public class ExamListController {
 		request.setAttribute("pqType",parentQuestionName);
 		return "examzx/specialprojectlist";
 	}
+	
 	/**
 	 * 
 	 * @desc				实现parentquestion的获取,返回zxpreview.jsp页面
@@ -62,7 +68,7 @@ public class ExamListController {
 	 * 
 	 */
 	@RequestMapping("preview")
-	public String preview(@RequestParam(name="parentQuestionId", defaultValue="2") int parentQuestionId ,
+	public String preview(@RequestParam(name="parentQuestionId", defaultValue="1") int parentQuestionId ,
 				HttpServletRequest request,
 				Model model){
 		
@@ -71,6 +77,35 @@ public class ExamListController {
 		request.setAttribute("parentQuestion", parentQuestion);
 
 		return "examzx/zxpreview";
+	}
+	
+	/**
+	 * 
+	 * @desc				实现parentquestion的获取,返回zxcontent.jsp页面
+	 * @author				李翘楚
+	 * @createDate 			2016/12/1
+	 * @param 				parentQuestionId  大题id  
+	 * @return				String
+	 * 
+	 */
+	@RequestMapping("test")
+	public String test(@RequestParam(name="parentQuestionId", defaultValue="1") int parentQuestionId ,
+				HttpServletRequest request,
+				HttpSession session,
+				Model model){
+		
+		ParentQuestion parentQuestion = new ParentQuestion();
+		if(parentQuestionId!=0){
+			parentQuestion = this.parentQuestionServiceImpl.getParentQuestion(parentQuestionId);
+			//假如没有登录返回预览页面
+			if(session.getAttribute("stuId") == null){
+				request.setAttribute("parentQuestion", parentQuestion);
+				JOptionPane.showMessageDialog(null, "对不起，您还没有登录！现在返回登录页面...", "警告", JOptionPane.ERROR_MESSAGE);
+				return "login_use";
+			}
+			request.setAttribute("parentQuestion", parentQuestion);
+		}
+		return "examzx/zxcontent";
 	}
 	
 }

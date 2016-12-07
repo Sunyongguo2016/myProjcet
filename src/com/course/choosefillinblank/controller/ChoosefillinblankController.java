@@ -54,7 +54,7 @@ public class ChoosefillinblankController {
 	 * 
 	 * @desc				添加十五选十大题，获取addcontent.jsp的参数，实现添加parentQuestion对象；
 	 * @author				孙永国
-	 * @createDate 			2016/11/21
+	 * @createDate 			2016/11/21 修改日期 2016/12/7 修改者：田瑞航
 	 * @param 				获得添加十五选十大题相关参数
 	 * @return				String
 	 * 
@@ -92,9 +92,12 @@ public class ChoosefillinblankController {
 		
 		
 		//存储question表     根据传参 questionfrom questionto 决定循环次数 决定存储多少question
-		for (Integer i = questionFrom; i < questionTo+1; i++) {
+		for (Integer i = 1; i <= questionTo-questionFrom+1; i++) {
 			Question question = new Question();
+			//获取并设置参数
 			question.setParentQuestion(parentQuestion);
+			question.setQuestionContent(((Integer)(questionFrom+i-1)).toString());
+			question.setQuestionAnswer(request.getParameter("questionanswer"+i));
 			question.setQuestionContent(((Integer)i).toString());
 			question.setQuestionAnswer(request.getParameter("questionanswer"+i));
 

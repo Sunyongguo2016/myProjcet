@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>    
 <c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>专项训练-听力</title>
-	<link rel="shortcut icon" href="#">
 	<link rel="stylesheet" type="text/css" href="${ctx }/css/style.css">
 	<script src="${ctx }/js/jquery.js" type="text/javascript"></script>
 	<script src="${ctx }/js/baseutil.js" type="text/javascript"></script>
@@ -19,32 +19,32 @@
 	</style>
     
 	<script type="text/javascript">
-
+	
 		var tm_pid = "0";
 		var tm_cost_seconds = 0;
-		var tm_maxtime = eval("20") * 60;
+		var tm_maxtime = eval("130") * 60;
 		var tm_timer = null;
-
-
+	
+	
 		$(document).ready(function() {
-			tmUserPaper.initPaper();
+			tmUserpaper.initpaper();
 			$(".tm_paper_section h1").click(function(){
 				$(this).parent().children(".tm_paper_question").toggle();
 			});
-			tm_resetPosition();
-
+			tm_resetposition();
+	
 			//计时器
 			tm_timer = setInterval(function(){
 				tm_countdown();
 			}, 1000);
-
+	
 		});
-
+	
 		function tm_countdown(){
 			//记录消耗的时间
 			tm_cost_seconds = tm_cost_seconds + 1;
 			$("#t_timecost").val(parseInt(tm_cost_seconds/60));
-
+	
 			//倒计时牌
 			var tm_msg;
 			if(tm_maxtime>0){
@@ -53,31 +53,31 @@
 					var ss = '试卷提交中...';
 					tm_msg += "<br/><font color='red'><b>"+ss+"</b></font>";
 				}
-
+	
 				$("#div_processor_timer").html(tm_msg);
-
+	
 				if(tm_maxtime == 5*60) {
 					alert('注意，还有5分钟!\n时间结束后，如您没有交卷，试卷将自动提交。');   
 				}
-
+	
 				--tm_maxtime;
-
+	
 			}else{
 				clearInterval(tm_timer);
 				$("#div_processor_timer").html('考试时间到，试卷将自动提交!');
-				$("form").attr("action","http://demo.tomexam.com/user/selftest/submit.do");
+				$("form").attr("action","${ctx }/zxscore/score?parentQuestionId=${parentQuestion.parentQuestionId}");
 				$("form").submit();
 			}
 		}
-
-
-		function tm_resetPosition(){
+	
+	
+		function tm_resetposition(){
 			var nw = $(".tm_paper_head").width() + 45;
 			$("#div_processor").css("left",nw + "px");
 		}
-
+	
 		$(window).resize(function(){
-			tm_resetPosition();
+			tm_resetposition();
 		});
 		 
 		$(window).scroll(function(){
@@ -91,25 +91,25 @@
 		});
 	
 		
-		var tmUserPaper = {
-			initPaper : function(){
+		var tmUserpaper = {
+			initpaper : function(){
 				//追加导航按钮
 				var html = [];
 				$(".span-quick-nav").each(function(idx, itm){
 					var question_id = $(this).data("qid");
 					var nid = idx + 1;
 					var thetop = $(this).offset().top;
-
+	
 					html.push('<a href="javascript:;" id="fast_'+question_id+'"');
-					html.push(' onclick="javascript:tmUserPaper.moveToQuestion('+thetop+')" ');
+					html.push(' onclick="javascript:tmUserpaper.moveToQuestion('+thetop+')" ');
 					html.push('>' + nid + '</a>');
 				});
 				$("#div_processor_fastto").html(html.join(""));
 				//绑定输入提示
-				tmUserPaper.bindQuickTip();
+				tmUserpaper.bindQuickTip();
 			},
 			
-			submitPaper : function(){
+			submitpaper : function(){
 				var formcheck = $("#form_paper_detail").validationEngine('validate');
 				if(formcheck){
 					var wcm = window.confirm('确定要提交试卷吗？');
@@ -119,29 +119,29 @@
 					
 					$(".tm_btn").attr("disabled", true);
 					$(".tm_btn").val('试卷提交中...');
-
+	
 					window.onbeforeunload = null;
 					
-					$("form").attr("action","http://demo.tomexam.com/user/selftest/submit.do");
+					$("form").attr("action","${ctx }/zxscore/score?parentQuestionId=${parentQuestion.parentQuestionId}");
 					$("form").submit();
-
+	
 				}else{
 					return false;
 				}
 				
 			},
-
+	
 			moveToQuestion : function(thetop){
 				$("html:not(:animated),body:not(:animated)").animate({ scrollTop: thetop}, 500);
 			},
-
+	
 			bindQuickTip : function(){
 				//选择题绑定
 				$(".qk-choice").click(function(){
 					var thename = $(this).attr("name");
 					var theqid = $(this).data("qid");
 					var chval = $('input[name='+thename+']:checked').val();
-
+	
 					if(baseutil.isNull(chval)){
 						$("#fast_"+theqid).prop("class","");
 					}else{
@@ -172,7 +172,7 @@
 				});
 			}
 		};
-
+	
 		//填空题的输入判断
 		function tm_checker_blanker_filled(n){
 			var len = $("input[name='"+n+"']").length;
@@ -180,16 +180,13 @@
 			$("input[name='"+n+"']").each(function(){
 				var chval = $(this).val();
 				if(baseutil.isNull(chval)){
-
+	
 				}else{
 					mylen ++;
 				}
 			});
 			return len == mylen;
 		}
-
-		
-		
 	</script>
   </head>
   
@@ -214,7 +211,7 @@
 						<form method="post" id="form_paper_detail">
                     	<div class="tm_paper">
                             <div class="tm_paper_head">
-                                <h1>听力训练（一）</h1>
+                                <h1>${parentQuestion.parentQuestionName}</h1>
 								<h2 style="background:#AFEEEE; padding:5px 0; font-size:14px; font-weight:bold">
 									试卷信息
 								</h2>
@@ -231,222 +228,268 @@
 
                             	
                             	<div class="tm_paper_section">
-                                	<h1>part I Writing</h1>
-                                    <h2>共*题</h2>
-                                    
-                                    
-									
-									<b>&nbsp;&nbsp;&nbsp;&nbsp;Directions:In this section, you will hear 8 short conversations and 2 long conversations. At the end of each conversation, one or more questions will be asked about what was said. Both the conversation and the questions will be spoken only once. After each question there will be pause. During the pause, you must read the four choices marked A), B), C), and D), and decide which is the best answer. Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.</b>
-									<span class="span-quick-nav" data-qid="1"></span>
-
-                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
-                                    	<thead>
-                                        	<tr>
-                                            	<th valign="top" class="tm_question_lineheight"><cite>1</cite></th>
-                                                <td class="tm_question_lineheight">
-													
-												</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        	<tr>
-                                            	<td colspan="2">
-                                                
-                                                    
-                                                        <ul>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="A" data-qid="1" name="Q-1">
-																A . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="B" data-qid="1" name="Q-1">
-																B . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="C" data-qid="1" name="Q-1">
-																C . The man should give the speech he promised.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="D" data-qid="1" name="Q-1">
-																D . The man has to go through the file quickly.</label></li>
-                                                        
-                                                        </ul>
-                                                    
-                                                    
-                                                    
-                                                
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    
-									
-									
-									<span class="span-quick-nav" data-qid="2"></span>
-
-                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
-                                    	<thead>
-                                        	<tr>
-                                            	<th valign="top" class="tm_question_lineheight"><cite>2</cite></th>
-                                                <td class="tm_question_lineheight">
-													
-												</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        	<tr>
-                                            	<td colspan="2">
-                                                
-                                                    
-                                                        <ul>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="A" data-qid="2" name="Q-2">
-																A . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="B" data-qid="2" name="Q-2">
-																B . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="C" data-qid="2" name="Q-2">
-																C . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="D" data-qid="2" name="Q-2">
-																D . The man should explain the problem in detail.</label></li>
-                                                        
-                                                        </ul>
-                                                    
-                                                    
-                                                    
-                                                
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    
-									
-									
-									<span class="span-quick-nav" data-qid="3"></span>
-
-                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
-                                    	<thead>
-                                        	<tr>
-                                            	<th valign="top" class="tm_question_lineheight"><cite>3</cite></th>
-                                                <td class="tm_question_lineheight">
-
-												</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        	<tr>
-                                            	<td colspan="2">
-                                                
-                                                    
-                                                        <ul>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="A" data-qid="3" name="Q-3">
-																A . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="B" data-qid="3" name="Q-3">
-																B . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="C" data-qid="3" name="Q-3">
-																C . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="D" data-qid="3" name="Q-3">
-																D . The man should explain the problem in detail.</label></li>
-                                                        
-                                                        </ul>
-                                                    
-                                                    
-                                                    
-                                                
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    
-									
-									
-									<span class="span-quick-nav" data-qid="4"></span>
-
-                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
-                                    	<thead>
-                                        	<tr>
-                                            	<th valign="top" class="tm_question_lineheight"><cite>4</cite></th>
-                                                <td class="tm_question_lineheight">
-													
-												</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        	<tr>
-                                            	<td colspan="2">
-                                                
-                                                    
-                                                        <ul>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="A" data-qid="4" name="Q-4">
-																A . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="B" data-qid="4" name="Q-4">
-																B . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="C" data-qid="4" name="Q-4">
-																C . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="D" data-qid="4" name="Q-4">
-																D . The man should explain the problem in detail.</label></li>
-                                                        
-                                                        </ul>
-                                                    
-                                                    
-                                                    
-                                                
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    
-									
-									
-									<span class="span-quick-nav" data-qid="5"></span>
-
-                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
-                                    	<thead>
-                                        	<tr>
-                                            	<th valign="top" class="tm_question_lineheight"><cite>5</cite></th>
-                                                <td class="tm_question_lineheight">
-													
-												</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        	<tr>
-                                            	<td colspan="2">
-                                                
-                                                    
-                                                        <ul>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="A" data-qid="5" name="Q-5">
-																A . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="B" data-qid="5" name="Q-5">
-																B . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="C" data-qid="5" name="Q-5">
-																C . The man should explain the problem in detail.</label></li>
-                                                        
-                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="D" data-qid="5" name="Q-5">
-																D . The man should explain the problem in detail.</label></li>
-                                                        
-                                                        </ul>
-                                                    
-                                                    
-                                                    
-                                                
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    
-                                    
-                                </div>
+                                	<h1>${parentQuestion.parentQuestionName}</h1>
+                                    <h2>共${fn:length(parentQuestion.questions)}  题</h2>
+                                    <c:choose>
+                                    	<c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionOne' || parentQuestion.parentQuestionName=='ListeningComprehensionFour'}">
+                                    		<b>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description}</b>
+											<span class="span-quick-nav" data-qid="1"></span>		
+		                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
+		                                    	<c:forEach items="${parentQuestion.questions}" var="qust">
+			                                    	<thead>
+			                                        	<tr>
+			                                            	<th valign="top" class="tm_question_lineheight"><cite>${qust.questionContent}</cite></th>
+			                                                <td class="tm_question_lineheight"></td>
+			                                            </tr>
+			                                        </thead>
+			                                        <tbody>
+			                                        	<tr>
+			                                            	<td colspan="2">                                                    
+						                                        <ul>
+						                                        	<c:forEach items="${qust.selectts}" var="selt">
+							                                        	<li><label><input type="radio" class="validate[required] qk-choice" value="${selt.selecttName}" data-qid="1" name="Q-1">
+																		${selt.selecttName}.${selt.selecttContent}</label></li>
+						                                        	</c:forEach>			                                        
+						                                        </ul>
+			                                                </td>
+			                                            </tr>
+			                                        </tbody>
+		                                        </c:forEach>
+		                                    </table>
+                                    	</c:when>
+                                    	
+                                    	<c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionTwo' || parentQuestion.parentQuestionName=='ListeningComprehensionThree'
+                                    	 || parentQuestion.parentQuestionName=='ListeningComprehensionFive'|| parentQuestion.parentQuestionName=='ListeningComprehensionSix'}">
+                                    		<b>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.parentQuestionTitle}</b>
+											<span class="span-quick-nav" data-qid="1"></span>		
+		                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
+		                                    	<c:forEach items="${parentQuestion.questions}" var="qust">
+			                                    	<thead>
+			                                        	<tr>
+			                                            	<th valign="top" class="tm_question_lineheight"><cite>${qust.questionContent}</cite></th>
+			                                                <td class="tm_question_lineheight"></td>
+			                                            </tr>
+			                                        </thead>
+			                                        <tbody>
+			                                        	<tr>
+			                                            	<td colspan="2">                                                    
+						                                        <ul>
+						                                        	<c:forEach items="${qust.selectts}" var="selt">
+							                                        	<li><label><input type="radio" class="validate[required] qk-choice" value="${selt.selecttName}" data-qid="1" name="Q-1">
+																		${selt.selecttName}.${selt.selecttContent}</label></li>
+						                                        	</c:forEach>			                                        
+						                                        </ul>
+			                                                </td>
+			                                            </tr>
+			                                        </tbody>
+		                                        </c:forEach>
+		                                    </table>
+                                    	</c:when>
+                                    	
+                                    	<c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionText'}">
+                                    		<b>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description}</b>
+                                    		
+		                                    <span class="span-quick-nav" data-qid="12"></span>
+		
+		                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
+		                                    	<thead>
+		                                        	<tr>
+		                                                <td class="tm_question_lineheight">
+														</td>
+		                                            </tr>
+		                                        </thead>
+		                                        <tbody>
+		                                        	<tr>
+		                                            	<td colspan="2">
+			                                            	<p style="line-height:30px; font-size:16px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p><br/>
+			                                            	<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
+			                                            		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${qust.questionContent}) <input type="text" name="Q-12" data-qid="12" class="validate[required] tm_txt qk-blank">
+		                                    					<c:if test="${status.count % 5 == 0}">
+		                                    						<br/><br/>
+		                                    					</c:if>
+		                                    				</c:forEach>
+		                                    			</td>
+		                                    		</tr>
+		                                    	</tbody>
+		                                    </table>
+                                    	</c:when>
+                                    	
+                                    	<c:when test="${parentQuestion.parentQuestionName=='Writing'}">
+                                    		<h3>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description }</h3>
+											<span class="span-quick-nav" data-qid="1"></span>
+		                                    ${parentQuestion.imgUrl }
+											<span style="text-align:center; position:relative; top:20px; left:30px;">${parentQuestion.parentQuestionArticle}</span><br/><br/><br/>
+                                    		<table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
+		                                        <tbody>
+		                                        	<tr>
+		                                            	<td colspan="2">
+		                                            		<ul>
+	                                                        	<c:forEach items="${parentQuestion.questions}" var="qust">
+																	<span class="span-quick-nav" data-qid="${qust.questionId}"></span>
+		                                                            <li><label>
+		                                                            	<textarea class="validate[required] tm_txt qk-blank" data-qid="${qust.questionId}" name="Q-${qust.questionId}" rows="20" cols="100"></textarea>
+																	</label></li>
+																</c:forEach>
+                                                			</ul>
+		                                                </td>
+		                                            </tr>
+		                                        </tbody>
+		                                    </table>
+                                    	</c:when>
+                                    	
+                                    	<c:when test="${parentQuestion.parentQuestionName=='Translation'}">
+                                    		<h3>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description }</h3>
+		                                    <p style="text-indent:2em;line-height:20px; font-size:14px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p>
+		                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
+		                                        <tbody>
+		                                        	<tr>
+		                                            	<td colspan="2">
+	                                                        <ul>
+	                                                        	<c:forEach items="${parentQuestion.questions}" var="qust">
+																	<span class="span-quick-nav" data-qid="${qust.questionId}"></span>
+	                                                            	<li><label>
+	                                                            		<textarea class="validate[required] tm_txt qk-blank" data-qid="${qust.questionId}" name="Q-${qust.questionId}" rows="20" cols="100"></textarea>
+																	</label></li>
+																</c:forEach>
+															</ul>
+		                                                </td>
+		                                            </tr>
+		                                        </tbody>
+		                                    </table>
+                                    	</c:when>
+                                    	
+                                    	<c:when test="${parentQuestion.parentQuestionName=='ChooseFillInBlank'}">
+											<h3>${parentQuestion.description}</h3>
+											<span class="span-quick-nav" data-qid="17"></span>
+		
+		                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
+		                                    	<thead>
+		                                        	<tr>
+		                                                <td class="tm_question_lineheight"></td>
+		                                            </tr>
+		                                        </thead>
+		                                        <tbody>
+		                                        	<tr>
+		                                            	<td colspan="2">
+		                                            		<ul style="margin-bottom:20px">
+		                                            			<li>
+		                                            				<p style="line-height:30px; font-size:16px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p>
+		                                            			</li>
+		                                            		</ul>
+		                                            		 <div class="list">
+			                                                	<ul style="border:1px solid #000; width:600px; height:100px; margin-left:200px; margin-bottom:30px">
+			                                                		<c:forEach items="${parentQuestion.questions}" begin="0" end="0" var="qust">
+				                                                		<c:forEach items="${qust.selectts}" var="selt" varStatus="status">
+			                                                				<li style="float: left; width: 100px; margin:5px 20px 5px 0;">${selt.selecttName}) ${selt.selecttContent}</li>
+			                                                				<c:if test="${status.count % 5 == 0}">
+					                                    						<br/><br/>
+					                                    					</c:if>
+			                                                			</c:forEach>
+			                                                		</c:forEach>
+			                                                	</ul>
+			                                                </div>    
+		                                                </td>
+		                                            </tr>
+		                                            <tr>
+		                                            	<td colspan="2">
+			                                            	<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
+			                                            		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${qust.questionContent}) <input type="text" name="Q-${qust.questionId}" data-qid="${qust.questionId}" class="validate[required] tm_txt qk-blank">
+		                                    					<c:if test="${status.count % 5 == 0}">
+		                                    						<br/><br/>
+		                                    					</c:if>
+		                                    				</c:forEach>
+		                                    			</td>
+		                                    		</tr>
+		                                        </tbody>
+		                                    </table>
+		                                    
+                                    	</c:when>
+                                    	
+                                    	<c:when test="${parentQuestion.parentQuestionName=='QuickReading'}">
+                                    		<h3>${parentQuestion.description}</h3>
+											<div style="width:1000px;overflow:auto">
+												<h3 style="text-align:center;">${parentQuestion.parentQuestionTitle}</h3>
+                                               	<p style="line-height:30px; font-size:16px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p><br/><br/>
+                                            </div>
+                                            <c:forEach items="${parentQuestion.questions}" var="qust">
+												<span class="span-quick-nav" data-qid="${qust.questionId}"></span>
+			                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
+			                                    	<thead>
+			                                        	<tr>
+			                                                <td class="tm_question_lineheight" style="font-size:14px; width:900px;">
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${qust.questionContent}&nbsp;&nbsp;<input type="text" name="Q-${qust.questionId}" data-qid="${qust.questionId}" class="validate[required] tm_txt qk-blank" style="width:35px;">                                                
+															</td>
+			                                            </tr>
+			                                        </thead>
+			                                        <tbody>
+			                                        	<tr>
+			                                            	<td colspan="2"></td>
+			                                            </tr>
+			                                        </tbody>
+			                                    </table>
+		                                    </c:forEach>
+                                    	</c:when>
+                                    	
+                                    	<c:when test="${parentQuestion.parentQuestionName=='LastReadingOne'}">
+                                    		<h3>${parentQuestion.description}</h3>
+											<div style="width:1000px;overflow:auto">
+                                               	<p style="line-height:30px; font-size:16px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p>
+                                            </div>
+		                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
+		                                    	<c:forEach items="${parentQuestion.questions}" var="qust">
+			                                    	<span class="span-quick-nav" data-qid="${qust.questionId}"></span>
+			                                    	<thead>
+			                                        	<tr>
+			                                            	<th valign="top" style="width:1000px; text-align:left;"><cite style=" font-style:normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${qust.questionContent}</cite></th>
+			                                                <td class="tm_question_lineheight"></td>
+			                                            </tr>
+			                                        </thead>
+			                                        <tbody>
+			                                        	<tr>
+			                                            	<td colspan="2">                                                    
+						                                        <ul>
+						                                        	<c:forEach items="${qust.selectts}" var="selt">
+							                                        	<li><label><input type="radio" class="validate[required] qk-choice" value="${selt.selecttName}" data-qid="${qust.questionId}" name="Q-${qust.questionId}">
+																		${selt.selecttName}) ${selt.selecttContent}</label></li>
+						                                        	</c:forEach>			                                        
+						                                        </ul>
+			                                                </td>
+			                                            </tr>
+			                                        </tbody>
+		                                        </c:forEach>
+		                                    </table>
+                                    	</c:when>
+                                    	
+                                    	<c:otherwise>
+											<div style="width:1000px;overflow:auto">
+                                               	<p style="line-height:30px; font-size:16px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p>
+                                            </div>
+		                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
+		                                    	<c:forEach items="${parentQuestion.questions}" var="qust">
+			                                    	<span class="span-quick-nav" data-qid="${qust.questionId}"></span>
+			                                    	<thead>
+			                                        	<tr>
+			                                            	<th valign="top" style="width:1000px; text-align:left;"><cite style=" font-style:normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${qust.questionContent}</cite></th>
+			                                                <td class="tm_question_lineheight"></td>
+			                                            </tr>
+			                                        </thead>
+			                                        <tbody>
+			                                        	<tr>
+			                                            	<td colspan="2">                                                    
+						                                        <ul>
+						                                        	<c:forEach items="${qust.selectts}" var="selt">
+							                                        	<li><label><input type="radio" class="validate[required] qk-choice" value="${selt.selecttName}" data-qid="${qust.questionId}" name="Q-${qust.questionId}">
+																		${selt.selecttName}) ${selt.selecttContent}</label></li>
+						                                        	</c:forEach>			                                        
+						                                        </ul>
+			                                                </td>
+			                                            </tr>
+			                                        </tbody>
+		                                        </c:forEach>
+		                                    </table>
+                                    	</c:otherwise>
+                                    </c:choose>
+                            </div>
                                 
                             	
                                 
@@ -454,7 +497,7 @@
                             <!-- /tm_paper_body -->
                             
                             <div class="tm_adm_paper_foot">
-								<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserPaper.submitPaper();">提交</button>
+								<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserpaper.submitpaper();">提交</button>
                             </div>
 
 
@@ -486,14 +529,19 @@
 
 
 	<div id="div_processor" style="left: 906px; top: 20px;">
-		离考试结束还有：
-		<div id="div_processor_timer" style="margin-top:5px;"><span class="tm_label">0:19:29</span></div>
-
-		<div id="div_processor_fastto"><a href="javascript:;" id="fast_1" onclick="javascript:tmUserPaper.moveToQuestion(245.34375)">1</a><a href="javascript:;" id="fast_2" onclick="javascript:tmUserPaper.moveToQuestion(381.34375)">2</a><a href="javascript:;" id="fast_3" onclick="javascript:tmUserPaper.moveToQuestion(512.34375)">3</a><a href="javascript:;" id="fast_4" onclick="javascript:tmUserPaper.moveToQuestion(643.34375)">4</a><a href="javascript:;" id="fast_5" onclick="javascript:tmUserPaper.moveToQuestion(774.34375)">5</a><a href="javascript:;" id="fast_4" onclick="javascript:tmUserPaper.moveToQuestion(947.34375)">6</a><a href="javascript:;" id="fast_7" onclick="javascript:tmUserPaper.moveToQuestion(1083.34375)">7</a><a href="javascript:;" id="fast_8" onclick="javascript:tmUserPaper.moveToQuestion(1214.34375)">8</a><a href="javascript:;" id="fast_5" onclick="javascript:tmUserPaper.moveToQuestion(1345.34375)">9</a><a href="javascript:;" id="fast_10" onclick="javascript:tmUserPaper.moveToQuestion(1476.34375)">10</a></div>
-		<div id="div_processor_ops">
-			<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserPaper.submitPaper();">提交</button>
-			<button class="tm_btn tm_btn_primary" type="button" onclick="">暂停</button>
-			<button class="tm_btn tm_btn_primary" type="button" onclick="">返回</button>
+		<div id="time">
+			离考试结束还有：
+			<div id="div_processor_timer" style="margin-top:5px;"><span class="tm_label">0:20:00</span></div>
+			<div id="div_processor_fastto"></div>
+			<div>
+				该大题您已使用：
+				<div style="margin-top:5px;"><span  class="tm_label">0:19:29</span></div>
+			</div>
+			<div id="div_processor_ops">
+				<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserpaper.submitpaper();">提交</button>
+				<button class="tm_btn tm_btn_primary" type="button" onclick="">暂停/开始</button>
+				<button class="tm_btn tm_btn_primary" type="button" onclick="">返回</button>
+			</div>
 		</div>
 	</div>
 </body>
