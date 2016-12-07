@@ -32,6 +32,12 @@ public class ParentQuestionServiceImpl {
 		return this.parentQuestionDaoImpl.findParentQuestionByParentQuestionName(pageNum, pageSize, params);
 	}
 	
+	//按大题名称和试卷类型  查找parentQuestion  适用于十五选十 专项等
+	@Transactional(readOnly=true)
+	public Page<ParentQuestion> listParentQuestionByParentQuestionNameAndExamType(int pageNum,int pageSize,Object[] params){
+		return this.parentQuestionDaoImpl.findParentQuestionByExamTypeAndParentQuestionName(pageNum, pageSize, params);
+	}
+	
 	
 	@Transactional(readOnly=true)
 	public Page<ParentQuestion> listParentQuestion(int pageNum,int pageSize,Object[] params){
@@ -45,8 +51,6 @@ public class ParentQuestionServiceImpl {
 	
 	public void editParentQuestion(ParentQuestion p){
 		ParentQuestion pdb=this.parentQuestionDaoImpl.getParentQuestion(p.getParentQuestionId());
-//		pdb.setName(p.getName());
-//		pdb.setPrice(p.getPrice());
 		this.parentQuestionDaoImpl.updateParentQuestion(pdb);
 	}
 	

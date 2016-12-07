@@ -2,10 +2,7 @@ package com.course.quickreading.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.course.entity.Exam;
 import com.course.entity.ParentQuestion;
 import com.course.entity.Question;
-import com.course.entity.Selectt;
 import com.course.exam.service.ExamServiceImpl;
 import com.course.parentquestion.service.ParentQuestionServiceImpl;
 import com.course.question.service.QuestionServiceImpl;

@@ -8,15 +8,6 @@ import com.framework.Page;
 
 @Repository
 public class ParentQuestionDaoImpl extends BaseDao<ParentQuestion, Integer> {
-		
-	public ParentQuestion findByNamdAndPwd(String name,String pwd){
-		try{
-			return super.findOne("from LoginUser lu where lu.loginName=? and lu.password=?", new Object[]{name,pwd});
-	}catch(Exception e){
-		e.printStackTrace();
-		return null;
-	}
-}
 	public void saveParentQuestion(ParentQuestion p){
 		try {
 			this.save(p);
@@ -74,6 +65,27 @@ public class ParentQuestionDaoImpl extends BaseDao<ParentQuestion, Integer> {
 		}
 	}
 	
+	//examname parentquestionname 找大题
+	public Page<ParentQuestion> findParentQuestionByExamTypeAndParentQuestionName(int pageNum, int pageSize,Object[] params){
+		String hql;
+		if(params!=null && params.length>0){
+			hql = "from ParentQuestion p where p.parentQuestionName like ? and p.exam in(select e from Exam e where e.examType like ?)";
+			params[0]="%"+params[0]+"%";
+			params[1]="%"+params[1]+"%";
+		}else{
+			hql="from ParentQuestion";
+		}
+		try {
+			Page<ParentQuestion> page=new Page<ParentQuestion>();
+			page.setCurrentPageNum(pageNum);
+			page.setPageSize(pageSize);
+			page=this.findByPage(pageNum, pageSize, hql, params);
+			return page;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	
 	public Page<ParentQuestion> findParentQuestion(int pageNum, int pageSize,Object[] params){

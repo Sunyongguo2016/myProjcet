@@ -98,6 +98,11 @@ public class ChoosefillinblankController {
 			question.setParentQuestion(parentQuestion);
 			question.setQuestionContent(((Integer)(questionFrom+i-1)).toString());
 			question.setQuestionAnswer(request.getParameter("questionanswer"+i));
+			question.setQuestionContent(((Integer)i).toString());
+			question.setQuestionAnswer(request.getParameter("questionanswer"+i));
+
+			
+			//集合questionLists中  前十个是answer  后十个是explain
 			question.setQuestionExplain(request.getParameter("questionexplain"+i));
 			question.setQuestionScore(Float.parseFloat(questionScore));
 			

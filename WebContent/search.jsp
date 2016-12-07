@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html >
 <head>
 	<title>搜索页面</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
@@ -34,8 +35,8 @@
 			</ul>
 		</div>
 		<div class="" id="search">
-			<input type="text" class="text"/>
-			<a href="${ctx }/search.jsp"><img src="${ctx }/images/search.png"></a>
+			<input id="searchParam" type="text" name="searchParam"  class="text"/>
+			<a href="javascrpt:search()" onclick="searchp();return false;"><img src="${ctx }/images/search.png"></a>
 		</div>
 		<div class="" id="username">
 			<p>用户名</p>
@@ -57,10 +58,10 @@
 				<a href="${ctx }/index_before.jsp"><img src="${ctx }/images/logo.png"></a>
 			</div>
 			<div class="input">
-            	<input type="text">
+				<input id="searchParam2" type="text" name="searchParam"  class="text"/>
 			</div>
 			<div class="searchimg">
-				<a href="${ctx }/search.jsp"><img src="${ctx }/images/search.png"></a>
+				<a href="javascrpt:search()" onclick="searchp2();return false;"><img src="${ctx }/images/search.png"></a>
 			</div>
 		</div>
 	</div>
@@ -71,194 +72,44 @@
 		<!-- TABS -->
 			<div>
 				<ul id="tabs">
-					<li  onclick="tabChange(this,'tabscontent')" class="current"><a href="#">真题</a></li>
-					<li onclick="tabChange(this,'tabscontent')"><a href="#">模拟</a></li>
-					<li onclick="tabChange(this,'tabscontent')"><a href="#">专项</a></li>
+					<li  onclick="tabChange(this,'tabscontent')" class="current"><a href="${ctx }/exam/search?searchParam=${searchParam}&examType=真题">真题</a></li>
+					<li onclick="tabChange(this,'tabscontent')"><a href="${ctx }/exam/search?searchParam=${searchParam}&examType=模拟">模拟</a></li>
 				</ul>
 			</div>
 
 			<!-- TAB 内容 -->
 			<div id="tabscontent">
 				<ul class="current">
-					<li>
+				   <c:forEach items="${page.list}" var="exam">
+                	<li>
 						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">真题</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<a href="${ctx }/examzc/preview.jsp"><div id="but">浏览试卷</div></a>
-						<a href="${ctx }/examzc/test.jsp"><div id="but">开始考试</div></a>						
-					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">真题</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<a href="${ctx }/examzc/preview.jsp"><div id="but">浏览试卷</div></a>
-						<a href="${ctx }/examzc/test.jsp"><div id="but">开始考试</div></a>		
-					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">真题</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
+								${fn:substring(exam.examName, 0, fn:indexOf(exam.examName, searchParam))}
+								<span clss="red">${searchParam}</span>
+								${fn:substring(exam.examName, (fn:length(searchParam)+fn:indexOf(exam.examName, searchParam)), -1)}<br/>
+							<c:forEach items="${exam.parentQuestions}" var="parentQuestion">
+								<c:if test="${parentQuestion.parentQuestionName=='Writing'}">
+                          	  		<span clss="red">Writing:</span>&nbsp;&nbsp;${parentQuestion.description}
+                           		</c:if>
+                            </c:forEach>
 						</p>
 						<a href="${ctx }/examzc/preview.jsp"><div id="but">浏览试卷</div></a>
 						<a href="${ctx }/examzc/test.jsp"><div id="but">开始考试</div></a>		
 					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">真题</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<a href="${ctx }/examzc/preview.jsp"><div id="but">浏览试卷</div></a>
-						<a href="${ctx }/examzc/test.jsp"><div id="but">开始考试</div></a>		
-					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">真题</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<div id="but">
-							<a href="${ctx }/examzc/preview.jsp">浏览试卷</a>
-						</div>
-						<div id="but">
-							<a href="${ctx }/examzc/test.jsp">开始考试</a>
-						</div>
-					</li>
+             	   </c:forEach>
+					
 				</ul>
-				<ul id="simulate" class="hidden">
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">模拟</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<div id="but">
-							<a href="">浏览试卷</a>
-						</div>
-						<div id="but">
-							<a href="">开始考试</a>
-						</div>
-					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">模拟</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<div id="but">
-							<a href="">浏览试卷</a>
-						</div>
-						<div id="but">
-							<a href="">开始考试</a>
-						</div>
-					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">模拟</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<div id="but">
-							<a href="">浏览试卷</a>
-						</div>
-						<div id="but">
-							<a href="">开始考试</a>
-						</div>
-					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">模拟</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<div id="but">
-							<a href="">浏览试卷</a>
-						</div>
-						<div id="but">
-							<a href="">开始考试</a>
-						</div>
-					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">模拟</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<div id="but">
-							<a href="">浏览试卷</a>
-						</div>
-						<div id="but">
-							<a href="">开始考试</a>
-						</div>
-					</li>
-				</ul>
-				<ul id="specialproject" class="hidden">
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">专项</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<div id="but">
-							<a href="">浏览试卷</a>
-						</div>
-						<div id="but">
-							<a href="">开始考试</a>
-						</div>
-					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">专项</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<div id="but">
-							<a href="">浏览试卷</a>
-						</div>
-						<div id="but">
-							<a href="">开始考试</a>
-						</div>
-					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">专项</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<div id="but">
-							<a href="">浏览试卷</a>
-						</div>
-						<div id="but">
-							<a href="">开始考试</a>
-						</div>
-					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">专项</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<div id="but">
-							<a href="">浏览试卷</a>
-						</div>
-						<div id="but">
-							<a href="">开始考试</a>
-						</div>
-					</li>
-					<li>
-						<p>
-							<span clss="red">[大学英语六级]2013年6月</span>大学英语六级考试历年<span clss="red">专项</span>及答案解析（第3套）<br/>
-							Directions: For this part, you are allowed 30 minutes to write an essay commenting on Einstein's remark "I have no special talents, I am only passionately curious." You should give an example or two to illustrate your point of mew. You should write at least 150 words but no more than 200 words....
-						</p>
-						<div id="but">
-							<a href="">浏览试卷</a>
-						</div>
-						<div id="but">
-							<a href="">开始考试</a>
-						</div>
-					</li>
-				</ul>
+				
 			</div>
 		</div>
 		<!--分页-->
 		<div id="pagenumber">
-			<a href="#"><input type="submit" value="上一页"  id="button" /></a>
-			<a href="#"><input type="submit" value="1" id="button"/></a>
-			<a href="#"><input type="submit" value="2" id="button"/></a>
-			<a href="#"><input type="submit" value="3" id="button"/></a>
-			<a href="#"><input type="submit" value="4" id="button"/></a>
-			<a href="#"><input type="submit" value="下一页"id="button" /></a>
+			
+			<a href="${ctx }/exam/search?pageNum=${page.prePageNum }&searchParam=${searchParam}&examType=${examType}"><input type="submit" value="上一页"  id="button" /></a>
+             <c:forEach begin="1" end="${page.totalPageNum }" var="pageNum"   >	
+				<a href="${ctx }/exam/search?pageNum=${pageNum }&searchParam=${searchParam}&examType=${examType}"> <input type="submit" value="${pageNum }" id="button"/></a>
+		 	 </c:forEach>             
+			<a href="${ctx }/exam/search?pageNum=${page.nextPageNum}&searchParam=${searchParam}&examType=${examType}"><input type="submit" value="下一页"id="button" /></a>
+		
 		</div>
 	</div>
     <!--页尾信息-->
@@ -266,5 +117,15 @@
 		<p><a href="${ctx }/about_us.jsp">联系我们</a> | <a href="${ctx }/about_us.jsp">人才招聘</a> | <a href="${ctx }/about_us.jsp">教师合作</a> | <a href="${ctx }/about_us.jsp">项目介绍</a></p>
 		<p>版权所有：猿计划项目小组</p>
 	</div>
+	<script type="text/javascript">
+		function searchp(){
+			var p=$("#searchParam").val();
+			window . location . href = "${ctx }/exam/search?searchParam="+p;
+		}
+		function searchp2(){
+			var p=$("#searchParam2").val();
+			window . location . href = "${ctx }/exam/search?searchParam="+p;
+		}
+	</script>
 </body>
 </html>

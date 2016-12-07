@@ -29,18 +29,18 @@
 						<input type="text" class="text"/>
     					<a href="${ctx }/search.jsp"><input type="submit" class="button" value="搜索"/></a>
 					</div>
-					<div class="login">
+					<div class="login" style="display:none">
                     	<a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;|
 						<a href="${ctx }/register.jsp"><button>注册</button></a>
                     </div>
                     
-                    <div class="after_login">
+                    <div class="after_login" style="display:block">
                     	<div id="username">
                             <p>${student.loginName }</p>
                         </div>
                         <div class="nav" id="nav">
                             <ul>
-                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#"><img src="${ctx }/images/leftuser.jpg"></a>
+                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
                                     <ul>
                                         <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
                                         <li><a href="${ctx }/info/install.jsp">设置</a></li>
@@ -82,43 +82,41 @@
 
 		   </div> 
     <div id="right2">
+    
       <div id="r1">
-        <p>Global warming may or may not be the great environmental crisis of the 21st century, but regardless of whether it is or isn’t –we won’t do much about it.  We will argue over it and may even, as a nation, make some fairly solemn-sounding commitments to avoid it. But the more dramatic and meaningful these commitments seem, the less likely they are to be observed. </p><p>Al Gore calls global warming an “inconvenient truth,” as if merely recognizing it could put us on a path to a solution. But the real truth is that we don’t know enough to relieve global warming, and –without major technological breakthroughs—we can’t do much about it. </p><p>From 2003 to 2050, the world’s population is projected to grow from 6.4 billion to 9.1 billion, a 42% increase. If energy use per person and technology remain the same, total energy use and greenhouse gas emissions (mainly, CO2) will be 42% higher in 2050. but that’s too low, because societies that grow richer use more energy. We need economic growth unless we condemn the world’s poor to their present poverty and freeze everyone else‘s living standards. With modest growth, energy use and greenhouse emissions more than double by 2050. </p><p>No government will adopt rigid restrictions on economic growth and personal freedom (limits on electricity usage, driving and travel) that might cut back global warming. Still, politicians want to show they’re “doing something.” Consider the Kyoto Protocol (京都议定书). It allowed countries that joined to punish those that didn’t. But it hasn’t reduced CO2 emissions (up about 25% since 1990), and many signatories (签字国) didn’t adopt tough enough policies to hit their 2008-2012 targets. </p><p>The practical conclusion is that if global warming is a potential disaster, the only solution is new technology. Only an aggressive research and development program might find ways of breaking dependence on fossil fuels or dealing with it. </p><p>The trouble with the global warming debate is that it has become a moral problem when it’s really an engineering one. The inconvenient truth is that if we don’t solve the engineering problem, we’re helpless.</p>
+      		<p>${pque.parentQuestionArticle }</p>
+      		
       </div>
+     	<c:forEach items="${pque.questions }" var="qs">
       <div id="r2">
-          <p><span>60. The author believes that, since the signing of the Kyoto Protocol, ________. </span></p>
-          <div id="r2l"> 
+      <%--    <p><span>60. The author believes that, since the signing of the Kyoto Protocol, ________. </span></p>
+      --%>     <p><span>${qs.questionContent }</span></p>
+          <c:forEach items="${qs.selectts }" var="se">
+          <div name="r2l"> 
 
-          <p><span> <input type="radio" name=""> A) politicians have started to do something to better the situation </span></p>
-
-          </div>
-          <div id="r2l"> 
-
-          <p><span> <input type="radio" name=""> B) few nations have adopted real tough measures to limit energy use  </span></p>
+          <p><span> <input type="radio" name=""> ${se.selecttName }) ${se.selecttContent } </span></p>
 
           </div>
-          <div id="r2l"> 
-
-          <p><span> <input type="radio" name=""> C) reductions in energy consumption have greatly cut back global warming  </span></p>
-
+          <%--答案及解析 --%>
+          <div name="r2l" style="display:none;">
+          	<span id="r2l1"></span><span id="r2l2"></span>
           </div>
-           <div id="r2l"> 
-
-          <p><span> <input type="radio" name=""> D) international cooperation has contributed to solving environmental problems</span></p>
-
-          </div>
+          </c:forEach>
+          
       </div>
+      </c:forEach>
+      
       <div id="r3">
          <input type="submit" value="提交" class="s1">
 
-         <input type="submit" value="解析" class="s2">
+         
          <div id="r3r">
-            <img src="${ctx }/images/save.png">
+            <a href="${ctx }/error/setCollect?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><img src="${ctx }/images/save.png"></a>
             <img src="${ctx }/images/note.png" id="bum">
-            <img src="${ctx }/images/delete.png">
-         	</div>
-      		</div>
- 		 </div> 		
+            <a href="${ctx }/error/delete?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><img src="${ctx }/images/delete.png"></a>
+         </div>
+      </div>
+ 	</div> 		
 	</div>
 			<div class="footer">
 				<p><a href="${ctx }/about_us.jsp">联系我们</a> | <a href="${ctx }/about_us.jsp">人才招聘</a> | <a href="${ctx }/about_us.jsp">教师合作</a> | <a href="${ctx }/about_us.jsp">项目介绍</a></p>
