@@ -18,11 +18,13 @@
 		<!--页面头信息-->
 		<div class="" id="header"> 
 			<div class="" id="logo">
-				<img src="${ctx }/images/logo.png">
+				<a href="${ctx }/index_before.jsp">
+					<img src="${ctx }/images/logo.png">
+				</a>
 			</div>
 			<div class="menu">
 				<ul>
-					<li class="current"><a href="index.html">网站首页</a></li>
+					<li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
                     <li><a href="${ctx }/category.jsp">大学英语四级</a></li>
                     <li><a href="${ctx }/category.jsp">大学英语六级</a></li>
                     <li><a href="${ctx }/arena.jsp">竞技场</a></li>
@@ -42,7 +44,7 @@
 						<ul>
 							<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
                             <li><a href="${ctx }/info/install.jsp">设置</a></li>
-                            <li><a href="${ctx }/index_before.jsp">退出登录</a></li>
+                            <li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -76,7 +78,7 @@
 				</table>
 				</div>
 				<div class="" id="right">
-					<a href="${ctx }/info/usermessageEdge.jsp"><input type="submit" value="编辑我的资料" class="buttion"></a>
+					<a href="${ctx }/loginuser/setinfo"><input type="button" value="编辑我的资料" class="buttion"></a>
 				</div>
 			</div>
 		</div>

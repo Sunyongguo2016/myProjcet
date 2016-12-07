@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -112,14 +113,19 @@ public class LoginController {
 	 * @return				void
 	 * 
 	 */
+	@RequestMapping(value = "setinfo", method = RequestMethod.GET)
+	public String setInfoo( ){
+		
+		return "info/usermessageEdge";
+	}
 	@RequestMapping(value = "setinfo", method = RequestMethod.POST)
-	public String setInfo(@RequestParam("hobby") String hobby, @RequestParam("location") String location, @RequestParam("introduce") String introduce, HttpSession session){
+	public String setInfo(@RequestParam("hobby") String hobby, @RequestParam("location") String location, 
+			@RequestParam("introduce") String introduce, HttpSession session){
 		int sId = (int) session.getAttribute("stuId");
 		StudentInfo stu = this.loginServiceImpl.getStudentInfo(sId);
 		stu.setHobby(hobby);
 		stu.setLocation(location);
 		stu.setIntroduce(introduce);
-		System.out.println("hobby.."+stu.getHobby()+"location"+stu.getLocation());
 		
 		this.loginServiceImpl.editStudentInfo(stu);
 		return "info/usermessage";
@@ -139,7 +145,6 @@ public class LoginController {
 		String opwd =request.getParameter("oldPwd");
 		int sId = (int) session.getAttribute("stuId");
 		StudentInfo stu = this.loginServiceImpl.getStudentInfo(sId);
-		System.out.println(stu.getPassword()+"opwd"+opwd);
 		
 		if(opwd.equals(stu.getPassword())){
 			try {
@@ -168,10 +173,8 @@ public class LoginController {
 	public String resetPwd(HttpSession session, @RequestParam("oldPwd") String opwd,
 			@RequestParam("password") String pwd, @RequestParam(name="content",defaultValue="") String img,
 			HttpServletRequest request, HttpServletResponse response){
-		System.out.println("old"+opwd+"new"+pwd);
 		int sId = (int) session.getAttribute("stuId");
 		StudentInfo stu = this.loginServiceImpl.getStudentInfo(sId);
-		System.out.println(stu.getPassword());
 		
 		if(opwd.equals(stu.getPassword())){
 			System.out.println("old is right");
@@ -181,10 +184,23 @@ public class LoginController {
 			
 			return "index_before";
 		} else {
-			
 			System.out.println("old is wrong");
 		}
 		return "info/install";
+	}
+	/**
+	 * 
+	 * @desc				退出登錄
+	 * @author				童海苹
+	 * @createDate 			2016/12/6
+	 * @param 				
+	 * @return				void
+	 * 
+	 */
+	@RequestMapping(value = "turnOut")
+	public String resetPwd(HttpSession session){
+		session.setAttribute("logined", "");
+		return "index_before";
 	}
 
 }
