@@ -126,13 +126,8 @@
 	</div>
 	<!--footer-->
 	<div id="footer">
-		<p>
-			<a href="${ctx }/about_us.jsp">联系我们</a> | <a
-				href="${ctx }/about_us.jsp">人才招聘</a> | <a
-				href="${ctx }/about_us.jsp">教师合作</a> | <a
-				href="${ctx }/about_us.jsp">项目介绍</a>
-		</p>
-		<p>版权所有：猿计划项目小组</p>
+		<p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
+        <p>版权所有：猿计划项目小组</p>
 	</div>
 </body>
 </html>
