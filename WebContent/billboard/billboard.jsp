@@ -33,8 +33,7 @@
 	<div>
 		<div class="header">
 			<div class="logo">
-				<a href="${ctx }/index_before.jsp"><img
-					src="${ctx }/images/logo.png" /></a>
+				<a href="${ctx }/index_before.jsp"><img src="${ctx }/images/logo.png" /></a>
 			</div>
 			<div class="search">
 				<input id="searchParam" type="text" name="searchParam" placeholder="请输入信息搜索公告" class="text"/>
@@ -52,7 +51,7 @@
 				<div class="nav" id="nav">
 					<ul>
 						<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a
-							href="#">${student.url }</a>
+							href="">${student.url }</a>
 							<ul>
 								<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
 								<li><a href="${ctx }/info/install.jsp">设置</a></li>
@@ -64,18 +63,17 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><a href="${ctx }/">网站首页</a></li>
+				<li class="current"><a href="${ctx }/">网站首页</a></li>
 				<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
 				<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
-				<li><a href="${ctx }/arena.jsp">竞技场</a></li>
-				<li class="current"><a href="${ctx }/about_us.jsp">关于我们</a></li>
+				<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 			</ul>
 		</div>
 	</div>
 	<!--面包屑-->
 	<div class="breadcrumb">
 		<a href="${ctx }/">首页</a>>><a
-			href="${ctx }/billboard/billboardlist">公告板</a>
+			href="${ctx }/notice/billboardlist">公告板</a>
 	</div>
 	<!--左侧边栏-->
 	<div class="left">

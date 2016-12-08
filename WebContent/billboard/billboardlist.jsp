@@ -32,8 +32,7 @@
 	<div>
 		<div class="header">
 			<div class="logo">
-				<a href="${ctx }/index_before.jsp"><img
-					src="${ctx }/images/logo.png" /></a>
+				<a href="${ctx }/index_before.jsp"><img src="${ctx }/images/logo.png" /></a>
 			</div>
 			<div class="search">
 					<input id="searchParam" type="text" name="searchParam" placeholder="请输入信息搜索公告" class="text"/>
@@ -64,11 +63,10 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><a href="${ctx }/">网站首页</a></li>
+				<li class="current"><a href="${ctx }/">网站首页</a></li>
 				<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
 				<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
-				<li><a href="${ctx }/arena.jsp">竞技场</a></li>
-				<li class="current"><a href="${ctx }/about_us.jsp">关于我们</a></li>
+				<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 			</ul>
 		</div>
 	</div>
