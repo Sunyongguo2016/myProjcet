@@ -52,7 +52,7 @@
 							<ul>
 								<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
 								<li><a href="${ctx }/info/install.jsp">设置</a></li>
-								<li><a href="${ctx }/index_before.jsp">退出登录</a></li>
+								<li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
 							</ul>
 						</li>
 					</ul>

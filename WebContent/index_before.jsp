@@ -28,6 +28,7 @@
 					v.style.display="block";
 				}
 			}
+			
 		</script>
 	</head>
 	<body>
@@ -35,7 +36,7 @@
 			<div>
             	<div class="header">
 					<div class="logo">
-						<a href="index_before.jsp">
+						<a href="${ctx }/index_before.jsp">
 							<img src="${ctx }/images/logo.png"/>
 						</a>
 					</div>
@@ -58,7 +59,7 @@
                                     <ul>
                                         <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
                                         <li><a href="${ctx }/info/install.jsp">设置</a></li>
-                                        <li><a href="${ctx }/index_before.jsp">退出登录</a></li>
+                                        <li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -68,7 +69,7 @@
 				</div>
 				<div class="menu">
 					<ul>
-						<li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
+						<li class="current"><a href="${ctx }/">网站首页</a></li>
 						<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
 						<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
 						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
@@ -116,29 +117,29 @@
 			<div>
 			<div class="left">
 			<div class="siji">
-				<a href="${ctx }/category.jsp"><img src="${ctx }/images/siji.png"/></a>
+				<a href="${ctx }/category?type=四级"><img src="${ctx }/images/siji.png"/></a>
 				<div>
 				<h2>大学英语四级</h2>
 				<hr/>
 				<ul>
 				<c:forEach items="${pageExamFour.list }" var="exam">
-					<li><a href="${ctx }/examzc/preview.jsp">${exam.examName }..预览</a></li>
+					<li><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
 				</c:forEach>
 				</ul>
-				<p><a href="${ctx }/category.jsp" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
+				<p><a href="${ctx }/category?type=四级" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
 				</div>
 			</div>
 			<div class="liuji">
-				<a href="${ctx }/category.jsp"><img src="${ctx }/images/liuji.png"/></a>
+				<a href="category?type=六级"><img src="${ctx }/images/liuji.png"/></a>
 				<div>
 				<h2>大学英语六级</h2>
 				<hr/>
 				<ul>
 					<c:forEach items="${pageExamSix.list }" var="exam">
-						<li><a href="${ctx }/examzc/preview.jsp">${exam.examName }..预览</a></li>
+						<li><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
 					</c:forEach>
 				</ul>
-				<p><a href="${ctx }/category.jsp" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
+				<p><a href="category?type=六级" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
 				</div>
 			</div>
 			</div>
@@ -147,10 +148,10 @@
 				<h2>专项训练</h2>
 				<hr/>
 				<div>
-					<div class="img1"><a href="${ctx }/zx.jsp"></a></div>
-					<div class="img2"><a href="${ctx }/.jsp"></a></div>
-					<div class="img3"><a href="${ctx }/.jsp"></a></div>
-					<div class="img4"><a href="${ctx }/specialproject.jsp"></a></div>
+					<div class="img1"><a href="${ctx }/examzx/list?parentQuestionName=QuickReading"></a></div>
+					<div class="img2"><a href="${ctx }/examzx/list?parentQuestionName=LastReading"></a></div>
+					<div class="img3"><a href="${ctx }/examzx/list?parentQuestionName=Writing"></a></div>
+					<div class="img4"><a href="${ctx }/examzx/list"></a></div>
 				</div>				
 				</div>
 				<div>

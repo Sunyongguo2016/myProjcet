@@ -3,10 +3,13 @@ package com.course.login.service;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.course.entity.StudentInfo;
 import com.course.login.dao.LoginDaoImpl;
 
 @Service
+@Transactional(readOnly = false)
 public class LoginServiceImpl {
 	
 	@Resource

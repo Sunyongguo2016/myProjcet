@@ -60,8 +60,9 @@
         <div class="breadcrumb">
             <a href="${ctx }/index_before.jsp">首页</a>>>关于我们
         </div>
+        <div>
         <!--左侧边栏-->
-        <div class="left">
+         <div class="left">
             <h2>关于我们</h2>
             <div class="vtitle"><a href="${ctx }/connect_us.jsp">联系我们</a></div>
                 <div class="vcon" style="display: none;">
@@ -84,34 +85,31 @@
             </div>
             <div class="right_content" style="line-height:30px;">
                 <div class="title_h1">
-                	<font style="font-size:20px;font-weight:bold;">关于我们</font>
+                	<font style="font-size:20px;font-weight:bold;">教师合作</font>
                 </div>
                 <div class="wenzhang_content">
-                	<h3>关于我们</h3>
-                    <p style="text-align:left;line-height:2em;text-indent:2em;margin:0px 0px 10px">
-                        
-						巨人英语是一款基于JAVA与MYSQL开发的网络考试系统，考生可以通过浏览器直接进行操作，无需安装任何程序或插件。
-						操作简单，无需专业的计算知识，也可以快速的熟悉网站基本操作。试卷涵盖近三年的真题，并附有试题解、相关知识点。
+                    <p style="text-align:left;line-height:1.5em;text-indent:2em;margin:0px 0px 10px">
+                      	<h3>招聘引言</h3>
+							&nbsp;&nbsp;&nbsp;&nbsp;网络教育时代，您再也不用受困于三尺讲台！考试在线网作为全国知名考试门户，我们将为你提供更广阔的职业发展平台！我们真诚欢迎各行业有经验的精英教师加入我们的团队！我们相信，加入考试在线网您收获的不仅是一份额外薪水，更是一次人生的丰富体验和事业的全新开拓，在这里您将赢得更多的 掌声和声誉！还等什么？现在就和我们一起携手为网络教育事业,贡献自己的力量！考试在线网因发展需要，长期诚聘以下在线网上授课教师（可兼职）
+						<h3>授课方向</h3>
+							&nbsp;&nbsp;&nbsp;&nbsp;外语类：英语四六级等
+						<h3>任职要求</h3>
+							&nbsp;&nbsp;&nbsp;&nbsp;1、所授课程相关专业本科及以上学历；<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;2、拥有所授课程相关资质；<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;3、从事过教学、培训、实务类相关工作；<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;4、年龄25岁-55岁之间；<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;5、普通话标准，具有较强的口头表达能力和责任心，授课形象好，讲课生动，有感染力；<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;6、在各大高校及培训机构有教学经验的老师优先考虑。
+						<h3>联系方式</h3>
+							&nbsp;&nbsp;&nbsp;&nbsp;联系QQ：1241069301<br/>
                      </p>
-                     <p style="text-align:left;line-height:2em;text-indent:2em;margin:0px 0px 10px">
-                       	巨人英语是由猿计划项目组设计编写而成。项目成员是一群理论和实践都很菜的技术渣渣，该项目的实用价值有待开发。
-                       	如对我们的项目有何建议，欢迎反馈，可以是关于网页设计、后台设计、功能推荐……
-                     </p>
-                     <h3>团队理念</h3>
-                     <p style="text-align:left;line-height:2em;text-indent:2em;margin:0px 0px 10px">
-                     	
-						一、以用户为中心创建以来，考试在线始终秉持着用户第一的理念，从而赢得了最忠诚的用户群体。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;二、追求卓越我们追求一种品质，坚信只有我们自己都赞不绝口的东西，才能让大家也喜欢。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;三、务实专注专著，持续的发展是考试在线最重要的精神。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;四、团队协作团队协作是考试在线的核心竞争力。我们相互信任，相互支持，共同成长。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;五、守信尽责我们说到做到，信守承诺，担负责任。为丰富服务内容，考试在线网站欢迎各<br/>
-						       类ICP及资源拥有者与本站合作，共同向所有教育网用户推广其服务，在合作中共同发展。
-                     </p>
+                    
                  </div>   
              </div>
 		</div>
+		</div>
         <!--footer-->
-        <div id="footer" style="top:800px;">
+        <div id="footer">
   	         <p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
              <p>版权所有：猿计划项目小组</p>
         </div>
