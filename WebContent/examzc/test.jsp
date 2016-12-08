@@ -79,6 +79,12 @@
 									<b>卷面总分</b> : 710
 								</h2>
                             </div>
+                            <center>
+                            <div>
+								<iframe scrolling="auto" rameborder="0" src="${ctx }/AudioPlayer/index.jsp"
+								name="right" width="500px" height="170px" frameborder="0"></iframe>
+							</div>
+							</center>
                             <div class="tm_paper_body">
                             	<c:forEach items="${exam.parentQuestions }" var="parentQuestion">
                             	<c:choose>
@@ -124,15 +130,12 @@
                                     ||parentQuestion.parentQuestionName=='ListeningComprehensionFive'
                                     ||parentQuestion.parentQuestionName=='ListeningComprehensionSix'
                                     ||parentQuestion.parentQuestionName=='ListeningComprehensionText'}">
+                                    
+                                    
                                     <div class="tm_paper_section">
                                 	<h1>${parentQuestion.parentQuestionName }</h1>
                                     <h2>共${fn:length(parentQuestion.questions)}题</h2>
-                                    <center>
-                                    <div>
-										<iframe scrolling="auto" rameborder="0" src="${ctx }/AudioPlayer/index.jsp"
-										name="right" width="500px" height="170px" frameborder="0"></iframe>
-									</div>
-									</center>
+                                    
                                     <c:choose>
                                     <c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionOne'
                                     ||parentQuestion.parentQuestionName=='ListeningComprehensionFour'}">
