@@ -50,11 +50,11 @@ public class ExamListController {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		System.out.println(examType);
 		page=this.parentQuestionSeriviceImpl.listParentQuestionByParentQuestionNameAndExamType(pageNum, 10, new Object[]{parentQuestionName,examType});	
 		
 		request.setAttribute("page", page);
 		request.setAttribute("pqType",parentQuestionName);
+		request.setAttribute("examType",examType);
 		return "examzx/specialprojectlist";
 	}
 	
