@@ -1,7 +1,6 @@
 package com.course.error.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -47,8 +46,13 @@ public class ErrorController {
 			@RequestParam(name="isCollect", defaultValue="0") int isCollect, HttpSession session,
 			@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
 			Model model){
+		//未登录时直接返回登录页
+		if(null == session.getAttribute("stuId")){
+			return "login_use";
+		}
 		//获取当前登录的学生Id
 		int stuId = (int)session.getAttribute("stuId");
+		
 		System.out.println(stuId);
 		System.out.println("error--controller:"+stuId);
 		Page<Error> page;
@@ -167,8 +171,6 @@ public class ErrorController {
 		request.setAttribute("submitt", "on");
 		return "wrongpage/wrongpage";
 	}
-	
-	
 	/**
 	 * 
 	 * @Description 		错题本对某条记录的删除功能
@@ -187,10 +189,8 @@ public class ErrorController {
 		for(int i = 0;i < list.size();i++){
 			this.errorServiceImpl.dropError(list.get(i).getErrorId());
 		}
-		
 		return "wrongpage/wrongpagelist";
 	}
-	
 }
 
 	
