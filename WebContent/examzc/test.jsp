@@ -39,6 +39,12 @@
 		float: left;
 		width: 150px;
 	}
+	.img{
+		margin-bottom:20px;
+	}
+	.img img{
+		width:500px;
+	}
 	</style>
   </head>
   
@@ -73,7 +79,6 @@
 									<b>卷面总分</b> : 710
 								</h2>
                             </div>
-
                             <div class="tm_paper_body">
                             	<c:forEach items="${exam.parentQuestions }" var="parentQuestion">
                             	<c:choose>
@@ -81,14 +86,21 @@
                             	<div class="tm_paper_section">
                                 	<h1>${parentQuestion.parentQuestionName }</h1>
                             		<h2>共${fn:length(parentQuestion.questions)}题</h2>
+                            		<center>
                             		
+									</center>
                             		<h3>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description}</h3>
 
                                     <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">            
                                         <tbody>
                                         	<tr>
                                             	<td colspan="2">
+                                            		<div class="img">
+                                            		<center>
                                             		${parentQuestion.imgUrl}
+                                            		</center>
+                                            		</div>
+                                            		<center>
                                                         <ul>
                                                         	<c:forEach items="${parentQuestion.questions}" var="qust">
 															<span class="span-quick-nav" data-qid="${qust.questionId}"></span>
@@ -96,6 +108,7 @@
 															</label></li>
 															</c:forEach>
                                                 		</ul>
+                                                	</center>	
                                                 </td>
                                             </tr>
                                             
@@ -114,6 +127,12 @@
                                     <div class="tm_paper_section">
                                 	<h1>${parentQuestion.parentQuestionName }</h1>
                                     <h2>共${fn:length(parentQuestion.questions)}题</h2>
+                                    <center>
+                                    <div>
+										<iframe scrolling="auto" rameborder="0" src="${ctx }/AudioPlayer/index.jsp"
+										name="right" width="500px" height="170px" frameborder="0"></iframe>
+									</div>
+									</center>
                                     <c:choose>
                                     <c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionOne'
                                     ||parentQuestion.parentQuestionName=='ListeningComprehensionFour'}">
@@ -365,6 +384,7 @@
 		                                        <tbody>
 		                                        	<tr>
 		                                            	<td colspan="2">
+		                                            		<center style="margin-top:20px;">
 		                                                        <ul>
 		                                                        	<c:forEach items="${parentQuestion.questions}" var="qust">
 																	<span class="span-quick-nav" data-qid="${qust.questionId}"></span>
@@ -372,6 +392,7 @@
 																	</label></li>
 																	</c:forEach>
 		                                                		</ul>
+		                                                	</center>	
 		                                                </td>
 		                                            </tr>
 		                                            
@@ -424,10 +445,9 @@
 		</div>
 		<div id="div_processor_ops">
 			<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserpaper.submitpaper();">提交</button>
-			<button class="tm_btn tm_btn_primary" type="button" onclick="">暂停/开始</button>
 			<button class="tm_btn tm_btn_primary" type="button" onclick="">返回</button>
 		</div>
-		</div>
+		</div>	
 		
 	</div>
 	<script type="text/javascript">
