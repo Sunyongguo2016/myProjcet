@@ -52,9 +52,9 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><a href="${ctx }/index_before.jsp">网站首页</a></li>
-				<li><a href="${ctx }/category.jsp">大学英语四级</a></li>
-				<li><a href="${ctx }/category.jsp">大学英语六级</a></li>
+				<li><a href="${ctx }/">网站首页</a></li>
+				<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+				<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
 				<li><a href="${ctx }/arena.jsp">竞技场</a></li>
 				<li class="current"><a href="${ctx }/about_us.jsp">关于我们</a></li>
 			</ul>
@@ -62,8 +62,8 @@
 	</div>
 	<!--面包屑-->
 	<div class="breadcrumb">
-		<a href="${ctx }/index_before.jsp">首页</a>>><a
-			href="${ctx }/billboard/billboardlist.jsp">公告板</a>>>考试流程
+		<a href="${ctx }/">首页</a>>><a
+			href="${ctx }/billboard/billboardlist">公告板</a>>>考试流程
 	</div>
 	<!--左侧边栏-->
 	<div class="left">
@@ -89,7 +89,9 @@
 	<!--右侧内容-->
 	<div class="right">
 		<div class="right_bread">
-			<h1>考试流程</h1>
+			<h1>
+				<c:out value="${noticeType}"></c:out>
+			</h1>
 		</div>
 		<div class="right_content" style="line-height: 30px;">
 			<div class="title_h1">
