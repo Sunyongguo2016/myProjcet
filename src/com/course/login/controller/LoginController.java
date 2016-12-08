@@ -1,7 +1,6 @@
 package com.course.login.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.course.entity.Exam;
 import com.course.entity.StudentInfo;
 import com.course.login.service.LoginServiceImpl;
 

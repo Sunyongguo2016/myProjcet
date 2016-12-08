@@ -76,9 +76,6 @@
             <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Writing">作文</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=ListeningComprehension">听力</a></div>
-                <div class="vcon" style="display: none;">
-            </div>
             <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=ChooseFillInBlank">十五选十</a></div>
                 <div class="vcon" style="display: none;">
             </div>
@@ -97,7 +94,6 @@
         <div class="right">
             <table>
                 <tr class="title">
-                	<td>题目ID</td>
                     <td>专项标题</td>
                     <td>类型</td>
                     <td>试卷预览</td>
@@ -105,11 +101,10 @@
                 </tr>
                 <c:forEach items="${page.list}" var="zx">
                  	<tr>              
-                 		<td>${zx.parentQuestionId}</td>
 	                    <td>${zx.exam.examName}</td>
 	                    <td>${zx.parentQuestionName}</td>	               
 	                    <td><a href="${ctx }/examzx/preview?parentQuestionId=${zx.parentQuestionId}">查看试卷</a></td>
-	                    <td><a href="${ctx }/examzx/zxcontent.jsp"><input type="button" value="进入练习" /></a></td>
+	                    <td><a href="${ctx }/examzx/test?parentQuestionId=${zx.parentQuestionId}"><input type="button" value="进入练习" /></a></td>
                 	</tr>
                 </c:forEach>
            

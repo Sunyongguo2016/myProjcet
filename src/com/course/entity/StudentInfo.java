@@ -85,7 +85,6 @@ public class StudentInfo {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="studentInfo")
 	public Set<Error> getErrors() {
 		return errors;
@@ -93,8 +92,8 @@ public class StudentInfo {
 	public void setErrors(Set<Error> errors) {
 		this.errors = errors;
 	}
-	
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="studentInfo")
+
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="studentInfo")
 	public Set<Score> getScores() {
 		return scores;
 	}

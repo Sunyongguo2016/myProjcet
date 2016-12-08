@@ -49,6 +49,7 @@ public class ErrorController {
 			Model model){
 		//获取当前登录的学生Id
 		int stuId = (int)session.getAttribute("stuId");
+		System.out.println(stuId);
 		System.out.println("error--controller:"+stuId);
 		Page<Error> page;
 		if(searchParam == null || "".equals(searchParam)){
