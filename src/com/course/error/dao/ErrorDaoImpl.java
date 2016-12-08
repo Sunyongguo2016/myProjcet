@@ -57,7 +57,7 @@ public class ErrorDaoImpl extends BaseDao<Error, Integer> {
 	 * @version 			V1.0
 	 * 
 	 */
-	//此方法待修改
+	
 		public Page<Error> findCollectContent(int pageNum, int pageSize, int studentId, int examId, int parentQuestionId) {
 			
 			String hql;
@@ -139,7 +139,6 @@ public class ErrorDaoImpl extends BaseDao<Error, Integer> {
 	public void deleteError(int err){
 		try {
 			this.delete(err);
-			System.out.println("dao-delete");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

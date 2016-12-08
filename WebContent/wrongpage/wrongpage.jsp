@@ -21,21 +21,22 @@
 			#r2l1{
 			color:red;
 			font-size:15px;
+			}
 			
-			}
-			#r2la{
-			display:none;
-			}
-		
 		</style>
 		<script type="text/javascript">
 			var str = '${submitt}';
-			
 			window.onload = function changStyle(){
 				if("on" == str){
-					var log = document.getElementById("r2la");
-					log.style.display="block";
+					var log = document.getElementById("subm");
+					log.style.display="none";
 				}
+			}
+			function isDelet(){
+				alert("您已将此题成功从错题本中删除！");
+			}
+			function collected(){
+				alert("收藏成功！");
 			}
 		</script>
 	</head>
@@ -71,7 +72,6 @@
                             </ul>
                         </div>
                     </div>
-                    
 				</div>
 				<div class="menu">
 					<ul>
@@ -83,6 +83,7 @@
 					</ul>
 				</div>
 			</div>
+	<form action="${ctx }/error/comment?examId=${exId }&parentQuestionId=${pque.parentQuestionId }" method="post">
     <div class="content">
 			<div id="elButton">
 					<h2><div id="jumpx" style="color:#33ff33"></div></h2>
@@ -100,9 +101,45 @@
 			else
 			document.write(message)
 			</script>
-
-		   </div> 
+		   </div>
     <div id="right2">
+    
+    <c:choose>
+    <c:when test="${pque.parentQuestionName=='QuickReading' }">
+    	<div id="r1">
+        <p>${pque.parentQuestionArticle } </p>
+       </div>
+       <c:forEach items="${pque.questions }" var="qs">
+      <div id="r2">
+          <p><span>${qs.questionContent } </span></p>
+          <input type="text" name="ques${qs.questionId }"/>
+          <c:forEach items="${qs.selectts }" var="se">
+          <div id="r2l"> 
+
+          <p><span> <input type="radio" name="q-${qs.questionId }"> ${se.selecttName }) ${se.selecttContent }  </span></p>
+		
+          </div>
+          </c:forEach>
+          <%--答案及解析 --%>
+          <br>
+         <c:if test="${submitt=='on' }">
+          <div name="r2l" id="r2la">
+          
+          <c:forEach items="${anws }" var="anw">
+          
+          	<c:if test="${anw.key ==qs.questionId }">
+          		<span id="r2l1">您的答案：${anw.value }</span>
+          	</c:if>
+          </c:forEach>
+          
+          	<span id="r2l1">正确答案：${qs.questionAnswer }</span>
+          	<span id="r2l2">解析：${qs.questionExplain }</span>
+          </div>
+         </c:if>
+      </div>
+      </c:forEach>
+    </c:when>
+    <c:when test="${pque.parentQuestionName=='LastReadingOne'||pque.parentQuestionName=='LastReadingTwo'||pque.parentQuestionName=='ChooseFillInBlank' }">
       <div id="r1">
         <p>${pque.parentQuestionArticle } </p>
        </div>
@@ -111,30 +148,38 @@
           <p><span>${qs.questionContent } </span></p>
           <c:forEach items="${qs.selectts }" var="se">
           <div id="r2l"> 
-
-          <p><span> <input type="radio" name=""> ${se.selecttName }) ${se.selecttContent }  </span></p>
-
+         	 <p><span> <input type="radio" value="${se.selecttName }" name="ques${qs.questionId }"> ${se.selecttName }) ${se.selecttContent }  </span></p>
           </div>
           </c:forEach>
           <%--答案及解析 --%>
           <br>
-         
+         <c:if test="${submitt == 'on' }">
           <div name="r2l" id="r2la">
-          	<span id="r2l1">答案：${qs.questionAnswer }</span>
-          	<span id="r2l2">${qs.questionExplain }</span>
-          </div>
           
+          <c:forEach items="${anws }" var="anw">
+           
+          	<c:if test="${anw.key == qs.questionId }">
+          		<span id="r2l1">您的答案：${anw.value }</span>
+          	</c:if>
+          </c:forEach>
+          	<span id="r2l1">正确答案：${qs.questionAnswer }</span>
+          	<span id="r2l2">解析：${qs.questionExplain }</span>
+          </div>
+         </c:if>
       </div>
-      </c:forEach>
-      <div id="r3">
-         <a href="${ctx }/error/comment?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><input type="button" value="提交" class="s1"></a>
+      </c:forEach>		
+  		</c:when>
+ 	</c:choose>
+ 		<div id="r3">
+         <input type="submit" id="subm" value="提交" class="s1">
          <div id="r3r">
-            <a href="${ctx }/error/setCollect?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><img src="${ctx }/images/save.png"></a>
-            <a href="${ctx }/error/comment?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><img src="${ctx }/images/note.png" id="bum"/></a>
-            <a href="${ctx }/error/delete?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"><img src="${ctx }/images/delete.png"></a>
+            <a href="${ctx }/error/setCollect?examId=${exId }&parentQuestionId=${pque.parentQuestionId }" onclick="collected();"><img src="${ctx }/images/save.png"></a>
+            <a href="${ctx }/error/delete?examId=${exId }&parentQuestionId=${pque.parentQuestionId }" onclick="isDelet();"><img src="${ctx }/images/delete.png"></a>
          	</div>
-      		</div>
- 		 </div> 		
+      	</div>
+   </div>
+ 	</div>
+ 	</form>	  		
 	</div>
 			<div class="footer">
 				<p><a href="${ctx }/about_us.jsp">联系我们</a> | <a href="${ctx }/about_us.jsp">人才招聘</a> | <a href="${ctx }/about_us.jsp">教师合作</a> | <a href="${ctx }/about_us.jsp">项目介绍</a></p>
