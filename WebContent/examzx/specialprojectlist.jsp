@@ -59,8 +59,8 @@
             <div class="header">
                 <div class="logo"> <img src="${ctx }/images/logo.png"/> </div>
                 <div class="search">
-						<input type="text" class="text"/>
-    					<a href="${ctx }/search.jsp"><input type="submit" class="button" value="搜索"/></a>
+							<input id="searchParam" type="text" name="searchParam" class="text"/>
+    						<a href="javascrpt:search()" onclick="searchp();return false;"><input type="submit" name="" class="button" value="搜索"/></a>
 					</div>
 					<div class="login" id="login">
                     	<a href="${ctx }/login_use.jsp"><button id="login">登录</button></a>&nbsp;|
@@ -87,10 +87,17 @@
 				</div>
 				<div class="menu">
 					<ul>
-						<li class="current"><a href="${ctx }/">网站首页</a></li>
-						<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
-						<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
-						<li><a href="${ctx }/arena.jsp">竞技场</a></li>
+						<li><a href="${ctx }/">网站首页</a></li>
+						<c:choose>
+                         	 <c:when test="${examType == '四级'}">
+								<li class="current"><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+								<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+                         	 </c:when>
+                         	 <c:otherwise>
+								<li ><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+								<li class="current"><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+                         	 </c:otherwise>
+                     	 </c:choose>
 						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 					</ul>
 				</div>
@@ -103,22 +110,22 @@
         <!--左侧边栏-->
         <div class="left">
         	<h2>专项练习</h2>
-            <div class="vtitle"><a href="${ctx }/examzx/list">全部</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?examType=${examType}">全部</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Writing">作文</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Writing&examType=${examType}">作文</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=ChooseFillInBlank">十五选十</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=ChooseFillInBlank&examType=${examType}">十五选十</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=QuickReading">快速阅读</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=QuickReading&examType=${examType}">快速阅读</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=LastReading">阅读</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=LastReading&examType=${examType}">阅读</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Translation">翻译</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Translation&examType=${examType}">翻译</a></div>
                 <div class="vcon" style="display: none;">
             </div>
             <div class="leftfoot"></div>
@@ -144,13 +151,13 @@
                 <tr>
                     <td colspan="5">
                        <div class="pagecss">  
-                           <span class="page"><a href="${ctx }/examzx/list?pageNum=1&parentQuestionName=${pqType}">首页</a></span>
-                            <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.prePageNum }&parentuestionName=${pqType}">上一页</a></span>
+                           <span class="page"><a href="${ctx }/examzx/list?pageNum=1&parentQuestionName=${pqType}&examType=${examType}">首页</a></span>
+                            <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.prePageNum }&parentQuestionName=${pqType}&examType=${examType}">上一页</a></span>
                             <c:forEach begin="1" end="${page.totalPageNum }" var="pageNum"   >	
-								   <span class="page"><a href="${ctx }/examzx/list?pageNum=${pageNum }&parentQuestionName=${pqType}">${pageNum }</a></span>
+								   <span class="page"><a href="${ctx }/examzx/list?pageNum=${pageNum }&parentQuestionName=${pqType}&examType=${examType}">${pageNum }</a></span>
 							</c:forEach>             
-                            <span class="page" ><a href="${ctx }/examzx/list?pageNum=${page.nextPageNum} &parentQuestionName=${pqType}" >下一页</a></span>
-                            <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.totalPageNum }&parentQuestionName=${pqType}">尾页</a></span>                       
+                            <span class="page" ><a href="${ctx }/examzx/list?pageNum=${page.nextPageNum} &parentQuestionName=${pqType}&examType=${examType}" >下一页</a></span>
+                            <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.totalPageNum }&parentQuestionName=${pqType}&examType=${examType}">尾页</a></span>                       
                         </div>                         
                     </td>
                 </tr>
@@ -161,6 +168,11 @@
 	             <p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
 	             <p>版权所有：猿计划项目小组</p>
             </div>
+        <script type="text/javascript">
+		function searchp(){
+			var p=$("#searchParam").val();
+			window . location . href = "${ctx }/exam/search?searchParam="+p;
+		}
+		</script>
 	</body>
-	
 </html>
