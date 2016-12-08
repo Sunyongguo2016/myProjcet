@@ -39,7 +39,7 @@
     	
 		<div class="tm_container">
 			<ul class="tm_breadcrumb">
-				<li><a href="${ctx }/index_before.jsp">首页</a> <span class="divider">&gt;</span></li>
+				<li><a href="${ctx }/">首页</a> <span class="divider">&gt;</span></li>
 				<li><a href="${ctx }/examonline/list">在线自测</a> <span class="divider">&gt;</span></li>
 				<li class="active">试卷预览</li>
 			</ul>
