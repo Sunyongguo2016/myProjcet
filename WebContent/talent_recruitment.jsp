@@ -96,21 +96,24 @@
             </div>
             <div class="right_content" style="line-height:30px;">
                 <div class="title_h1">
-                	<font style="font-size:20px;font-weight:bold;">联系我们</font>
+                	<font style="font-size:20px;font-weight:bold;">人才招聘</font>
                 </div>
                 <div class="wenzhang_content">
-                    <p style="text-align:left;line-height:2em;text-indent:2em;margin:0px 0px 10px">
-                        	如对本学习平台有任何问题，请和孙永国联系<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;联系方式：<br/>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ号：1241069301<br/>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email：1241069301@qq.com<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;地址：河北省石家庄市南二环东路20号
+                    <p style="text-align:left;line-height:2em;margin:0px 0px 10px">
+                       	<h3>岗位</h3>&nbsp;&nbsp;&nbsp;&nbsp;网站编辑
+						<h3>职责</h3>							
+						&nbsp;&nbsp;&nbsp;&nbsp;1、相关计算机专业，年龄不限，学历不限，有写手经验优先。<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;2、文字功底扎实，写作能力强，有撰写软文和求职经验相关文章的经验（需提供材料证明）。<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;3、能随时接受编辑主管给的写作任务，并按时按质完成。<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;4、具备较强的创新意识，可随时配合网站撰写不同的文章。<br/>	
+						<h3>待遇</h3>&nbsp;&nbsp;&nbsp;&nbsp;绩效薪资，多劳多得，具体面议。<br/>
+						<h3>联系方式</h3>&nbsp;&nbsp;&nbsp;&nbsp;孙永国：13578590321（合则邀请，勿电勿访，否则一律取消应聘资格。）
                      </p>
                  </div>   
              </div>
 		</div>
         <!--footer-->
-        <div id="footer" style="top:500px;">
+        <div id="footer" style="top:800px;">
   	         <p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
              <p>版权所有：猿计划项目小组</p>
         </div>

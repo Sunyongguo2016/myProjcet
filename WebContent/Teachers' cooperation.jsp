@@ -72,6 +72,7 @@
         <div class="breadcrumb">
             <a href="${ctx }/index_before.jsp">首页</a>>>关于我们
         </div>
+        <div>
         <!--左侧边栏-->
          <div class="left">
             <h2>关于我们</h2>
@@ -96,21 +97,31 @@
             </div>
             <div class="right_content" style="line-height:30px;">
                 <div class="title_h1">
-                	<font style="font-size:20px;font-weight:bold;">联系我们</font>
+                	<font style="font-size:20px;font-weight:bold;">教师合作</font>
                 </div>
                 <div class="wenzhang_content">
-                    <p style="text-align:left;line-height:2em;text-indent:2em;margin:0px 0px 10px">
-                        	如对本学习平台有任何问题，请和孙永国联系<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;联系方式：<br/>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ号：1241069301<br/>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email：1241069301@qq.com<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;地址：河北省石家庄市南二环东路20号
+                    <p style="text-align:left;line-height:1.5em;text-indent:2em;margin:0px 0px 10px">
+                      	<h3>招聘引言</h3>
+							&nbsp;&nbsp;&nbsp;&nbsp;网络教育时代，您再也不用受困于三尺讲台！考试在线网作为全国知名考试门户，我们将为你提供更广阔的职业发展平台！我们真诚欢迎各行业有经验的精英教师加入我们的团队！我们相信，加入考试在线网您收获的不仅是一份额外薪水，更是一次人生的丰富体验和事业的全新开拓，在这里您将赢得更多的 掌声和声誉！还等什么？现在就和我们一起携手为网络教育事业,贡献自己的力量！考试在线网因发展需要，长期诚聘以下在线网上授课教师（可兼职）
+						<h3>授课方向</h3>
+							&nbsp;&nbsp;&nbsp;&nbsp;外语类：英语四六级等
+						<h3>任职要求</h3>
+							&nbsp;&nbsp;&nbsp;&nbsp;1、所授课程相关专业本科及以上学历；<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;2、拥有所授课程相关资质；<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;3、从事过教学、培训、实务类相关工作；<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;4、年龄25岁-55岁之间；<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;5、普通话标准，具有较强的口头表达能力和责任心，授课形象好，讲课生动，有感染力；<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;6、在各大高校及培训机构有教学经验的老师优先考虑。
+						<h3>联系方式</h3>
+							&nbsp;&nbsp;&nbsp;&nbsp;联系QQ：1241069301<br/>
                      </p>
+                    
                  </div>   
              </div>
 		</div>
+		</div>
         <!--footer-->
-        <div id="footer" style="top:500px;">
+        <div id="footer">
   	         <p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
              <p>版权所有：猿计划项目小组</p>
         </div>

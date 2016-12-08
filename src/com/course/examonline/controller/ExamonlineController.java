@@ -72,9 +72,34 @@ public class ExamonlineController {
 				JOptionPane.showMessageDialog(null, "对不起，您还没有登录！现在返回登录页面...", "警告", JOptionPane.ERROR_MESSAGE);
 				return "login_use";
 			}
+			String examurl1[] = exam.getExamUrl().split("file/");
+			String examurl2[] = examurl1[1].split("mp3");
+			String url = "http://localhost:8080/myProject/ueditor/jsp/upload/file/"+examurl2[0]+"mp3";
+			session.setAttribute("url", url);
 			request.setAttribute("exam", exam);
+			System.out.println(exam.getExamUrl());
 		}
 		return "examzc/test";
+	}
+	
+	/**
+	 * 
+	 * @desc				查看试卷，封装到page对象里  返回考试页面
+	 * @author				孙晓辉
+	 * @createDate 			2016/11/30
+	 * @param 				pageNum页码，searchParam搜索参数
+	 * @return				String
+	 * 
+	 */
+	@RequestMapping("listen")
+	public String list(@RequestParam(name="examId",defaultValue="0") int examId,
+			HttpServletRequest request,
+			Model model){
+		if(examId!=0){
+			Exam exam = this.examServiceImpl.getExam(examId);
+			request.setAttribute("exam", exam);
+		}
+		return "examzc/listening";
 	}
 	
 	/**
@@ -147,16 +172,15 @@ public class ExamonlineController {
 			@RequestParam(value="examType",required=false) String examType,
 			HttpServletRequest request,
 			Model model){
-		Page<Exam> page=null; 
+		Page<Exam> page=null;
 		
+		if(examType!=null){
 			try {
 				examType = new String(examType.getBytes("ISO8859_1"), "UTF-8");
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		
-		if(examType!=null){
 			System.out.println("examtype is not null:"+examType);
 			page = this.examServiceImpl.listExamByType(pageNum, 10, new Object[]{examType});
 		}else{

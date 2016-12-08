@@ -25,7 +25,7 @@
 			</h1>
 		</div>
 		<div class="head-l">
-			<a class="buttonone" href=""> 欢迎${roleName }登录</a> <a class="button bg-yellow"
+			<a class="buttonone" href=""> 欢迎${student.loginName }登录</a> <a class="button bg-yellow"
 				href="${ctx }/login.html"><span class="icon-power-off"></span>
 				退出登录</a>
 		</div>
