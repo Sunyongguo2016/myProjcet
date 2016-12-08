@@ -41,7 +41,31 @@ function checkPwd(){
 		alert("密码长度不对！")
 	}
 }
+<!-- 导航栏滑动 -->
+$(function() {
+	var $t, leftX, newWidth;
 
+	$('.menu ul').append('<div class="block"></div>');
+	var $block = $('.block');
+
+	$block.width($(".current").width()).css('left', $('.current a').position().left).data('rightLeft', $block.position().left).data('rightWidth', $block.width());
+
+	$('.menu ul li').find('a').hover(function() {
+		$t = $(this);
+		leftX = $t.position().left;
+		newWidth = $t.parent().width();
+
+		$block.stop().animate({
+			left: leftX,
+			width: newWidth
+		},300);
+	}, function() {
+		$block.stop().animate({
+			left: $block.data('rightLeft'),
+			width: $block.data('rightWidth')
+		},300)
+	})
+})
 </script>		
 </head>
 <body>
@@ -148,13 +172,8 @@ function checkPwd(){
 
 	<!--页尾信息-->
 	<div id="footer" class="">
-		<p>
-			<a href="${ctx }/about_us.jsp">联系我们</a> | <a
-				href="${ctx }/about_us.jsp">人才招聘</a> | <a
-				href="${ctx }/about_us.jsp">教师合作</a> | <a
-				href="${ctx }/about_us.jsp">项目介绍</a>
-		</p>
-		<p>版权所有：猿计划项目小组</p>
+		<p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
+        <p>版权所有：猿计划项目小组</p>
 	</div>
 	</div>
 	<script type="text/javascript">

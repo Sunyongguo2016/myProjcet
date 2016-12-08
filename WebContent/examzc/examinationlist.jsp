@@ -5,22 +5,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="${ctx }/css/header.css" type="text/css" rel="stylesheet" />
-        <link href="${ctx }/css/examinationlist.css" type="text/css" rel="stylesheet" />
-        <script type="text/javascript"></script>
-        <script type="text/javascript" src="${ctx }/js/jquery-1.3.1.js"/></script>
-        <script src="${ctx }/js/index.js"></script>
-        <script src="${ctx }/js/examinationlist.js"></script>    
-        <script src="${ctx }/js/nav.js"></script>
-        <script type="text/javascript" src="${ctx }/js/login.js"></script>
-        <script type="text/javascript" src="${ctx }/js/header.js"></script>    
-        <title>自测列表</title>
-        <style type="text/css">
-        .current{
-        	font-weight:900;
-        }
-        </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="${ctx }/css/header.css" type="text/css" rel="stylesheet" />
+<link href="${ctx }/css/examinationlist.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript"></script>
+<script type="text/javascript" src="${ctx }/js/jquery-1.3.1.js"/></script>
+<script src="${ctx }/js/index.js"></script>
+<script src="${ctx }/js/examinationlist.js"></script>    
+<script src="${ctx }/js/nav.js"></script>
+<script type="text/javascript" src="${ctx }/js/login.js"></script>
+<script type="text/javascript" src="${ctx }/js/header.js"></script>    
+<title>自测列表</title>
+<style type="text/css">
+.current{
+	font-weight:900;
+}
+</style>
+<script type="text/javascript">
+	var str = '${logined}';
+	window.onload = function changStyle(){
+		if("on" == str){
+			var log = document.getElementById("login");
+			log.style.display="none";
+			var v = document.getElementById("after_login");
+			v.style.display="block";
+		}
+	}
+			
+</script>
     </head>
     <body>
      <!-- header-->
@@ -31,22 +43,22 @@
 						<input type="text" class="text"/>
     					<a href="${ctx }/search.jsp"><input type="submit" class="button" value="搜索"/></a>
 					</div>
-					<div class="login">
+					<div class="login" id="login">
                     	<a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;|
 						<a href="${ctx }/register.jsp"><button>注册</button></a>
                     </div>
                     
-                    <div class="after_login">
+                    <div class="after_login" id="after_login">
                     	<div id="username">
-                            <p>用户名</p>
+                            <p>${student.loginName }</p>
                         </div>
                         <div class="nav" id="nav">
                             <ul>
-                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#"><img src="${ctx }/images/leftuser.jpg"></a>
+                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)">${student.url }</a>
                                     <ul>
                                         <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
 			                            <li><a href="${ctx }/info/install.jsp">设置</a></li>
-                                        <li><a href="${ctx }/index_before.jsp">退出登录</a></li>
+                                        <li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -67,7 +79,7 @@
     <!--面包屑-->
     <div class="breadcrumb">
         <a href="${ctx }/">首页</a>>>
-        <a href="${ctx }/category?type=四级">大学英语四级</a>>>在线测试
+        <a href="${ctx }/category?type=四级">大学英语四级 </a>>>在线测试
     </div>
     <!--左侧边栏-->
     <div class="left">
@@ -131,8 +143,8 @@
     </div>
      <!--footer-->
         <div id="footer">
-                <p><a href="${ctx }/about_us.jsp">联系我们</a> | <a href="${ctx }/about_us.jsp">人才招聘</a> | <a href="${ctx }/about_us.jsp">教师合作</a> | <a href="${ctx }/about_us.jsp">项目介绍</a></p>
-                <p>版权所有：猿计划项目小组</p>
+             <p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
+             <p>版权所有：猿计划项目小组</p>
         </div>
 </body>
 </html>
