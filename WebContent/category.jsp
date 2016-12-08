@@ -50,9 +50,9 @@
 				</div>
 				<div class="menu">
 					<ul>
-						<li><a href="${ctx }/index_before.jsp">网站首页</a></li>
-						<li class="current"><a href="${ctx }/category.jsp">大学英语四级</a></li>
-						<li><a href="${ctx }/category.jsp">大学英语六级</a></li>
+						<li><a href="${ctx }/">网站首页</a></li>
+						<li class="current"><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+						<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
 						<li><a href="${ctx }/arena.jsp">竞技场</a></li>
 						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 					</ul>
@@ -66,7 +66,7 @@
               <hr/>
               <ul>
               	<c:forEach items="${pageNotice.list }" var="n">
-               	 <li><a href="${ctx }/billboard/billboard.jsp">${n.noticeTitle}</a></li>
+               	 <li><a href="${ctx }/notice/billboard?noticeContent=${noticeContent}">${n.noticeTitle}</a></li>
 				</c:forEach>
               </ul>
               <p><a href="${ctx }/notice/billboardlist">MORE>></a></p>
@@ -77,7 +77,7 @@
               <hr/>
               <ul>
               <c:forEach items="${pageExam.list }" var="exam">
-                <li><a href="${ctx }/examzc/preview.jsp">${exam.examName }..预览</a></li>
+                <li><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
 				</c:forEach>
               </ul>
               <p><a href="${ctx }/examonline/list">MORE>></a></p>
