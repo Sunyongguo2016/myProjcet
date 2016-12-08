@@ -15,6 +15,17 @@
 <script src="${ctx }/js/nav.js"></script>
 <script type="text/javascript" src="${ctx }/js/header.js"></script>
 <title>公告板</title>
+<script type="text/javascript">
+	var str = '${logined}';
+	window.onload = function changStyle(){
+		if("on" == str){
+			var log = document.getElementById("login");
+			log.style.display="none";
+			var v = document.getElementById("after_login");
+			v.style.display="block";
+		}
+	}
+</script>
 </head>
 <body>
 	<!-- header-->
@@ -28,23 +39,23 @@
 				<input type="text" class="text" /> <a href="${ctx }/search.jsp"><input
 					type="submit" class="button" value="搜索" /></a>
 			</div>
-			<div class="login">
+			<div class="login" id="login">
 				<a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;| <a
 					href="${ctx }/register.jsp"><button>注册</button></a>
 			</div>
 
-			<div class="after_login">
+			<div class="after_login" id="after_login">
 				<div id="username">
-					<p>用户名</p>
+					<p>${student.loginName }</p>
 				</div>
 				<div class="nav" id="nav">
 					<ul>
 						<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a
-							href="#"><img src="${ctx }/images/leftuser.jpg"></a>
+							href="#">${student.url }</a>
 							<ul>
 								<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
 								<li><a href="${ctx }/info/install.jsp">设置</a></li>
-								<li><a href="${ctx }/index_before.jsp">退出登录</a></li>
+								<li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
 							</ul></li>
 					</ul>
 				</div>
