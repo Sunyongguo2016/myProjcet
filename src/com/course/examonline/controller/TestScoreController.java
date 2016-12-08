@@ -70,10 +70,8 @@ public class TestScoreController {
 //		while(s.hasNext()){
 //			sc = s.next();
 //			if(sc.getExam().getExamId()==examId){
-//				//由于级联关系,many方无法直接删除,需要解除与one方的关联
-//				sc.getStudentInfo().getScores().remove(sc);
-//				sc.setStudentInfo(null);
-//				this.scoreServiceImpl.dropScore(sc.getId());
+//				
+//				break;
 //			}
 //		}
 		
@@ -129,6 +127,7 @@ public class TestScoreController {
 		//计算总分
 		float mark = this.caculate(examId, studentInfo);
 		System.out.println("总分"+mark);
+		session.removeAttribute("url");
 		request.setAttribute("mark", mark);
 		request.setAttribute("tested", "on");
 		request.setAttribute("exam", exam);
