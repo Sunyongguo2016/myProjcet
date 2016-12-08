@@ -16,6 +16,16 @@
    		<script type="text/javascript" src="${ctx }/js/header.js"></script>
 		<script src="${ctx }/js/wrongpage2.js"></script>
 		<script src="${ctx }/js/wrongpage3.js"></script>
+		<script type="text/javascript">
+		//搜索
+			function searchp(){
+				var p=$("#searchParam").val();
+				window.location.href = "${ctx }/error/collect?searchParam="+p+"&isCollect=${isCol }";
+				 $("[name='pagen']").each(function(key,value){
+					$(this).attr("href",$(this).attr("href")+"&searchParam='"+p+"'");
+				} );
+			}
+			</script>
 		<title>错题本</title>
 		<style type="text/css">
 			#r2l1{
@@ -45,11 +55,11 @@
 			<div>
 				<div class="header">
 					<div class="logo">
-						<a href="${ctx }/index_before.jsp"><img src="${ctx }/images/logo.png"/></a>
+						<a href="${ctx }/"><img src="${ctx }/images/logo.png"/></a>
 					</div>
 					<div class="search">
-						<input type="text" class="text"/>
-    					<a href="${ctx }/search.jsp"><input type="submit" class="button" value="搜索"/></a>
+						<input type="text" class="text" id="searchParam" name="searchParam" value="${searchParam }" /> 
+						<input type="submit" class="button" value="搜索" onclick="searchp();return false;"/>
 					</div>
 					<div class="login" style="display:none">
                     	<a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;|
@@ -75,10 +85,9 @@
 				</div>
 				<div class="menu">
 					<ul>
-						<li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
-						<li><a href="${ctx }/category.jsp">大学英语四级</a></li>
-						<li><a href="${ctx }/category.jsp">大学英语六级</a></li>
-						<li><a href="${ctx }/arena.jsp">竞技场</a></li>
+						<li><a href="${ctx }/">网站首页</a></li>
+						<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+						<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
 						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 					</ul>
 				</div>
