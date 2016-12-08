@@ -25,8 +25,8 @@
 					src="${ctx }/images/logo.png" /></a>
 			</div>
 			<div class="search">
-				<input type="text" class="text" /> <a href="${ctx }/search.jsp"><input
-					type="submit" class="button" value="搜索" /></a>
+				<input id="searchParam" type="text" name="searchParam" placeholder="请输入信息搜索公告" class="text"/>
+    			<a href="javascrpt:search()" onclick="searchp();return false;"><input type="submit" name="" class="button" value="搜索"/></a>
 			</div>
 			<div class="login">
 				<a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;| <a
@@ -63,7 +63,7 @@
 	<!--面包屑-->
 	<div class="breadcrumb">
 		<a href="${ctx }/">首页</a>>><a
-			href="${ctx }/billboard/billboardlist">公告板</a>>>考试流程
+			href="${ctx }/billboard/billboardlist">公告板</a>
 	</div>
 	<!--左侧边栏-->
 	<div class="left">
@@ -90,21 +90,19 @@
 	<div class="right">
 		<div class="right_bread">
 			<h1>
-				<c:out value="${noticeType}"></c:out>
+				${notice.noticeType}
 			</h1>
 		</div>
 		<div class="right_content" style="line-height: 30px;">
 			<div class="title_h1">
-				<font style="font-size: 20px; font-weight: bold;">全国大学英语四、六级考试流程</font>
+				<font style="font-size: 20px; font-weight: bold;">${notice.noticeTitle }</font>
 			</div>
 			<div class="wenzhang_content">
 
 				<p
 					style="text-align: left; line-height: 1.5em; text-indent: 2em; margin: 0px 0px 10px">
 
-					 <c:forEach items="${page.list }" var="notice">
 						${notice.noticeContent}
-					</c:forEach>
 
 				</p>
 
@@ -124,5 +122,11 @@
 		</p>
 		<p>版权所有：猿计划项目小组</p>
 	</div>
+	<script type="text/javascript">
+		function searchp(){
+			var p=$("#searchParam").val();
+			window . location . href = "${ctx }/notice/billboardlist?searchParam="+p;
+		}
+	</script>
 </body>
 </html>

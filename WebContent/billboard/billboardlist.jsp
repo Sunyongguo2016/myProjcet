@@ -25,8 +25,9 @@
 					src="${ctx }/images/logo.png" /></a>
 			</div>
 			<div class="search">
-				<input type="text" class="text" /> <a href="${ctx }/search.jsp"><input
-					type="submit" class="button" value="搜索" /></a>
+					<input id="searchParam" type="text" name="searchParam" placeholder="请输入信息搜索公告" class="text"/>
+    				<a href="javascrpt:search()" onclick="searchp();return false;"><input type="submit" name="" class="button" value="搜索"/></a>
+			
 			</div>
 			<div class="login">
 				<a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;| <a
@@ -97,7 +98,7 @@
 				<ul>
 					
 					 <c:forEach items="${page.list }" var="notice">
-						 <a href="${ctx }/notice/billboard?noticeContent=${noticeContent}"><li>${notice.noticeTitle}</li></a>
+						 <a href="${ctx }/notice/billboard?noticeId=${notice.noticeId}"><li>${notice.noticeTitle}</li></a>
 					</c:forEach>
 				</ul>
 				<p style="line-height: 1.5em"></p>
@@ -134,5 +135,11 @@
 		</p>
 		<p>版权所有：猿计划项目小组</p>
 	</div>
+	<script type="text/javascript">
+		function searchp(){
+			var p=$("#searchParam").val();
+			window . location . href = "${ctx }/notice/billboardlist?searchParam="+p;
+		}
+	</script>
 </body>
 </html>
