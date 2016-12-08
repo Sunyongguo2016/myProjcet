@@ -46,6 +46,7 @@
 						<a href="${ctx }/register.jsp"><button>注册</button></a>
                     </div>
                     
+                    
                     <div class="after_login" id="after_login">
                     	<div id="username">
                             <p>${student.loginName }</p>
