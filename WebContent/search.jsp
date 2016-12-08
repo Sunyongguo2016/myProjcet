@@ -16,6 +16,18 @@
 	<script src="${ctx }/js/nav.js"></script>
 	<!--tab导航-->
 	<script type="text/javascript" src="${ctx }/js/search.js"></script>
+	<script type="text/javascript">
+			var str = '${logined}';
+			window.onload = function changStyle(){
+				if("on" == str){
+					var log = document.getElementById("login");
+					log.style.display="none";
+					var v = document.getElementById("after_login");
+					v.style.display="block";
+				}
+			}
+			
+		</script>
 </head>
 <body style="overflow-x: hidden">
 	<!--页面信息-->
@@ -39,15 +51,15 @@
 			<a href="javascrpt:search()" onclick="searchp();return false;"><img src="${ctx }/images/search.png"></a>
 		</div>
 		<div class="" id="username">
-			<p>用户名</p>
+			<p>${student.loginName }</p>
 		</div>
 		<div class="nav" id="nav">
 			<ul>
-				<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#"><img src="${ctx }/images/123.png"></a>
+				<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
 					<ul>
 						<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
 						<li><a href="${ctx }/info/install.jsp">设置</a></li>
-						<li><a href="${ctx }/index_before.jsp">退出登录</a></li>
+						<li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
 					</ul>
 				</li>
 			</ul>
