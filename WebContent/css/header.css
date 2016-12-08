@@ -24,7 +24,7 @@ a:hover{
 	float: left;
 	position: absolute;
 	top: 30px;
-	right: 200px;
+	right: 250px;
 }
 .text{
 	height: 25px;
@@ -55,6 +55,9 @@ a:hover{
 
 .after_login{
 	display:none;
+	position: absolute;
+	right:30px;
+	width:270px;
 }
 #username{
 	float: left;

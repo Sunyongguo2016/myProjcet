@@ -2,7 +2,10 @@ package com.course.error.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.course.entity.Error;
 import com.course.entity.ParentQuestion;
+import com.course.entity.Question;
 import com.course.error.service.ErrorServiceImpl;
 import com.course.login.service.LoginServiceImpl;
 import com.course.parentquestion.service.ParentQuestionServiceImpl;
@@ -54,14 +58,14 @@ public class ErrorController {
 			}else{
 				request.setAttribute("isCol", 0);
 			}
-			page = this.errorServiceImpl.errorCollect(pageNum, 10, isCollect, stuId, null);
+			page = this.errorServiceImpl.errorCollect(pageNum, 5, isCollect, stuId, null);
 		}else{
 			try {
 				 searchParam = new String(searchParam.getBytes("ISO8859_1"), "UTF-8");
 			} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
 			}
-			page = this.errorServiceImpl.errorCollect(pageNum, 10, isCollect, stuId, new Object[]{searchParam});
+			page = this.errorServiceImpl.errorCollect(pageNum, 5, isCollect, stuId, new Object[]{searchParam});
 		} 
 		
 		request.setAttribute("page", page);
@@ -101,16 +105,23 @@ public class ErrorController {
 	 * 
 	 */
 	@RequestMapping(value = "setCollect")
-	public void setCollect(HttpSession session, @RequestParam(name="examId") int examId, 
+	public String setCollect(HttpSession session, @RequestParam(name="examId") int examId, 
 			@RequestParam(name="parentQuestionId") int parentQuestionId, HttpServletRequest request){
 		int stuId = (int)session.getAttribute("stuId");
-		Error error = this.errorServiceImpl.findError(stuId, examId, parentQuestionId);
-		error.setIsCollect(1);
-		this.errorServiceImpl.editError(error);
+		List<Error> list = (List<Error>) this.errorServiceImpl.findEList(stuId, examId, parentQuestionId);
+		for(int i = 0;i < list.size();i++){
+			Error error = list.get(i);
+			System.out.println("finderrorlist:"+error.getErrorId()+error.getExperience());
+			error.setIsCollect(1);
+			this.errorServiceImpl.editError(error);
+			
+		}
+		return "wrongpage/wrongpagelist";
+		
 	}
 	/**
 	 * 
-	 * @Description 		提交之后判题并展示做错的题的答案及解析
+	 * @Description 		提交之后判题并展示答案及解析
 	 * @author 				童海苹
 	 * @createDate  		2016/12/4
 	 * @version 			V1.0
@@ -120,13 +131,43 @@ public class ErrorController {
 	public String comment(HttpSession session, @RequestParam(name="examId") int examId, 
 			@RequestParam(name="parentQuestionId") int parentQuestionId, 
 			 HttpServletRequest request, Model model){
-		int stuId = (int)session.getAttribute("stuId");
-		System.out.println("get:"+examId+parentQuestionId);
-		Error error = this.errorServiceImpl.findError(stuId, examId, parentQuestionId);
-		System.out.println("finderror"+error.getErrorId()+error.getExperience());
-		//判题待完成
+		ParentQuestion pq = (ParentQuestion)this.parentQuestionServiceImpl.getParentQuestion(parentQuestionId);
+		
+		//标准答案
+		String answer = null;
+		//用户的答案
+		String daan = null;
+		Map<Integer,String> lists = new HashMap<Integer,String>();
+		//要获取值的name
+		String name = null;
+		
+		List<Question> questions = null;
+		Question question = null;
+		if(pq.getParentQuestionName().equals("QuickReading") || pq.getParentQuestionName().equals("LastReadingOne") 
+				|| pq.getParentQuestionName().equals("LastReadingTwo") || pq.getParentQuestionName().equals("ChooseFillInBlank"))
+			questions = pq.getQuestions();
+			Iterator<Question> he = questions.iterator();
+			while(he.hasNext()){
+				question = he.next();
+				answer = question.getQuestionAnswer();
+				name = "ques"+question.getQuestionId();
+				daan = request.getParameter(name);
+				//当答题者有未答的题时赋值为“空”
+				if(null == daan){
+					daan = "空";
+				}
+				//将答题者的答案存入Map lists中
+				Integer key = question.getQuestionId();
+				String value = daan;
+				lists.put(key, value);
+			}
+		request.setAttribute("exId", examId);
+		request.setAttribute("pque", pq);	
+		request.setAttribute("anws", lists);
+		request.setAttribute("submitt", "on");
 		return "wrongpage/wrongpage";
 	}
+	
 	
 	/**
 	 * 
@@ -136,32 +177,17 @@ public class ErrorController {
 	 * @version 			V1.0
 	 * 
 	 */
-	//此方法待完善
 	@RequestMapping("delete")
 	public String deleteWrongQuestion(HttpSession session, @RequestParam(name="examId") int examId, 
 			@RequestParam(name="parentQuestionId") int parentQuestionId, 
 			 HttpServletRequest request, Model model){
 		int stuId = (int)session.getAttribute("stuId");
 		System.out.println("get:"+examId+parentQuestionId);
-	/*	Page<Error> page;
-		page = this.errorServiceImpl.errorContent(1, 5, stuId, examId, parentQuestionId);
-		List<Error>list = page.getList();
+		List<Error> list = (List<Error>) this.errorServiceImpl.findEList(stuId, examId, parentQuestionId);
 		for(int i = 0;i < list.size();i++){
-			System.out.println("getpage:"+list.get(i).getErrorId());
+			this.errorServiceImpl.dropError(list.get(i).getErrorId());
 		}
-	*/	
 		
-	/*	List<Error> list = new ArrayList<Error>(0);
-		list = this.errorServiceImpl.findErrorList(stuId, examId, parentQuestionId);
-		for(int i = 0;i < list.size();i++){
-			System.out.println("finderrorlist:"+list.get(i).getErrorId()+list.get(i).getExperience());
-		}
-	*/	//Error error = this.errorServiceImpl.findError(stuId, examId, parentQuestionId);
-		//System.out.println("finderror"+error.getErrorId()+error.getExperience());
-//		int errorId = error.getErrorId();
-//		System.out.println(errorId);
-//		this.errorServiceImpl.dropError(errorId);
-		//request.setAttribute("erId", errorId);
 		return "wrongpage/wrongpagelist";
 	}
 	
