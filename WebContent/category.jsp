@@ -97,7 +97,7 @@
                 <li><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
 				</c:forEach>
               </ul>
-              <p><a href="${ctx }/examonline/list">MORE>></a></p>
+              <p><a href="${ctx }/examonline/list?examType=${examType}">MORE>></a></p>
         </div>	
         <!-- 专项练习 -->
         <div id="sp">

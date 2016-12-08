@@ -60,6 +60,38 @@ public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 	/**
 	 * 
 	 * @Description 		按时间询试卷
+	 * @author 				孙晓辉        //12月8日  孙永国修改
+	 * @createDate  		2016/11/30
+	 * @version 			V1.0
+	 * 
+	 */
+	public Page<Exam> findExamByTimeAndType(int pageNum, int pageSize, Object[] params) {
+		String hql;
+		if (params != null && params.length > 1) {
+			hql = "from Exam e where e.examTime=? and e.examType like ?";
+			params[0] = params[0];
+			params[1] = "%" + params[1] + "%";
+		} else if (params != null && params.length > 0) {
+			hql = "from Exam e where e.examType like ?";
+			params[0] = "%" + params[0] + "%";
+		}else {
+			hql = "from Exam";
+		}
+		try {
+			Page<Exam> page = new Page<Exam>();
+			page.setCurrentPageNum(pageNum);
+			page.setPageSize(pageSize);
+			page = this.findByPage(pageNum, pageSize, hql, params);
+			return page;
+		} catch (Exception ee) {
+			ee.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Description 		按时间询试卷
 	 * @author 				孙晓辉
 	 * @createDate  		2016/11/30
 	 * @version 			V1.0
@@ -70,7 +102,7 @@ public class ExamDaoImpl extends BaseDao<Exam, Integer> {
 		if (params != null && params.length > 0) {
 			hql = "from Exam e where e.examTime=?";
 			params[0] = params[0];
-		} else {
+		}else {
 			hql = "from Exam";
 		}
 		try {

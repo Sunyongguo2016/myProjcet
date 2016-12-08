@@ -72,16 +72,16 @@
     <!--左侧边栏-->
     <div class="left">
         <h2>试卷选择</h2>
-        <div class="vtitle"><a href="${ctx }/examonline/list">全部试卷</a></div>
+        <div class="vtitle"><a href="${ctx }/examonline/list?examType=${examType}">全部试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
-        <div class="vtitle"><a href="${ctx }/examonline/list?examTime=2016">2016年试卷</a></div>
+        <div class="vtitle"><a href="${ctx }/examonline/list?examTime=2016&examType=${examType}">2016年试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
-        <div class="vtitle"><a href="${ctx }/examonline/list?examTime=2015">2015年试卷</a></div>
+        <div class="vtitle"><a href="${ctx }/examonline/list?examTime=2015&examType=${examType}">2015年试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
-        <div class="vtitle"><a href="${ctx}/examonline/list?examTime=2014">2014年试卷</a></div>
+        <div class="vtitle"><a href="${ctx}/examonline/list?examTime=2014&examType=${examType}">2014年试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
         <div class="leftfoot"></div>
@@ -110,20 +110,20 @@
             <tr>
                 <td colspan="5">
                     <div class="pagecss">
-                        <span class="page"><a href="${ctx }/examonline/list1?pageNum=1&examTime=${exam.examTime }">首页</a></span>
-                        <span class="page"><a href="${ctx }/examonline/list1?pageNum=${page.prePageNum}&examTime=${exam.examTime }">上一页</a></span>
+                        <span class="page"><a href="${ctx }/examonline/list?pageNum=1&examTime=${examTime }&examType=${examType}">首页</a></span>
+                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.prePageNum}&examTime=${examTime }&examType=${examType}">上一页</a></span>
                         <c:forEach begin="1" end="${page.totalPageNum }" var="pageNum">
 			        	<c:choose> 
 			        	<c:when test="${page.currentPageNum == pageNum}">
                         <span class="current"><a href="#">${page.currentPageNum }</a></span>
                         </c:when>
                         <c:otherwise>
-                        <a name="pagen" href="${ctx }/examonline/list1?pageNum=${pageNum }&examTime=${exam.examTime }">${pageNum }</a>
+                        <a name="pagen" href="${ctx }/examonline/list?pageNum=${pageNum }&examTime=${examTime }&examType=${examType}">${pageNum }</a>
                         </c:otherwise>
                         </c:choose>
                         </c:forEach>
-                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.nextPageNum }&examTime=${exam.examTime }">下一页</a></span>
-                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.totalPageNum }&examTime=${exam.examTime }">尾页</a></span>
+                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.nextPageNum }&examTime=${examTime }&examType=${examType}">下一页</a></span>
+                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.totalPageNum }&examTime=${examTime }&examType=${examType}">尾页</a></span>
                     </div>
                 </td>
             </tr>
