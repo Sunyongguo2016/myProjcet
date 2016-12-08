@@ -16,26 +16,6 @@ public class NoticeDaoImpl  extends BaseDao<Notice, Integer> {
 		}
 	}
 	
-	public Page<Notice> findContent(int pageNum, int pageSize,Object[] params){
-		String hql;
-		if(params!=null && params.length>0){
-			hql="from Notice n where n.noticeContent like ?";
-			params[0] = "%" + params[0] + "%";
-			
-		}else{
-			hql="from Notice";
-		}
-		try {
-			Page<Notice> page=new Page<Notice>();
-			page.setCurrentPageNum(pageNum);
-			page.setPageSize(pageSize);
-			page=this.findByPage(pageNum, pageSize, hql, params);
-			return page;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 	
 	public Page<Notice> findType(int pageNum, int pageSize,Object[] params){
 		String hql;

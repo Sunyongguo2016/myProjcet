@@ -147,8 +147,8 @@ public class NoticeController {
 
 	/**
 	 * 
-	 * @desc 分页查询，获取公告主要信息，在四六级的列表页实现
-	 * @author 田瑞航
+	 * @desc 分页查询，获取公告主要信息，在四六级的列表页实现 	  -添加搜索功能
+	 * @author 田瑞航										  -2016/12/8
 	 * @createDate 2016/11/28
 	 * @param 搜索参数searchParem
 	 * @return String
@@ -188,7 +188,7 @@ public class NoticeController {
 
 	/**
 	 * 
-	 * @desc 查询获取内容页的内容
+	 * @desc 查询获取内容页的内容 
 	 * @author 田瑞航
 	 * @createDate 2016/11/29
 	 * @param 搜索参数searchParem
@@ -199,29 +199,13 @@ public class NoticeController {
 	@RequestMapping("billboard")
 	public String billlist(@RequestParam(name = "pageNum", defaultValue = "1") int pageNum,
 			@RequestParam(name = "searchParam", defaultValue = "") String searchParam,
-			@RequestParam(name = "noticeContent") String noticeContent, HttpServletRequest request, Model model) {
-		Page<Notice> page;
-		if (searchParam == null || "".equals(searchParam)) {
-			//切记中英文的转换
-			try {
-				noticeContent = new String(noticeContent.getBytes("ISO8859_1"), "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-			page = this.noticeServiceImpl.listContent(pageNum, 5, new Object[] { noticeContent });
-
-		} else {
-
-			try {
-				searchParam = new String(searchParam.getBytes("ISO8859_1"), "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-			page = this.noticeServiceImpl.listNotice(pageNum, 5, new Object[] { searchParam });
-		}
-		request.setAttribute("page", page);
-		request.setAttribute("noticeContent", noticeContent);
-		request.setAttribute("searchParam", searchParam);
+			@RequestParam(name = "noticeId") Integer noticeId,
+		    HttpServletRequest request, Model model) {
+		
+		Notice notice = new Notice();
+		notice = this.noticeServiceImpl.getNotice(noticeId);
+		
+		request.setAttribute("notice", notice);
 		// 田瑞航完成 这个函数 以及billboard.jsp内容动态获取
 		return "billboard/billboard";
 	}
