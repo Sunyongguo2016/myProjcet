@@ -9,11 +9,7 @@
 	height:410px;
 	width:1349px;
 }
-p{
-	position: absolute;
-	right: 10px;
-	bottom: 10px;
-}
+
 /*公告板*/
 #billboard{
 	position:absolute;
@@ -36,6 +32,11 @@ p{
 }
 #billboard ul{
 	margin-top: 10px;
+}
+#billboard p{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
 }
 /*自测*/
 #exam{
@@ -60,6 +61,11 @@ p{
 #exam ul{
 	margin-top: 10px;
 }
+#exam  p{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+}
 /*专项*/
 #sp{
 	position:absolute;
@@ -83,7 +89,11 @@ p{
 #sp ul{
 	margin-top: 10px;
 }
-
+#sp p{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+}
 /*错题本*/
 #wrong{
 	position:absolute;
@@ -106,6 +116,11 @@ p{
 }
 #wrong ul{
 	margin-top: 10px;
+}
+#wrong p{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
 }
 
 .footer{
