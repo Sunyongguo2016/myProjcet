@@ -57,15 +57,15 @@
 						         ${reading.exam.examName}
 						     </c:if>
 			          		<c:if test="${fn:length(reading.exam.examName) > 20}">
-						         ${fn:substring(reading.exam.examName,0,10) }...
+						         ${fn:substring(reading.exam.examName,0,20) }...
 						     </c:if>
 			        	</td> 
 			          	<td><font color="#00CC99">
-			          		<c:if test="${fn:length(reading.parentQuestionArticle) < 40}">
+			          		<c:if test="${fn:length(reading.parentQuestionArticle) < 60}">
 						         ${reading.parentQuestionArticle}
 						     </c:if>
-			          		<c:if test="${fn:length(reading.parentQuestionArticle) > 40}">
-						         ${fn:substring(reading.parentQuestionArticle,0,10) }...
+			          		<c:if test="${fn:length(reading.parentQuestionArticle) > 60}">
+						         ${fn:substring(reading.parentQuestionArticle,0,60) }...
 						     </c:if>
 			          	<td>
 			          <div class="button-group"> 

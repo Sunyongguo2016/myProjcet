@@ -58,15 +58,15 @@
 						         ${translation.exam.examName}
 						     </c:if>
 			          		<c:if test="${fn:length(translation.exam.examName) > 20}">
-						         ${fn:substring(translation.exam.examName,0,10) }...
+						         ${fn:substring(translation.exam.examName,0,20) }...
 						     </c:if>
 			        	</td> 
 					<td><font color="#00CC99">
-			          		<c:if test="${fn:length(translation.parentQuestionArticle) < 40}">
+			          		<c:if test="${fn:length(translation.parentQuestionArticle) < 20}">
 						         ${translation.parentQuestionArticle}
 						     </c:if>
-			          		<c:if test="${fn:length(translation.parentQuestionArticle) > 40}">
-						         ${fn:substring(translation.parentQuestionArticle,0,10) }...
+			          		<c:if test="${fn:length(translation.parentQuestionArticle) > 20}">
+						         ${fn:substring(translation.parentQuestionArticle,0,20) }...
 						     </c:if>
 			          	</font>
 			          	</td>
