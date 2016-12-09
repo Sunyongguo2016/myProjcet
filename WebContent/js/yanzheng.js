@@ -28,9 +28,6 @@ function validateCode()
     {
         alert("验证码输入有误！");
         createCode();
-    }
-    else 
-    {
-        
-    }        
+    }   
+    alert("请重新登录！")
 }    
