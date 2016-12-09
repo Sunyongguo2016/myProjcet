@@ -108,7 +108,7 @@ public class LoginController {
 	 * @author				童海苹
 	 * @createDate 			2016/11/23
 	 * @param 				studentId学生编号，hobby个人爱好，location当前位置，introduce个人简介
-	 * @return				void
+	 * @return				重置信息后需要重新登录
 	 * 
 	 */
 	@RequestMapping(value = "setinfo", method = RequestMethod.GET)
@@ -126,7 +126,7 @@ public class LoginController {
 		stu.setIntroduce(introduce);
 		
 		this.loginServiceImpl.editStudentInfo(stu);
-		return "info/usermessage";
+		return "login_use";
 	}
 	
 	/**
