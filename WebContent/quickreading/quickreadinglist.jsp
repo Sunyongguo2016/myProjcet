@@ -55,15 +55,15 @@
 						         ${quickreading.exam.examName}
 						     </c:if>
 			          		<c:if test="${fn:length(quickreading.exam.examName) > 20}">
-						         ${fn:substring(quickreading.exam.examName,0,10) }...
+						         ${fn:substring(quickreading.exam.examName,0,20) }...
 						     </c:if>
 			        	</td> 
 			          	<td><font color="#00CC99">
-			          		<c:if test="${fn:length(quickreading.parentQuestionArticle) < 40}">
+			          		<c:if test="${fn:length(quickreading.parentQuestionArticle) < 60}">
 						         ${quickreading.parentQuestionArticle}
 						     </c:if>
-			          		<c:if test="${fn:length(quickreading.parentQuestionArticle) > 40}">
-						         ${fn:substring(quickreading.parentQuestionArticle,0,10) }...
+			          		<c:if test="${fn:length(quickreading.parentQuestionArticle) > 60}">
+						         ${fn:substring(quickreading.parentQuestionArticle,0,60) }...
 						     </c:if>
 			          	<td>
 			          <div class="button-group"> 

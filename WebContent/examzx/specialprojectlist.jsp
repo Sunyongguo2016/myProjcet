@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="${ctx }/css/header.css" type="text/css" rel="stylesheet" />
 <link href="${ctx }/css/special.css" type="text/css" rel="stylesheet" />
@@ -26,6 +27,30 @@
 			v.style.display="block";
 		}
 	}
+	$(function() {
+		var $t, leftX, newWidth;
+
+		$('.menu ul').append('<div class="block"></div>');
+		var $block = $('.block');
+
+		$block.width($(".current").width()).css('left', $('.current a').position().left).data('rightLeft', $block.position().left).data('rightWidth', $block.width());
+
+		$('.menu ul li').find('a').hover(function() {
+			$t = $(this);
+			leftX = $t.position().left;
+			newWidth = $t.parent().width();
+
+			$block.stop().animate({
+				left: leftX,
+				width: newWidth
+			},300);
+		}, function() {
+			$block.stop().animate({
+				left: $block.data('rightLeft'),
+				width: $block.data('rightWidth')
+			},300)
+		})
+	})
 </script>
     </head>
     <body>
@@ -34,11 +59,11 @@
             <div class="header">
                 <div class="logo"> <img src="${ctx }/images/logo.png"/> </div>
                 <div class="search">
-						<input type="text" class="text"/>
-    					<a href="${ctx }/search.jsp"><input type="submit" class="button" value="搜索"/></a>
+							<input id="searchParam" type="text" name="searchParam" class="text"/>
+    						<a href="javascrpt:search()" onclick="searchp();return false;"><input type="submit" name="" class="button" value="搜索"/></a>
 					</div>
 					<div class="login" id="login">
-                    	<button id="login">登录</button>&nbsp;|
+                    	<a href="${ctx }/login_use.jsp"><button id="login">登录</button></a>&nbsp;|
 						<a href="${ctx }/register.jsp"><button>注册</button></a>
                     </div>
                     
@@ -50,8 +75,8 @@
                             <ul>
                                 <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
                                     <ul>
-                                        <li><a href="${ctx }/usermessage.jsp">个人信息</a></li>
-			                            <li><a href="${ctx }/install.jsp">设置</a></li>
+                                        <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
+			                            <li><a href="${ctx }/info/install.jsp">设置</a></li>
                                         <li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
                                     </ul>
                                 </li>
@@ -62,10 +87,17 @@
 				</div>
 				<div class="menu">
 					<ul>
-						<li class="current"><a href="${ctx }/">网站首页</a></li>
-						<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
-						<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
-						<li><a href="${ctx }/arena.jsp">竞技场</a></li>
+						<li><a href="${ctx }/">网站首页</a></li>
+						<c:choose>
+                         	 <c:when test="${examType == '四级'}">
+								<li class="current"><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+								<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+                         	 </c:when>
+                         	 <c:otherwise>
+								<li ><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+								<li class="current"><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+                         	 </c:otherwise>
+                     	 </c:choose>
 						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 					</ul>
 				</div>
@@ -73,27 +105,27 @@
         <!--面包屑-->
         <div class="breadcrumb">
             <a href="${ctx }/">首页 </a>>>
-            <a href="${ctx }/category?type=四级">大学英语四级 </a>>> 专项练习
+            <a href="${ctx }/category?Type=${examType}">${examType} </a>>> 专项练习
         </div>
         <!--左侧边栏-->
         <div class="left">
         	<h2>专项练习</h2>
-            <div class="vtitle"><a href="${ctx }/examzx/list">全部</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?examType=${examType}">全部</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Writing">作文</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Writing&examType=${examType}">作文</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=ChooseFillInBlank">十五选十</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=ChooseFillInBlank&examType=${examType}">十五选十</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=QuickReading">快速阅读</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=QuickReading&examType=${examType}">快速阅读</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=LastReading">阅读</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=LastReading&examType=${examType}">阅读</a></div>
                 <div class="vcon" style="display: none;">
             </div>
-            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Translation">翻译</a></div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Translation&examType=${examType}">翻译</a></div>
                 <div class="vcon" style="display: none;">
             </div>
             <div class="leftfoot"></div>
@@ -119,13 +151,13 @@
                 <tr>
                     <td colspan="5">
                        <div class="pagecss">  
-                            <span class="page"><a href="${ctx }/examzx/list?pageNum=1&parentQuestionName=${pqType}">首页</a></span>
-                            <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.prePageNum }&parentQuestionName=${pqType}">上一页</a></span>
+                           <span class="page"><a href="${ctx }/examzx/list?pageNum=1&parentQuestionName=${pqType}&examType=${examType}">首页</a></span>
+                            <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.prePageNum }&parentQuestionName=${pqType}&examType=${examType}">上一页</a></span>
                             <c:forEach begin="1" end="${page.totalPageNum }" var="pageNum"   >	
-								   <span class="page"><a href="${ctx }/examzx/list?pageNum=${pageNum }&parentQuestionName=${pqType}">${pageNum }</a></span>
+								   <span class="page"><a href="${ctx }/examzx/list?pageNum=${pageNum }&parentQuestionName=${pqType}&examType=${examType}">${pageNum }</a></span>
 							</c:forEach>             
-                            <span class="page" ><a href="${ctx }/examzx/list?pageNum=${page.nextPageNum} &parentQuestionName=${pqType}" >下一页</a></span>
-                            <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.totalPageNum }&parentQuestionName=${pqType}">尾页</a></span>                       
+                            <span class="page" ><a href="${ctx }/examzx/list?pageNum=${page.nextPageNum} &parentQuestionName=${pqType}&examType=${examType}" >下一页</a></span>
+                            <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.totalPageNum }&parentQuestionName=${pqType}&examType=${examType}">尾页</a></span>                       
                         </div>                         
                     </td>
                 </tr>
@@ -133,9 +165,14 @@
         </div>
          <!--footer-->
             <div id="footer">
-                    <p><a href="${ctx }/about_us.jsp">联系我们</a> | <a href="${ctx }/about_us.jsp">人才招聘</a> | <a href="${ctx }/about_us.jsp">教师合作</a> | <a href="${ctx }/about_us.jsp">项目介绍</a></p>
-                    <p>版权所有：猿计划项目小组</p>
+	             <p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
+	             <p>版权所有：猿计划项目小组</p>
             </div>
+        <script type="text/javascript">
+		function searchp(){
+			var p=$("#searchParam").val();
+			window . location . href = "${ctx }/exam/search?searchParam="+p;
+		}
+		</script>
 	</body>
-	
 </html>

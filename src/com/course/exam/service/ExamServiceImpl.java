@@ -49,6 +49,11 @@ public class ExamServiceImpl {
 	 * 
 	 */
 	@Transactional(readOnly = true)
+	public Page<Exam>listExamByTimeAndType(int pageNum, int pageSize, Object[]params){
+		return this.examDaoImpl.findExamByTimeAndType(pageNum, pageSize, params);
+	}
+
+	@Transactional(readOnly = true)
 	public Page<Exam>listExamByTime(int pageNum, int pageSize, Object[]params){
 		return this.examDaoImpl.findExamByTime(pageNum, pageSize, params);
 	}

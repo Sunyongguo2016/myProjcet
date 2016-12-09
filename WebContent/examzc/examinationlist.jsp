@@ -40,8 +40,8 @@
         <div class="header">
             <div class="logo"> <img src="${ctx }/images/logo.png"/> </div>
             <div class="search">
-						<input type="text" class="text"/>
-    					<a href="${ctx }/search.jsp"><input type="submit" class="button" value="搜索"/></a>
+							<input id="searchParam" type="text" name="searchParam" class="text"/>
+    						<a href="javascrpt:search()" onclick="searchp();return false;"><input type="submit" name="" class="button" value="搜索"/></a>
 					</div>
 					<div class="login" id="login">
                     	<a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;|
@@ -69,9 +69,20 @@
 				<div class="menu">
 					<ul>
 						<li><a href="${ctx }/">网站首页</a></li>
-						<li class="current"><a href="${ctx }/category?type=四级">大学英语四级</a></li>
-						<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
-						<li><a href="${ctx }/arena.jsp">竞技场</a></li>
+						<c:choose>
+                         	 <c:when test="${examType == '四级'}">
+								<li class="current"><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+								<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+                         	 </c:when>
+                         	 <c:when test="${examType == '四级'}">
+      						 	 <li ><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+								<li class="current"><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+   							 </c:when>
+                         	 <c:otherwise>
+								<li ><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+								<li ><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+                         	 </c:otherwise>
+                     	 </c:choose>
 						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 					</ul>
 				</div>
@@ -79,21 +90,21 @@
     <!--面包屑-->
     <div class="breadcrumb">
         <a href="${ctx }/">首页</a>>>
-        <a href="${ctx }/category?type=四级">大学英语四级</a>>>在线测试
+        <a href="${ctx }/category?type=四级">大学英语四级 </a>>>在线测试
     </div>
     <!--左侧边栏-->
     <div class="left">
         <h2>试卷选择</h2>
-        <div class="vtitle"><a href="${ctx }/examonline/list">全部试卷</a></div>
+        <div class="vtitle"><a href="${ctx }/examonline/list?examType=${examType}">全部试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
-        <div class="vtitle"><a href="${ctx }/examonline/list?examTime=2016">2016年试卷</a></div>
+        <div class="vtitle"><a href="${ctx }/examonline/list?examTime=2016&examType=${examType}">2016年试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
-        <div class="vtitle"><a href="${ctx }/examonline/list?examTime=2015">2015年试卷</a></div>
+        <div class="vtitle"><a href="${ctx }/examonline/list?examTime=2015&examType=${examType}">2015年试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
-        <div class="vtitle"><a href="${ctx}/examonline/list?examTime=2014">2014年试卷</a></div>
+        <div class="vtitle"><a href="${ctx}/examonline/list?examTime=2014&examType=${examType}">2014年试卷</a></div>
             <div class="vcon" style="display: none;">
         </div>
         <div class="leftfoot"></div>
@@ -122,20 +133,20 @@
             <tr>
                 <td colspan="5">
                     <div class="pagecss">
-                        <span class="page"><a href="${ctx }/examonline/list1?pageNum=1&examTime=${exam.examTime }">首页</a></span>
-                        <span class="page"><a href="${ctx }/examonline/list1?pageNum=${page.prePageNum}&examTime=${exam.examTime }">上一页</a></span>
+                        <span class="page"><a href="${ctx }/examonline/list?pageNum=1&examTime=${examTime }&examType=${examType}">首页</a></span>
+                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.prePageNum}&examTime=${examTime }&examType=${examType}">上一页</a></span>
                         <c:forEach begin="1" end="${page.totalPageNum }" var="pageNum">
 			        	<c:choose> 
 			        	<c:when test="${page.currentPageNum == pageNum}">
                         <span class="current"><a href="#">${page.currentPageNum }</a></span>
                         </c:when>
                         <c:otherwise>
-                        <a name="pagen" href="${ctx }/examonline/list1?pageNum=${pageNum }&examTime=${exam.examTime }">${pageNum }</a>
+                        <a name="pagen" href="${ctx }/examonline/list?pageNum=${pageNum }&examTime=${examTime }&examType=${examType}">${pageNum }</a>
                         </c:otherwise>
                         </c:choose>
                         </c:forEach>
-                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.nextPageNum }&examTime=${exam.examTime }">下一页</a></span>
-                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.totalPageNum }&examTime=${exam.examTime }">尾页</a></span>
+                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.nextPageNum }&examTime=${examTime }&examType=${examType}">下一页</a></span>
+                        <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.totalPageNum }&examTime=${examTime }&examType=${examType}">尾页</a></span>
                     </div>
                 </td>
             </tr>
@@ -143,8 +154,14 @@
     </div>
      <!--footer-->
         <div id="footer">
-                <p><a href="${ctx }/about_us.jsp">联系我们</a> | <a href="${ctx }/about_us.jsp">人才招聘</a> | <a href="${ctx }/about_us.jsp">教师合作</a> | <a href="${ctx }/about_us.jsp">项目介绍</a></p>
-                <p>版权所有：猿计划项目小组</p>
+             <p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
+             <p>版权所有：猿计划项目小组</p>
         </div>
+        <script type="text/javascript">
+		function searchp(){
+			var p=$("#searchParam").val();
+			window . location . href = "${ctx }/exam/search?searchParam="+p;
+		}
+		</script>
 </body>
 </html>

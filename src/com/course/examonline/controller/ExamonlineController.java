@@ -114,25 +114,35 @@ public class ExamonlineController {
 	@RequestMapping("list")
 	public String list(@RequestParam(name="pageNum", defaultValue="1") int pageNum,
 			@RequestParam(value="examTime",required=false) String examTime,
+			@RequestParam(name = "examType", defaultValue = "") String examType,
 			HttpServletRequest request,
 			Model model){
 		Page<Exam> page=null; 
+		
+		try {
+			examType = new String(examType.getBytes("ISO8859_1"), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
 		if(examTime!=null){
 			switch(examTime){  
 		    case "2016": 
-		    	page = this.examServiceImpl.listExamByTime(pageNum, 10, new Object[]{2016});
+		    	page = this.examServiceImpl.listExamByTimeAndType(pageNum, 10, new Object[]{2016,examType});
 		    	break;  
 		    case "2015":
-		    	page = this.examServiceImpl.listExamByTime(pageNum, 10, new Object[]{2015});
+		    	page = this.examServiceImpl.listExamByTimeAndType(pageNum, 10, new Object[]{2015,examType});
 		    	break; 
 		    case "2014":
-		    	page = this.examServiceImpl.listExamByTime(pageNum, 10, new Object[]{2014});
+		    	page = this.examServiceImpl.listExamByTimeAndType(pageNum, 10, new Object[]{2014,examType});
 		    	break;
 		   }
 		}else{
-			page = this.examServiceImpl.listExamByTime(pageNum, 10,null);
+			page = this.examServiceImpl.listExamByTimeAndType(pageNum, 10, new Object[]{examType});
 		}
 		request.setAttribute("page", page);
+		request.setAttribute("examTime", examTime);
+		request.setAttribute("examType", examType);
 		return "examzc/examinationlist";
 	}
 	/**

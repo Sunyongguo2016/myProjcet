@@ -54,7 +54,7 @@
 						         ${listen.exam.examName}
 						     </c:if>
 			          		<c:if test="${fn:length(listen.exam.examName) > 20}">
-						         ${fn:substring(listen.exam.examName,0,10) }...
+						         ${fn:substring(listen.exam.examName,0,20) }...
 						     </c:if>
 			        	</td> 
 			          	<td><font color="#00CC99">

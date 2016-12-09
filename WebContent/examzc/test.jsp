@@ -54,8 +54,8 @@
     	
 		<div class="tm_container">
 			<ul class="tm_breadcrumb">
-				<li><a href="${ctx }/index_before.jsp">首页</a> <span class="divider">&gt;</span></li>
-				<li><a href="${ctx }/examzc/examinationlist.jsp">自我检测</a> <span class="divider">&gt;</span></li>
+				<li><a href="${ctx }/">首页</a> <span class="divider">&gt;</span></li>
+				<li><a href="${ctx }/examzc/">自我检测</a> <span class="divider">&gt;</span></li>
 				<li class="active">自测</li>
 			</ul>
 		</div>
