@@ -293,7 +293,7 @@
 			                                            	<p style="line-height:30px; font-size:16px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p><br/>
 			                                            	<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
 			                                            		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${qust.questionContent}) <input type="text" name="Q-${qust.questionId}" data-qid="${qust.questionId}" class="validate[required] tm_txt qk-blank"  disabled="true"/>
-		                                    					<c:if test="${status.count % 5 == 0}">
+		                                    					<c:if test="${status.count % 4 == 0}">
 		                                    						<br/><br/>
 		                                    					</c:if>
 		                                    				</c:forEach>
@@ -399,7 +399,7 @@
 			                                                		<c:forEach items="${parentQuestion.questions}" begin="0" end="0" var="qust">
 				                                                		<c:forEach items="${qust.selectts}" var="selt" varStatus="status">
 			                                                				<li style="float: left; width: 100px; margin:5px 20px 5px 0;">${selt.selecttName}) ${selt.selecttContent}</li>
-			                                                				<c:if test="${status.count % 5 == 0}">
+			                                                				<c:if test="${status.count % 4 == 0}">
 					                                    						<br/><br/>
 					                                    					</c:if>
 			                                                			</c:forEach>
@@ -412,7 +412,7 @@
 		                                            	<td colspan="2">
 			                                            	<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
 			                                            		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${qust.questionContent}) <input type="text" name="Q-${qust.questionId}" data-qid="${qust.questionId}" class="validate[required] tm_txt qk-blank"  disabled="true"/>
-		                                    					<c:if test="${status.count % 5 == 0}">
+		                                    					<c:if test="${status.count % 4 == 0}">
 		                                    						<br/><br/>
 		                                    					</c:if>
 		                                    				</c:forEach>
