@@ -129,7 +129,8 @@ $(function() {
 			            elementPathEnabled:true,
 			            //默认的编辑区域宽高
 			            initialFrameHeight:230,
-			            initialFrameWidth:300 
+			            initialFrameWidth:300 ,
+			            scaleEnabled:true 
 			            //更多其他参数，请参考ueditor.config.js中的配置项
 			        });
 					</script>
