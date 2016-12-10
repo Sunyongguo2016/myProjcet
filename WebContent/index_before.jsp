@@ -28,6 +28,7 @@
 					v.style.display="block";
 				}
 			}
+			
 		</script>
 	</head>
 	<body>
@@ -35,7 +36,7 @@
 			<div>
             	<div class="header">
 					<div class="logo">
-						<a href="index_before.jsp">
+						<a href="${ctx }/">
 							<img src="${ctx }/images/logo.png"/>
 						</a>
 					</div>
@@ -54,11 +55,11 @@
                         </div>
                         <div class="nav" id="nav">
                             <ul>
-                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
+                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)">${student.url }
                                     <ul>
                                         <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
                                         <li><a href="${ctx }/info/install.jsp">设置</a></li>
-                                        <li><a href="${ctx }/index_before.jsp">退出登录</a></li>
+                                        <li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -68,7 +69,7 @@
 				</div>
 				<div class="menu">
 					<ul>
-						<li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
+						<li class="current"><a href="${ctx }/">网站首页</a></li>
 						<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
 						<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
 						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
@@ -106,9 +107,9 @@
 				</div>
 				<div class="cen">
 					<h3 class="cenTit">重要通知</h3>
-					<p class="wrd">尊敬的家长、亲爱的学员：2017年四季教育寒季、春季的报名工作即将开始了，请注意
-					报名时间和相关规定。为了使续班工作顺利进行，我们将分年级报名，恳请各位家长配合、支持、理解我们的工作。
-					各位家长和学员可在11月8日之后登录四季教育官网www.sijiedu.com，查询相关课程安排和各校区招生计划。<a target="_blank" href="#">【查看更多】</a></p>
+					<p class="wrd">尊敬的家长、亲爱的学员：</br>欢迎您使用巨人英语在线考试系统，巨人英语提供公告栏，
+					在线考试，专项练习和错题本功能，您可以查看考试技巧，进行在线考试，专项练习提升等，考试后会有答案和解析提供您参考，
+					并生成错题记录，方便您回顾自己的知识点<a target="_blank" href="${ctx }/notice/billboardlist">【查看更多】</a></p>
 				</div>
 				<span class="arr lef"></span>
 				<span class="arr rig"></span>
@@ -116,29 +117,29 @@
 			<div>
 			<div class="left">
 			<div class="siji">
-				<a href="${ctx }/category.jsp"><img src="${ctx }/images/siji.png"/></a>
+				<a href="${ctx }/category?type=四级"><img src="${ctx }/images/siji.png"/></a>
 				<div>
 				<h2>大学英语四级</h2>
 				<hr/>
 				<ul>
 				<c:forEach items="${pageExamFour.list }" var="exam">
-					<li><a href="${ctx }/examzc/preview.jsp">${exam.examName }..预览</a></li>
+					<li><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
 				</c:forEach>
 				</ul>
-				<p><a href="${ctx }/category.jsp" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
+				<p><a href="${ctx }/examonline/list?examType=四级" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
 				</div>
 			</div>
 			<div class="liuji">
-				<a href="${ctx }/category.jsp"><img src="${ctx }/images/liuji.png"/></a>
+				<a href="category?type=六级"><img src="${ctx }/images/liuji.png"/></a>
 				<div>
 				<h2>大学英语六级</h2>
 				<hr/>
 				<ul>
 					<c:forEach items="${pageExamSix.list }" var="exam">
-						<li><a href="${ctx }/examzc/preview.jsp">${exam.examName }..预览</a></li>
+						<li><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
 					</c:forEach>
 				</ul>
-				<p><a href="${ctx }/category.jsp" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
+				<p><a href="${ctx }/examonline/list?examType=六级" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
 				</div>
 			</div>
 			</div>
@@ -147,16 +148,16 @@
 				<h2>专项训练</h2>
 				<hr/>
 				<div>
-					<div class="img1"><a href="${ctx }/zx.jsp"></a></div>
-					<div class="img2"><a href="${ctx }/.jsp"></a></div>
-					<div class="img3"><a href="${ctx }/.jsp"></a></div>
-					<div class="img4"><a href="${ctx }/specialproject.jsp"></a></div>
+					<div class="img1"><a href="${ctx }/examzx/list?parentQuestionName=QuickReading"></a></div>
+					<div class="img2"><a href="${ctx }/examzx/list?parentQuestionName=LastReading"></a></div>
+					<div class="img3"><a href="${ctx }/examzx/list?parentQuestionName=Writing"></a></div>
+					<div class="img4"><a href="${ctx }/examzx/list"></a></div>
 				</div>				
 				</div>
 				<div>
 				<h2>竞技场</h2>
 				<hr/>
-				<a href="${ctx }/arena.jsp"><img src="${ctx }/images/jingji.jpg" height="180px" width="333px" /></a>
+				<a href="${ctx }/"><img src="${ctx }/images/jingji.jpg" height="180px" width="333px" /></a>
 				</div>
 			</div>
 			</div>
@@ -165,40 +166,40 @@
 				<hr/>
 				<div>
 					<img src="${ctx }/images/zaixian.jpg"/>
-					<p><a href="#">在线考试官方网站</a></p>
+					<p><a href="">在线考试官方网站</a></p>
 				</div>
 				<div>
 					<img src="${ctx }/images/zaixian.jpg"/>
-					<p><a href="#">在线考试官方网站</a></p>
+					<p><a href="">在线考试官方网站</a></p>
 				</div>
 				<div>
 					<img src="${ctx }/images/zaixian.jpg"/>
-					<p><a href="#">在线考试官方网站</a></p>
+					<p><a href="">在线考试官方网站</a></p>
 				</div>
 				<div>
 					<img src="${ctx }/images/zaixian.jpg"/>
-					<p><a href="#">在线考试官方网站</a></p>
+					<p><a href="">在线考试官方网站</a></p>
 				</div><div>
 					<img src="${ctx }/images/zaixian.jpg"/>
-					<p><a href="#">在线考试官方网站</a></p>
+					<p><a href="">在线考试官方网站</a></p>
 				</div>
 				<div>
 					<img src="${ctx }/images/zaixian.jpg"/>
-					<p><a href="#">在线考试官方网站</a></p>
+					<p><a href="">在线考试官方网站</a></p>
 				</div>
 				<div>
 					<img src="${ctx }/images/zaixian.jpg"/>
-					<p><a href="#">在线考试官方网站</a></p>
+					<p><a href="">在线考试官方网站</a></p>
 				</div>
 				<div>
 					<img src="${ctx }/images/zaixian.jpg"/>
-					<p><a href="#">在线考试官方网站</a></p>
+					<p><a href="">在线考试官方网站</a></p>
 				</div>
 			</div>
 			</div>
 			<div class="footer">
-				<p><a href="${ctx }/about_us.jsp">联系我们</a> | <a href="${ctx }/about_us.jsp">人才招聘</a> | <a href="${ctx }/about_us.jsp">教师合作</a> | <a href="${ctx }/about_us.jsp">项目介绍</a></p>
-				<p>版权所有：猿计划项目小组</p>
+				<p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
+                <p>版权所有：猿计划项目小组</p>
 			</div>
 		</div>
 		<script type="text/javascript">

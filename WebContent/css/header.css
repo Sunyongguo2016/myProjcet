@@ -3,7 +3,6 @@
 	padding: 0;
 	list-style: none;
 	text-decoration: none;
-	
 }
 a{
 	color:#000;
@@ -24,7 +23,7 @@ a:hover{
 	float: left;
 	position: absolute;
 	top: 30px;
-	right: 200px;
+	right: 250px;
 }
 .text{
 	height: 25px;
@@ -43,7 +42,7 @@ a:hover{
 	display:block;
 	float: left;
 	position: absolute;
-	top: 35px;
+	top: 30px;
 	right: 30px;
 }
 .login button{
@@ -52,9 +51,11 @@ a:hover{
 	color:#20B2AA;
 	font-size:20px;	
 }
-
 .after_login{
 	display:none;
+	position: absolute;
+	right:30px;
+	width:270px;
 }
 #username{
 	float: left;

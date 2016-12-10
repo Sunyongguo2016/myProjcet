@@ -16,6 +16,18 @@
 	<script src="${ctx }/js/nav.js"></script>
 	<!--tab导航-->
 	<script type="text/javascript" src="${ctx }/js/search.js"></script>
+	<script type="text/javascript">
+			var str = '${logined}';
+			window.onload = function changStyle(){
+				if("on" == str){
+					var log = document.getElementById("login");
+					log.style.display="none";
+					var v = document.getElementById("after_login");
+					v.style.display="block";
+				}
+			}
+			
+		</script>
 </head>
 <body style="overflow-x: hidden">
 	<!--页面信息-->
@@ -23,14 +35,13 @@
 		<!--页面头信息-->
 		<div class="" id="header"> 
 			<div class="" id="logo">
-				<a href="${ctx }/index_before.jsp"><img src="${ctx }/images/logo.png"></a>
+				<a href="${ctx }/"><img src="${ctx }/images/logo.png"></a>
 			</div>
 			<div class="menu">
 			<ul>
-				<li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
-				<li><a href="${ctx }/category.jsp">大学英语四级</a></li>
-				<li><a href="${ctx }/category.jsp">大学英语六级</a></li>
-				<li><a href="${ctx }/arena.jsp">竞技场</a></li>
+				<li class="current"><a href="${ctx }/">网站首页</a></li>
+				<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+				<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
 				<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 			</ul>
 		</div>
@@ -38,24 +49,32 @@
 			<input id="searchParam" type="text" name="searchParam"  class="text"/>
 			<a href="javascrpt:search()" onclick="searchp();return false;"><img src="${ctx }/images/search.png"></a>
 		</div>
-		<div class="" id="username">
-			<p>用户名</p>
-		</div>
-		<div class="nav" id="nav">
-			<ul>
-				<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#"><img src="${ctx }/images/123.png"></a>
-					<ul>
-						<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
-						<li><a href="${ctx }/info/install.jsp">设置</a></li>
-						<li><a href="${ctx }/index_before.jsp">退出登录</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
+		
+		<div class="login" id="login">
+            <a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;|
+			<a href="${ctx }/register.jsp"><button>注册</button></a>
+        </div>
+                    
+         <div class="after_login" id="after_login">
+             <div id="username">
+                <p>${student.loginName }</p>
+             </div>
+             <div class="nav" id="nav">
+                   <ul>
+                         <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
+                       		 <ul>
+                                 <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
+                                 <li><a href="${ctx }/info/install.jsp">设置</a></li>
+                                 <li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
+                             </ul>
+                        </li>
+                   </ul>
+              </div>
+         </div>
 		<!--搜索-->
 		<div class="search" id="">
 			<div class="searchlogo">
-				<a href="${ctx }/index_before.jsp"><img src="${ctx }/images/logo.png"></a>
+				<a href="${ctx }/"><img src="${ctx }/images/logo.png"></a>
 			</div>
 			<div class="input">
 				<input id="searchParam2" type="text" name="searchParam"  class="text"/>
@@ -73,7 +92,7 @@
 			<div>
 				<ul id="tabs">
 					<li  onclick="tabChange(this,'tabscontent')" class="current"><a href="${ctx }/exam/search?searchParam=${searchParam}&examType=真题">真题</a></li>
-					<li onclick="tabChange(this,'tabscontent')"><a href="${ctx }/exam/search?searchParam=${searchParam}&examType=模拟">模拟</a></li>
+					<li onclick="tabChange(this,'tabscontent')" ><a href="${ctx }/exam/search?searchParam=${searchParam}&examType=模拟">模拟</a></li>
 				</ul>
 			</div>
 
@@ -114,8 +133,8 @@
 	</div>
     <!--页尾信息-->
 	<div id="footer" class="">
-		<p><a href="${ctx }/about_us.jsp">联系我们</a> | <a href="${ctx }/about_us.jsp">人才招聘</a> | <a href="${ctx }/about_us.jsp">教师合作</a> | <a href="${ctx }/about_us.jsp">项目介绍</a></p>
-		<p>版权所有：猿计划项目小组</p>
+		<p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
+        <p>版权所有：猿计划项目小组</p>
 	</div>
 	<script type="text/javascript">
 		function searchp(){

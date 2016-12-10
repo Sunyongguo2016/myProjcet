@@ -57,15 +57,15 @@
 						         ${choosefill.exam.examName}
 						     </c:if>
 			          		<c:if test="${fn:length(choosefill.exam.examName) > 20}">
-						         ${fn:substring(choosefill.exam.examName,0,10) }...
+						         ${fn:substring(choosefill.exam.examName,0,20) }...
 						     </c:if>
 			        	</td> 
 			          	<td><font color="#00CC99">
-			          		<c:if test="${fn:length(choosefill.parentQuestionArticle) < 40}">
+			          		<c:if test="${fn:length(choosefill.parentQuestionArticle) < 60}">
 						         ${choosefill.parentQuestionArticle}
 						     </c:if>
-			          		<c:if test="${fn:length(choosefill.parentQuestionArticle) > 40}">
-						         ${fn:substring(choosefill.parentQuestionArticle,0,10) }...
+			          		<c:if test="${fn:length(choosefill.parentQuestionArticle) > 60}">
+						         ${fn:substring(choosefill.parentQuestionArticle,0,60) }...
 						     </c:if>
 			          	<td>
 			          <div class="button-group"> 

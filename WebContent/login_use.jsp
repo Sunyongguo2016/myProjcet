@@ -38,11 +38,10 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
-                    <li><a href="${ctx }/category.jsp">大学英语四级</a></li>
-                    <li><a href="${ctx }/category.jsp">大学英语六级</a></li>
-                    <li><a href="${ctx }/arena.jsp">竞技场</a></li>
-                    <li><a href="${ctx }/about_us.jsp">关于我们</a></li>
+                    <li class="current"><a href="${ctx }/">网站首页</a></li>
+						<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+						<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
                 </ul>
             </div>
         </div>
@@ -59,13 +58,13 @@
                     <br/>
                     <input type="submit" value="Sign in" id="submit" name="submit"/>
                     <br/>
-                    <span style="margin-left:300px; color:#000000; font-size:10px;">还没注册？<a href="${ctx }/register.jsp" style="font-size:10px;">点我注册</a></span>
+                    <span style="margin-left:300px; color:#000000; font-size:10px;"><a href="${ctx }/register.jsp" style="font-size:10px;">还没注册？点我注册</a></span>
                     <br/>
                 </form>
             </div>
 		</div>
         <div class="footer">
-            <p><a href="${ctx }/about_us.jsp">联系我们</a> | <a href="${ctx }/about_us.jsp">人才招聘</a> | <a href="${ctx }/about_us.jsp">教师合作</a> | <a href="${ctx }/about_us.jsp">项目介绍</a></p>
+            <p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
             <p>版权所有：猿计划项目小组</p>
         </div>
 	</body>

@@ -39,7 +39,7 @@
     	
 		<div class="tm_container">
 			<ul class="tm_breadcrumb">
-				<li><a href="${ctx }/index_before.jsp">首页</a> <span class="divider">&gt;</span></li>
+				<li><a href="${ctx }/">首页</a> <span class="divider">&gt;</span></li>
 				<li><a href="${ctx }/examonline/list">在线自测</a> <span class="divider">&gt;</span></li>
 				<li class="active">试卷预览</li>
 			</ul>
@@ -150,6 +150,7 @@
                                                         </ul>
                                                 </td>
                                             </tr>
+                                            <c:if test="${tested=='on'}">
                                             <tr class="after_tested">
                                             	<td colspan="2">
                                             		<ul>
@@ -158,6 +159,7 @@
                                             		</ul>
                                             	</td>
                                             </tr>
+                                            </c:if>
                                         </tbody>
                                     </table>
                                     </c:forEach>
@@ -191,6 +193,7 @@
                                                         </ul>
                                                 </td>
                                             </tr>
+                                            <c:if test="${tested=='on'}">
                                             <tr class="after_tested">
                                             	<td colspan="2">
                                             		<ul>
@@ -199,6 +202,7 @@
                                             		</ul>
                                             	</td>
                                             </tr>
+                                            </c:if>
                                         </tbody>
                                     </table>
                                     </c:forEach>
@@ -227,6 +231,7 @@
 		                                    				</c:forEach>
 		                                    			</td>
 		                                    		</tr>
+		                                    		<c:if test="${tested=='on'}">
 		                                    		<tr class="after_tested">
 		                                            	<td colspan="2">
 		                                            		<ul>
@@ -238,6 +243,7 @@
 		                                            		</ul>
 		                                            	</td>
 		                                            </tr>
+		                                            </c:if>
 		                                    	</tbody>
 		                                    </table>
                                     </c:when>
@@ -295,6 +301,7 @@
 		                                    				</c:forEach>
 		                                    			</td>
 		                                    		</tr>
+		                                    		<c:if test="${tested=='on'}">
 		                                    		<tr class="after_tested">
 	                                            	<td colspan="2">
 	                                            		<ul>
@@ -306,6 +313,7 @@
 	                                            		</ul>
 	                                            	</td>
 	                                               </tr>
+	                                               </c:if>
 		                                        </tbody>
 		                                    </table>
 		                                    
@@ -328,6 +336,7 @@
 			                                            </tr>
 			                                        </thead>
 			                                        <tbody>
+			                                        	<c:if test="${tested=='on'}">
 			                                        	<tr class="after_tested">
 			                                            	<td colspan="2">
 			                                            	<ul>
@@ -336,6 +345,7 @@
 															</ul>
 			                                            	</td>
 			                                            </tr>
+			                                            </c:if>
 			                                        </tbody>
 			                                    </table>
 		                                    </c:forEach>
@@ -368,6 +378,7 @@
 						                                        </ul>
 			                                                </td>
 			                                            </tr>
+			                                            <c:if test="${tested=='on'}">
 			                                            <tr class="after_tested">
 			                                            	<td colspan="2">
 			                                            		<ul>
@@ -376,6 +387,7 @@
 			                                            		</ul>
 			                                            	</td>
 			                                            </tr>
+			                                            </c:if>
 			                                        </tbody>
 		                                        </c:forEach>
 		                                    </table>
@@ -407,6 +419,7 @@
 						                                        </ul>
 			                                                </td>
 			                                            </tr>
+			                                            <c:if test="${tested=='on'}">
 			                                           <tr class="after_tested">
 			                                            	<td colspan="2">
 			                                            		<ul>
@@ -414,7 +427,8 @@
 			                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
 			                                            		</ul>
 			                                            	</td>
-			                                            </tr> 
+			                                            </tr>
+			                                            </c:if> 
 			                                        </tbody>
 		                                        </c:forEach>
 		                                    </table>
@@ -442,6 +456,7 @@
 		                                                		</ul>
 		                                                </td>
 		                                            </tr>
+		                                            <c:if test="${tested=='on'}">
 		                                            <tr class="after_tested">
                                             			<td colspan="2">
 		                                            	<b>范文：</b>
@@ -452,6 +467,7 @@
 		                                            	</ul>
 		                                            	</td>
 		                                            </tr>
+		                                            </c:if>
 		                                        </tbody>
 		                                    </table>
 	                                    </div>

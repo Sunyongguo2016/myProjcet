@@ -69,10 +69,10 @@
     	</div>
         <!--面包屑-->
         <div class="breadcrumb">
-            <a href="${ctx }/">首页</a>>>关于我们
+            <a href="${ctx }/index_before.jsp">首页</a>>>关于我们
         </div>
         <!--左侧边栏-->
-        <div class="left">
+         <div class="left">
             <h2>关于我们</h2>
             <div class="vtitle"><a href="${ctx }/connect_us.jsp">联系我们</a></div>
                 <div class="vcon" style="display: none;">
@@ -95,28 +95,18 @@
             </div>
             <div class="right_content" style="line-height:30px;">
                 <div class="title_h1">
-                	<font style="font-size:20px;font-weight:bold;">关于我们</font>
+                	<font style="font-size:20px;font-weight:bold;">人才招聘</font>
                 </div>
                 <div class="wenzhang_content">
-                	<h3>关于我们</h3>
-                    <p style="text-align:left;line-height:2em;text-indent:2em;margin:0px 0px 10px">
-                        
-						巨人英语是一款基于JAVA与MYSQL开发的网络考试系统，考生可以通过浏览器直接进行操作，无需安装任何程序或插件。
-						操作简单，无需专业的计算知识，也可以快速的熟悉网站基本操作。试卷涵盖近三年的真题，并附有试题解、相关知识点。
-                     </p>
-                     <p style="text-align:left;line-height:2em;text-indent:2em;margin:0px 0px 10px">
-                       	巨人英语是由猿计划项目组设计编写而成。项目成员是一群理论和实践都很菜的技术渣渣，该项目的实用价值有待开发。
-                       	如对我们的项目有何建议，欢迎反馈，可以是关于网页设计、后台设计、功能推荐……
-                     </p>
-                     <h3>团队理念</h3>
-                     <p style="text-align:left;line-height:2em;text-indent:2em;margin:0px 0px 10px">
-                     	
-						一、以用户为中心创建以来，考试在线始终秉持着用户第一的理念，从而赢得了最忠诚的用户群体。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;二、追求卓越我们追求一种品质，坚信只有我们自己都赞不绝口的东西，才能让大家也喜欢。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;三、务实专注专著，持续的发展是考试在线最重要的精神。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;四、团队协作团队协作是考试在线的核心竞争力。我们相互信任，相互支持，共同成长。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;五、守信尽责我们说到做到，信守承诺，担负责任。为丰富服务内容，考试在线网站欢迎各<br/>
-						       类ICP及资源拥有者与本站合作，共同向所有教育网用户推广其服务，在合作中共同发展。
+                    <p style="text-align:left;line-height:2em;margin:0px 0px 10px">
+                       	<h3>岗位</h3>&nbsp;&nbsp;&nbsp;&nbsp;网站编辑
+						<h3>职责</h3>							
+						&nbsp;&nbsp;&nbsp;&nbsp;1、相关计算机专业，年龄不限，学历不限，有写手经验优先。<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;2、文字功底扎实，写作能力强，有撰写软文和求职经验相关文章的经验（需提供材料证明）。<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;3、能随时接受编辑主管给的写作任务，并按时按质完成。<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;4、具备较强的创新意识，可随时配合网站撰写不同的文章。<br/>	
+						<h3>待遇</h3>&nbsp;&nbsp;&nbsp;&nbsp;绩效薪资，多劳多得，具体面议。<br/>
+						<h3>联系方式</h3>&nbsp;&nbsp;&nbsp;&nbsp;孙永国：13578590321（合则邀请，勿电勿访，否则一律取消应聘资格。）
                      </p>
                  </div>   
              </div>

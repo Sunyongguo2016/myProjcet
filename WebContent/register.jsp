@@ -41,7 +41,31 @@ function checkPwd(){
 		alert("密码长度不对！")
 	}
 }
+<!-- 导航栏滑动 -->
+$(function() {
+	var $t, leftX, newWidth;
 
+	$('.menu ul').append('<div class="block"></div>');
+	var $block = $('.block');
+
+	$block.width($(".current").width()).css('left', $('.current a').position().left).data('rightLeft', $block.position().left).data('rightWidth', $block.width());
+
+	$('.menu ul li').find('a').hover(function() {
+		$t = $(this);
+		leftX = $t.position().left;
+		newWidth = $t.parent().width();
+
+		$block.stop().animate({
+			left: leftX,
+			width: newWidth
+		},300);
+	}, function() {
+		$block.stop().animate({
+			left: $block.data('rightLeft'),
+			width: $block.data('rightWidth')
+		},300)
+	})
+})
 </script>		
 </head>
 <body>
@@ -53,15 +77,14 @@ function checkPwd(){
 			</div>
 			<div class="menu">
 				<ul>
-					<li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
-					<li><a href="${ctx }/category.jsp">大学英语四级</a></li>
-					<li><a href="${ctx }/category.jsp">大学英语六级</a></li>
-					<li><a href="${ctx }/arena.jsp">竞技场</a></li>
-					<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
+					<li class="current"><a href="${ctx }/">网站首页</a></li>
+						<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+						<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 				</ul>
 			</div>
 			<div class="" id="search">
-				<input type="text" class="text" /> <a href="#"><img
+				<input type="text" class="text" /> <a href=""><img
 					src="${ctx }/images/search.png"></a>
 			</div>
 		</div>
@@ -148,13 +171,8 @@ function checkPwd(){
 
 	<!--页尾信息-->
 	<div id="footer" class="">
-		<p>
-			<a href="${ctx }/about_us.jsp">联系我们</a> | <a
-				href="${ctx }/about_us.jsp">人才招聘</a> | <a
-				href="${ctx }/about_us.jsp">教师合作</a> | <a
-				href="${ctx }/about_us.jsp">项目介绍</a>
-		</p>
-		<p>版权所有：猿计划项目小组</p>
+		<p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
+        <p>版权所有：猿计划项目小组</p>
 	</div>
 	</div>
 	<script type="text/javascript">

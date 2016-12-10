@@ -18,31 +18,32 @@
 		<!--页面头信息-->
 		<div class="" id="header"> 
 			<div class="" id="logo">
-				<img src="${ctx }/images/logo.png">
+				<a href="${ctx }/">
+					<img src="${ctx }/images/logo.png">
+				</a>
 			</div>
 			<div class="menu">
 				<ul>
-					<li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
-					<li><a href="${ctx }/categroy.jsp">大学英语四级</a></li>
-					<li><a href="${ctx }/category.jsp">大学英语六级</a></li>
-					<li><a href="${ctx }/arena.jsp">竞技场</a></li>
+					<li class="current"><a href="${ctx }/">网站首页</a></li>
+					<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+					<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
 					<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 				</ul>
 			</div>
 			<div id="search">
 				<input type="text" class="text"/>
-				<a href="${ctx }/search.jsp"><img src="${ctx }/images/search.png"></a>
+				<a href="${ctx }/"><img src="${ctx }/images/search.png"></a>
 			</div>
 			<div id="username">
 				<p>${student.loginName }</p>
 			</div>
 			<div class="nav">
 				<ul>
-					<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
+					<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="">${student.url }</a>
 						<ul>
 							<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
                             <li><a href="${ctx }/info/install.jsp">设置</a></li>
-                            <li><a href="${ctx }/index_before.jsp">退出登录</a></li>
+                            <li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -71,8 +72,8 @@
 		
 		<!--页尾信息-->
 		<div id="footer">
-			<p><a href="${ctx }/about_us.jsp">联系我们</a> | <a href="${ctx }/about_us.jsp">人才招聘</a> | <a href="${ctx }/about_us.jsp">教师合作</a> | <a href="${ctx }/about_us.jsp">项目介绍</a></p>
-			<p>版权所有：猿计划项目小组</p>
+			<p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
+            <p>版权所有：猿计划项目小组</p>
 		</div>
 	</div>
 

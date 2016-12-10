@@ -31,15 +31,15 @@
 	<div>
 		<div class="header">
 			<div class="logo">
-				<a href="${ctx }/index_before.jsp"><img
-					src="${ctx }/images/logo.png" /></a>
+				<a href="${ctx }/"><img src="${ctx }/images/logo.png" /></a>
 			</div>
 			<div class="search">
 				 <input type="text" class="text" id="searchParam" name="searchParam" value="${searchParam }" /> 
 				<input type="submit" class="button" value="搜索" onclick="searchp();return false;"/>
 			</div>
 			<div class="login" style="display:none;">
-				<a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;| <a href="${ctx }/register.jsp"><button>注册</button></a>
+				<a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;| 
+				<a href="${ctx }/register.jsp"><button>注册</button></a>
 			</div>
 			<div class="after_login" style="display:block;">
 				<div id="username">
@@ -52,7 +52,7 @@
 							<ul>
 								<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
 								<li><a href="${ctx }/info/install.jsp">设置</a></li>
-								<li><a href="${ctx }/index_before.jsp">退出登录</a></li>
+								<li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -61,17 +61,16 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><a href="${ctx }/index_before.jsp">网站首页</a></li>
-				<li><a href="${ctx }/category.jsp">大学英语四级</a></li>
-				<li><a href="${ctx }/category.jsp">大学英语六级</a></li>
-				<li><a href="${ctx }/arena.jsp">竞技场</a></li>
-				<li class="current"><a href="${ctx }/about_us.jsp">关于我们</a></li>
+				<li><a href="${ctx }/">网站首页</a></li>
+				<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
+				<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+				<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 			</ul>
 		</div>
 	</div>
 	<!--面包屑-->
 	<div class="breadcrumb">
-		<a href="${ctx }/index_before.jsp">首页</a>>>错题本列表
+		<a href="${ctx }/">首页</a>>>错题本列表
 	</div>
 	<!--左侧边栏-->
 	<div class="left">
@@ -122,13 +121,8 @@
 	</div>
 	<!--footer-->
 	<div id="footer">
-		<p>
-			<a href="${ctx }/about_us.jsp">联系我们</a> | <a
-				href="${ctx }/about_us.jsp">人才招聘</a> | <a
-				href="${ctx }/about_us.jsp">教师合作</a> | <a
-				href="${ctx }/about_us.jsp">项目介绍</a>
-		</p>
-		<p>版权所有：猿计划项目小组</p>
+		<p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
+        <p>版权所有：猿计划项目小组</p>
 	</div>
 </body>
 </html>

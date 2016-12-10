@@ -72,8 +72,8 @@
             <a href="${ctx }/">首页</a>>>关于我们
         </div>
         <!--左侧边栏-->
-        <div class="left">
-            <h2>关于我们</h2>
+         <div class="left">
+           <h2>关于我们</h2>
             <div class="vtitle"><a href="${ctx }/connect_us.jsp">联系我们</a></div>
                 <div class="vcon" style="display: none;">
             </div>
@@ -95,34 +95,26 @@
             </div>
             <div class="right_content" style="line-height:30px;">
                 <div class="title_h1">
-                	<font style="font-size:20px;font-weight:bold;">关于我们</font>
+                	<font style="font-size:20px;font-weight:bold;">项目介绍</font>
                 </div>
                 <div class="wenzhang_content">
-                	<h3>关于我们</h3>
-                    <p style="text-align:left;line-height:2em;text-indent:2em;margin:0px 0px 10px">
-                        
-						巨人英语是一款基于JAVA与MYSQL开发的网络考试系统，考生可以通过浏览器直接进行操作，无需安装任何程序或插件。
-						操作简单，无需专业的计算知识，也可以快速的熟悉网站基本操作。试卷涵盖近三年的真题，并附有试题解、相关知识点。
-                     </p>
-                     <p style="text-align:left;line-height:2em;text-indent:2em;margin:0px 0px 10px">
-                       	巨人英语是由猿计划项目组设计编写而成。项目成员是一群理论和实践都很菜的技术渣渣，该项目的实用价值有待开发。
-                       	如对我们的项目有何建议，欢迎反馈，可以是关于网页设计、后台设计、功能推荐……
-                     </p>
-                     <h3>团队理念</h3>
-                     <p style="text-align:left;line-height:2em;text-indent:2em;margin:0px 0px 10px">
-                     	
-						一、以用户为中心创建以来，考试在线始终秉持着用户第一的理念，从而赢得了最忠诚的用户群体。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;二、追求卓越我们追求一种品质，坚信只有我们自己都赞不绝口的东西，才能让大家也喜欢。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;三、务实专注专著，持续的发展是考试在线最重要的精神。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;四、团队协作团队协作是考试在线的核心竞争力。我们相互信任，相互支持，共同成长。<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;五、守信尽责我们说到做到，信守承诺，担负责任。为丰富服务内容，考试在线网站欢迎各<br/>
-						       类ICP及资源拥有者与本站合作，共同向所有教育网用户推广其服务，在合作中共同发展。
-                     </p>
+                    <p style="text-align:left;line-height:1.5em;text-indent:2em;margin:0px 0px 10px">
+                       	<h3>项目名称</h3>&nbsp;&nbsp;&nbsp;&nbsp;巨人英语
+     					<h3>项目的提出方</h3>&nbsp;&nbsp;&nbsp;&nbsp;猿计划项目小组
+						<h3>项目目标</h3>&nbsp;&nbsp;&nbsp;&nbsp;为学习英语的同学提供一个学习的平台。
+						<h3>项目成员</h3>&nbsp;&nbsp;&nbsp;&nbsp;孙永国、田瑞航、童海苹、孙晓辉、李翘楚、翟佳帆
+						<h3>版权声明</h3>
+							&nbsp;&nbsp;&nbsp;&nbsp;1、本网站所有内容，凡注明"来源：巨人英语网"的所有文字、图片、页面的版式、和音视频资料，版权均属巨人英语网所有，任何媒体、网站或个人未 经本网协议授权不得转载、链接、转贴或以其他方式复制发布、发表。已经本网协议授权的媒体、网站，在下载使用时必须注明"稿件来源 ——考试在线网 "，违者本网将依法追究责任。<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;2、本网站（考试在线网）授权您使用的网络课程等内容，仅限您个人使用不得用于任何商业用途。对于原始内容中所注明的版权及所有权声明 ，您必须在其副本中予以保留，您不得以任何方式修改、复制、公开展示、公布或分发这些材料或以其他方式把它们用于任何公开或商业 目的，禁止以任何目的或形式把这些材料用于其他任何网站或网络计算机环境。<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;3、转载或引用本网版权所有之内容须注明"转自（或引自）巨人英语网"字样，并标明本网网址gaintenglish.com。<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;4、对于不当转载或引用本网内容而引起的民事纷争、行政处理或其他损失，本网不承担责任。<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;5、对不遵守本声明或其他违法、恶意使用本网内容者，本网保留追究其法律责任的权利。<br/>
+                     </p>        
                  </div>   
              </div>
 		</div>
         <!--footer-->
-        <div id="footer" style="top:800px;">
+       <div id="footer">
   	         <p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
              <p>版权所有：猿计划项目小组</p>
         </div>
