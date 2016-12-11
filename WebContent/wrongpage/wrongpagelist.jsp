@@ -61,7 +61,7 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><a href="${ctx }/">网站首页</a></li>
+				<li class="current"><a href="${ctx }/">网站首页</a></li>
 				<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
 				<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
 				<li><a href="${ctx }/about_us.jsp">关于我们</a></li>

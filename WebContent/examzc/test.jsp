@@ -55,7 +55,7 @@
 		<div class="tm_container">
 			<ul class="tm_breadcrumb">
 				<li><a href="${ctx }/">首页</a> <span class="divider">&gt;</span></li>
-				<li><a href="${ctx }/examzc/">自我检测</a> <span class="divider">&gt;</span></li>
+				<li><a href="${ctx }/examonline/list?examType=${exam.examType}">自我检测</a> <span class="divider">&gt;</span></li>
 				<li class="active">自测</li>
 			</ul>
 		</div>
@@ -447,7 +447,7 @@
 		<div style="margin-top:5px;"><span  class="tm_label">0:19:29</span></div>
 		</div>
 		<div id="div_processor_ops">
-			<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserpaper.submitpaper();">提交</button>
+			<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserpaper.submitpaper();return false;">提交</button>
 			<button class="tm_btn tm_btn_primary" type="button" onclick="">返回</button>
 		</div>
 		</div>	

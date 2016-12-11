@@ -27,7 +27,7 @@
 		<div class="start">
         	<form>
         		<a href="${ctx }/examonline/exam?examId=${exam.examId}"><input type="button" value="开始考试"/></a>
-        		<a href="${ctx }/examonline/list"><input type="button" value="返回"/></a>
+        		<a href="${ctx }/examonline/list?examType=${exam.examType}"><input type="button" value="返回"/></a>
         	</form>
         	<c:if test="${tested=='on'}">
         	<div class="after_tested">
@@ -40,7 +40,7 @@
 		<div class="tm_container">
 			<ul class="tm_breadcrumb">
 				<li><a href="${ctx }/">首页</a> <span class="divider">&gt;</span></li>
-				<li><a href="${ctx }/examonline/list">在线自测</a> <span class="divider">&gt;</span></li>
+				<li><a href="${ctx }/examonline/list?examType=${exam.examType}">在线自测</a> <span class="divider">&gt;</span></li>
 				<li class="active">试卷预览</li>
 			</ul>
 		</div>
@@ -225,7 +225,7 @@
 			                                            	<span class="span-quick-nav" data-qid="${qust.questionId}"></span>
 			                                            		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${qust.questionContent}) <input type="text" name="Q-${qust.questionId}" data-qid="${qust.questionId}" 
 			                                            		class="validate[required] tm_txt qk-blank" disabled="true"/>
-		                                    					<c:if test="${status.count % 5 == 0}">
+		                                    					<c:if test="${status.count % 4 == 0}">
 		                                    						<br/><br/>
 		                                    					</c:if>
 		                                    				</c:forEach>
