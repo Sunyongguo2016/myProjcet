@@ -31,10 +31,7 @@ public class ScoreServiceImpl {
 	}
 	
 	public void editScore(Score s){
-		Score pdb=this.scoreDaoImpl.getScore(s.getId());
-//		pdb.setName(p.getName());
-//		pdb.setPrice(p.getPrice());
-		this.scoreDaoImpl.updateScore(pdb);
+		this.scoreDaoImpl.updateScore(s);
 	}
 	
 	public void dropScore(int Id){
