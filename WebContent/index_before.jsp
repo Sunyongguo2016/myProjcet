@@ -155,9 +155,6 @@
 				</div>				
 				</div>
 				<div>
-				<h2>竞技场</h2>
-				<hr/>
-				<a href="${ctx }/"><img src="${ctx }/images/jingji.jpg" height="180px" width="333px" /></a>
 				</div>
 			</div>
 			</div>

@@ -77,8 +77,7 @@
 		});
 	</script>
 	<ul class="bread">
-		<li><a href="{:U('Index/infolist')}" target="right"
-			class="icon-home"> 前台首页</a></li>
+		<li><a href="${ctx }/" > 前台首页</a></li>
 
 	</ul>
 	<div class="admin">
