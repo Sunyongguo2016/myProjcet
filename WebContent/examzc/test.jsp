@@ -448,7 +448,6 @@
 		</div>
 		<div id="div_processor_ops">
 			<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserpaper.submitpaper();return false;">提交</button>
-			<button class="tm_btn tm_btn_primary" type="button" onclick="">返回</button>
 		</div>
 		</div>	
 		

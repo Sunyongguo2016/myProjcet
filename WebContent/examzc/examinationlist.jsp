@@ -98,7 +98,7 @@
     <!--面包屑-->
     <div class="breadcrumb">
         <a href="${ctx }/">首页</a>>>
-        <a href="${ctx }/category?type=四级">大学英语四级 </a>>>在线测试
+        <a href="${ctx }/category?type=${examType}">${examType}</a>>>在线测试
     </div>
     <!--左侧边栏-->
     <div class="left">
