@@ -99,12 +99,12 @@ public class ExamServiceImpl {
 	 * 
 	 */
 	public void editExam(Exam e) throws Exception{
-		Exam exam = this.examDaoImpl.getExam(e.getExamId());
-		exam.setExamName(e.getExamName());
-		exam.setExamType(e.getExamType());
-		exam.setExamTime(e.getExamTime());
+//		Exam exam = this.examDaoImpl.getExam(e.getExamId());
+//		exam.setExamName(e.getExamName());
+//		exam.setExamType(e.getExamType());
+//		exam.setExamTime(e.getExamTime());
 
-		this.examDaoImpl.updateExam(exam);
+		this.examDaoImpl.updateExam(e);
 	}
 	
 	/**
