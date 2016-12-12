@@ -61,6 +61,7 @@ public class LoginController {
 				session.setAttribute("logined", "on");
 				return "index_before";
 			} else if("manager".equals(role)){
+				session.setAttribute("manager", lu);
 				return "index";
 			} else {
 				System.out.println("lu is not exist");
