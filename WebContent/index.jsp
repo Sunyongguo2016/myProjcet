@@ -15,6 +15,13 @@
 <link rel="stylesheet" href="${ctx }/css/admin.css">
 <script src="${ctx }/js/jquery.js"></script>
 <script src="${ctx }/js/pintuer.js"></script>
+<style>
+	#login{
+		margin-top:17px; 
+		margin-left:1090px;
+		margin-right:30px;
+	}
+</style>
 </head>
 <body style="background-color: #f2f9fd;">
 	<div class="header bg-main">
@@ -24,9 +31,10 @@
 				&nbsp&nbsp&nbsp后台管理系统
 			</h1>
 		</div>
-		<div class="head-l">
-			<a class="buttonone" href=""> 欢迎${student.loginName }登录</a> <a class="button bg-yellow"
-				href="${ctx }/loginuser/turnOut"><span class="icon-power-off"></span>
+		<div id="login">
+			 欢迎${manager.loginName }登录
+			<a class="button bg-yellow" href="${ctx }/loginuser/turnOut">
+			<span class="icon-power-off"></span>
 				退出登录</a>
 		</div>
 	</div>
