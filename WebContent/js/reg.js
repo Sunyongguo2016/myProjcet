@@ -1,27 +1,22 @@
-	function check(form){
-			if (form.password.value=="") {
-				alert("请输入密码！");
-				form.password.focus();
-				return false;
-			}
-			if (form.username.value.length<5||form.username.value.length>100) {
-				alert("输入用户名长度不对！");
-				form.username.focus();
-				return false;
-			}
-			if (form.password.value.length<6||form.password.value.length>100) {
-				alert("输入密码长度不对！");
-				form.password.focus();
-				return false;
-			};
-			if(form.password.value == form.surepassword.value){
-				return true;
-			}else{
-				alert("密码和确认密码不一致！");
-				form.surepassword.focus();
-				return false;
-			}
-			return true;
-		}
+function checkPwd(){
+	var p = document.getElementById("pass");
+	var pwd = document.getElementById("pass").value;
 
+	if(pwd == ""){
+		alert("密码不可为空！");
+		p.focus();
+	} else if(pwd.length<6 || pwd.lengtth>100){
+		alert("密码长度不对！")
+		p.focus();
+	}
+}
+function checkONPwd(){
+	var rp = document.getElementById("pass");
+	var pwd = document.getElementById("pass").value;
+	var repwd = document.getElementById("repassword").value;
+	if(pwd != repwd){
+		alert("密码和确认密码不一致！")
+		rp.focus();
+	}
+}
 

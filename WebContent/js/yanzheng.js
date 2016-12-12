@@ -23,11 +23,9 @@ function validateCode()
     if (inputCode.length <= 0) 
     {
         alert("请输入验证码！");
-    }
-    else if (inputCode.toUpperCase() != code.toUpperCase()) 
+    } else if (inputCode.toUpperCase() != code.toUpperCase()) 
     {
         alert("验证码输入有误！");
         createCode();
     }   
-    alert("请重新登录！")
 }    
