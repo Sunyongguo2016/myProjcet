@@ -93,10 +93,10 @@
                                             <c:if test="${tested=='on'}">
                                             <tr class="after_tested">
                                             	<td colspan="2">
-                                            	
-                                            	<b>范文：</b>
                                             	<ul>
                                             		<c:forEach items="${parentQuestion.questions}" var="qust">
+                                            		
+                                            			<b>范文：</b>
                                             			<li><label>${qust.questionExplain}</label></li>
                                             		</c:forEach>
                                             	</ul>
@@ -154,7 +154,12 @@
                                             <tr class="after_tested">
                                             	<td colspan="2">
                                             		<ul>
-                                            			<li><label><b>答案：</b>${question.questionAnswer}</label></li>
+                                            			<c:forEach items="${an}" var="an">
+                                            			<c:if test="${an.key ==question.questionId }">
+                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+                                            			</c:if>
+                                            			</c:forEach>
+                                            			<li><label style="color:red;"><b>答案：</b>${question.questionAnswer}</label></li>
                                             			<li><label><b>解析：</b>${question.questionExplain}</label></li>
                                             		</ul>
                                             	</td>
@@ -197,7 +202,12 @@
                                             <tr class="after_tested">
                                             	<td colspan="2">
                                             		<ul>
-                                            			<li><label><b>答案：</b>${question.questionAnswer}</label></li>
+                                            			<c:forEach items="${an}" var="an">
+                                            			<c:if test="${an.key ==question.questionId }">
+                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+                                            			</c:if>
+                                            			</c:forEach>
+                                            			<li><label style="color:red;"><b>答案：</b>${question.questionAnswer}</label></li>
                                             			<li><label><b>解析：</b>${question.questionExplain}</label></li>
                                             		</ul>
                                             	</td>
@@ -236,8 +246,14 @@
 		                                            	<td colspan="2">
 		                                            		<ul>
 		                                            			<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
+		                                            			
 		                                            			<li><label>(${qust.questionContent})</label></li>
-		                                            			<li><label><b>答案：</b>${qust.questionAnswer}</label></li>
+		                                            			<c:forEach items="${an}" var="an">
+		                                            			<c:if test="${an.key ==qust.questionId }">
+		                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+		                                            			</c:if>
+		                                            			</c:forEach>
+		                                            			<li><label style="color:red;"><b>答案：</b>${qust.questionAnswer}</label></li>
 		                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
 		                                            			</c:forEach>
 		                                            		</ul>
@@ -306,8 +322,14 @@
 	                                            	<td colspan="2">
 	                                            		<ul>
 	                                            			<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
+	                                            			
 	                                            			<li><label>(${qust.questionContent})</label></li>
-	                                            			<li><label><b>答案：</b>${qust.questionAnswer}</label></li>
+	                                            			<c:forEach items="${an}" var="an">
+	                                            			<c:if test="${an.key ==qust.questionId }">
+	                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+	                                            			</c:if>
+	                                            			</c:forEach>
+	                                            			<li><label style="color:red;"><b>答案：</b>${qust.questionAnswer}</label></li>
 	                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
 	                                            			</c:forEach>
 	                                            		</ul>
@@ -340,7 +362,12 @@
 			                                        	<tr class="after_tested">
 			                                            	<td colspan="2">
 			                                            	<ul>
-			                                            		<li><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>答案：</b>${qust.questionAnswer}</label></li>
+			                                            		<c:forEach items="${an}" var="an">
+		                                            			<c:if test="${an.key ==qust.questionId }">
+		                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+		                                            			</c:if>
+		                                            			</c:forEach>
+					                                            		<li><label style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>答案：</b>${qust.questionAnswer}</label></li>
 																<li><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>解析：</b>${qust.questionExplain}</label></li>
 															</ul>
 			                                            	</td>
@@ -382,7 +409,12 @@
 			                                            <tr class="after_tested">
 			                                            	<td colspan="2">
 			                                            		<ul>
-			                                            			<li><label><b>答案：</b>${qust.questionAnswer}</label></li>
+			                                            			<c:forEach items="${an}" var="an">
+			                                            			<c:if test="${an.key ==qust.questionId }">
+			                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+			                                            			</c:if>
+			                                            			</c:forEach>
+			                                            			<li><label style="color:red;"><b>答案：</b>${qust.questionAnswer}</label></li>
 			                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
 			                                            		</ul>
 			                                            	</td>
@@ -423,7 +455,12 @@
 			                                           <tr class="after_tested">
 			                                            	<td colspan="2">
 			                                            		<ul>
-			                                            			<li><label><b>答案：</b>${qust.questionAnswer}</label></li>
+			                                            			<c:forEach items="${an}" var="an">
+			                                            			<c:if test="${an.key ==qust.questionId }">
+			                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+			                                            			</c:if>
+			                                            			</c:forEach>
+			                                            			<li><label style="color:red;"><b>答案：</b>${qust.questionAnswer}</label></li>
 			                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
 			                                            		</ul>
 			                                            	</td>
@@ -459,9 +496,12 @@
 		                                            <c:if test="${tested=='on'}">
 		                                            <tr class="after_tested">
                                             			<td colspan="2">
-		                                            	<b>范文：</b>
+		                                            	
 		                                            	<ul>
+		                                            	
 		                                            		<c:forEach items="${parentQuestion.questions}" var="qust">
+		                                            			
+		                                            			<b>范文：</b>
 		                                            			<li><label>${qust.questionExplain}</label></li>
 		                                            		</c:forEach>
 		                                            	</ul>
