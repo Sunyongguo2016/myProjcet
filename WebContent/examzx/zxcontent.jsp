@@ -130,7 +130,7 @@
 				}
 				
 			},
-	
+			
 			moveToQuestion : function(thetop){
 				$("html:not(:animated),body:not(:animated)").animate({ scrollTop: thetop}, 500);
 			},
@@ -381,7 +381,7 @@
 			                                                		<c:forEach items="${parentQuestion.questions}" begin="0" end="0" var="qust">
 				                                                		<c:forEach items="${qust.selectts}" var="selt" varStatus="status">
 			                                                				<li style="float: left; width: 100px; margin:5px 20px 5px 0;">${selt.selecttName}) ${selt.selecttContent}</li>
-			                                                				<c:if test="${status.count % 4 == 0}">
+			                                                				<c:if test="${status.count % 5 == 0}">
 					                                    						<br/><br/>
 					                                    					</c:if>
 			                                                			</c:forEach>
@@ -539,8 +539,6 @@
 			</div>
 			<div id="div_processor_ops">
 				<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserpaper.submitpaper();">提交</button>
-				<button class="tm_btn tm_btn_primary" type="button" onclick="">暂停/开始</button>
-				<button class="tm_btn tm_btn_primary" type="button" onclick="">返回</button>
 			</div>
 		</div>
 	</div>
