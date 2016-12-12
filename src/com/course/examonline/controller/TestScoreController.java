@@ -1,7 +1,9 @@
 package com.course.examonline.controller;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -110,6 +112,7 @@ public class TestScoreController {
 		ParentQuestion parentQuestion = null;
 		List<Question> questions = null;
 		Question question = null;
+		Map<Integer,String> an = new HashMap<Integer,String>();
 		
 		
 		Iterator<ParentQuestion> it = parentQuestions.iterator();
@@ -127,6 +130,7 @@ public class TestScoreController {
 					name = "Q-"+question.getQuestionId();
 					System.out.println("name:"+name);
 					daan = request.getParameter(name);
+					an.put(question.getQuestionId(), daan);
 					System.out.println("daan:"+daan);
 					System.out.println("true or false:"+daan.equals(answer));
 					
@@ -151,6 +155,7 @@ public class TestScoreController {
 		request.setAttribute("mark", mark);
 		request.setAttribute("tested", "on");
 		request.setAttribute("exam", exam);
+		request.setAttribute("an", an);
 		
 		return "examzc/preview";
 	}
