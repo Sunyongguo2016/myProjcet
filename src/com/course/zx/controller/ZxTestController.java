@@ -1,7 +1,9 @@
 package com.course.zx.controller;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -107,6 +109,7 @@ public class ZxTestController {
 		String name = null;
 		List<Question> questions = null;
 		Question question = null;
+		Map<Integer,String> an = new HashMap<Integer,String>();
 		
 		
 		if(!(parentQuestion.getParentQuestionName().equals("Writing")
@@ -121,6 +124,7 @@ public class ZxTestController {
 				name = "Q-"+question.getQuestionId();
 				System.out.println("name:"+name);
 				daan = request.getParameter(name);
+				an.put(question.getQuestionId(), daan);
 				System.out.println("daan:"+daan);
 				System.out.println("true or false:"+daan.equals(answer));
 				
@@ -143,6 +147,7 @@ public class ZxTestController {
 		request.setAttribute("mark", mark);
 		request.setAttribute("tested", "on");
 		request.setAttribute("parentQuestion", parentQuestion);
+		request.setAttribute("an", an);
 		
 		return "examzx/zxpreview";
 	}
