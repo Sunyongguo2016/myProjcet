@@ -73,7 +73,15 @@
                         </div>
                         <div class="nav" id="nav">
                             <ul>
-                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
+                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)">
+									<a href="#">
+										<c:if test="${empty student.url}">
+		                              		<img src="${ctx }/images/photo.jpg"/>
+										</c:if>
+										<c:if test="${!empty student.url}">
+		                              		${student.url}
+										</c:if>
+									</a>
                                     <ul>
                                         <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
 			                            <li><a href="${ctx }/info/install.jsp">设置</a></li>
@@ -111,6 +119,9 @@
         <div class="left">
         	<h2>专项练习</h2>
             <div class="vtitle"><a href="${ctx }/examzx/list?examType=${examType}">全部</a></div>
+                <div class="vcon" style="display: none;">
+            </div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=ListeningComprehension&examType=${examType}">听力</a></div>
                 <div class="vcon" style="display: none;">
             </div>
             <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Writing&examType=${examType}">作文</a></div>

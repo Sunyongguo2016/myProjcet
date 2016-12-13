@@ -103,6 +103,13 @@ public class ExamListController {
 				JOptionPane.showMessageDialog(null, "对不起，您还没有登录！现在返回登录页面...", "警告", JOptionPane.ERROR_MESSAGE);
 				return "login_use";
 			}
+			Exam exam = parentQuestion.getExam();
+			System.out.println("专项练习听力对应试卷名："+exam.getExamName());
+			String examurl1[] = exam.getExamUrl().split("file/");
+			String examurl2[] = examurl1[1].split("mp3");
+			String url = "http://localhost:8080/myProject/ueditor/jsp/upload/file/"+examurl2[0]+"mp3";
+			session.setAttribute("url", url);
+			//不要返回exam 需要返回parentquestion
 			request.setAttribute("parentQuestion", parentQuestion);
 		}
 		return "examzx/zxcontent";
