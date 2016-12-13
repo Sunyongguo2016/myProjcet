@@ -121,6 +121,9 @@
             <div class="vtitle"><a href="${ctx }/examzx/list?examType=${examType}">全部</a></div>
                 <div class="vcon" style="display: none;">
             </div>
+            <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=ListeningComprehension&examType=${examType}">听力</a></div>
+                <div class="vcon" style="display: none;">
+            </div>
             <div class="vtitle"><a href="${ctx }/examzx/list?parentQuestionName=Writing&examType=${examType}">作文</a></div>
                 <div class="vcon" style="display: none;">
             </div>
