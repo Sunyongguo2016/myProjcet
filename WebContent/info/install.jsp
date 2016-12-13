@@ -26,6 +26,7 @@
     			
     		} else if("no"==data){
     			alert("旧密码错误！");
+    			document.getElementById("oldPwd").focus();
     		} 
     	});
     }
@@ -90,11 +91,11 @@
             		</tr>
             		<tr>
             			<td><label>新密码：</label></td>
-            			<td><input id="password" name="password" type="password" placeholder="密码(不少于6个字符)"/></td>
+            			<td><input id="password" name="password" type="password" placeholder="密码(不少于6个字符)" onblur="checkPwd();"/></td>
             		</tr>
             		<tr>
             			<td><label>确认密码：</label></td>
-            			<td><input name="surepassword" type="password"/></td>
+            			<td><input id="repassword" name="surepassword" type="password" onblur="checkONPwd();"/></td>
             		</tr>
             		<tr>
             			<td><label>头像：</label></td>
@@ -126,10 +127,12 @@
             		</tr>
             		<tr>
             			<td class="yanzhengma">验证码：</td>
-            			<td><input style="float:left;" type="text"   id="inputCode" /><div class="code" id="checkCode" onclick="createCode()" ></div><a  id="look" href="#" onclick="createCode()" class="href">看不清换一张</a></td>
+            			<td><input style="float:left;" type="text" id="inputCode" onblur="validateCode();"/>
+            			<div class="code" id="checkCode" onclick="createCode()" ></div>
+            			<a  id="look" href="#" onclick="createCode()" class="href">看不清换一张</a></td>
             		</tr>
             	</table>
-                    <input type="submit" id="submit" value="提交" onclick="validateCode();"/>
+                    <input type="submit" id="submit" value="提交" onmouseover="validateCode();checkONPwd();"/>
             </form>
         </div>
         

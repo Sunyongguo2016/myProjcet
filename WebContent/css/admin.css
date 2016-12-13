@@ -15,7 +15,7 @@ ul,li{ list-style-type:none;}
 .loginbox { background:url(../images/tmbg-white.png); border:0px;}
 /********头部******/
 .header{height:70px; overflow:hidden; background-color:#086ed5; }
-.head-l{ float:left; margin-top:17px; margin-left:15px; }
+.head-l{ float:left; margin-top:17px; margin-left:15px; display:block;}
 .head-l .buttonone{margin-left: 800px; padding:8px 15px;font-size: 14px}
 .head-l .button{ padding:8px 15px;}
 

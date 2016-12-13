@@ -75,9 +75,10 @@
                 </ul>
             </div>
     	</div>
+    	<div id="content" style="height:600px;" >
         <!--面包屑-->
         <div class="breadcrumb">
-            <a href="${ctx }/">首页</a>>>关于我们
+            <a href="${ctx }/">首页</a>>><a href="${ctx}/about_us.jsp">关于我们</a>
         </div>
         <!--左侧边栏-->
          <div class="left">
@@ -116,8 +117,9 @@
                  </div>   
              </div>
 		</div>
+		</div>
         <!--footer-->
-        <div id="footer" style="top:500px;">
+        <div id="footer">
   	         <p><a href="${ctx }/connect_us.jsp">联系我们</a> | <a href="${ctx }/talent_recruitment.jsp">人才招聘</a> | <a href="${ctx }/Teachers' cooperation.jsp">教师合作</a> | <a href="${ctx }/project_introduction.jsp">项目介绍</a></p>
              <p>版权所有：猿计划项目小组</p>
         </div>

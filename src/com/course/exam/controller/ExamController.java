@@ -96,10 +96,11 @@ public class ExamController {
 	 * 
 	 */
 	@RequestMapping(value="edit",method=RequestMethod.POST)
-	public String edit(@RequestParam("examId") int examId, @RequestParam("name") String name, @RequestParam("type") String type, @RequestParam("time") int time){
+	public String edit(@RequestParam("examId") int examId, @RequestParam("name") String name, @RequestParam("type") String type, @RequestParam("examUrl") String examUrl, @RequestParam("time") int time){
 		Exam e = this.examServiceImpl.getExam(examId);
 		e.setExamName(name);
 		e.setExamType(type);
+		e.setExamUrl(examUrl);
 		e.setExamTime(time);
 		try {
 			this.examServiceImpl.editExam(e);

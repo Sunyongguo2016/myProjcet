@@ -23,25 +23,23 @@
 function checkExist(){
 	var val = document.getElementById("username1").value;
 	$.get("${ctx }/loginuser/checkname",{'username':val},function(data){
-		var tip = document.getElementById("userTip");
+		var tip = document.getElementById("username1");
 		if("exist"==data){
 			alert("用户名不可重复");
+			tip.focus();
 		} 
 		if(val == ""){
-			alert("用户名不可为空");
+			alert("用户名不可为空！");
+			tip.focus();
 		} else if(val.length<5||form.username.value.length>100){
 			alert("输入用户名长度不对！");
+			tip.focus();
 		}
-		
 	});
 }
-function checkPwd(){
-	var pwd = document.getElementById("password").value;
-	if(pwd.length<6 || pwd.lengtth>100){
-		alert("密码长度不对！")
-	}
-}
-<!-- 导航栏滑动 -->
+
+
+<%-- 导航栏滑动 --%>
 $(function() {
 	var $t, leftX, newWidth;
 
@@ -77,7 +75,7 @@ $(function() {
 			</div>
 			<div class="menu">
 				<ul>
-					<li class="current"><a href="${ctx }/">网站首页</a></li>
+					<li class="current"><a href="${ctx }/index_before.jsp">网站首页</a></li>
 						<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
 						<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
 						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
@@ -92,7 +90,7 @@ $(function() {
 	<!--内容-->
 	<div class="" id="content" >
 		<!-- Begin Form -->
-		<form action="${ctx }/loginuser/regist" method="post" id="my-form" onsubmit="return check(this)">
+		<form action="${ctx }/loginuser/regist" method="post" id="my-form">
 			
 			<div class="username">
 				<label>用户名：</label>
@@ -101,11 +99,11 @@ $(function() {
 			</div>
 			<div class="password">
 				<label>密&nbsp;码：</label><input id="pass" name="password"
-					type="password" placeholder="密码(不少于6个字符)" />
+					type="password" placeholder="密码(不少于6个字符)" onblur="checkPwd();"/>
 			</div>
 			<div class="repassword">
 				<label>确认密码:</label><input id="repassword" name="surepassword"
-					type="password" />
+					type="password" onblur="checkONPwd();"/>
 					
 			</div>
 	 		<div class="img">
@@ -141,7 +139,7 @@ $(function() {
 				<table border="0" cellspacing="5" cellpadding="5">
 					<tr>
 						<td class="yanzhengma">验证码：</td>
-						<td><input style="float: left;" type="text" id="inputCode" /></td>
+						<td><input style="float: left;" type="text" id="inputCode" onblur="validateCode();"/></td>
 						<td></td>
 					</tr>
 					<tr>
@@ -150,21 +148,11 @@ $(function() {
 						</td>
 						<td><a href="#" onclick="createCode()" class="href">看不清换一张</a></td>
 					</tr>
-
-					<tr>
-						<td><a href=""><input id="Button1"
-								onclick="validateCode();" type="submit" value="确定" /></a></td>
-						<td></td>
-					</tr>
 				</table>
 			</div>
 			
-			
-			
-			
 			<div id="submitreset" >
-				<input onclick="validateCode();" type="submit"
-						id="submit" value="提交"/>
+				<input type="submit" id="submit" onmouseover="validateCode();" value="提交"/>
 			</div>
 		</form>
 		<!-- End Form -->
