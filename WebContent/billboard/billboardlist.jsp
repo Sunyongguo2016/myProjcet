@@ -70,9 +70,11 @@
 			</ul>
 		</div>
 	</div>
+	<div id="content" style="height:600px;">
 	<!--面包屑-->
 	<div class="breadcrumb">
-		<a href="${ctx }/">首页</a>>>公告板
+		<a href="${ctx }/">首页</a>>><a
+			href="${ctx }/notice/billboardlist">公告板</a>
 	</div>
 	<!--左侧边栏-->
 	<div class="left">
@@ -133,6 +135,7 @@
 				<a href="${ctx }/notice/billboardlist?pageNum=${page.totalPageNum }&noticeType=${noticeType}">尾页</a>
 			</ul>
 		</div>
+	</div>
 	</div>
 	<!--footer-->
 	<div id="footer">
