@@ -198,7 +198,7 @@
 			<ul class="tm_breadcrumb">
 				<li><a href="${ctx }/">首页</a> <span class="divider">&gt;</span></li>
 				<li><a href="${ctx }/examzx/list">专项训练</a> <span class="divider">&gt;</span></li>
-				<li class="active">听力</li>
+				<li class="active">${parentQuestion.parentQuestionName}</li>
 			</ul>
 		</div>
         
@@ -228,93 +228,130 @@
 
                             	
                             	<div class="tm_paper_section">
-                                	<h1>${parentQuestion.parentQuestionName}</h1>
-                                    <h2>共${fn:length(parentQuestion.questions)}  题</h2>
                                     <c:choose>
-                                    	<c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionOne' || parentQuestion.parentQuestionName=='ListeningComprehensionFour'}">
-                                    		<b>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description}</b>
-											<span class="span-quick-nav" data-qid="1"></span>		
-		                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
-		                                    	<c:forEach items="${parentQuestion.questions}" var="qust">
+                                    	<c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionOne'
+	                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionTwo'
+	                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionThree'
+	                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionFour'
+	                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionFive'
+	                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionSix'
+	                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionText'}">
+	                                    
+	                                    <center>
+			                            <div>
+											<iframe scrolling="auto" rameborder="0" src="${ctx }/AudioPlayer/index.jsp"
+											name="right" width="500px" height="170px" frameborder="0"></iframe>
+										</div>
+										</center>
+										
+	                                    <c:forEach items="${parentQuestion.exam.parentQuestions }"  var="parentQuestion" >
+		                                    <c:choose>
+			                                    <c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionOne'
+			                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionFour'}">
+			                                    	<h1>${parentQuestion.parentQuestionName }</h1>
+		                                   			<h2>共${fn:length(parentQuestion.questions)}题</h2>
+													<h3>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description}</h3>
+													<h3>${parentQuestionTitle}</h3>
+													<c:forEach items="${parentQuestion.questions }" var="question">
+														<span class="span-quick-nav" data-qid="${question.questionId}"></span>
+					                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
+					                                    	<thead>
+					                                        	<tr>
+					                                            	<th valign="top" class="tm_question_lineheight"><cite>${question.questionContent}</cite></th>
+					                                                <td class="tm_question_lineheight">
+																		
+																	</td>
+					                                            </tr>
+					                                        </thead>
+					                                        <tbody>
+					                                        	<tr>
+					                                            	<td colspan="2">
+					                                                        <ul>
+					                                                        	<c:forEach items="${question.selectts }" var="select">
+					                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="${select.selecttName}" 
+					                                                            data-qid="${question.questionId}" name="Q-${question.questionId}" disabled="true"/>
+																					${select.selecttName} ${select.selecttContent}</label></li>
+					                                    						</c:forEach>
+					                                                        </ul>
+					                                                </td>
+					                                            </tr>
+					                                           
+					                                        </tbody>
+					                                    </table>
+				                                    </c:forEach>
+	                                    		</c:when>
+		                                    <c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionTwo'
+		                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionThree'
+		                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionFive'
+		                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionSix'}">
+		                                    	<h1>${parentQuestion.parentQuestionName }</h1>
+		                                   		<h2>共${fn:length(parentQuestion.questions)}题</h2>
+			                                    <h3>${parentQuestionTitle}</h3>
+												<c:forEach items="${parentQuestion.questions }" var="question">
+													<span class="span-quick-nav" data-qid="${question.questionId}"></span>
+				                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
+				                                    	<thead>
+				                                        	<tr>
+				                                            	<th valign="top" class="tm_question_lineheight"><cite>${question.questionContent}</cite></th>
+				                                                <td class="tm_question_lineheight">
+																	
+																</td>
+				                                            </tr>
+				                                        </thead>
+				                                        <tbody>
+				                                        	<tr>
+				                                            	<td colspan="2">
+				                                                        <ul>
+				                                                        	<c:forEach items="${question.selectts }" var="select">
+				                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="${select.selecttName}" 
+				                                                            data-qid="${question.questionId}" name="Q-${question.questionId}" disabled="true"/>
+																				${select.selecttName} ${select.selecttContent}</label></li>
+				                                    						</c:forEach>
+				                                                        </ul>
+				                                                </td>
+				                                            </tr>
+				                                            
+				                                        </tbody>
+				                                    </table>
+			                                    </c:forEach>
+	                                    	</c:when>
+		                                    <c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionText'}">
+		                                    	<h1>${parentQuestion.parentQuestionName }</h1>
+		                                   		<h2>共${fn:length(parentQuestion.questions)}题</h2>
+		                                    	<b>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description}</b>
+			                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
 			                                    	<thead>
 			                                        	<tr>
-			                                            	<th valign="top" class="tm_question_lineheight"><cite>${qust.questionContent}</cite></th>
-			                                                <td class="tm_question_lineheight"></td>
+			                                                <td class="tm_question_lineheight">
+															</td>
 			                                            </tr>
 			                                        </thead>
 			                                        <tbody>
 			                                        	<tr>
-			                                            	<td colspan="2">                                                    
-						                                        <ul>
-						                                        	<c:forEach items="${qust.selectts}" var="selt">
-							                                        	<li><label><input type="radio" class="validate[required] qk-choice" value="${selt.selecttName}" data-qid="1" name="Q-1">
-																		${selt.selecttName}.${selt.selecttContent}</label></li>
-						                                        	</c:forEach>			                                        
-						                                        </ul>
-			                                                </td>
-			                                            </tr>
-			                                        </tbody>
-		                                        </c:forEach>
-		                                    </table>
-                                    	</c:when>
-                                    	
-                                    	<c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionTwo' || parentQuestion.parentQuestionName=='ListeningComprehensionThree'
-                                    	 || parentQuestion.parentQuestionName=='ListeningComprehensionFive'|| parentQuestion.parentQuestionName=='ListeningComprehensionSix'}">
-                                    		<b>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.parentQuestionTitle}</b>
-											<span class="span-quick-nav" data-qid="1"></span>		
-		                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
-		                                    	<c:forEach items="${parentQuestion.questions}" var="qust">
-			                                    	<thead>
-			                                        	<tr>
-			                                            	<th valign="top" class="tm_question_lineheight"><cite>${qust.questionContent}</cite></th>
-			                                                <td class="tm_question_lineheight"></td>
-			                                            </tr>
-			                                        </thead>
-			                                        <tbody>
-			                                        	<tr>
-			                                            	<td colspan="2">                                                    
-						                                        <ul>
-						                                        	<c:forEach items="${qust.selectts}" var="selt">
-							                                        	<li><label><input type="radio" class="validate[required] qk-choice" value="${selt.selecttName}" data-qid="1" name="Q-1">
-																		${selt.selecttName}.${selt.selecttContent}</label></li>
-						                                        	</c:forEach>			                                        
-						                                        </ul>
-			                                                </td>
-			                                            </tr>
-			                                        </tbody>
-		                                        </c:forEach>
-		                                    </table>
-                                    	</c:when>
-                                    	
-                                    	<c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionText'}">
-                                    		<b>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description}</b>
-                                    		
-		                                    <span class="span-quick-nav" data-qid="12"></span>
-		
-		                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
-		                                    	<thead>
-		                                        	<tr>
-		                                                <td class="tm_question_lineheight">
-														</td>
-		                                            </tr>
-		                                        </thead>
-		                                        <tbody>
-		                                        	<tr>
-		                                            	<td colspan="2">
-			                                            	<p style="line-height:30px; font-size:16px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p><br/>
-			                                            	<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
-			                                            		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${qust.questionContent}) <input type="text" name="Q-12" data-qid="12" class="validate[required] tm_txt qk-blank">
-		                                    					<c:if test="${status.count % 4 == 0}">
-		                                    						<br/><br/>
-		                                    					</c:if>
-		                                    				</c:forEach>
-		                                    			</td>
-		                                    		</tr>
-		                                    	</tbody>
-		                                    </table>
-                                    	</c:when>
+			                                            	<td colspan="2">
+				                                            	<p style="line-height:30px; font-size:16px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p><br/>
+				                                            	<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
+				                                            	<span class="span-quick-nav" data-qid="${qust.questionId}"></span>
+				                                            		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${qust.questionContent}) <input type="text" name="Q-${qust.questionId}" data-qid="${qust.questionId}" 
+				                                            		class="validate[required] tm_txt qk-blank" disabled="true"/>
+			                                    					<c:if test="${status.count % 4 == 0}">
+			                                    						<br/><br/>
+			                                    					</c:if>
+			                                    				</c:forEach>
+			                                    			</td>
+			                                    		</tr>
+			                                    		
+			                                    	</tbody>
+			                                    </table>
+	                                   		</c:when>
+                               			</c:choose>
+                               		</c:forEach>
+                                	</div>
+								</c:when>
                                     	
                                     	<c:when test="${parentQuestion.parentQuestionName=='Writing'}">
+                                    		<h1>${parentQuestion.parentQuestionName }</h1>
+		                                   	<h2>共${fn:length(parentQuestion.questions)}题</h2>
                                     		<h3>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description }</h3>
 											<span class="span-quick-nav" data-qid="1"></span>
 		                                    ${parentQuestion.imgUrl }
@@ -338,6 +375,8 @@
                                     	</c:when>
                                     	
                                     	<c:when test="${parentQuestion.parentQuestionName=='Translation'}">
+                                    	<h1>${parentQuestion.parentQuestionName }</h1>
+		                                   	<h2>共${fn:length(parentQuestion.questions)}题</h2>
                                     		<h3>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description }</h3>
 		                                    <p style="text-indent:2em;line-height:20px; font-size:14px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p>
 		                                    <table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
@@ -359,6 +398,8 @@
                                     	</c:when>
                                     	
                                     	<c:when test="${parentQuestion.parentQuestionName=='ChooseFillInBlank'}">
+                                    	<h1>${parentQuestion.parentQuestionName }</h1>
+		                                   	<h2>共${fn:length(parentQuestion.questions)}题</h2>
 											<h3>${parentQuestion.description}</h3>
 											<span class="span-quick-nav" data-qid="17"></span>
 		
@@ -406,6 +447,8 @@
                                     	</c:when>
                                     	
                                     	<c:when test="${parentQuestion.parentQuestionName=='QuickReading'}">
+                                    	<h1>${parentQuestion.parentQuestionName }</h1>
+		                                   	<h2>共${fn:length(parentQuestion.questions)}题</h2>
                                     		<h3>${parentQuestion.description}</h3>
 											<div style="width:1000px;overflow:auto">
 												<h3 style="text-align:center;">${parentQuestion.parentQuestionTitle}</h3>
@@ -431,6 +474,8 @@
                                     	</c:when>
                                     	
                                     	<c:when test="${parentQuestion.parentQuestionName=='LastReadingOne'}">
+                                    	<h1>${parentQuestion.parentQuestionName }</h1>
+		                                   	<h2>共${fn:length(parentQuestion.questions)}题</h2>
                                     		<h3>${parentQuestion.description}</h3>
 											<div style="width:1000px;overflow:auto">
                                                	<p style="line-height:30px; font-size:16px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p>
@@ -461,6 +506,8 @@
                                     	</c:when>
                                     	
                                     	<c:otherwise>
+                                    	<h1>${parentQuestion.parentQuestionName }</h1>
+		                                   	<h2>共${fn:length(parentQuestion.questions)}题</h2>
 											<div style="width:1000px;overflow:auto">
                                                	<p style="line-height:30px; font-size:16px; margin:0 20px 0 20px;">${parentQuestion.parentQuestionArticle}</p>
                                             </div>
