@@ -67,9 +67,10 @@
                 </ul>
             </div>
     	</div>
+    	<div id="content">
         <!--面包屑-->
         <div class="breadcrumb">
-            <a href="${ctx }/">首页</a>>>关于我们
+            <a href="${ctx }/">首页</a>>><a href="${ctx}/about_us.jsp">关于我们</a>
         </div>
         <!--左侧边栏-->
          <div class="left">
@@ -112,6 +113,7 @@
                      </p>        
                  </div>   
              </div>
+		</div>
 		</div>
         <!--footer-->
        <div id="footer">
