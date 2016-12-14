@@ -65,6 +65,7 @@
 			          		<c:if test="${fn:length(quickreading.parentQuestionArticle) > 60}">
 						         ${fn:substring(quickreading.parentQuestionArticle,0,60) }...
 						     </c:if>
+						</td>
 			          	<td>
 			          <div class="button-group"> 
 			          <a class="button border-red" href="${ctx }/quickreading/delete?parentQuestionId=${quickreading.parentQuestionId }"><span class="icon-trash-o"></span> 删除</a> 

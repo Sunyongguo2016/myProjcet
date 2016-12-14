@@ -59,6 +59,7 @@
 			        	</td> 
 			          	<td><font color="#00CC99">
 			          		${listen.parentQuestionName}
+			          	</td>
 			          	<td>
 			          <div class="button-group"> 
 			          <a class="button border-red" href="${ctx }/listening/delete?parentQuestionId=${listen.parentQuestionId }"><span class="icon-trash-o"></span> 删除</a> 
