@@ -53,7 +53,15 @@
                         </div>
                         <div class="nav" id="nav">
                             <ul>
-                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
+                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)">
+									<a href="#">
+										<c:if test="${empty student.url}">
+				                            <img src="${ctx }/images/photo.jpg"/>
+										</c:if>
+										<c:if test="${!empty student.url}">
+				                            ${student.url}
+										</c:if>
+									</a>
                                     <ul>
                                         <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
                                         <li><a href="${ctx }/info/install.jsp">设置</a></li>
@@ -119,6 +127,7 @@
               <hr/>
               <ul>
                 <li><a href="${ctx }/examzx/list?parentQuestionName=Writing&examType=${examType}">写作专项练习</a></li>
+                <li><a href="${ctx }/examzx/list?parentQuestionName=ListeningComprehension&examType=${examType}">听力专项练习</a></li>
                 <li><a href="${ctx }/examzx/list?parentQuestionName=ChooseFillInBlank&examType=${examType}">十五选十专项练习</a></li>
                 <li><a href="${ctx }/examzx/list?parentQuestionName=QuickReading&examType=${examType}">快速阅读专项练习</a></li>
                 <li><a href="${ctx }/examzx/list?parentQuestionName=LastReading&examType=${examType}">阅读专项练习</a></li>

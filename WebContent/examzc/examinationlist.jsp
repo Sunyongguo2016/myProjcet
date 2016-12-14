@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>  
 <c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -54,7 +55,15 @@
                         </div>
                         <div class="nav" id="nav">
                             <ul>
-                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)">${student.url }</a>
+                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)">
+									<a href="#">
+										<c:if test="${empty student.url}">
+		                              		<img src="${ctx }/images/photo.jpg"/>
+										</c:if>
+										<c:if test="${!empty student.url}">
+		                              		${student.url}
+										</c:if>
+									</a>
                                     <ul>
                                         <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
 			                            <li><a href="${ctx }/info/install.jsp">设置</a></li>
@@ -70,17 +79,13 @@
 					<ul>
 						<li><a href="${ctx }/">网站首页</a></li>
 						<c:choose>
-                         	 <c:when test="${examType == '四级'}">
+                         	 <c:when test="${fn:contains(examType, '四级')}">
 								<li class="current"><a href="${ctx }/category?type=四级">大学英语四级</a></li>
 								<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
                          	 </c:when>
-                         	 <c:when test="${examType == '四级'}">
-      						 	 <li ><a href="${ctx }/category?type=四级">大学英语四级</a></li>
-								<li class="current"><a href="${ctx }/category?type=六级">大学英语六级</a></li>
-   							 </c:when>
                          	 <c:otherwise>
 								<li ><a href="${ctx }/category?type=四级">大学英语四级</a></li>
-								<li ><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+								<li class="current"><a href="${ctx }/category?type=六级">大学英语六级</a></li>
                          	 </c:otherwise>
                      	 </c:choose>
 						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>

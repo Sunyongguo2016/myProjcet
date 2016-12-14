@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" name="viewport" content="text/html； charset=utf-8；width=device-width" />
 <link href="${ctx }/css/header.css" type="text/css" rel="stylesheet" />
 <link href="${ctx }/css/about_us.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript"></script>
@@ -27,6 +27,13 @@
 	}
 			
 </script>
+<style>
+	img {
+　　width:600px;
+	height:400px;
+	margin:0 0 20px;
+　　}
+</style>
 </head>
 <body>
 	<!-- header-->
@@ -50,13 +57,21 @@
 				</div>
 				<div class="nav" id="nav">
 					<ul>
-						<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a
-							href="">${student.url }</a>
+						<li onmousemove="showsub(this)" onmouseout="hidesub(this)">
+							<a href="#">
+								<c:if test="${empty student.url}">
+                              		<img src="${ctx }/images/photo.jpg"/>
+								</c:if>
+								<c:if test="${!empty student.url}">
+                              		${student.url}
+								</c:if>
+							</a>
 							<ul>
 								<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
 								<li><a href="${ctx }/info/install.jsp">设置</a></li>
 								<li><a href="${ctx }/loginuser/turnOut">退出登录</a></li>
-							</ul></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -70,10 +85,10 @@
 			</ul>
 		</div>
 	</div>
+	<div id="content">	
 	<!--面包屑-->
 	<div class="breadcrumb">
-		<a href="${ctx }/">首页</a>>><a
-			href="${ctx }/notice/billboardlist">公告板</a>
+		<a href="${ctx }/">首页</a>>><a href="${ctx }/notice/billboardlist">公告板</a>
 	</div>
 	<!--左侧边栏-->
 	<div class="left">
@@ -121,6 +136,7 @@
 
 			</div>
 		</div>
+	</div>
 	</div>
 	<!--footer-->
 	<div id="footer">

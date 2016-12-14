@@ -47,7 +47,15 @@
                         </div>
                         <div class="nav" id="nav">
                             <ul>
-                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
+                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)">
+									<a href="#">
+										<c:if test="${empty student.url}">
+				                            <img src="${ctx }/images/photo.jpg"/>
+										</c:if>
+										<c:if test="${!empty student.url}">
+				                            ${student.url}
+										</c:if>
+									</a>
                                     <ul>
                                         <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
 			                            <li><a href="${ctx }/info/install.jsp">设置</a></li>
@@ -67,9 +75,10 @@
                 </ul>
             </div>
     	</div>
+    	<div id="content">
         <!--面包屑-->
         <div class="breadcrumb">
-            <a href="${ctx }/index_before.jsp">首页</a>>>关于我们
+            <a href="${ctx }/">首页</a>>><a href="${ctx}/about_us.jsp">关于我们</a>
         </div>
         <div>
         <!--左侧边栏-->
@@ -117,6 +126,7 @@
                     
                  </div>   
              </div>
+		</div>
 		</div>
 		</div>
         <!--footer-->

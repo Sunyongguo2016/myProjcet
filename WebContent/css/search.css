@@ -18,16 +18,9 @@
 }
 .menu{
 	float: left;
-	width: 700px;
+	width: 670px;
 	height: 50px;
 	background-color: #20B2AA;
-}
-.menu ul{
-	width:700px;
-	height:40px;
-	background-color: #20B2AA;
-	position: relative;
-	margin: 0 auto; 
 }
 .menu ul li{
 	float: left;
@@ -51,6 +44,7 @@
 #search{
 	float: left;
 	margin-top: 10px;
+	position:relative;
 }
 #search img{
 	float: right;
@@ -107,6 +101,7 @@
 	float: left;
 	margin-right: 0px;
 	margin-top: 0px;
+	width:20px;
 } 
 .nav ul{
 	float: left; 

@@ -11,7 +11,7 @@
     <script type="text/javascript" src="${ctx }/js/jquery-1.3.1.js"/></script>
     <script src="${ctx }/js/header.js"></script>
     <script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.all.min.js"> </script>
+	<script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/ueditor.all.min.js"> </script>
     <!--验证码-->
     <script src="${ctx }/js/yanzheng.js"></script>
     <script src="${ctx }/js/install.js"></script>
@@ -59,7 +59,15 @@
 			</div>
 			<div class="nav" id="nav">
 				<ul>
-					<li onmousemove="showsub(this)" onmouseout="hidesub(this)"><a href="#">${student.url }</a>
+					<li onmousemove="showsub(this)" onmouseout="hidesub(this)">
+						<a href="#">
+							<c:if test="${empty student.url}">
+	                            <img src="${ctx }/images/photo.jpg"/>
+							</c:if>
+							<c:if test="${!empty student.url}">
+	                            ${student.url}
+							</c:if>
+						</a>
 						<ul>
 							<li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
                             <li><a href="${ctx }/info/install.jsp">设置</a></li>

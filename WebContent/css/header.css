@@ -54,12 +54,12 @@ a:hover{
 .after_login{
 	display:none;
 	position: absolute;
-	right:30px;
-	width:270px;
+	right:10px;
+	width:220px;
 }
 #username{
 	float: left;
-	margin: 20px 0px 0px 90px;
+	margin: 20px 0px 0px 0px;
 }
 #username p{
 	margin-top: 5px;
