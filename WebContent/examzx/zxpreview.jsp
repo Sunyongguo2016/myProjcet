@@ -170,7 +170,7 @@
 		<div class="tm_container">
 			<ul class="tm_breadcrumb">
 				<li><a href="${ctx }/">首页</a> <span class="divider">&gt;</span></li>
-				<li><a href="${ctx }/examzx/list">专项训练</a> <span class="divider">&gt;</span></li>
+				<li><a href="${ctx }/examzx/list?examType=${examType}">专项训练</a> <span class="divider">&gt;</span></li>
 				<li class="active">${parentQuestion.parentQuestionName}</li>
 			</ul>
 		</div>

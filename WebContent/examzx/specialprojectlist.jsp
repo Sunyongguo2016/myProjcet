@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>  
 <c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -97,7 +98,7 @@
 					<ul>
 						<li><a href="${ctx }/">网站首页</a></li>
 						<c:choose>
-                         	 <c:when test="${examType == '四级'}">
+                         	 <c:when test="${fn:contains(examType,'四级')}">
 								<li class="current"><a href="${ctx }/category?type=四级">大学英语四级</a></li>
 								<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
                          	 </c:when>
@@ -113,7 +114,7 @@
         <!--面包屑-->
         <div class="breadcrumb">
             <a href="${ctx }/">首页 </a>>>
-            <a href="${ctx }/category?Type=${examType}">${examType} </a>>> 专项练习
+            <a href="${ctx }/category?type=${examType}">${examType} </a>>> 专项练习
         </div>
         <!--左侧边栏-->
         <div class="left">

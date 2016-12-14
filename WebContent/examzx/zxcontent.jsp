@@ -197,7 +197,7 @@
 		<div class="tm_container">
 			<ul class="tm_breadcrumb">
 				<li><a href="${ctx }/">首页</a> <span class="divider">&gt;</span></li>
-				<li><a href="${ctx }/examzx/list">专项训练</a> <span class="divider">&gt;</span></li>
+				<li><a href="${ctx }/examzx/list?examType=${examType}">专项训练</a> <span class="divider">&gt;</span></li>
 				<li class="active">${parentQuestion.parentQuestionName}</li>
 			</ul>
 		</div>
@@ -581,8 +581,6 @@
 			<div id="div_processor_timer" style="margin-top:5px;"><span class="tm_label">0:20:00</span></div>
 			<div id="div_processor_fastto"></div>
 			<div>
-				该大题您已使用：
-				<div style="margin-top:5px;"><span  class="tm_label">0:19:29</span></div>
 			</div>
 			<div id="div_processor_ops">
 				<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserpaper.submitpaper();">提交</button>
