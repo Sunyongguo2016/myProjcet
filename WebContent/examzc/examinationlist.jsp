@@ -79,17 +79,13 @@
 					<ul>
 						<li><a href="${ctx }/">网站首页</a></li>
 						<c:choose>
-                         	 <c:when test="${fn:contains(name, searchString)}">
+                         	 <c:when test="${fn:contains(examType, '四级')}">
 								<li class="current"><a href="${ctx }/category?type=四级">大学英语四级</a></li>
 								<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
                          	 </c:when>
-                         	 <c:when test="${examType == '四级'}">
-      						 	 <li ><a href="${ctx }/category?type=四级">大学英语四级</a></li>
-								<li class="current"><a href="${ctx }/category?type=六级">大学英语六级</a></li>
-   							 </c:when>
                          	 <c:otherwise>
 								<li ><a href="${ctx }/category?type=四级">大学英语四级</a></li>
-								<li ><a href="${ctx }/category?type=六级">大学英语六级</a></li>
+								<li class="current"><a href="${ctx }/category?type=六级">大学英语六级</a></li>
                          	 </c:otherwise>
                      	 </c:choose>
 						<li><a href="${ctx }/about_us.jsp">关于我们</a></li>

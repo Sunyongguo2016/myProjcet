@@ -127,6 +127,7 @@
               <hr/>
               <ul>
                 <li><a href="${ctx }/examzx/list?parentQuestionName=Writing&examType=${examType}">写作专项练习</a></li>
+                <li><a href="${ctx }/examzx/list?parentQuestionName=ListeningComprehension&examType=${examType}">听力专项练习</a></li>
                 <li><a href="${ctx }/examzx/list?parentQuestionName=ChooseFillInBlank&examType=${examType}">十五选十专项练习</a></li>
                 <li><a href="${ctx }/examzx/list?parentQuestionName=QuickReading&examType=${examType}">快速阅读专项练习</a></li>
                 <li><a href="${ctx }/examzx/list?parentQuestionName=LastReading&examType=${examType}">阅读专项练习</a></li>
