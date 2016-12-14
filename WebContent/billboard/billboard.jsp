@@ -27,6 +27,13 @@
 	}
 			
 </script>
+<style>
+	img {
+　　width:600px;
+	height:400px;
+	margin:0 0 20px;
+　　}
+</style>
 </head>
 <body>
 	<!-- header-->
@@ -81,8 +88,7 @@
 	<div id="content">	
 	<!--面包屑-->
 	<div class="breadcrumb">
-		<a href="${ctx }/">首页</a>>><a
-			href="${ctx }/notice/billboardlist">公告板</a>
+		<a href="${ctx }/">首页</a>>><a href="${ctx }/notice/billboardlist">公告板</a>
 	</div>
 	<!--左侧边栏-->
 	<div class="left">
