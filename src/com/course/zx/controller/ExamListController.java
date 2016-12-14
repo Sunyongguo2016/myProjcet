@@ -74,8 +74,9 @@ public class ExamListController {
 		
 		ParentQuestion parentQuestion = new ParentQuestion();
 		parentQuestion = this.parentQuestionServiceImpl.getParentQuestion(parentQuestionId);
+		String examType = parentQuestion.getExam().getExamType();
 		request.setAttribute("parentQuestion", parentQuestion);
-
+		request.setAttribute("examType", examType);
 		return "examzx/zxpreview";
 	}
 	
@@ -104,6 +105,7 @@ public class ExamListController {
 				return "login_use";
 			}
 			Exam exam = parentQuestion.getExam();
+			String examType = exam.getExamType();
 			System.out.println("专项练习听力对应试卷名："+exam.getExamName());
 			String examurl1[] = exam.getExamUrl().split("file/");
 			String examurl2[] = examurl1[1].split("mp3");
@@ -111,6 +113,7 @@ public class ExamListController {
 			session.setAttribute("url", url);
 			//不要返回exam 需要返回parentquestion
 			request.setAttribute("parentQuestion", parentQuestion);
+			request.setAttribute("examType", examType);
 		}
 		return "examzx/zxcontent";
 	}
