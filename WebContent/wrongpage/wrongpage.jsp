@@ -103,7 +103,6 @@
 	<form action="${ctx }/error/comment?examId=${exId }&parentQuestionId=${pque.parentQuestionId }" method="post">
     <div class="content">
 			<div id="elButton">
-					<h2><div id="jumpx" style="color:#33ff33"></div></h2>
 				    <div id="r32">
 	        		<p>变量名等多种属性的具体规定。当用户输入满足input元素的规定时，则接收输入信息，并赋给指定的变量灵活进行相应的操作、处理；否则，就通过浏览器给出具体的处理意见，并进行是单个输入处理或变量初始化操作</p>
 	        		<br/>
@@ -141,16 +140,19 @@
           <br>
          <c:if test="${submitt=='on' }">
           <div name="r2l" id="r2la">
-          
+          <ul>
           <c:forEach items="${anws }" var="anw">
           
           	<c:if test="${anw.key ==qs.questionId }">
-          		<span id="r2l1">您的答案：${anw.value }</span>
+          		
+          		<li id="r2l1">您的答案：${anw.value }</li>
+          		
           	</c:if>
           </c:forEach>
           
-          	<span id="r2l1">正确答案：${qs.questionAnswer }</span>
-          	<span id="r2l2">解析：${qs.questionExplain }</span>
+          	<li id="r2l1">正确答案：${qs.questionAnswer }</li>
+          	<li id="r2l2">解析：${qs.questionExplain }</li>
+          </ul>
           </div>
          </c:if>
       </div>

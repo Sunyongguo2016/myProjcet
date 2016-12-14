@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="${ctx }/css/header.css" type="text/css" rel="stylesheet" />
-<link href="${ctx }/css/about_us.css" type="text/css" rel="stylesheet" />
+<link href="${ctx }/css/about_us2.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript"></script>
 <script type="text/javascript" src="${ctx }/js/jquery-1.3.1.js" /></script>
 <script src="${ctx }/js/index.js"></script>
