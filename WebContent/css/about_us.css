@@ -1,9 +1,9 @@
-ï»¿*{
+*{
 	margin: 0;
 	padding: 0;
 	list-style: none;
 	text-decoration: none;
-	font-family: "å®‹ä½“";
+	font-family: "ËÎÌå";
 }
 a {
 	color:#000000;
@@ -14,14 +14,14 @@ a {
 	height:60%;
 	background-color:#fff;
 }
-/*é¢åŒ…å±‘*/
+/*Ãæ°üĞ¼*/
 .breadcrumb {
 	color:#000000;
 	float:left;
 	font-size:1.4em;
 	margin:2% 0 0 20%;
 }
-/*å·¦ä¾§*/
+/*×ó²à*/
 .left {
     width:21%;
     float:left;
@@ -56,9 +56,9 @@ a {
     background-color:#20B2AA;
 }
 
-/*å³ä¾§*/
+/*ÓÒ²à*/
 .right {
-    width:70%;
+    width:62%;
     float: left;
     background-color: #FFFFFF;
     margin:-23% 0 0 33%;
@@ -96,16 +96,17 @@ a {
     position: absolute;
     right: 0px;
 }
-/*åº•éƒ¨footer*/
+/*µ×²¿footer*/
 #footer{
-	width:100%;
+	width:98%;
 	height:20%;
 	background-color:#20B2AA;
 	text-align: center;
 	color: #000;
 	padding:10px 10px;
 	color: #fff;
-	margin:16% 0 0 0;
+	margin:10% 0 0 0;
+	overflow:hidden;
 }
 #footer a{
 	color: #fff;
