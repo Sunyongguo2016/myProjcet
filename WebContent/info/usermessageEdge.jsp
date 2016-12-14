@@ -54,17 +54,17 @@
 			<form action = "${ctx }/loginuser/setinfo" method = "post">
 			  	<div class="xingqv"><span>兴趣爱好：</span></div>
 			  	<div class="interest">
-			  	 	<textarea rows="8" cols="50" name = "hobby"></textarea>
+			  	 	<textarea rows="8" cols="50" name = "hobby" ></textarea>
 			  	</div>
 				<div class="suozaidi"><span>所在地：</span></div>
 			  	<div class="address">
-			  		<input type="text" value="" name = "location">
+			  		<input type="text" value="" name = "location" >
 			  	</div>
 				<div class="people">
 					<span>个人介绍：</span>
 				</div>
 			  	<div class="message">
-			  		<textarea rows="10" cols="50" name = "introduce"></textarea >
+			  		<textarea rows="10" cols="50" name = "introduce" ></textarea >
 			  	</div>
 			  	<input type="submit" class="button" value="提交" />
 			</form>
