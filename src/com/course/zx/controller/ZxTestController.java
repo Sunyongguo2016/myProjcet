@@ -1,7 +1,9 @@
 package com.course.zx.controller;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -64,18 +66,37 @@ public class ZxTestController {
 		//通过studentId获取StudentInfo对象
 		int studentId = (int) session.getAttribute("stuId");
 		StudentInfo studentInfo = studentInfoServiceImpl.getStudentInfo(studentId);
-//		Set<Score> scores = studentInfo.getScores();
-//		Iterator<Score> s = scores.iterator();
-//		Score sc = null;
-//		while(s.hasNext()){
-//			sc = s.next();
-//			if(sc.getExam().getExamId()==examId){
-//				//由于级联关系,many方无法直接删除,需要解除与one方的关联
-//				sc.getStudentInfo().getScores().remove(sc);
-//				sc.setStudentInfo(null);
-//				this.scoreServiceImpl.dropScore(sc.getId());
-//			}
-//		}
+		
+		Set<Score> scores = studentInfo.getScores();
+		Iterator<Score> s = scores.iterator();
+		Score sc = null;
+		while(s.hasNext()){
+			sc = s.next();
+			if(sc.getParentQuestion().getParentQuestionId()==parentQuestionId){
+				//由于级联关系,many方无法直接删除,需要解除与one方的关联
+				//先s.remove() 才可以删除
+				s.remove();
+				sc.getStudentInfo().getScores().remove(sc);
+				sc.setStudentInfo(null);
+				this.scoreServiceImpl.dropScore(sc.getId());
+			}
+		}
+		
+		Set<Error> errors = studentInfo.getErrors();
+		Iterator<Error> its = errors.iterator();
+		Error error = null;
+		while(its.hasNext()){
+			error = its.next();
+			if(error.getParentQuestion().getParentQuestionId()==parentQuestionId){
+				//由于级联关系,many方无法直接删除,需要解除与one方的关联
+				//先it.remove() 才可以删除
+				its.remove();
+				error.getStudentInfo().getErrors().remove(error);
+				error.setStudentInfo(null);
+				this.errorServiceImpl.dropError(error.getErrorId());
+			}
+		}
+		
 		
 		//通过Id获取ParentQuestion对象
 		ParentQuestion parentQuestion = parentQuestionServiceImpl.getParentQuestion(parentQuestionId);
@@ -88,6 +109,7 @@ public class ZxTestController {
 		String name = null;
 		List<Question> questions = null;
 		Question question = null;
+		Map<Integer,String> an = new HashMap<Integer,String>();
 		
 		
 		if(!(parentQuestion.getParentQuestionName().equals("Writing")
@@ -102,6 +124,7 @@ public class ZxTestController {
 				name = "Q-"+question.getQuestionId();
 				System.out.println("name:"+name);
 				daan = request.getParameter(name);
+				an.put(question.getQuestionId(), daan);
 				System.out.println("daan:"+daan);
 				System.out.println("true or false:"+daan.equals(answer));
 				
@@ -124,6 +147,7 @@ public class ZxTestController {
 		request.setAttribute("mark", mark);
 		request.setAttribute("tested", "on");
 		request.setAttribute("parentQuestion", parentQuestion);
+		request.setAttribute("an", an);
 		
 		return "examzx/zxpreview";
 	}
@@ -173,6 +197,7 @@ public class ZxTestController {
 		score.setQuestion(question);
 		score.setScore(markScore);
 		score.setStudentInfo(studentInfo);
+		studentInfo.getScores().add(score);
 		//存到Score表中
 		this.scoreServiceImpl.addScore(score);
 	}
@@ -193,6 +218,7 @@ public class ZxTestController {
 		error.setParentQuestion(parentQuestion);
 		error.setQuestion(question);
 		error.setStudentInfo(studentInfo);
+		studentInfo.getErrors().add(error);
 		//存到Error表中
 		this.errorServiceImpl.addError(error);
 	}

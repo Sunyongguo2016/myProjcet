@@ -55,7 +55,13 @@
                         </div>
                         <div class="nav" id="nav">
                             <ul>
-                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)">${student.url }
+                                <li onmousemove="showsub(this)" onmouseout="hidesub(this)">
+                               		<c:if test="${empty student.url}">
+                               			<img src="${ctx }/images/photo.jpg"/>
+									</c:if>
+									<c:if test="${!empty student.url}">
+                               			${student.url}
+									</c:if>
                                     <ul>
                                         <li><a href="${ctx }/info/usermessage.jsp">个人信息</a></li>
                                         <li><a href="${ctx }/info/install.jsp">设置</a></li>
