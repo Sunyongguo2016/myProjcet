@@ -1,6 +1,7 @@
 package com.course.error.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -52,9 +53,7 @@ public class ErrorController {
 		}
 		//获取当前登录的学生Id
 		int stuId = (int)session.getAttribute("stuId");
-		
-		System.out.println(stuId);
-		System.out.println("error--controller:"+stuId);
+	
 		Page<Error> page;
 		if(searchParam == null || "".equals(searchParam)){
 			if(isCollect == 1){
@@ -62,15 +61,35 @@ public class ErrorController {
 			}else{
 				request.setAttribute("isCol", 0);
 			}
-			page = this.errorServiceImpl.errorCollect(pageNum, 5, isCollect, stuId, null);
+			page = this.errorServiceImpl.errorCollect(pageNum, 10, isCollect, stuId, null);
 		}else{
 			try {
 				 searchParam = new String(searchParam.getBytes("ISO8859_1"), "UTF-8");
 			} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
 			}
-			page = this.errorServiceImpl.errorCollect(pageNum, 5, isCollect, stuId, new Object[]{searchParam});
+			page = this.errorServiceImpl.errorCollect(pageNum, 10, isCollect, stuId, new Object[]{searchParam});
 		} 
+//		//如何Page中的错题列已存在则不重复展示
+//		List<Error> lpage = new ArrayList<Error>();
+//		List<Error> filterPage = new ArrayList<Error>();
+//		
+//		lpage = page.getList();
+//		filterPage.add(lpage.get(0));
+//		for(int i = 0;i<lpage.size();i++){
+//			int count = 0;//记录错题记录是否已存在
+//			for(int j = 0;j<filterPage.size();j++){
+//				if(lpage.get(i).getExam().getExamName().equals(filterPage.get(j).getExam().getExamName()) &&
+//						lpage.get(i).getParentQuestion().getParentQuestionName().equals(filterPage.get(j).getParentQuestion().getParentQuestionName())){
+//					count++;
+//					continue;
+//				}
+//			}
+//			if(count==0){
+//				filterPage.add(lpage.get(i));
+//			}
+//		}
+//		page.setList(filterPage);
 		
 		request.setAttribute("page", page);
 		request.setAttribute("searchParam", searchParam);

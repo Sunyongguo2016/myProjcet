@@ -59,7 +59,7 @@ public class LoginController {
 				session.setAttribute("stuId", lu.getStudentId());
 				session.setAttribute("student", lu);
 				session.setAttribute("logined", "on");
-				return "index_before";
+				return "redirect:/";
 			} else if("manager".equals(role)){
 				session.setAttribute("manager", lu);
 				return "index";
@@ -118,9 +118,10 @@ public class LoginController {
 		return "info/usermessageEdge";
 	}
 	@RequestMapping(value = "setinfo", method = RequestMethod.POST)
-	public String setInfo(@RequestParam("hobby") String hobby, @RequestParam("location") String location, 
+	public String setInfo(@RequestParam(name = "hobby") String hobby, @RequestParam("location") String location, 
 			@RequestParam("introduce") String introduce, HttpSession session){
 		int sId = (int) session.getAttribute("stuId");
+		
 		StudentInfo stu = this.loginServiceImpl.getStudentInfo(sId);
 		stu.setHobby(hobby);
 		stu.setLocation(location);
@@ -170,7 +171,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "resetPwd", method = RequestMethod.POST)
 	public String resetPwd(HttpSession session, @RequestParam("oldPwd") String opwd,
-			@RequestParam("password") String pwd, @RequestParam(name="content",defaultValue="") String img,
+			@RequestParam("password") String pwd, @RequestParam(name="content") String img,
 			HttpServletRequest request, HttpServletResponse response){
 		int sId = (int) session.getAttribute("stuId");
 		StudentInfo stu = this.loginServiceImpl.getStudentInfo(sId);
@@ -181,7 +182,7 @@ public class LoginController {
 			stu.setUrl(img);
 			this.loginServiceImpl.editStudentInfo(stu);
 			
-			return "index_before";
+			return "redirect:/";
 		} else {
 			System.out.println("old is wrong");
 		}
@@ -199,7 +200,7 @@ public class LoginController {
 	@RequestMapping(value = "turnOut")
 	public String resetPwd(HttpSession session){
 		session.setAttribute("logined", "");
-		return "index_before";
+		return "redirect:/";
 	}
 
 }

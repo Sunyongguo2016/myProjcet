@@ -65,7 +65,7 @@
 					</div>
 					<div class="field">
 					    <!-- 加载编辑器的容器 -->
-			    	<script id="container" name="examUrl" type="text/plain">
+			    	<script id="container" name="examUrl" type="text/plain" value="${ex.examUrl }">
         				
    					 </script>
 					<!-- 实例化编辑器 -->
