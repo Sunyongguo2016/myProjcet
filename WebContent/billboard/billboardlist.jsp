@@ -117,6 +117,7 @@
 					
 					 <c:forEach items="${page.list }" var="notice">
 						 <a href="${ctx }/notice/billboard?noticeId=${notice.noticeId}"><li>${notice.noticeTitle}</li></a>
+						<hr style="border: 1px dashed grey;" />
 					</c:forEach>
 				</ul>
 				<p style="line-height: 1.5em"></p>
