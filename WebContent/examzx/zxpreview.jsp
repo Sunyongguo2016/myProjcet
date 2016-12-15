@@ -245,7 +245,7 @@
 						                                            		<ul>
 						                                            			<c:forEach items="${an}" var="an">
 							                                            			<c:if test="${an.key ==question.questionId }">
-							                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+							                                            			<li><label style="color:blue;"><b>您的答案：</b>${an.value}</label></li>
 							                                            			</c:if>
 						                                            			</c:forEach>
 						                                            			<li><label style="color:red;"><b>答案：</b>${question.questionAnswer}</label></li>
@@ -289,20 +289,20 @@
 				                                                </td>
 				                                            </tr>
 				                                            <c:if test="${tested=='on'}">
-				                                            <tr class="after_tested">
-				                                            	<td colspan="2">
-				                                            		<ul>
-				                                            			<c:forEach items="${an}" var="an">
-				                                            			<c:if test="${an.key ==question.questionId }">
-				                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
-				                                            			</c:if>
-				                                            			</c:forEach>
-				                                            			<li><label style="color:red;"><b>答案：</b>${question.questionAnswer}</label></li>
-				                                            			<li><label><b>解析：</b>${question.questionExplain}</label></li>
-				                                            		</ul>
-				                                            	</td>
-				                                            </tr>
-				                                            </c:if>
+						                                            <tr class="after_tested">
+						                                            	<td colspan="2">
+						                                            		<ul>
+						                                            			<c:forEach items="${an}" var="an">
+							                                            			<c:if test="${an.key ==question.questionId }">
+							                                            			<li><label style="color:blue;"><b>您的答案：</b>${an.value}</label></li>
+							                                            			</c:if>
+						                                            			</c:forEach>
+						                                            			<li><label style="color:red;"><b>答案：</b>${question.questionAnswer}</label></li>
+						                                            			<li><label><b>解析：</b>${question.questionExplain}</label></li>
+						                                            		</ul>
+						                                            	</td>
+						                                            </tr>
+					                                            </c:if>
 				                                        </tbody>
 				                                    </table>
 			                                    </c:forEach>
@@ -333,23 +333,22 @@
 			                                    			</td>
 			                                    		</tr>
 			                                    		<c:if test="${tested=='on'}">
-			                                    		<tr class="after_tested">
-			                                            	<td colspan="2">
-			                                            		<ul>
-			                                            			<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
-			                                            			
-			                                            			<li><label>(${qust.questionContent})</label></li>
-			                                            			<c:forEach items="${an}" var="an">
-			                                            			<c:if test="${an.key ==qust.questionId }">
-			                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
-			                                            			</c:if>
-			                                            			</c:forEach>
-			                                            			<li><label style="color:red;"><b>答案：</b>${qust.questionAnswer}</label></li>
-			                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
-			                                            			</c:forEach>
-			                                            		</ul>
-			                                            	</td>
-			                                            </tr>
+				                                    		<tr class="after_tested">
+				                                            	<td colspan="2">
+				                                            		<ul>
+				                                            			<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
+					                                            			<li><label>(${qust.questionContent})</label></li>
+					                                            			<c:forEach items="${an}" var="an">
+						                                            			<c:if test="${an.key ==qust.questionId }">
+						                                            			<li><label style="color:blue;"><b>您的答案：</b>${an.value}</label></li>
+						                                            			</c:if>
+					                                            			</c:forEach>
+					                                            			<li><label style="color:red;"><b>答案：</b>${qust.questionAnswer}</label></li>
+					                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
+				                                            			</c:forEach>
+				                                            		</ul>
+				                                            	</td>
+				                                            </tr>
 			                                            </c:if>
 			                                    	</tbody>
 			                                    </table>
@@ -563,15 +562,17 @@
 						                                        </ul>
 			                                                </td>
 			                                            </tr>
-			                                            <c:if test="${tested == 'on'}">
+			                                           <c:if test="${tested=='on'}">
 				                                            <tr class="after_tested">
 				                                            	<td colspan="2">
 				                                            		<ul>
-				                                            			<c:forEach items="${qust.selectts}" var="selt">
-								                                        	<li><label><input type="radio" class="validate[required] qk-choice" value="${selt.selecttName}" 
-								                                        	data-qid="${qust.questionId}" name="Q-${qust.questionId}" disabled="true"/>
-																			${selt.selecttName}) ${selt.selecttContent}</label></li>
-						                                        		</c:forEach>
+				                                            			<c:forEach items="${an}" var="an">
+				                                            			<c:if test="${an.key ==qust.questionId }">
+				                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+				                                            			</c:if>
+				                                            			</c:forEach>
+				                                            			<li><label style="color:red;"><b>答案：</b>${qust.questionAnswer}</label></li>
+				                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
 				                                            		</ul>
 				                                            	</td>
 				                                            </tr>
@@ -607,15 +608,17 @@
 						                                        </ul>
 			                                                </td>
 			                                            </tr>
-			                                            <c:if test="${tested == 'on'}">
-				                                             <tr class="after_tested">
+			                                            <c:if test="${tested=='on'}">
+				                                            <tr class="after_tested">
 				                                            	<td colspan="2">
 				                                            		<ul>
-				                                            			<c:forEach items="${qust.selectts}" var="selt">
-								                                        	<li><label><input type="radio" class="validate[required] qk-choice" value="${selt.selecttName}" 
-								                                        	data-qid="${qust.questionId}" name="Q-${qust.questionId}" disabled="true"/>
-																			${selt.selecttName}) ${selt.selecttContent}</label></li>
-						                                        		</c:forEach>
+				                                            			<c:forEach items="${an}" var="an">
+				                                            			<c:if test="${an.key ==qust.questionId }">
+				                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+				                                            			</c:if>
+				                                            			</c:forEach>
+				                                            			<li><label style="color:red;"><b>答案：</b>${qust.questionAnswer}</label></li>
+				                                            			<li><label><b>解析：</b>${qust.questionExplain}</label></li>
 				                                            		</ul>
 				                                            	</td>
 				                                            </tr>
