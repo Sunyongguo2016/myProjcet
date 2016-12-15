@@ -129,13 +129,7 @@
       <div id="r2">
           <p><span>${qs.questionContent } </span></p>
           <input type="text" name="ques${qs.questionId }"/>
-          <c:forEach items="${qs.selectts }" var="se">
-          <div id="r2l"> 
-
-          <p><span> <input type="radio" name="q-${qs.questionId }"> ${se.selecttName }) ${se.selecttContent }  </span></p>
-		
-          </div>
-          </c:forEach>
+          
           <%--答案及解析 --%>
           <br>
          <c:if test="${submitt=='on' }">
