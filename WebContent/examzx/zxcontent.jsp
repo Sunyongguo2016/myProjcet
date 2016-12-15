@@ -269,7 +269,7 @@
 					                                                        <ul>
 					                                                        	<c:forEach items="${question.selectts }" var="select">
 					                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="${select.selecttName}" 
-					                                                            data-qid="${question.questionId}" name="Q-${question.questionId}" disabled="true"/>
+					                                                            data-qid="${question.questionId}" name="Q-${question.questionId}" />
 																					${select.selecttName} ${select.selecttContent}</label></li>
 					                                    						</c:forEach>
 					                                                        </ul>
@@ -304,7 +304,7 @@
 				                                                        <ul>
 				                                                        	<c:forEach items="${question.selectts }" var="select">
 				                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="${select.selecttName}" 
-				                                                            data-qid="${question.questionId}" name="Q-${question.questionId}" disabled="true"/>
+				                                                            data-qid="${question.questionId}" name="Q-${question.questionId}" />
 																				${select.selecttName} ${select.selecttContent}</label></li>
 				                                    						</c:forEach>
 				                                                        </ul>
@@ -333,7 +333,7 @@
 				                                            	<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
 				                                            	<span class="span-quick-nav" data-qid="${qust.questionId}"></span>
 				                                            		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${qust.questionContent}) <input type="text" name="Q-${qust.questionId}" data-qid="${qust.questionId}" 
-				                                            		class="validate[required] tm_txt qk-blank" disabled="true"/>
+				                                            		class="validate[required] tm_txt qk-blank"/>
 			                                    					<c:if test="${status.count % 4 == 0}">
 			                                    						<br/><br/>
 			                                    					</c:if>
