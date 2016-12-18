@@ -32,7 +32,10 @@ public class LoginController {
 	 * 
 	 */
 	@RequestMapping(value = "regist", method = RequestMethod.POST)
-	public String regist(@RequestParam("username") String name, @RequestParam("password") String password, @RequestParam("content") String img, HttpSession session){
+	public String regist(@RequestParam("username") String name,
+			@RequestParam("password") String password, 
+			@RequestParam(value = "content", required = false) String img ,
+			HttpSession session){
 		this.loginServiceImpl.regist(name, password,img);
 		return "redirect:/login_use.jsp";
 	}
