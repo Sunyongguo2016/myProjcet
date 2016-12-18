@@ -95,7 +95,7 @@
 			</div>
 			<div class="menu">
 				<ul>
-					<li><a href="${ctx }/">网站首页</a></li>
+					<li class="current"><a href="${ctx }/">网站首页</a></li>
 					<li><a href="${ctx }/category?type=四级">大学英语四级</a></li>
 					<li><a href="${ctx }/category?type=六级">大学英语六级</a></li>
 					<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
@@ -181,15 +181,17 @@
 									<br>
 									<c:if test="${submitt == 'on' }">
 										<div name="r2l" id="r2la">
-
+											<ul>
 											<c:forEach items="${anws }" var="anw">
 
 												<c:if test="${anw.key == qs.questionId }">
-													<span id="r2l1">您的答案：${anw.value }</span>
+													<li id="r2l1">您的答案：${anw.value }</li>
 												</c:if>
 											</c:forEach>
-											<span id="r2l1">正确答案：${qs.questionAnswer }</span> <span
-												id="r2l2">解析：${qs.questionExplain }</span>
+											
+											<li id="r2l1">正确答案：${qs.questionAnswer }</li> 
+											<li id="r2l2">解析：${qs.questionExplain }</li>
+											</ul>
 										</div>
 									</c:if>
 								</div>
@@ -205,17 +207,25 @@
 	                                    ||pque.parentQuestionName=='ListeningComprehensionFive'
 	                                    ||pque.parentQuestionName=='ListeningComprehensionSix'
 	                                    ||pque.parentQuestionName=='ListeningComprehensionText'}">
+	                                  
+	                         <center>
+                            <div>
+								<iframe scrolling="auto" rameborder="0" src="${ctx }/AudioPlayer/index.jsp"
+								name="right" width="500px" height="170px" frameborder="0"></iframe>
+							</div>
+							</center>
+	                                    
 							<c:forEach items="${pque.exam.parentQuestions }"
 								var="parentQuestion">
 								<c:choose>
 									<c:when
 										test="${parentQuestion.parentQuestionName=='ListeningComprehensionOne'
                                     ||parentQuestion.parentQuestionName=='ListeningComprehensionFour'}">
-										<h1>${parentQuestion.parentQuestionName }</h1>
-										<h2>共${fn:length(parentQuestion.questions)}题</h2>
-										<h3>${parentQuestion.description}</h3>
 										<div id="r1">
-											<p>${parentQuestion.parentQuestionTitle } </p>
+											<h2>${parentQuestion.parentQuestionName }</h2>
+											<h5>共${fn:length(parentQuestion.questions)}题</h5>
+											<p>${parentQuestion.description}</p>
+											<p>${parentQuestion.parentQuestionTitle }</p>
 										</div>
 										<c:forEach items="${parentQuestion.questions }" var="qs">
 											<div id="r2">
@@ -236,15 +246,16 @@
 												<br>
 												<c:if test="${submitt == 'on' }">
 													<div name="r2l" id="r2la">
-
+														<ul>
 														<c:forEach items="${anws }" var="anw">
 
 															<c:if test="${anw.key == qs.questionId }">
-																<span id="r2l1">您的答案：${anw.value }</span>
+																<li id="r2l1">您的答案：${anw.value }</li>
 															</c:if>
 														</c:forEach>
-														<span id="r2l1">正确答案：${qs.questionAnswer }</span> <span
-															id="r2l2">解析：${qs.questionExplain }</span>
+														<li id="r2l1">正确答案：${qs.questionAnswer }</li>
+														 <li id="r2l2">解析：${qs.questionExplain }</li>
+														 </ul>
 													</div>
 												</c:if>
 											</div>
@@ -256,9 +267,13 @@
 		                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionThree'
 		                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionFive'
 		                                    ||parentQuestion.parentQuestionName=='ListeningComprehensionSix'}">
-										<h1>${parentQuestion.parentQuestionName }</h1>
-										<h2>共${fn:length(parentQuestion.questions)}题</h2>
-										<h3>${parentQuestion.parentQuestionTitle }</h3>
+										
+										<div id="r1">
+											<h2>${parentQuestion.parentQuestionName }</h2>
+											<h5>共${fn:length(parentQuestion.questions)}题</h5>
+											<p>${parentQuestion.description}</p>
+											<p>${parentQuestion.parentQuestionTitle }</p>
+										</div>
 										
 											<c:forEach items="${parentQuestion.questions }" var="qs">
 												
@@ -281,14 +296,15 @@
 													<c:if test="${submitt == 'on' }">
 														<div name="r2l" id="r2la">
 
+															<ul>
 															<c:forEach items="${anws }" var="anw">
-
 																<c:if test="${anw.key == qs.questionId }">
-																	<span id="r2l1">您的答案：${anw.value }</span>
+																	<li id="r2l1">您的答案：${anw.value }</li>
 																</c:if>
 															</c:forEach>
-															<span id="r2l1">正确答案：${qs.questionAnswer }</span> <span
-																id="r2l2">解析：${qs.questionExplain }</span>
+															<li id="r2l1">正确答案：${qs.questionAnswer }</li> 
+															<li id="r2l2">解析：${qs.questionExplain }</li>
+															</ul>
 														</div>
 													</c:if>
 												</div>
@@ -299,9 +315,13 @@
 									
 									
 									 <c:when test="${parentQuestion.parentQuestionName=='ListeningComprehensionText'}">
-		                                    	<h1>${parentQuestion.parentQuestionName }</h1>
-		                                   		<h2>共${fn:length(parentQuestion.questions)}题</h2>
-		                                    	<b>&nbsp;&nbsp;&nbsp;&nbsp;${parentQuestion.description}</b>
+		                                    <div id="r1">
+												<h2>${parentQuestion.parentQuestionName }</h2>
+												<h5>共${fn:length(parentQuestion.questions)}题</h5>
+												<p>${parentQuestion.description}</p>
+												<p>${parentQuestion.parentQuestionTitle }</p>
+											</div>	
+		                                    	
 		                              			<table border="0" cellpadding="0" cellspacing="0" class="tm_paper_question" style="table-layout:fixed;">
 			                                    	<thead>
 			                                        	<tr>
