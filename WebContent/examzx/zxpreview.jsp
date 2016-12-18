@@ -189,9 +189,6 @@
 									试卷信息
 								</h2>
                                 <h2>
-									<b>考试时长</b> : 20 分钟
-									&nbsp;&nbsp;
-									<b>卷面总分</b> : 25
 								</h2>
                             </div>
 
@@ -568,7 +565,7 @@
 				                                            		<ul>
 				                                            			<c:forEach items="${an}" var="an">
 				                                            			<c:if test="${an.key ==qust.questionId }">
-				                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+				                                            			<li><label style="color:blue;"><b>您的答案：</b>${an.value}</label></li>
 				                                            			</c:if>
 				                                            			</c:forEach>
 				                                            			<li><label style="color:red;"><b>答案：</b>${qust.questionAnswer}</label></li>
@@ -614,7 +611,7 @@
 				                                            		<ul>
 				                                            			<c:forEach items="${an}" var="an">
 				                                            			<c:if test="${an.key ==qust.questionId }">
-				                                            			<li><label style="color:yellow;"><b>您的答案：</b>${an.value}</label></li>
+				                                            			<li><label style="color:blue;"><b>您的答案：</b>${an.value}</label></li>
 				                                            			</c:if>
 				                                            			</c:forEach>
 				                                            			<li><label style="color:red;"><b>答案：</b>${qust.questionAnswer}</label></li>
