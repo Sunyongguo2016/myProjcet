@@ -67,35 +67,6 @@ public class ZxTestController {
 		int studentId = (int) session.getAttribute("stuId");
 		StudentInfo studentInfo = studentInfoServiceImpl.getStudentInfo(studentId);
 		
-		Set<Score> scores = studentInfo.getScores();
-		Iterator<Score> s = scores.iterator();
-		Score sc = null;
-		while(s.hasNext()){
-			sc = s.next();
-			if(sc.getParentQuestion().getParentQuestionId()==parentQuestionId){
-				//由于级联关系,many方无法直接删除,需要解除与one方的关联
-				//先s.remove() 才可以删除
-				s.remove();
-				sc.getStudentInfo().getScores().remove(sc);
-				sc.setStudentInfo(null);
-				this.scoreServiceImpl.dropScore(sc.getId());
-			}
-		}
-		
-		Set<Error> errors = studentInfo.getErrors();
-		Iterator<Error> its = errors.iterator();
-		Error error = null;
-		while(its.hasNext()){
-			error = its.next();
-			if(error.getParentQuestion().getParentQuestionId()==parentQuestionId){
-				//由于级联关系,many方无法直接删除,需要解除与one方的关联
-				//先it.remove() 才可以删除
-				its.remove();
-				error.getStudentInfo().getErrors().remove(error);
-				error.setStudentInfo(null);
-				this.errorServiceImpl.dropError(error.getErrorId());
-			}
-		}
 		
 		
 		//通过Id获取ParentQuestion对象
@@ -114,112 +85,51 @@ public class ZxTestController {
 		
 		if(!(parentQuestion.getParentQuestionName().equals("Writing")
 				||parentQuestion.getParentQuestionName().equals("Translation"))){
-			questions = parentQuestion.getQuestions();
-			Iterator<Question> he = questions.iterator();
-			System.out.println("ParentQuestionName:"+parentQuestion.getParentQuestionName());
-			while(he.hasNext()){
-				question = he.next();
-				answer = question.getQuestionAnswer();
-				System.out.println("answer:"+answer);
-				name = "Q-"+question.getQuestionId();
-				System.out.println("name:"+name);
-				daan = request.getParameter(name);
-				an.put(question.getQuestionId(), daan);
-				System.out.println("daan:"+daan);
-				System.out.println("true or false:"+daan.equals(answer));
-				
-				//用户答案正确
-				if(daan.equals(answer)){
-					//保存到Score表
-					this.saveScore(parentQuestion, question, question.getQuestionScore(), studentInfo);
-				}else{
-					//用户答案错误
-					//保存到Score表
-					this.saveScore(parentQuestion, question, 0, studentInfo);
-					//保存到Error表
-					this.saveError(parentQuestion, question, studentInfo);
+			
+			//判断 听力与非听力区别判断，区别插入记录Map "an"
+			if(parentQuestion.getParentQuestionName().contains("ListeningComprehension")){
+				Iterator<ParentQuestion> it = parentQuestion.getExam().getParentQuestions().iterator();
+				while(it.hasNext()){
+					ParentQuestion pq = it.next();
+					if(pq.getParentQuestionName().contains("ListeningComprehension")){
+						this.judge(request, pq, an);
+					}
 				}
+			}else{
+				this.judge(request, parentQuestion, an);
 			}
+			
 		}
-		//计算总分
-		float mark = this.caculate(parentQuestionId, studentInfo);
-		System.out.println("总分"+mark);
-		request.setAttribute("mark", mark);
+
 		request.setAttribute("tested", "on");
 		request.setAttribute("parentQuestion", parentQuestion);
+		request.setAttribute("examType", parentQuestion.getExam().getExamType());
 		request.setAttribute("an", an);
 		
 		return "examzx/zxpreview";
 	}
-	
-	/**
-	 * 
-	 * @desc				算出客观题分数
-	 * @author				李翘楚
-	 * @createDate 			2016/12/7
-	 * @param 				parentQuestionId
-	 * @return				String
-	 * 
-	 */
-	public float caculate(int parentQuestionId,StudentInfo studentInfo){
-		float mark = 0;
-		System.out.println("0.0"+mark);
-		//通过StudentInfo获得Score集合
-		Set<Score> scores = studentInfo.getScores();
-		Iterator<Score> it = scores.iterator();
-		Score score = null;
-		while(it.hasNext()){
-			score = it.next();
-			if(score.getParentQuestion().getParentQuestionId()==parentQuestionId){
-				System.out.println("getscore"+score.getScore());
-				mark += score.getScore();
-				System.out.println("mark:"+mark);
-			}
+
+	private void judge(HttpServletRequest request, ParentQuestion parentQuestion, Map<Integer, String> an) {
+		String answer;
+		String daan;
+		String name;
+		List<Question> questions;
+		Question question;
+		questions = parentQuestion.getQuestions();
+		Iterator<Question> he = questions.iterator();
+		System.out.println("ParentQuestionName:"+parentQuestion.getParentQuestionName());
+		while(he.hasNext()){
+			question = he.next();
+			answer = question.getQuestionAnswer();
+			System.out.println("answer:"+answer);
+			name = "Q-"+question.getQuestionId();
+			System.out.println("name:"+name);
+			daan = request.getParameter(name);
+			an.put(question.getQuestionId(), daan);
+			System.out.println("daan:"+daan);
+			System.out.println("true or false:"+daan.equals(answer));
+			
 		}
-		return (float)(Math.round(mark*100))/100;
 	}
 	
-	/**
-	 * 
-	 * @desc				将所得分数存入score表中
-	 * @author				李翘楚
-	 * @createDate 			2016/12/7
-	 * @param 				parentQuestion,question,Score,studentInfo
-	 * @return				String
-	 * 
-	 */
-	public void saveScore(ParentQuestion parentQuestion,Question question,
-			float markScore,StudentInfo studentInfo){
-		//创建Score对象
-		Score score = new Score();
-		//初始化
-		score.setParentQuestion(parentQuestion);
-		score.setQuestion(question);
-		score.setScore(markScore);
-		score.setStudentInfo(studentInfo);
-		studentInfo.getScores().add(score);
-		//存到Score表中
-		this.scoreServiceImpl.addScore(score);
-	}
-	/**
-	 * 
-	 * @desc				将错题存入error表中
-	 * @author				李翘楚
-	 * @createDate 			2016/12/7
-	 * @param 				parentQuestion,question,Score,studentInfo
-	 * @return				String
-	 * 
-	 */
-	public void saveError(ParentQuestion parentQuestion,Question question,
-			StudentInfo studentInfo){
-		//创建Error对象
-		Error error = new Error();
-		//初始化error
-		error.setParentQuestion(parentQuestion);
-		error.setQuestion(question);
-		error.setStudentInfo(studentInfo);
-		studentInfo.getErrors().add(error);
-		//存到Error表中
-		this.errorServiceImpl.addError(error);
-	}
 }

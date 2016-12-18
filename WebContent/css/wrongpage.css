@@ -63,14 +63,12 @@
 	height: 850px;
 	margin:30px;
 	border:10px inset;
-	background-image: url(../img/bgc.png);
 }
 #right2{
 	float: left;
 	width: 950px;
 	margin: 30px;
 	border:10px inset;
-	background-image: url(../img/bgc.png);
 }
 #r1{
 	margin-top: 20px;

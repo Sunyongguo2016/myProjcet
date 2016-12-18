@@ -67,7 +67,8 @@
 			          		<c:if test="${fn:length(reading.parentQuestionArticle) > 60}">
 						         ${fn:substring(reading.parentQuestionArticle,0,60) }...
 						     </c:if>
-			          	<td>
+			          	</td>
+			          <td>
 			          <div class="button-group"> 
 			          <a class="button border-red" href="${ctx }/reading/delete?parentQuestionId=${reading.parentQuestionId }"><span class="icon-trash-o"></span> 删除</a> 
 			          </div>

@@ -216,9 +216,6 @@
 									试卷信息
 								</h2>
                                 <h2>
-									<b>考试时长</b> : 20 分钟
-									&nbsp;&nbsp;
-									<b>卷面总分</b> : 25
 								</h2>
                             </div>
 
@@ -269,7 +266,7 @@
 					                                                        <ul>
 					                                                        	<c:forEach items="${question.selectts }" var="select">
 					                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="${select.selecttName}" 
-					                                                            data-qid="${question.questionId}" name="Q-${question.questionId}" disabled="true"/>
+					                                                            data-qid="${question.questionId}" name="Q-${question.questionId}" />
 																					${select.selecttName} ${select.selecttContent}</label></li>
 					                                    						</c:forEach>
 					                                                        </ul>
@@ -304,7 +301,7 @@
 				                                                        <ul>
 				                                                        	<c:forEach items="${question.selectts }" var="select">
 				                                                            <li><label><input type="radio" class="validate[required] qk-choice" value="${select.selecttName}" 
-				                                                            data-qid="${question.questionId}" name="Q-${question.questionId}" disabled="true"/>
+				                                                            data-qid="${question.questionId}" name="Q-${question.questionId}" />
 																				${select.selecttName} ${select.selecttContent}</label></li>
 				                                    						</c:forEach>
 				                                                        </ul>
@@ -333,7 +330,7 @@
 				                                            	<c:forEach items="${parentQuestion.questions}" var="qust" varStatus="status">
 				                                            	<span class="span-quick-nav" data-qid="${qust.questionId}"></span>
 				                                            		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${qust.questionContent}) <input type="text" name="Q-${qust.questionId}" data-qid="${qust.questionId}" 
-				                                            		class="validate[required] tm_txt qk-blank" disabled="true"/>
+				                                            		class="validate[required] tm_txt qk-blank"/>
 			                                    					<c:if test="${status.count % 4 == 0}">
 			                                    						<br/><br/>
 			                                    					</c:if>
@@ -577,8 +574,7 @@
 
 	<div id="div_processor" style="left: 906px; top: 20px;">
 		<div id="time">
-			离考试结束还有：
-			<div id="div_processor_timer" style="margin-top:5px;"><span class="tm_label">0:20:00</span></div>
+			题目表信息：
 			<div id="div_processor_fastto"></div>
 			<div>
 			</div>

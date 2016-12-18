@@ -1,6 +1,7 @@
 package com.course.error.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -52,9 +53,7 @@ public class ErrorController {
 		}
 		//获取当前登录的学生Id
 		int stuId = (int)session.getAttribute("stuId");
-		
-		System.out.println(stuId);
-		System.out.println("error--controller:"+stuId);
+	
 		Page<Error> page;
 		if(searchParam == null || "".equals(searchParam)){
 			if(isCollect == 1){
@@ -62,16 +61,16 @@ public class ErrorController {
 			}else{
 				request.setAttribute("isCol", 0);
 			}
-			page = this.errorServiceImpl.errorCollect(pageNum, 5, isCollect, stuId, null);
+			page = this.errorServiceImpl.errorCollect(pageNum, 10, isCollect, stuId, null);
 		}else{
 			try {
 				 searchParam = new String(searchParam.getBytes("ISO8859_1"), "UTF-8");
 			} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
 			}
-			page = this.errorServiceImpl.errorCollect(pageNum, 5, isCollect, stuId, new Object[]{searchParam});
+			page = this.errorServiceImpl.errorCollect(pageNum, 10, isCollect, stuId, new Object[]{searchParam});
 		} 
-		
+
 		request.setAttribute("page", page);
 		request.setAttribute("searchParam", searchParam);
 		return "wrongpage/wrongpagelist";
@@ -94,6 +93,12 @@ public class ErrorController {
 		page = this.errorServiceImpl.errorContent(pageNum, 2, stuId, examId, parentQuestionId);
 		
 		ParentQuestion pq = this.parentQuestionServiceImpl.getParentQuestion(parentQuestionId);
+		
+		String examurl1[] = pq.getExam().getExamUrl().split("file/");
+		String examurl2[] = examurl1[1].split("mp3");
+		String url = "http://localhost:8080/myProject/ueditor/jsp/upload/file/"+examurl2[0]+"mp3";
+		session.setAttribute("url", url);
+		
 		request.setAttribute("exId", examId);
 		request.setAttribute("pque", pq);
 		request.setAttribute("page", page);
@@ -120,7 +125,7 @@ public class ErrorController {
 			this.errorServiceImpl.editError(error);
 			
 		}
-		return "wrongpage/wrongpagelist";
+		return "redirect:collect?isCollect=1";
 		
 	}
 	/**
@@ -147,29 +152,53 @@ public class ErrorController {
 		
 		List<Question> questions = null;
 		Question question = null;
-		if(pq.getParentQuestionName().equals("QuickReading") || pq.getParentQuestionName().equals("LastReadingOne") 
-				|| pq.getParentQuestionName().equals("LastReadingTwo") || pq.getParentQuestionName().equals("ChooseFillInBlank"))
-			questions = pq.getQuestions();
-			Iterator<Question> he = questions.iterator();
-			while(he.hasNext()){
-				question = he.next();
-				answer = question.getQuestionAnswer();
-				name = "ques"+question.getQuestionId();
-				daan = request.getParameter(name);
-				//当答题者有未答的题时赋值为“空”
-				if(null == daan){
-					daan = "空";
+//		if(pq.getParentQuestionName().equals("QuickReading") || pq.getParentQuestionName().equals("LastReadingOne") 
+//				|| pq.getParentQuestionName().equals("LastReadingTwo") || pq.getParentQuestionName().equals("ChooseFillInBlank"))
+		//判断对错 ，返回错题本内容页信息
+		
+		
+		//判断 听力与非听力区别判断，区别插入记录Map "an"
+		if(pq.getParentQuestionName().contains("ListeningComprehension")){
+			Iterator<ParentQuestion> it = pq.getExam().getParentQuestions().iterator();
+			while(it.hasNext()){
+				ParentQuestion pq2 = it.next();
+				if(pq.getParentQuestionName().contains("ListeningComprehension")){
+					this.errorJudge(request, pq2, lists);
 				}
-				//将答题者的答案存入Map lists中
-				Integer key = question.getQuestionId();
-				String value = daan;
-				lists.put(key, value);
 			}
+		}else{
+			this.errorJudge(request, pq, lists);
+		}
+			
 		request.setAttribute("exId", examId);
 		request.setAttribute("pque", pq);	
 		request.setAttribute("anws", lists);
 		request.setAttribute("submitt", "on");
 		return "wrongpage/wrongpage";
+	}
+
+	private void errorJudge(HttpServletRequest request, ParentQuestion pq, Map<Integer, String> lists) {
+		String answer;
+		String daan;
+		String name;
+		List<Question> questions;
+		Question question;
+		questions = pq.getQuestions();
+		Iterator<Question> he = questions.iterator();
+		while(he.hasNext()){
+			question = he.next();
+			answer = question.getQuestionAnswer();
+			name = "ques"+question.getQuestionId();
+			daan = request.getParameter(name);
+			//当答题者有未答的题时赋值为“空”
+			if(null == daan){
+				daan = "空";
+			}
+			//将答题者的答案存入Map lists中
+			Integer key = question.getQuestionId();
+			String value = daan;
+			lists.put(key, value);
+		}
 	}
 	/**
 	 * 
@@ -189,7 +218,7 @@ public class ErrorController {
 		for(int i = 0;i < list.size();i++){
 			this.errorServiceImpl.dropError(list.get(i).getErrorId());
 		}
-		return "wrongpage/wrongpagelist";
+		return "redirect:collect";
 	}
 }
 

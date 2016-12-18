@@ -67,6 +67,7 @@
 			          		<c:if test="${fn:length(choosefill.parentQuestionArticle) > 60}">
 						         ${fn:substring(choosefill.parentQuestionArticle,0,60) }...
 						     </c:if>
+			          	</td>
 			          	<td>
 			          <div class="button-group"> 
 			          <a class="button border-red" href="${ctx }/choosefillinblank/delete?parentQuestionId=${choosefill.parentQuestionId }"><span class="icon-trash-o"></span> 删除</a> 
