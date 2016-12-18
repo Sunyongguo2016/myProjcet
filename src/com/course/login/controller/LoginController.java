@@ -59,9 +59,12 @@ public class LoginController {
 				session.setAttribute("stuId", lu.getStudentId());
 				session.setAttribute("student", lu);
 				session.setAttribute("logined", "on");
+				//设置失效时间
+				session.setMaxInactiveInterval(8*60*60);
 				return "redirect:/";
 			} else if("manager".equals(role)){
 				session.setAttribute("manager", lu);
+				session.setMaxInactiveInterval(8*60*60);
 				return "index";
 			} else {
 				System.out.println("lu is not exist");
@@ -199,7 +202,8 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "turnOut")
 	public String resetPwd(HttpSession session){
-		session.setAttribute("logined", "");
+		//清楚当前session
+		session.invalidate();
 		return "redirect:/";
 	}
 
