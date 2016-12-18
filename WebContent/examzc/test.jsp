@@ -443,8 +443,7 @@
 		<div id="div_processor_timer" style="margin-top:5px;"><span class="tm_label">2:10:00</span></div>
 		<div id="div_processor_fastto"></div>
 		<div>
-			该大题您已使用：
-		<div style="margin-top:5px;"><span  class="tm_label">0:19:29</span></div>
+			
 		</div>
 		<div id="div_processor_ops">
 			<button class="tm_btn tm_btn_primary" type="button" onclick="tmUserpaper.submitpaper();return false;">提交</button>
