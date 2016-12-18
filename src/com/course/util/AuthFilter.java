@@ -42,12 +42,27 @@ import javax.servlet.http.HttpSession;
 	        HttpSession session = request.getSession(false);
 	        if(!"/login_use.jsp".equals(targetURL)){
 	            //判断当前页面是否是重定参后的登陆页面页面，如果是就不做session的判断，防止死循环
-	            if(session==null||session.getAttribute("user")==null){
-	                //如果session为空表示用户没有登陆就重定向到404.jsp页面
-	                //System.out.println("request.getContextPath()=" + request.getContextPath());  
-	                response.sendRedirect(request.getContextPath()+"/login_use.jsp");
-	                return;
+	        	//if(session==null||session.getAttribute("user")==null){
+	        	//如果访问前天测试页面进入这个判断
+	            if("/examzc/test.jsp".equals(targetURL)||"/examzx/zxcontent.jsp".equals(targetURL)){
+	            	//如果session为空表示用户没有登陆就重新登录
+	            	if(session==null||session.getAttribute("student")==null){
+	            		//System.out.println("request.getContextPath()=" + request.getContextPath());  
+	            		response.sendRedirect(request.getContextPath()+"/login_use.jsp");
+	            		return;
+	            	}
+	            }else{
+	            	//如果访问后台系统 进入这里
+	            	//如果session属性manager不为空，可以访问后台所有页面；
+	            	if(session!=null&&session.getAttribute("manager")!=null){
+	            		chain.doFilter(request, response);
+	            		return;
+	            	}else{
+	            		response.sendRedirect(request.getContextPath()+"/login_use.jsp");
+	            		return;
+	            	}
 	            }
+	            
 	        }
 	
 	        //继续向下执行

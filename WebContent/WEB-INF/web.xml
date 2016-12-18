@@ -59,6 +59,26 @@
   <filter-mapping>
     <filter-name>AuthFilter</filter-name>
     <url-pattern>/index.jsp</url-pattern>
+    <url-pattern>/examzc/test.jsp</url-pattern>
+    <url-pattern>/examzx/zxcontent.jsp</url-pattern>
+    <url-pattern>/choosefillinblank/addcontext.jsp</url-pattern>
+    <url-pattern>/choosefillinblank/choosefillinblanklist.jsp</url-pattern>
+    <url-pattern>/exam/exampaperlist.jsp</url-pattern>
+    <url-pattern>/exam/addpage.jsp</url-pattern>
+    <url-pattern>/exam/form.jsp</url-pattern>
+    <url-pattern>/listening/listeninglist.jsp</url-pattern>
+    <url-pattern>/listening/addlistening.jsp</url-pattern>
+    <url-pattern>/notice/addnotice.jsp</url-pattern>
+    <url-pattern>/notice/editnotice.jsp</url-pattern>
+    <url-pattern>/notice/noticelist.jsp</url-pattern>
+    <url-pattern>/quickreading/quickreadinglist.jsp</url-pattern>
+    <url-pattern>/quickreading/addquickreading.jsp</url-pattern>
+    <url-pattern>/reading/addreading.jsp</url-pattern>
+    <url-pattern>/reading/readinglist.jsp</url-pattern>
+    <url-pattern>/translation/addtranslation.jsp</url-pattern>
+    <url-pattern>/translation/translationlist.jsp</url-pattern>
+    <url-pattern>/writing/addcomposition.jsp</url-pattern>
+    <url-pattern>/writing/compositionlist.jsp</url-pattern>
   </filter-mapping>
   
   
