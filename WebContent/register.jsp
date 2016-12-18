@@ -164,8 +164,15 @@ $(function() {
         <p>版权所有：猿计划项目小组</p>
 	</div>
 	</div>
+	<%-- 禁用回车键，必须输入验证码才可以注册 --%>
 	<script type="text/javascript">
 		window.onload=createCode;
+		
+		document.getElementsByTagName('form')[0].onkeydown = function(e){
+			  var e = e || event;
+			  var keyNum = e.which || e.keyCode;
+			  return keyNum==13 ? false : true;
+			};
 	</script>
 
 </body>
