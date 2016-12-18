@@ -216,9 +216,6 @@
 									试卷信息
 								</h2>
                                 <h2>
-									<b>考试时长</b> : 20 分钟
-									&nbsp;&nbsp;
-									<b>卷面总分</b> : 25
 								</h2>
                             </div>
 
@@ -577,8 +574,7 @@
 
 	<div id="div_processor" style="left: 906px; top: 20px;">
 		<div id="time">
-			离考试结束还有：
-			<div id="div_processor_timer" style="margin-top:5px;"><span class="tm_label">0:20:00</span></div>
+			题目表信息：
 			<div id="div_processor_fastto"></div>
 			<div>
 			</div>
