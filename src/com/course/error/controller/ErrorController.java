@@ -70,27 +70,7 @@ public class ErrorController {
 			}
 			page = this.errorServiceImpl.errorCollect(pageNum, 10, isCollect, stuId, new Object[]{searchParam});
 		} 
-//		//如何Page中的错题列已存在则不重复展示
-//		List<Error> lpage = new ArrayList<Error>();
-//		List<Error> filterPage = new ArrayList<Error>();
-//		
-//		lpage = page.getList();
-//		filterPage.add(lpage.get(0));
-//		for(int i = 0;i<lpage.size();i++){
-//			int count = 0;//记录错题记录是否已存在
-//			for(int j = 0;j<filterPage.size();j++){
-//				if(lpage.get(i).getExam().getExamName().equals(filterPage.get(j).getExam().getExamName()) &&
-//						lpage.get(i).getParentQuestion().getParentQuestionName().equals(filterPage.get(j).getParentQuestion().getParentQuestionName())){
-//					count++;
-//					continue;
-//				}
-//			}
-//			if(count==0){
-//				filterPage.add(lpage.get(i));
-//			}
-//		}
-//		page.setList(filterPage);
-		
+
 		request.setAttribute("page", page);
 		request.setAttribute("searchParam", searchParam);
 		return "wrongpage/wrongpagelist";
@@ -166,8 +146,8 @@ public class ErrorController {
 		
 		List<Question> questions = null;
 		Question question = null;
-		if(pq.getParentQuestionName().equals("QuickReading") || pq.getParentQuestionName().equals("LastReadingOne") 
-				|| pq.getParentQuestionName().equals("LastReadingTwo") || pq.getParentQuestionName().equals("ChooseFillInBlank"))
+//		if(pq.getParentQuestionName().equals("QuickReading") || pq.getParentQuestionName().equals("LastReadingOne") 
+//				|| pq.getParentQuestionName().equals("LastReadingTwo") || pq.getParentQuestionName().equals("ChooseFillInBlank"))
 			questions = pq.getQuestions();
 			Iterator<Question> he = questions.iterator();
 			while(he.hasNext()){
