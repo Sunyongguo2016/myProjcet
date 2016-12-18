@@ -93,6 +93,12 @@ public class ErrorController {
 		page = this.errorServiceImpl.errorContent(pageNum, 2, stuId, examId, parentQuestionId);
 		
 		ParentQuestion pq = this.parentQuestionServiceImpl.getParentQuestion(parentQuestionId);
+		
+		String examurl1[] = pq.getExam().getExamUrl().split("file/");
+		String examurl2[] = examurl1[1].split("mp3");
+		String url = "http://localhost:8080/myProject/ueditor/jsp/upload/file/"+examurl2[0]+"mp3";
+		session.setAttribute("url", url);
+		
 		request.setAttribute("exId", examId);
 		request.setAttribute("pque", pq);
 		request.setAttribute("page", page);
@@ -119,7 +125,7 @@ public class ErrorController {
 			this.errorServiceImpl.editError(error);
 			
 		}
-		return "wrongpage/wrongpagelist";
+		return "redirect:collect?isCollect=1";
 		
 	}
 	/**
@@ -148,27 +154,51 @@ public class ErrorController {
 		Question question = null;
 //		if(pq.getParentQuestionName().equals("QuickReading") || pq.getParentQuestionName().equals("LastReadingOne") 
 //				|| pq.getParentQuestionName().equals("LastReadingTwo") || pq.getParentQuestionName().equals("ChooseFillInBlank"))
-			questions = pq.getQuestions();
-			Iterator<Question> he = questions.iterator();
-			while(he.hasNext()){
-				question = he.next();
-				answer = question.getQuestionAnswer();
-				name = "ques"+question.getQuestionId();
-				daan = request.getParameter(name);
-				//当答题者有未答的题时赋值为“空”
-				if(null == daan){
-					daan = "空";
+		//判断对错 ，返回错题本内容页信息
+		
+		
+		//判断 听力与非听力区别判断，区别插入记录Map "an"
+		if(pq.getParentQuestionName().contains("ListeningComprehension")){
+			Iterator<ParentQuestion> it = pq.getExam().getParentQuestions().iterator();
+			while(it.hasNext()){
+				ParentQuestion pq2 = it.next();
+				if(pq.getParentQuestionName().contains("ListeningComprehension")){
+					this.errorJudge(request, pq2, lists);
 				}
-				//将答题者的答案存入Map lists中
-				Integer key = question.getQuestionId();
-				String value = daan;
-				lists.put(key, value);
 			}
+		}else{
+			this.errorJudge(request, pq, lists);
+		}
+			
 		request.setAttribute("exId", examId);
 		request.setAttribute("pque", pq);	
 		request.setAttribute("anws", lists);
 		request.setAttribute("submitt", "on");
 		return "wrongpage/wrongpage";
+	}
+
+	private void errorJudge(HttpServletRequest request, ParentQuestion pq, Map<Integer, String> lists) {
+		String answer;
+		String daan;
+		String name;
+		List<Question> questions;
+		Question question;
+		questions = pq.getQuestions();
+		Iterator<Question> he = questions.iterator();
+		while(he.hasNext()){
+			question = he.next();
+			answer = question.getQuestionAnswer();
+			name = "ques"+question.getQuestionId();
+			daan = request.getParameter(name);
+			//当答题者有未答的题时赋值为“空”
+			if(null == daan){
+				daan = "空";
+			}
+			//将答题者的答案存入Map lists中
+			Integer key = question.getQuestionId();
+			String value = daan;
+			lists.put(key, value);
+		}
 	}
 	/**
 	 * 
@@ -188,7 +218,7 @@ public class ErrorController {
 		for(int i = 0;i < list.size();i++){
 			this.errorServiceImpl.dropError(list.get(i).getErrorId());
 		}
-		return "wrongpage/wrongpagelist";
+		return "redirect:collect";
 	}
 }
 
