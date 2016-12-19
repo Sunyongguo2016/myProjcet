@@ -155,7 +155,7 @@
                  	<tr>              
 	                    <td>${zx.exam.examName}</td>
 	                    <td>${zx.parentQuestionName}</td>	               
-	                    <td><a href="${ctx }/examzx/preview?parentQuestionId=${zx.parentQuestionId}">查看试卷</a></td>
+	                    <td><a href="${ctx }/examzx/preview?parentQuestionId=${zx.parentQuestionId}"><input type="button" value="查看试卷"/></a></td>
 	                    <td><a href="${ctx }/examzx/test?parentQuestionId=${zx.parentQuestionId}"><input type="button" value="进入练习" /></a></td>
                 	</tr>
                 </c:forEach>
