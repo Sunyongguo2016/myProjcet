@@ -82,7 +82,7 @@ $(function() {
 				</ul>
 			</div>
 			<div class="" id="search">
-				<input type="text" class="text" /> <a href=""><img
+				<input type="text" class="text" /> <a href="${ctx }/"><img
 					src="${ctx }/images/search.png"></a>
 			</div>
 		</div>
