@@ -131,7 +131,7 @@
 				<c:forEach begin="1" end="${page.totalPageNum }" var="pageNum">
 					<c:choose>
 						<c:when test="${page.currentPageNum == pageNum}">
-							<span class="current">${page.currentPageNum}</span>
+							<span class="current"><font size="5" color="#20B2AA">${page.currentPageNum}</font></span>
 						</c:when>
 						<c:otherwise>
 							<a name="pagen" href="${ctx }/notice/billboardlist?pageNum=${pageNum }&noticeType=${noticeType}">${pageNum }</a>

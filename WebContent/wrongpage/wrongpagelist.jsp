@@ -121,7 +121,15 @@
 				<li><a name="pagen" href="${ctx }/error/collect?pageNum=${page.prePageNum }&isCollect=${isCol }">上一页</a></li>
 
 				<c:forEach begin="1" end="${page.totalPageNum }" var="pageNum">
-					<li><a name="pagen" href="${ctx }/error/collect?pageNum=${pageNum }&isCollect=${isCol }">${pageNum}</a></li>
+					<c:choose>
+					   <c:when test="${page.currentPageNum == pageNum}">  
+							<li><a name="pagen" href="${ctx }/error/collect?pageNum=${pageNum }&isCollect=${isCol }"><font size="4" color="#20B2AA">${pageNum}</font></a></li>
+					   </c:when>
+					   <c:otherwise> 
+							<li><a name="pagen" href="${ctx }/error/collect?pageNum=${pageNum }&isCollect=${isCol }">${pageNum}</a></li>
+					   </c:otherwise>
+					</c:choose>
+				
 				</c:forEach>
 				<li><a name="pagen" href="${ctx }/error/collect?pageNum=${page.nextPageNum }&isCollect=${isCol }">下一页</a></li>
 				<li><a name="pagen" href="${ctx }/error/collect?pageNum=${page.totalPageNum }&isCollect=${isCol }">尾页</a></li>

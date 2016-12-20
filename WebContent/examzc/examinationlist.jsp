@@ -141,14 +141,14 @@
                         <span class="page"><a href="${ctx }/examonline/list?pageNum=1&examTime=${examTime }&examType=${examType}">首页</a></span>
                         <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.prePageNum}&examTime=${examTime }&examType=${examType}">上一页</a></span>
                         <c:forEach begin="1" end="${page.totalPageNum }" var="pageNum">
-			        	<c:choose> 
-			        	<c:when test="${page.currentPageNum == pageNum}">
-                        <span class="current"><a href="#">${page.currentPageNum }</a></span>
-                        </c:when>
-                        <c:otherwise>
-                        <a name="pagen" href="${ctx }/examonline/list?pageNum=${pageNum }&examTime=${examTime }&examType=${examType}">${pageNum }</a>
-                        </c:otherwise>
-                        </c:choose>
+				        	<c:choose> 
+					        	<c:when test="${page.currentPageNum == pageNum}">
+		                       		 <span class="current"><a href="#"><font size="5" color="#20B2AA">${page.currentPageNum }</font></a></span>
+		                        </c:when>
+		                        <c:otherwise>
+		                      	  <a name="pagen" href="${ctx }/examonline/list?pageNum=${pageNum }&examTime=${examTime }&examType=${examType}">${pageNum }</a>
+		                        </c:otherwise>
+	                        </c:choose>
                         </c:forEach>
                         <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.nextPageNum }&examTime=${examTime }&examType=${examType}">下一页</a></span>
                         <span class="page"><a href="${ctx }/examonline/list?pageNum=${page.totalPageNum }&examTime=${examTime }&examType=${examType}">尾页</a></span>
