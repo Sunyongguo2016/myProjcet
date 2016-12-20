@@ -8,6 +8,7 @@
 	height:50px;
 	background-color: #20B2AA;
 }
+
 #logo img{
 	margin-top: -6px;
 	height: 60px;
@@ -58,19 +59,29 @@
 	width: 160px;
 	border:2px solid #20B2AA;
 }
-.button{
-	position:absolute;
-	color:#FFFFFF;
-	background-color:#20B2AA;
-	top:500px;
-	height:30px;
-	width:50px;
-	font-size:18px;
-	border-radius:10px;
+.login{
+	display:block;
+	float: left;
+	position: absolute;
+	top: 15px;
+	right: 30px;
+	color:#ffffff;
+}
+.login button{
+	background-color: transparent;
+	border:0;
+	color:#ffffff;
+	font-size:20px;	
+}
+.after_login{
+	display:none;
+	position: absolute;
+	right:10px;
+	width:220px;
 }
 #username{
 	float: left;
-	margin: 0px 0px 0px 15px;
+	margin: 0px 0px 0px 65px;
 }
 #username p{
 	margin-top: 5px;
