@@ -30,10 +30,7 @@
 					<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 				</ul>
 			</div>
-			<div id="search">
-				<input type="text" class="text"/>
-				<a href="${ctx }/"><img src="${ctx }/images/search.png"></a>
-			</div>
+			
 			<div id="username">
 				<p>${student.loginName }</p>
 			</div>
