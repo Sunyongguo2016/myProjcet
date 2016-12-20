@@ -159,10 +159,11 @@
 					<div class="img1"><a href="${ctx }/examzx/list?parentQuestionName=QuickReading"></a></div>
 					<div class="img2"><a href="${ctx }/examzx/list?parentQuestionName=LastReading"></a></div>
 					<div class="img3"><a href="${ctx }/examzx/list?parentQuestionName=Writing"></a></div>
-					<div class="img4"><a href="${ctx }/examzx/list"></a></div>
+					<div class="img4"><a href="${ctx }/examzx/list?parentQuestionName=ListeningComprehension"></a></div>
 				</div>				
 				</div>
-				<div>
+				<div class="more">
+				<a href="${ctx }/examzx/list"><img src="${ctx }/images/more.jpg" height="100px" width="312px" /></a>
 				</div>
 			</div>
 			</div>

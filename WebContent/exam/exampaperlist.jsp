@@ -64,7 +64,7 @@
 								<a class="button border-main"
 									href="${ctx }/exam/edit?examId=${pa.examId }"><span
 									class="icon-edit"></span> 修改</a> <a class="button border-red"
-									href="#"
+									href="${ctx }/exam/delete?examId=${pa.examId }"
 									onclick="return del(1,1,1)"><span class="icon-trash-o"></span>
 									删除</a>
 							</div>

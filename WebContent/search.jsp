@@ -116,8 +116,8 @@
                            		</c:if>
                             </c:forEach>
 						</p>
-						<a href="${ctx }/examzc/preview.jsp"><div id="but">浏览试卷</div></a>
-						<a href="${ctx }/examzc/test.jsp"><div id="but">开始考试</div></a>		
+						<a href="${ctx }/examonline/look?examId=${exam.examId}"><div id="but">浏览试卷</div></a>
+						<a href="${ctx }/examonline/exam?examId=${exam.examId}"><div id="but">开始考试</div></a>		
 					</li>
              	   </c:forEach>
 					
