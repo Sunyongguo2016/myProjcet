@@ -358,14 +358,19 @@
 
 					</c:choose>
 					<div id="r3">
-						<input type="submit" id="subm" value="提交" class="s1">
+						<input type="submit" id="subm" value="提交" class="s1">&nbsp;
+						
+						<a href="${ctx }/error/collect?isCollect=0"><input type="button" id="butt" value="返回"/></a>
+						
 						<div id="r3r">
+							
 							<a
 								href="${ctx }/error/setCollect?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"
 								onclick="collected();"><img src="${ctx }/images/save.png"></a>
 							<a
 								href="${ctx }/error/delete?examId=${exId }&parentQuestionId=${pque.parentQuestionId }"
 								onclick="isDelet();"><img src="${ctx }/images/delete.png"></a>
+							
 						</div>
 					</div>
 				</div>
