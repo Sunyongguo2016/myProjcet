@@ -31,8 +31,12 @@
 						<label>试卷类型：</label>
 					</div>
 					<div class="field">
-						<input type="text" class="input w50" value="" name="type"
-							data-validate="required:请输入试卷类型" />
+						<select name="type" class="input w50">
+							<option value ="四级真题">四级真题</option>
+						  	<option value ="四级模拟">四级模拟</option>
+						  	<option value ="六级真题">六级真题</option>
+						  	<option value ="六级模拟">六级模拟</option>
+						</select>
 						<div class="tips"></div>
 					</div>
 				</div>

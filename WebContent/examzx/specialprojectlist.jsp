@@ -113,8 +113,14 @@
     	</div>
         <!--面包屑-->
         <div class="breadcrumb">
-            <a href="${ctx }/">首页 </a>>>
-            <a href="${ctx }/category?type=${examType}">${examType} </a>>> 专项练习
+            <a href="${ctx }/">首页 </a>
+            <c:if test="${!empty examType}">
+                 >>
+			</c:if>
+            <a href="${ctx }/category?type=${examType}">${examType} </a>
+            <c:if test="${!empty pqType}">
+            >> ${pqType }
+			</c:if>
         </div>
         <!--左侧边栏-->
         <div class="left">
