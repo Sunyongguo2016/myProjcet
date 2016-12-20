@@ -136,6 +136,9 @@ public class ExamonlineController {
 		    case "2014":
 		    	page = this.examServiceImpl.listExamByTimeAndType(pageNum, 10, new Object[]{2014,examType});
 		    	break;
+		    default:
+		    	page = this.examServiceImpl.listExamByTimeAndType(pageNum, 10, new Object[]{examType});
+		    	break;
 		   }
 		}else{
 			page = this.examServiceImpl.listExamByTimeAndType(pageNum, 10, new Object[]{examType});
