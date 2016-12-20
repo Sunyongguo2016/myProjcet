@@ -45,17 +45,14 @@
 				<li><a href="${ctx }/about_us.jsp">关于我们</a></li>
 			</ul>
 		</div>
-		<div class="" id="search">
-			<input id="searchParam" type="text" name="searchParam"  class="text"/>
-			<a href="javascrpt:search()" onclick="searchp();return false;"><img src="${ctx }/images/search.png"></a>
-		</div>
+		
 		
 		<div class="login" id="login">
             <a href="${ctx }/login_use.jsp"><button>登录</button></a>&nbsp;|
 			<a href="${ctx }/register.jsp"><button>注册</button></a>
         </div>
                     
-         <div class="after_login" id="after_login">
+         <div class="after_login" id="after_login" style="display:none;">
              <div id="username">
                 <p>${student.loginName }</p>
              </div>
