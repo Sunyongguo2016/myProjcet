@@ -172,7 +172,14 @@
                            <span class="page"><a href="${ctx }/examzx/list?pageNum=1&parentQuestionName=${pqType}&examType=${examType}">首页</a></span>
                             <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.prePageNum }&parentQuestionName=${pqType}&examType=${examType}">上一页</a></span>
                             <c:forEach begin="1" end="${page.totalPageNum }" var="pageNum"   >	
-								   <span class="page"><a href="${ctx }/examzx/list?pageNum=${pageNum }&parentQuestionName=${pqType}&examType=${examType}">${pageNum }</a></span>
+								<c:choose>
+								   <c:when test="${page.currentPageNum == pageNum}">  
+								   		<span class="page"><a href="${ctx }/examzx/list?pageNum=${pageNum }&parentQuestionName=${pqType}&examType=${examType}"><font size="5" color="#20B2AA">${pageNum }</font></a></span>
+								   </c:when>
+								   <c:otherwise> 
+								    	<span class="page"><a href="${ctx }/examzx/list?pageNum=${pageNum }&parentQuestionName=${pqType}&examType=${examType}">${pageNum }</a></span>
+								   </c:otherwise>
+								</c:choose>
 							</c:forEach>             
                             <span class="page" ><a href="${ctx }/examzx/list?pageNum=${page.nextPageNum} &parentQuestionName=${pqType}&examType=${examType}" >下一页</a></span>
                             <span class="page"><a href="${ctx }/examzx/list?pageNum=${page.totalPageNum }&parentQuestionName=${pqType}&examType=${examType}">尾页</a></span>                       
