@@ -126,26 +126,28 @@
 				<a href="${ctx }/category?type=四级"><img src="${ctx }/images/siji.png"/></a>
 				<div>
 				<h2>大学英语四级</h2>
+				<p><a href="${ctx }/examonline/list?examType=四级" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
 				<hr/>
 				<ul>
 				<c:forEach items="${pageExamFour.list }" var="exam">
 					<li><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
 				</c:forEach>
 				</ul>
-				<p><a href="${ctx }/examonline/list?examType=四级" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
+				
 				</div>
 			</div>
 			<div class="liuji">
 				<a href="category?type=六级"><img src="${ctx }/images/liuji.png"/></a>
 				<div>
 				<h2>大学英语六级</h2>
+				<p><a href="${ctx }/examonline/list?examType=六级" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
 				<hr/>
 				<ul>
 					<c:forEach items="${pageExamSix.list }" var="exam">
 						<li><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
 					</c:forEach>
 				</ul>
-				<p><a href="${ctx }/examonline/list?examType=六级" style="font-size:7px;color:#20B2AA;">MORE>></a></p>
+				
 				</div>
 			</div>
 			</div>
