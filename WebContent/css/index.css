@@ -136,6 +136,9 @@ hr{
 .img4 a:hover{
 	background-image: url(../images/4-1.jpg);
 }
+.more{
+	margin-left:10px;
+}
 .right img{
 	margin-top: 10px;
 }
