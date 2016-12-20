@@ -31,7 +31,7 @@ function checkExist(){
 		if(val == ""){
 			alert("用户名不可为空！");
 			tip.focus();
-		} else if(val.length<5||form.username.value.length>100){
+		} else if(val.length<5||form.username.value.length>10){
 			alert("输入用户名长度不对！");
 			tip.focus();
 		}
@@ -94,7 +94,7 @@ $(function() {
 			
 			<div class="username">
 				<label>用户名：</label>
-				<input id="username1" name="username" type="text" value="" placeholder="用户名(不少于5个字符)" onblur="checkExist();"/>
+				<input id="username1" name="username" type="text" value="" placeholder="用户名(不少于5个字符不大于10个字符)" onblur="checkExist();"/>
 				
 			</div>
 			<div class="password">

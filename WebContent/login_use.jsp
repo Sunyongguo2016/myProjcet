@@ -49,11 +49,11 @@
             <div class="center">
                 <form action="${ctx }/loginuser/login" id="formOne" method="post"onsubmit="return check(this)" >
                     <i class="fa fa-user Cone">  | </i>
-                    <input type="text" name="uer" id="user" placeholder="用户名(不少于5个字符)"/>
+                    <input type="text" name="uer" id="user" placeholder="用户名(不少于5个字符不大于10个字符)"/>
                     <span id="user_pass"></span>
                     <br/>
                     <i class="fa fa-key Cone">  | </i>
-                    <input type="password" name="pwd" id="pwd" placeholder="密码(不少于6个字符)" />
+                    <input type="password" name="pwd" id="pwd" placeholder="密码(不少于6个字符不大于10个字符)" />
                     <span id="pwd_pass"></span>
                     <br/>
                     <input type="submit" value="Sign in" id="submit" name="submit"/>

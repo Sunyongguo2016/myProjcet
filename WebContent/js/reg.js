@@ -5,7 +5,7 @@ function checkPwd(){
 	if(pwd == ""){
 		alert("密码不可为空！");
 		p.focus();
-	} else if(pwd.length<6 || pwd.lengtth>100){
+	} else if(pwd.length<6 || pwd.length>10){
 		alert("密码长度不对！")
 		p.focus();
 	}

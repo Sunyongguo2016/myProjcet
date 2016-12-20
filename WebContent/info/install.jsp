@@ -88,7 +88,7 @@
             		</tr>
             		<tr>
             			<td><label>新密码：</label></td>
-            			<td><input id="password" name="password" type="password" placeholder="密码(不少于6个字符)" onblur="checkPwd();"/></td>
+            			<td><input id="password" name="password" type="password" placeholder="密码(不少于6个字符不大于10个字符)" onblur="checkPwd();"/></td>
             		</tr>
             		<tr>
             			<td><label>确认密码：</label></td>
