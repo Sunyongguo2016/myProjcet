@@ -94,12 +94,12 @@ $(function() {
 			
 			<div class="username">
 				<label>用户名：</label>
-				<input id="username1" name="username" type="text" value="" placeholder="用户名(不少于5个字符不大于10个字符)" onblur="checkExist();"/>
+				<input id="username1" name="username" type="text" value="" placeholder="用户名(5-10)" onblur="checkExist();"/>
 				
 			</div>
 			<div class="password">
 				<label>密&nbsp;码：</label><input id="pass" name="password"
-					type="password" placeholder="密码(不少于6个字符)" onblur="checkPwd();"/>
+					type="password" placeholder="密码(6-10)" onblur="checkPwd();"/>
 			</div>
 			<div class="repassword">
 				<label>确认密码:</label><input id="repassword" name="surepassword"
