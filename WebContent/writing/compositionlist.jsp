@@ -58,15 +58,15 @@
 						         ${writing.exam.examName}
 						     </c:if>
 			          		<c:if test="${fn:length(writing.exam.examName) > 20}">
-						         ${fn:substring(writing.exam.examName,0,10) }...
+						         ${fn:substring(writing.exam.examName,0,26) }...
 						     </c:if>
 			        	</td> 
 					<td><font color="#00CC99">
-			          		<c:if test="${fn:length(writing.parentQuestionArticle) < 40}">
-						         ${writing.parentQuestionArticle}
+			          		<c:if test="${fn:length(writing.description) < 20}">
+						         ${writing.description}
 						     </c:if>
-			          		<c:if test="${fn:length(writing.parentQuestionArticle) > 40}">
-						         ${fn:substring(writing.parentQuestionArticle,0,10) }...
+			          		<c:if test="${fn:length(writing.description) > 20}">
+						         ${fn:substring(writing.description,0,20) }...
 						     </c:if>
 			          	</font>
 			          	</td>

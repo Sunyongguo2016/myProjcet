@@ -130,7 +130,8 @@
 				<hr/>
 				<ul>
 				<c:forEach items="${pageExamFour.list }" var="exam">
-					<li><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
+					<li style="line-height:22px;"><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
+
 				</c:forEach>
 				</ul>
 				
@@ -144,7 +145,7 @@
 				<hr/>
 				<ul>
 					<c:forEach items="${pageExamSix.list }" var="exam">
-						<li><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
+						<li style="line-height:22px;"><a href="${ctx}/examonline/look?examId=${exam.examId}">${exam.examName }..预览</a></li>
 					</c:forEach>
 				</ul>
 				
