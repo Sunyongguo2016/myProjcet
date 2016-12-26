@@ -97,7 +97,15 @@
 	<!--右侧内容-->
 	<div class="right">
 		<div class="right_bread">
-			<h1>我的错题本</h1>
+		<c:choose>
+		   <c:when test="${isCol==1}">  
+				<h1>我的收藏</h1>
+		   </c:when>
+		   <c:otherwise> 
+		 	  <h1>我的错题本</h1>
+		   </c:otherwise>
+		</c:choose>
+		
 		</div>
 		<div class="right_content" style="line-height: 40px;">
 			<div class="wenzhang_content">
