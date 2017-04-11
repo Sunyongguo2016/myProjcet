@@ -1,7 +1,6 @@
 package com.course.choosefillinblank.controller;
 
 import java.io.UnsupportedEncodingException;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
